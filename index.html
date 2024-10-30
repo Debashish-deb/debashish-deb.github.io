@@ -6,23 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Debashish Deb's Personal Site</title>
   <style>
+    /* General styling */
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
       color: #333;
       margin: 0;
       padding: 0;
+      display: flex;
       background-color: #f4f4f9;
     }
 
-    .container {
-      width: 80%;
-      max-width: 1000px;
-      margin: 20px auto;
+    /* Sidebar styling */
+    .sidebar {
+      width: 250px;
+      background-color: #003366;
+      color: #fff;
       padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      position: fixed;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .sidebar p {
+      margin: 8px 0;
+    }
+
+    .sidebar a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main container styling */
+    .container {
+      margin-left: 270px;
+      width: calc(100% - 270px);
+      padding: 20px;
     }
 
     h1 {
@@ -60,16 +90,7 @@
       margin-top: 20px;
     }
 
-    .contact a {
-      color: #003366;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
-    }
-
+    /* Skills table styling */
     .skills-table {
       display: flex;
       justify-content: space-around;
@@ -92,6 +113,18 @@
 </head>
 
 <body>
+
+  <!-- Sidebar for Contacts -->
+  <aside class="sidebar">
+    <h2>Contact</h2>
+    <p><strong>Address:</strong><br>Metsälinnunreitti 2N 154,<br>02660 Espoo, Finland</p>
+    <p><strong>Mobile:</strong> +358 451 600 007</p>
+    <p><strong>Email:</strong> <a href="mailto:ddeba32@gmail.com">ddeba32@gmail.com</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/Debashish-deb/" target="_blank">GitHub Profile</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank">LinkedIn Profile</a></p>
+  </aside>
+
+  <!-- Main Content Container -->
   <div class="container">
     <header>
       <h1>Debashish Deb</h1>
@@ -127,15 +160,6 @@
 
       <p><strong>Research Assistant</strong>, Heckman Group, Helsinki University / Aug 2015 to Aug 2016</p>
       <p>Contributed to anticancer research through method development, analysis, detailed laboratory notes, and maintenance.</p>
-    </div>
-
-    <div class="section">
-      <h2>Contact</h2>
-      <p><strong>Address:</strong> Metsälinnunreitti 2N 154, 02660 Espoo, Finland</p>
-      <p><strong>Mobile:</strong> +358 451 600 007</p>
-      <p><strong>Email:</strong> <a href="mailto:ddeba32@gmail.com">ddeba32@gmail.com</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/Debashish-deb/" target="_blank">GitHub Profile</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank">LinkedIn Profile</a></p>
     </div>
 
     <div class="section">
@@ -196,6 +220,7 @@
       </div>
     </div>
   </div>
+
 </body>
 
 </html>
