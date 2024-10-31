@@ -28,6 +28,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: transform 0.3s ease;
     }
 
     .sidebar h2 {
@@ -46,6 +47,18 @@
 
     .sidebar a:hover {
       text-decoration: underline;
+    }
+
+    /* Sidebar Toggle */
+    .sidebar-toggle {
+      display: none;
+      font-size: 1.2em;
+      color: #003366;
+      background: #ffcc00;
+      border: none;
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
     }
 
     /* Main container styling */
@@ -104,10 +117,31 @@
 
     .skills-table td {
       padding: 8px;
+      cursor: pointer;
     }
 
     .stars {
       color: #ffcc00;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.show {
+        transform: translateX(0);
+      }
+
+      .sidebar-toggle {
+        display: inline-block;
+      }
     }
   </style>
 </head>
@@ -115,7 +149,7 @@
 <body>
 
   <!-- Sidebar for Contacts -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <h2>Contact</h2>
     <p><strong>Address:</strong><br>Metsälinnunreitti 2N 154,<br>02660 Espoo, Finland</p>
     <p><strong>Mobile:</strong> +358 451 600 007</p>
@@ -123,6 +157,9 @@
     <p><strong>GitHub:</strong> <a href="https://github.com/Debashish-deb/" target="_blank">GitHub Profile</a></p>
     <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank">LinkedIn Profile</a></p>
   </aside>
+
+  <!-- Sidebar Toggle Button -->
+  <button class="sidebar-toggle" id="toggleButton">☰ Menu</button>
 
   <!-- Main Content Container -->
   <div class="container">
@@ -168,58 +205,86 @@
         <table>
           <tr>
             <td>JavaScript</td>
-            <td class="stars">⭐⭐</td>
+            <td class="stars" data-rating="2">⭐⭐</td>
           </tr>
           <tr>
             <td>CSS</td>
-            <td class="stars">⭐</td>
+            <td class="stars" data-rating="1">⭐</td>
           </tr>
           <tr>
             <td>Python</td>
-            <td class="stars">⭐⭐</td>
+            <td class="stars" data-rating="2">⭐⭐</td>
           </tr>
           <tr>
             <td>HTML</td>
-            <td class="stars">⭐⭐⭐</td>
+            <td class="stars" data-rating="3">⭐⭐⭐</td>
           </tr>
           <tr>
             <td>R</td>
-            <td class="stars">⭐</td>
+            <td class="stars" data-rating="1">⭐</td>
           </tr>
           <tr>
             <td>EMSA</td>
-            <td class="stars">⭐⭐</td>
+            <td class="stars" data-rating="2">⭐⭐</td>
           </tr>
         </table>
         <table>
           <tr>
             <td>Mammalian cell culture</td>
-            <td class="stars">⭐⭐⭐⭐⭐</td>
+            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
           </tr>
           <tr>
             <td>Western blot</td>
-            <td class="stars">⭐⭐⭐⭐⭐</td>
+            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
           </tr>
           <tr>
             <td>Liquid Chromatography</td>
-            <td class="stars">⭐⭐⭐⭐⭐</td>
+            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
           </tr>
           <tr>
             <td>Mass spectrometry</td>
-            <td class="stars">⭐⭐⭐⭐⭐</td>
+            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
           </tr>
           <tr>
             <td>Buffer preparation</td>
-            <td class="stars">⭐⭐⭐⭐⭐</td>
+            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
           </tr>
           <tr>
             <td>Gel electrophoresis</td>
-            <td class="stars">⭐⭐⭐⭐⭐</td>
+            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
           </tr>
         </table>
       </div>
     </div>
   </div>
+
+  <script>
+    // Toggle Sidebar
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('toggleButton');
+    toggleButton.addEventListener('click', () => {
+      sidebar.classList.toggle('show');
+    });
+
+    // Dynamic Skill Rating
+    document.querySelectorAll('.stars').forEach(star => {
+      star.addEventListener('click', () => {
+        let rating = parseInt(star.getAttribute('data-rating'));
+        rating = rating < 5 ? rating + 1 : 1;
+        star.setAttribute('data-rating', rating);
+        star.innerText = '⭐'.repeat(rating);
+      });
+    });
+
+    // Smooth Scrolling
+    document.querySelectorAll('.sidebar a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 
 </body>
 
