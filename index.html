@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Debashish Deb - Full-Stack Developer</title>
+  <!-- Add Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
   <style>
     /* General Styling */
     * {
@@ -148,9 +151,6 @@
 
     /* Icon Styling */
     .icon {
-      width: 20px;
-      height: 20px;
-      vertical-align: middle;
       margin-right: 10px;
     }
 
@@ -190,9 +190,9 @@
       <a href="#contact">Contact</a>
     </nav>
     <div>
-      <p><strong>Email:</strong> <a href="mailto:ddeba32@gmail.com"><img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Email_icon_%282019-2023%29.svg" alt="Email"></a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/Debashish-deb" target="_blank"><img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub"></a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank"><img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo_2023.svg" alt="LinkedIn"></a></p>
+      <p><strong>Email:</strong> <a href="mailto:ddeba32@gmail.com"><i class="fas fa-envelope icon"></i>ddeba32@gmail.com</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/Debashish-deb" target="_blank"><i class="fab fa-github icon"></i>GitHub Profile</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank"><i class="fab fa-linkedin icon"></i>LinkedIn Profile</a></p>
     </div>
   </aside>
 
@@ -225,46 +225,45 @@
           <li>CSS (⭐⭐⭐)</li>
         </ul>
       </div>
+<!-- Projects Section -->
+<div class="section projects" id="projects">
+  <h2>Projects</h2>
+  <ul>
+    <li>Portfolio Website - A responsive portfolio to showcase my work</li>
+    <li>Inventory Management System - A full-stack app for tracking inventory</li>
+    <li>Weather App - A weather forecasting app using OpenWeather API</li>
+  </ul>
+</div>
+</div>
 
-      <!-- Projects Section -->
-      <div class="section projects" id="projects">
-        <h2>Projects</h2>
-        <ul>
-          <li>Portfolio Website - A responsive portfolio to showcase my work (In progress..)</li>
-          <li>Inventory Management System - A full-stack app for tracking inventory (Coming soon)</li>
-          <li>Weather App - A weather forecasting app using OpenWeather API (Coming soon)</li>
-        </ul>
-      </div>
-    </div>
+<!-- Achievements Section -->
+<div class="section" id="achievements">
+<h2>Achievements</h2>
+<p>Highlights of my coding journey and professional milestones.</p>
+</div>
 
-    <!-- Achievements Section -->
-    <div class="section" id="achievements">
-      <h2>Achievements</h2>
-      <p>Highlights of my coding journey and professional milestones.</p>
-    </div>
+<!-- Testimonials Section -->
+<div class="section" id="testimonials">
+<h2>Testimonials</h2>
+<p>What clients and colleagues have to say about my work.</p>
+</div>
 
-    <!-- Testimonials Section -->
-    <div class="section" id="testimonials">
-      <h2>Testimonials</h2>
-      <p>What clients and colleagues have to say about my work.</p>
-    </div>
+<!-- Contact Section -->
+<div class="section" id="contact">
+<h2>Contact Me</h2>
+<p>I’m always open to discussing web development work or partnership opportunities. Reach out through LinkedIn or GitHub, or send me an email at <a href="mailto:ddeba32@gmail.com">ddeba32@gmail.com</a>.</p>
+</div>
+</div>
 
-    <!-- Contact Section -->
-    <div class="section" id="contact">
-      <h2>Contact Me</h2>
-      <p>I’m always open to discussing web development work or partnership opportunities. Reach out through LinkedIn or GitHub, or send me an email at <a href="mailto:ddeba32@gmail.com">ddeba32@gmail.com</a>.</p>
-    </div>
-  </div>
+<!-- Sidebar Toggle Script -->
+<script>
+const sidebar = document.getElementById('sidebar');
+const toggleButton = document.getElementById('toggleButton');
 
-  <!-- Sidebar Toggle Script -->
-  <script>
-    const sidebar = document.getElementById('sidebar');
-    const toggleButton = document.getElementById('toggleButton');
-
-    toggleButton.addEventListener('click', () => {
-      sidebar.classList.toggle('show');
-    });
-  </script>
+toggleButton.addEventListener('click', () => {
+sidebar.classList.toggle('show');
+});
+</script>
 </body>
 
 </html>
