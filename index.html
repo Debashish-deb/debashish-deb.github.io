@@ -128,19 +128,30 @@
       flex-wrap: wrap;
     }
 
-    .skills, .projects {
+    .skills,
+    .projects {
       flex: 1;
       min-width: 300px;
     }
 
-    .projects ul, .skills ul {
+    .projects ul,
+    .skills ul {
       list-style: none;
       padding: 0;
     }
 
-    .projects ul li, .skills ul li {
+    .projects ul li,
+    .skills ul li {
       padding: 8px 0;
       border-bottom: 1px solid #ddd;
+    }
+
+    /* Icon Styling */
+    .icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 10px;
     }
 
     /* Responsive Styling */
@@ -179,14 +190,14 @@
       <a href="#contact">Contact</a>
     </nav>
     <div>
-      <p><strong>Email:</strong> <a href="mailto:ddeba32@gmail.com">ddeba32@gmail.com</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/Debashish-deb" target="_blank">GitHub Profile</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank">LinkedIn Profile</a></p>
+      <p><strong>Email:</strong> <a href="mailto:ddeba32@gmail.com"><img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/4/44/Email_icon_%282019-2023%29.svg" alt="Email">ddeba32@gmail.com</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/Debashish-deb" target="_blank"><img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">GitHub Profile</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank"><img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo_2023.svg" alt="LinkedIn">LinkedIn Profile</a></p>
     </div>
   </aside>
 
   <!-- Sidebar Toggle Button for Mobile -->
-  <button class="sidebar-toggle" id="toggleButton">☰ Menu</button>
+  <button class="sidebar-toggle" id="toggleButton" aria-label="Toggle Sidebar">☰ Menu</button>
 
   <!-- Main Content -->
   <div class="main-content">
@@ -207,11 +218,11 @@
       <div class="section skills" id="skills">
         <h2>Skills</h2>
         <ul>
-          <li>JavaScript (⭐⭐⭐⭐)</li>
-          <li>React (⭐⭐⭐⭐⭐)</li>
-          <li>Node.js (⭐⭐⭐⭐)</li>
-          <li>Python (⭐⭐⭐⭐⭐)</li>
-          <li>SQL (⭐⭐⭐)</li>
+          <li>JavaScript (⭐⭐⭐)</li>
+          <li>Golang (⭐⭐⭐</li>
+          <li>Node.js (⭐⭐⭐)</li>
+          <li><HTML></HTML> (⭐⭐⭐⭐)</li>
+          <li>CSS (⭐⭐⭐)</li>
         </ul>
       </div>
 
@@ -219,9 +230,9 @@
       <div class="section projects" id="projects">
         <h2>Projects</h2>
         <ul>
-          <li>Portfolio Website - A responsive portfolio to showcase my work</li>
-          <li>Inventory Management System - A full-stack app for tracking inventory</li>
-          <li>Weather App - A weather forecasting app using OpenWeather API</li>
+          <li>Portfolio Website - A responsive portfolio to showcase my work (In progress..)</li>
+          <li>Inventory Management System - A full-stack app for tracking inventory (Coming soon)</li>
+          <li>Weather App - A weather forecasting app using OpenWeather API (Coming soon)</li>
         </ul>
       </div>
     </div>
@@ -230,7 +241,6 @@
     <div class="section" id="achievements">
       <h2>Achievements</h2>
       <p>Highlights of my coding journey and professional milestones.</p>
-      <div class="codersrank-summary" data-theme="dark"></div>
     </div>
 
     <!-- Testimonials Section -->
@@ -246,19 +256,15 @@
     </div>
   </div>
 
-
-  <!-- Sidebar Toggle Script in TypeScript -->
-  <script type="text/typescript">
-    const sidebar = document.getElementById('sidebar') as HTMLElement;
-    const toggleButton = document.getElementById('toggleButton') as HTMLElement;
+  <!-- Sidebar Toggle Script -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('toggleButton');
 
     toggleButton.addEventListener('click', () => {
       sidebar.classList.toggle('show');
     });
   </script>
-
-  <!-- TypeScript Compiler Link -->
-  <script src="https://cdn.jsdelivr.net/npm/typescript@latest"></script>
 </body>
 
 </html>
