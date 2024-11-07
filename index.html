@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -230,6 +229,36 @@
       color: #a5d2da;
     }
 
+    /* Experience Section Styling */
+    .experience-section {
+      margin: 20px 0;
+    }
+
+    .experience-item {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f8f8f8;
+      border-left: 5px solid #ffd700;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .experience-item h3 {
+      margin: 0;
+      color: #007BFF;
+    }
+
+    .experience-item p {
+      margin: 5px 0;
+      font-size: 1em;
+    }
+
+    .experience-item ul {
+      list-style-type: disc;
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
     /* Responsive Styling */
     @media (max-width: 768px) {
       .sidebar {
@@ -296,76 +325,153 @@
       <p>Passionate Full-Stack Developer with a background in biotechnology and a knack for solving complex problems through efficient coding and development. Experienced in process improvement, data analysis, and team collaboration.</p>
     </div>
 
-    <!-- Skills and Projects Section -->
-    <div class="skills-projects-container">
-      <!-- Skills Section -->
-      <div class="section skills" id="skills">
-        <h2>Skills</h2>
-        <ul>
-          <li>JavaScript
-            <div class="progress-bar">
-              <div class="progress js"></div>
-            </div>
-          </li>
-          <li>Golang
-            <div class="progress-bar">
-              <div class="progress golang"></div>
-            </div>
-          </li>
-          <li>Node.js
-            <div class="progress-bar">
-              <div class="progress node"></div>
-            </div>
-          </li>
-          <li>HTML
-            <div class="progress-bar">
-              <div class="progress html"></div>
-            </div>
-          </li>
-          <li>CSS
-            <div class="progress-bar">
-              <div class="progress css"></div>
-            </div>
-          </li>
-        </ul>
+      <!-- Skills and Projects Section -->
+      <div class="skills-projects-container">
+        <!-- Skills Section -->
+        <div class="section skills" id="skills">
+          <h2>Skills</h2>
+          <ul>
+            <li>JavaScript
+              <div class="progress-bar">
+                <div class="progress js"></div>
+              </div>
+            </li>
+            <li>Golang
+              <div class="progress-bar">
+                <div class="progress golang"></div>
+              </div>
+            </li>
+            <li>Node.js
+              <div class="progress-bar">
+                <div class="progress node"></div>
+              </div>
+            </li>
+            <li>HTML
+              <div class="progress-bar">
+                <div class="progress html"></div>
+              </div>
+            </li>
+            <li>CSS
+              <div class="progress-bar">
+                <div class="progress css"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+  
+        <!-- Projects Section -->
+        <div class="section projects" id="projects">
+          <h2>Projects</h2>
+          <ul>
+            <li>Portfolio Website - A responsive portfolio to showcase my work</li>
+            <li>Inventory Management System - A full-stack app for tracking inventory</li>
+            <li>Weather App - A weather forecasting app using OpenWeather API</li>
+          </ul>
+        </div>
       </div>
-
-      <!-- Projects Section -->
-      <div class="section projects" id="projects">
-        <h2>Projects</h2>
-        <ul>
-          <li>Portfolio Website - A responsive portfolio to showcase my work</li>
-          <li>Inventory Management System - A full-stack app for tracking inventory</li>
-          <li>Weather App - A weather forecasting app using OpenWeather API</li>
-        </ul>
+  
+      <!-- Achievements Section -->
+      <div class="section" id="achievements">
+        <h2>Achievements</h2>
+        <p>Highlights of my coding journey and professional milestones.</p>
+      </div>
+  
+      <!-- Experience Section -->
+      <div class="experience-section">
+        <h2>Experience</h2>
+        <div class="experience-item">
+          <h3>Assembly Technician</h3>
+          <p><strong>ABB</strong> | Full-time | Apr 2023 - Sep 2023</p>
+          <p>Helsinki, Uusimaa, Finland</p>
+          <ul>
+            <li>Assembly Lines</li>
+            <li>Manufacturing</li>
+          </ul>
+        </div>
+  
+        <div class="experience-item">
+          <h3>Senior Production Specialist</h3>
+          <p><strong>Swappie</strong> | Full-time | Oct 2022 - Apr 2023</p>
+          <p>Finland</p>
+          <ul>
+            <li>Repair and assembly of iPhones</li>
+            <li>Report preparation</li>
+            <li>Coaching assistance</li>
+          </ul>
+        </div>
+  
+        <div class="experience-item">
+          <h3>Production Specialist</h3>
+          <p><strong>Swappie</strong> | Full-time | Oct 2021 - Oct 2022</p>
+          <p>Helsinki</p>
+          <ul>
+            <li>Software installation and diagnostics</li>
+            <li>Fault fixing and report preparation</li>
+          </ul>
+        </div>
+  
+        <div class="experience-item">
+          <h3>Assistant, Early Morning Delivery</h3>
+          <p><strong>Posti Group Oyj</strong> | Full-time | Jan 2014 - Aug 2021</p>
+          <p>Helsinki Metropolitan Area</p>
+          <ul>
+            <li>Newspaper delivery</li>
+            <li>Assistant duties</li>
+            <li>Logistics and communication</li>
+          </ul>
+        </div>
+  
+        <div class="experience-item">
+          <h3>Research Assistant</h3>
+          <p><strong>University of Helsinki</strong> | Full-time | Aug 2015 - Jul 2016</p>
+          <p>Helsinki, Southern Finland, Finland</p>
+          <ul>
+            <li>Research experiment design</li>
+            <li>Data collection and organization</li>
+            <li>Report writing</li>
+          </ul>
+        </div>
+  
+        <div class="experience-item">
+          <h3>Research Assistant (Apprenticeship)</h3>
+          <p><strong>University of Helsinki</strong> | Apprenticeship | Jun 2014 - Jul 2015</p>
+          <p>Helsinki, Uusimaa, Finland</p>
+        </div>
+      </div>
+  
+      <!-- Testimonials Section -->
+      <div class="section" id="testimonials">
+        <h2>Testimonials</h2>
+        <p>What clients and colleagues have to say about my work.</p>
+      </div>
+  
+      <!-- Contact Section -->
+      <div class="section" id="contact">
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me through any of the following channels:</p>
+        <div class="contact-icons">
+          <a href="mailto:ddeba32@gmail.com" title="Send Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/Debashish-deb" target="_blank" title="GitHub Profile">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank" title="LinkedIn Profile">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
     </div>
-
-    <!-- Achievements Section -->
-    <div class="section" id="achievements">
-      <h2>Achievements</h2>
-      <p>Highlights of my coding journey and professional milestones.</p>
-    </div>
-
-    <body> <div class="experience-section"> <h2>Experience</h2> <div class="experience-item"> <h3>Assembly Technician</h3> <p><strong>ABB</strong> | Full-time | Apr 2023 - Sep 2023</p> <p>Helsinki, Uusimaa, Finland</p> <ul> <li>Assembly Lines</li> <li>Manufacturing</li> </ul> </div> <div class="experience-item"> <h3>Senior Production Specialist</h3> <p><strong>Swappie</strong> | Full-time | Oct 2022 - Apr 2023</p> <p>Finland</p> <ul> <li>Repair and assembly of iPhones</li> <li>Report preparation</li> <li>Coaching assistance</li> </ul> </div> <div class="experience-item"> <h3>Production Specialist</h3> <p><strong>Swappie</strong> | Full-time | Oct 2021 - Oct 2022</p> <p>Helsinki</p> <ul> <li>Software installation and diagnostics</li> <li>Fault fixing and report preparation</li> </ul> </div> <div class="experience-item"> <h3>Assistant, Early Morning Delivery</h3> <p><strong>Posti Group Oyj</strong> | Full-time | Jan 2014 - Aug 2021</p> <p>Helsinki Metropolitan Area</p> <ul> <li>Newspaper delivery</li> <li>Assistant duties</li> <li>Logistics and communication</li> </ul> </div> <div class="experience-item"> <h3>Research Assistant</h3> <p><strong>University of Helsinki</strong> | Full-time | Aug 2015 - Jul 2016</p> <p>Helsinki, Southern Finland, Finland</p> <ul> <li>Research experiment design</li> <li>Data collection and organization</li> <li>Report writing</li> </ul> </div> <div class="experience-item"> <h3>Research Assistant (Apprenticeship)</h3> <p><strong>University of Helsinki</strong> | Apprenticeship | Jun 2014 - Jul 2015</p> <p>Helsinki, Uusimaa, Finland</p> </div> </div>
-
-
-    <!-- Testimonials Section -->
-    <div class="section" id="testimonials">
-      <h2>Testimonials</h2>
-      <p>What clients and colleagues have to say about my work.</p>
-    </div>
-  </div>
-
-  <!-- Sidebar Toggle Script -->
-  <script>
-    const sidebar = document.getElementById('sidebar');
-    const toggleButton = document.getElementById('toggleButton');
-
-    toggleButton.addEventListener('click', () => {
-      sidebar.classList.toggle('show');
-    });
-  </script>
-</body>
-
-</html>
+  
+    <!-- Sidebar Toggle Script -->
+    <script>
+      const sidebar = document.getElementById('sidebar');
+      const toggleButton = document.getElementById('toggleButton');
+  
+      toggleButton.addEventListener('click', () => {
+        sidebar.classList.toggle('show');
+      });
+    </script>
+  </body>
+  </html>
+  
