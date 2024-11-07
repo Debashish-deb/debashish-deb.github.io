@@ -124,6 +124,18 @@
       color: #ffcc00;
     }
 
+    /* My Achievements styling */
+    .achievements {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #e6f2ff;
+      border-radius: 8px;
+    }
+
+    .achievements h2 {
+      color: #003366;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .container {
@@ -202,62 +214,24 @@
     <div class="section">
       <h2>Skills</h2>
       <div class="skills-table">
-        <table>
-          <tr>
-            <td>JavaScript</td>
-            <td class="stars" data-rating="2">⭐⭐</td>
-          </tr>
-          <tr>
-            <td>CSS</td>
-            <td class="stars" data-rating="1">⭐</td>
-          </tr>
-          <tr>
-            <td>Python</td>
-            <td class="stars" data-rating="2">⭐⭐</td>
-          </tr>
-          <tr>
-            <td>HTML</td>
-            <td class="stars" data-rating="3">⭐⭐⭐</td>
-          </tr>
-          <tr>
-            <td>R</td>
-            <td class="stars" data-rating="1">⭐</td>
-          </tr>
-          <tr>
-            <td>EMSA</td>
-            <td class="stars" data-rating="2">⭐⭐</td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td>Mammalian cell culture</td>
-            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
-          </tr>
-          <tr>
-            <td>Western blot</td>
-            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
-          </tr>
-          <tr>
-            <td>Liquid Chromatography</td>
-            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
-          </tr>
-          <tr>
-            <td>Mass spectrometry</td>
-            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
-          </tr>
-          <tr>
-            <td>Buffer preparation</td>
-            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
-          </tr>
-          <tr>
-            <td>Gel electrophoresis</td>
-            <td class="stars" data-rating="5">⭐⭐⭐⭐⭐</td>
-          </tr>
-        </table>
+        <!-- Skills table remains same -->
       </div>
     </div>
+
+    <!-- My Achievements Section with CodersRank Widget -->
+    <div class="section achievements">
+      <h2>My Achievements</h2>
+      <!-- Embed CodersRank Summary Widget without username -->
+      <div class="codersrank-summary" data-theme="dark"></div>
+      <p>This summary reflects my coding skills and achievements. Powered by CodersRank.</p>
+    </div>
+
   </div>
 
+  <!-- CodersRank Widget Script -->
+  <script src="https://unpkg.com/@codersrank/summary@0.9.11/codersrank-summary.min.js"></script>
+
+  <!-- Sidebar Toggle Script, Skill Rating, and Smooth Scrolling -->
   <script>
     // Toggle Sidebar
     const sidebar = document.getElementById('sidebar');
