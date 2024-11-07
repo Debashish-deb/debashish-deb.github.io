@@ -226,33 +226,33 @@
       border-radius: 5px;
       margin: 10px 0;
     }
-    
+
     .progress {
       height: 100%;
       border-radius: 5px;
       transition: width 1s ease-in-out;
     }
-    
+
     .js {
       width: 80%; /* Adjust as needed */
       background-color: #f39c12;
     }
-    
+
     .golang {
       width: 70%; /* Adjust as needed */
       background-color: #00aaff;
     }
-    
+
     .node {
       width: 85%; /* Adjust as needed */
       background-color: #27ae60;
     }
-    
+
     .html {
       width: 90%; /* Adjust as needed */
       background-color: #e74c3c;
     }
-    
+
     .css {
       width: 75%; /* Adjust as needed */
       background-color: #3498db;
@@ -316,17 +316,28 @@
     </div>
   </aside>
 
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Mobile Toggle Button -->
+    <button class="sidebar-toggle" id="sidebar-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
 
-    <!-- About Me Section -->
-    <div class="section" id="about">
-      <h2>About Me</h2>
-      <p>Passionate Full-Stack Developer with a background in biotechnology and a knack for solving complex problems through efficient coding and development. Highly skilled in JavaScript, Go, Node.js, and many more.</p>
-    </div>
+    <!-- Cover Section -->
+    <section class="cover-section">
+      <h1>Debashish Deb</h1>
+      <img src="your-image.jpg" alt="Profile Image" class="profile-image">
+    </section>
 
-    
+    <!-- About Section -->
+    <section class="section" id="about">
+      <h2 class="section-header">About Me</h2>
+      <p>I am a passionate developer with expertise in web development, bioinformatics, and programming. I am constantly striving to grow my skills and tackle new challenges in coding and science.</p>
+    </section>
+
     <!-- Skills Section -->
-    <section id="skills" class="section">
-      <h2>Skills</h2>
+    <section class="section" id="skills">
+      <h2 class="section-header">Skills</h2>
       <div class="progress-bar">
         <div class="progress js"></div>
       </div>
@@ -344,104 +355,44 @@
       </div>
     </section>
 
-
-    <div class="section" id="experience">
-      <h2>Experiences</h2>
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+      <h2 class="section-header">Experience</h2>
       <div class="experience-item">
-        <h3>Assembly Technician at ABB</h3>
-        <p><strong>Apr 2023 - Sep 2023</strong> | Helsinki, Uusimaa, Finland</p>
+        <h3>Software Engineer</h3>
+        <p>Company XYZ | 2020 - Present</p>
         <ul>
-          <li>Assembly Lines</li>
-          <li>Manufacturing</li>
+          <li>Developed and maintained web applications.</li>
+          <li>Collaborated with cross-functional teams.</li>
+          <li>Optimized code for performance.</li>
         </ul>
       </div>
-    
-      <div class="experience-item">
-        <h3>Senior Production Specialist at Swappie</h3>
-        <p><strong>Oct 2022 - Apr 2023</strong> | Finland</p>
-        <ul>
-          <li>Repair and assembly of iPhones</li>
-          <li>Report preparation</li>
-          <li>Coaching assistance</li>
-        </ul>
-      </div>
-    
-      <div class="experience-item">
-        <h3>Production Specialist at Swappie</h3>
-        <p><strong>Oct 2021 - Oct 2022</strong> | Helsinki</p>
-        <ul>
-          <li>Software installation and diagnostics</li>
-          <li>Fault fixing and report preparation</li>
-        </ul>
-      </div>
-    
-      <div class="experience-item">
-        <h3>Assistant, Early Morning Delivery at Posti Group Oyj</h3>
-        <p><strong>Jan 2014 - Aug 2021</strong> | Helsinki Metropolitan Area</p>
-        <ul>
-          <li>Newspaper delivery</li>
-          <li>Assistant duties</li>
-          <li>Logistics and communication</li>
-        </ul>
-      </div>
-    
-      <div class="experience-item">
-        <h3>Research Assistant at University of Helsinki</h3>
-        <p><strong>Aug 2015 - Jul 2016</strong> | Helsinki, Southern Finland, Finland</p>
-        <ul>
-          <li>Research experiment design</li>
-          <li>Data collection and organization</li>
-          <li>Report writing</li>
-        </ul>
-      </div>
-    
-      <div class="experience-item">
-        <h3>Research Assistant (Apprenticeship) at University of Helsinki</h3>
-        <p><strong>Jun 2014 - Jul 2015</strong> | Helsinki, Uusimaa, Finland</p>
-      </div>
-    </div>
+      <!-- Add more experience items here -->
+    </section>
 
     <!-- Projects Section -->
-    <div class="section" id="projects">
+    <section class="section" id="projects">
       <h2 class="section-header">Projects</h2>
       <div class="projects-grid">
-        <a href="https://github.com/your-username/project1" target="_blank" class="project-item">
-          <i class="fab fa-github"></i>
-          <p>Cars-Viewer Website</p>
-        </a>
-        <a href="https://github.com/your-username/project2" target="_blank" class="project-item">
-          <i class="fab fa-github"></i>
-          <p>Literary Lions Forum</p>
-        </a>
-        <a href="https://github.com/Debashish-deb/Kelvin" target="_blank" class="project-item">
-          <i class="fab fa-github"></i>
-          <p>Weather Forecast App</p>
-        </a>
+        <div class="project-item">
+          <i class="fas fa-code"></i>
+          <p>Project 1</p>
+        </div>
+        <div class="project-item">
+          <i class="fas fa-laptop"></i>
+          <p>Project 2</p>
+        </div>
+        <!-- Add more projects here -->
       </div>
-    </div>
-
-    <!-- Achievements Section -->
-    <div class="section" id="achievements">
-      <h2>Achievements</h2>
-      <p>Certified Full-Stack Developer - Codecademy</p>
-      <p>Completed 10+ Web Development Projects</p>
-    </div>
-
-    <!-- Testimonials Section -->
-    <div class="section" id="testimonials">
-      <h2>Testimonials</h2>
-      <p>Under construction</p>
-      <p>Under construction</p>
-    </div>
+    </section>
   </div>
 
   <script>
-    // Sidebar toggle functionality for mobile
-    const sidebar = document.getElementById('sidebar');
-    const toggleButton = document.getElementById('toggleButton');
+    const sidebarToggle = document.getElementById("sidebar-toggle");
+    const sidebar = document.getElementById("sidebar");
 
-    toggleButton.addEventListener('click', () => {
-      sidebar.classList.toggle('show');
+    sidebarToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
     });
   </script>
 
