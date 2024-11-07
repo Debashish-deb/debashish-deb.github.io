@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,302 +8,169 @@
   <!-- Add Font Awesome CDN -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-  /* General Styling */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <style>
+    /* General Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Arial', sans-serif;
-  color: #736f6f;
-  background-color: #f8f9fa;
-  display: flex;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+    body {
+      font-family: 'Arial', sans-serif;
+      color: #736f6f;
+      background-color: #f8f9fa;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-/* Sidebar Styling */
-.sidebar {
-  width: 250px;
-  background-color: #f8f9fa;
-  color: #f1f1f1;
-  padding: 20px;
-  position: fixed;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease;
-}
+    /* Sidebar Styling */
+    .sidebar {
+      width: 250px;
+      background-color: #f8f9fa;
+      color: #f1f1f1;
+      padding: 20px;
+      position: fixed;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
 
-.sidebar h2 {
-  font-size: 1.8em;
-  color: #173c2c;
-  margin-bottom: 20px;
-  text-align: center;
-}
+    .sidebar h2 {
+      font-size: 1.8em;
+      color: #173c2c;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-.sidebar a {
-  color: #141410;
-  text-decoration: none;
-  margin: 15px 0;
-  display: block;
-  font-weight: bold;
-  font-size: 1.1em;
-  transition: color 0.3s;
-}
+    .sidebar a {
+      color: #141410;
+      text-decoration: none;
+      margin: 15px 0;
+      display: block;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
 
-.sidebar a:hover {
-  color: #fff;
-}
+    .sidebar a:hover {
+      color: #fff;
+    }
 
-/* Sidebar Toggle Button for Mobile */
-.sidebar-toggle {
-  display: none;
-  font-size: 1.2em;
-  color: #111;
-  background: #ffd700;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  margin: 10px;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 1000;
-  border-radius: 5px;
-}
+    /* Sidebar Toggle Button for Mobile */
+    .sidebar-toggle {
+      display: none;
+      font-size: 1.2em;
+      color: #111;
+      background: #ffd700;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      margin: 10px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      border-radius: 5px;
+    }
 
-/* Main Content Styling */
-.main-content {
-  margin-left: 270px;
-  padding: 40px;
-  width: calc(100% - 270px);
-  transition: margin-left 0.3s ease;
-}
+    /* Main Content Styling */
+    .main-content {
+      margin-left: 270px;
+      padding: 40px;
+      width: calc(100% - 270px);
+      transition: margin-left 0.3s ease;
+    }
 
-h1 {
-  font-size: 2.5em;
-  color: #111;
-  text-align: center;
-  margin-bottom: 20px;
-}
+    h1 {
+      font-size: 2.5em;
+      color: #111;
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-/* Profile Image Styling */
-.profile-image {
-  display: block;
-  margin: 0 auto;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 10;
-}
+    /* Profile Image Styling */
+    .profile-image {
+      display: block;
+      margin: 0 auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 10;
+    }
 
-/* Cover Section */
-.cover-section {
-  background-image: url('cover.jpeg'); /* Add your background image link here */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 50px 0;
-  text-align: center;
-  color: white;
-  position: relative;
-}
+    /* Cover Section */
+    .cover-section {
+      background-image: url('cover.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 50px 0;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
 
-.cover-section h1 {
-  font-size: 3em;
-}
+    .cover-section h1 {
+      font-size: 3em;
+    }
 
-/* Section Styling */
-.section {
-  background-color: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+    /* Section Styling */
+    .section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-.section h2 {
-  color: #333;
-  font-size: 1.8em;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #e3eae3;
-  padding-bottom: 5px;
-}
+    /* Contact Icons Styling */
+    .contact-icons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
 
-.section p {
-  font-size: 1em;
-  line-height: 1.6;
-  margin: 10px 0;
-}
+    .contact-icons a {
+      font-size: 1.5em;
+      color: #141410;
+      transition: color 0.3s;
+    }
 
-/* Experience Section */
-.experience-item {
-  margin-bottom: 20px;
-  padding: 15px 20px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease-in-out;
-}
+    .contact-icons a:hover {
+      color: #225ec5;
+    }
 
-.experience-item:hover {
-  transform: scale(1.02);
-}
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
 
-.experience-item h3 {
-  color: #225ec5;
-  font-size: 1.4em;
-  margin-bottom: 5px;
-}
+      .sidebar.show {
+        transform: translateX(0);
+      }
 
-.experience-item p {
-  font-size: 1em;
-  color: #333;
-  margin: 5px 0;
-}
+      .sidebar-toggle {
+        display: inline-block;
+      }
 
-.experience-item ul {
-  margin-top: 10px;
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-.experience-item ul li {
-  margin-bottom: 5px;
-  font-size: 0.95em;
-  color: #666;
-}
-
-.section-header {
-  font-size: 1.8em;
-  margin-bottom: 20px;
-  color: #333;
-  border-bottom: 2px solid #e3eae3;
-  padding-bottom: 5px;
-}
-
-/* Projects Section */
-.projects-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.project-item {
-  flex: 1;
-  min-width: 200px;
-  padding: 20px;
-  background-color: #f1f1f1;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease-in-out;
-}
-
-.project-item i {
-  font-size: 2em;
-  margin-bottom: 10px;
-  color: #225ec5;
-}
-
-.project-item:hover {
-  transform: scale(1.05);
-}
-
-/* Progress Bar Styling */
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background-color: #e3eae3;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-
-.progress {
-  height: 100%;
-  border-radius: 5px;
-  transition: width 1s ease-in-out;
-}
-
-.js {
-  width: 80%; /* Adjust as needed */
-  background-color: #f39c12;
-}
-
-.golang {
-  width: 70%; /* Adjust as needed */
-  background-color: #00aaff;
-}
-
-.node {
-  width: 85%; /* Adjust as needed */
-  background-color: #27ae60;
-}
-
-.html {
-  width: 90%; /* Adjust as needed */
-  background-color: #e74c3c;
-}
-
-.css {
-  width: 75%; /* Adjust as needed */
-  background-color: #3498db;
-}
-
-/* Contact Icons Styling */
-.contact-icons {
-  display: flex;
-  justify-content: space-around; /* Distribute icons evenly */
-  margin-top: 20px; /* Space from other sidebar elements */
-}
-
-.contact-icons a {
-  font-size: 1.5em;
-  color: #141410;
-  transition: color 0.3s;
-}
-
-.contact-icons a:hover {
-  color: #225ec5;
-}
-
-/* Responsive Styling */
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-
-  .sidebar.show {
-    transform: translateX(0);
-  }
-
-  .sidebar-toggle {
-    display: inline-block;
-  }
-
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-  }
-
-  .sidebar a {
-    font-size: 1em;
-  }
-
-  .contact-icons a {
-    font-size: 1.5em;
-  }
-}
-
+      .main-content {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
+
+  <button id="toggleButton" class="sidebar-toggle">☰</button>
 
   <!-- Sidebar for Contacts and Navigation -->
   <aside class="sidebar" id="sidebar">
@@ -317,34 +183,16 @@ h1 {
       <a href="#achievements">Achievements</a>
       <a href="#testimonials">Testimonials</a>
     </nav>
-   <!-- Contact Icons Styling -->
 
-   <div class="contact-icons">
-
-    <a href="mailto:ddeba32@gmail.com" title="Send Email">
-
-      <i class="fas fa-envelope"></i>
-
-    </a>
-
-    <a href="https://github.com/Debashish-deb" target="_blank" title="GitHub Profile">
-
-      <i class="fab fa-github"></i>
-
-    </a>
-
-    <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank" title="LinkedIn Profile">
-
-      <i class="fab fa-linkedin"></i>
-
-    </a>
-
-  </div>
-
+    <!-- Contact Icons -->
+    <div class="contact-icons">
+      <a href="mailto:ddeba32@gmail.com" title="Send Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/Debashish-deb" target="_blank" title="GitHub Profile"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+    </div>
   </aside>
 
   <div class="main-content">
-
     <!-- Cover Section -->
 
     <div class="cover-section">
