@@ -153,24 +153,24 @@
     .icon {
       margin-right: 10px;
     }
+
     /* Contact Icons Styling */
-.contact-icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Space between the icons */
-  margin-top: 20px;
-}
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px; /* Space between the icons */
+      margin-top: 20px;
+    }
 
-.contact-icons a {
-  font-size: 2em; /* Size of the icons */
-  color: #ffd700; /* Icon color */
-  transition: color 0.3s;
-}
+    .contact-icons a {
+      font-size: 2em; /* Size of the icons */
+      color: #ffd700; /* Icon color */
+      transition: color 0.3s;
+    }
 
-.contact-icons a:hover {
-  color: #fff; /* Change color on hover */
-}
-
+    .contact-icons a:hover {
+      color: #fff; /* Change color on hover */
+    }
 
     /* Responsive Styling */
     @media (max-width: 768px) {
@@ -207,21 +207,22 @@
       <a href="#testimonials">Testimonials</a>
       <a href="#contact">Contact</a>
     </nav>
-   <!-- Contact Section -->
-<div class="section" id="contact">
-  <h2>Contact Me</h2>
-  <div class="contact-icons">
-    <a href="mailto:ddeba32@gmail.com" title="Send Email">
-      <i class="fas fa-envelope icon"></i>
-    </a>
-    <a href="https://github.com/Debashish-deb" target="_blank" title="GitHub Profile">
-      <i class="fab fa-github icon"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank" title="LinkedIn Profile">
-      <i class="fab fa-linkedin icon"></i>
-    </a>
-  </div>
-</div>   
+
+    <!-- Contact Section in Sidebar -->
+    <div class="section" id="contact">
+      <h2>Contact Me</h2>
+      <div class="contact-icons">
+        <a href="mailto:ddeba32@gmail.com" title="Send Email">
+          <i class="fas fa-envelope icon"></i>
+        </a>
+        <a href="https://github.com/Debashish-deb" target="_blank" title="GitHub Profile">
+          <i class="fab fa-github icon"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank" title="LinkedIn Profile">
+          <i class="fab fa-linkedin icon"></i>
+        </a>
+      </div>
+    </div>
   </aside>
 
   <!-- Sidebar Toggle Button for Mobile -->
@@ -247,51 +248,46 @@
         <h2>Skills</h2>
         <ul>
           <li>JavaScript (⭐⭐⭐)</li>
-          <li>Golang (⭐⭐⭐</li>
+          <li>Golang (⭐⭐⭐)</li>
           <li>Node.js (⭐⭐⭐)</li>
-          <li><HTML></HTML> (⭐⭐⭐⭐)</li>
+          <li>HTML (⭐⭐⭐⭐)</li>
           <li>CSS (⭐⭐⭐)</li>
         </ul>
       </div>
-<!-- Projects Section -->
-<div class="section projects" id="projects">
-  <h2>Projects</h2>
-  <ul>
-    <li>Portfolio Website - A responsive portfolio to showcase my work</li>
-    <li>Inventory Management System - A full-stack app for tracking inventory</li>
-    <li>Weather App - A weather forecasting app using OpenWeather API</li>
-  </ul>
-</div>
-</div>
 
-<!-- Achievements Section -->
-<div class="section" id="achievements">
-<h2>Achievements</h2>
-<p>Highlights of my coding journey and professional milestones.</p>
-</div>
+      <!-- Projects Section -->
+      <div class="section projects" id="projects">
+        <h2>Projects</h2>
+        <ul>
+          <li>Portfolio Website - A responsive portfolio to showcase my work</li>
+          <li>Inventory Management System - A full-stack app for tracking inventory</li>
+          <li>Weather App - A weather forecasting app using OpenWeather API</li>
+        </ul>
+      </div>
+    </div>
 
-<!-- Testimonials Section -->
-<div class="section" id="testimonials">
-<h2>Testimonials</h2>
-<p>What clients and colleagues have to say about my work.</p>
-</div>
+    <!-- Achievements Section -->
+    <div class="section" id="achievements">
+      <h2>Achievements</h2>
+      <p>Highlights of my coding journey and professional milestones.</p>
+    </div>
 
-<!-- Contact Section -->
-<div class="section" id="contact">
-<h2>Contact Me</h2>
-<p>I’m always open to discussing web development work or partnership opportunities. Reach out through LinkedIn or GitHub, or send me an email at <a href="mailto:ddeba32@gmail.com">ddeba32@gmail.com</a>.</p>
-</div>
-</div>
+    <!-- Testimonials Section -->
+    <div class="section" id="testimonials">
+      <h2>Testimonials</h2>
+      <p>What clients and colleagues have to say about my work.</p>
+    </div>
+  </div>
 
-<!-- Sidebar Toggle Script -->
-<script>
-const sidebar = document.getElementById('sidebar');
-const toggleButton = document.getElementById('toggleButton');
+  <!-- Sidebar Toggle Script -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleButton = document.getElementById('toggleButton');
 
-toggleButton.addEventListener('click', () => {
-sidebar.classList.toggle('show');
-});
-</script>
+    toggleButton.addEventListener('click', () => {
+      sidebar.classList.toggle('show');
+    });
+  </script>
 </body>
 
 </html>
