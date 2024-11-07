@@ -6,6 +6,7 @@
   <title>Debashish Deb</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
+    /* Universal Reset */
     * {
       margin: 0;
       padding: 0;
@@ -33,6 +34,7 @@
       flex-direction: column;
       align-items: center;
       box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
     }
 
     .sidebar h2 {
@@ -72,7 +74,7 @@
       display: flex;
       justify-content: space-around;
       width: 100%;
-      margin-top: 20px; /* Adds space between links and icons */
+      margin-top: 20px;
     }
 
     .contact-icons a {
@@ -86,12 +88,83 @@
       transform: scale(1.2);
     }
 
+    /* Sidebar Toggle Button for Mobile */
+    .sidebar-toggle {
+      display: none;
+      font-size: 1.2em;
+      color: #2a3b47;
+      background: #ffd700;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      margin: 10px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      border-radius: 5px;
+    }
+
     /* Main Content Styling */
     .main-content {
       margin-left: 270px;
       padding: 40px;
       width: calc(100% - 270px);
       transition: margin-left 0.3s ease;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #111;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Profile Image Styling */
+    .profile-image {
+      display: block;
+      margin: 0 auto;
+      width: 180px;
+      height: 180px;
+      max-width: 100%;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border: 5px solid #ffd700;
+      object-fit: cover;
+      overflow: hidden;
+    }
+
+    /* Cover Section */
+    .cover-section {
+      background-image: url('cover.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 50px 0;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .cover-section h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Section Styling */
+    .section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-left: 5px solid #ffd700;
+    }
+
+    .section h2 {
+      color: #2a3b47;
+      border-bottom: 2px solid #ffd700;
+      padding-bottom: 5px;
     }
 
     /* Responsive Styling */
@@ -113,11 +186,19 @@
         width: 100%;
       }
     }
+
+    /* Ensure images scale properly */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 
 <body>
   <button id="toggleButton" class="sidebar-toggle">☰</button>
+
+  <!-- Sidebar for Contacts and Navigation -->
   <aside class="sidebar" id="sidebar">
     <h2>Debashish Deb</h2>
     <nav>
