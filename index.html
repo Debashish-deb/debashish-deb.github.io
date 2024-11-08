@@ -558,11 +558,11 @@
     }
 
     .experience-item h3::before {
-      content: "#f0b1";
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      color: #2ecc71;
-      margin-right: 8px;
+      content: "\f0b1"; /* Correct Unicode for the Font Awesome icon */
+      font-family: "Font Awesome 5 Free"; /* Make sure this is the correct font family for the icons */
+      font-weight: 900; /* Sets the icon to be bold */
+      color: #2ecc71; /* Applies the green color to the icon */
+      margin-right: 8px; /* Adds space after the icon */
     }
 
     .experience-item p {
@@ -581,13 +581,15 @@
     }
 
     .experience-item li::before {
-      content: "#2022";
-      color: #2ecc71;
-      font-weight: bold;
+      content: ""; /
+      background-color: #2ecc71;
       display: inline-block;
       width: 10px;
-      margin-left: -15px;
+      height: 10px; /* To make it visible, set a height */
+      border-radius: 50%; /* Optional: for a circular shape */
+      margin-left: -15px
     }
+
   </style>
   
 
