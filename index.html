@@ -28,7 +28,7 @@
     .sidebar {
       width: 250px;
       background-color: #f8f9fa;
-      color: #f1f1f1;
+      color: #141410;
       padding: 20px;
       position: fixed;
       height: 100vh;
@@ -39,7 +39,7 @@
     }
 
     .sidebar h2 {
-      font-size: 2.0em;
+      font-size: 1.8em;
       color: #173c2c;
       margin-bottom: 20px;
       text-align: center;
@@ -56,7 +56,7 @@
     }
 
     .sidebar a:hover {
-      color: #fff;
+      color: #2ecc71;
     }
 
     /* Sidebar Toggle Button for Mobile */
@@ -84,11 +84,36 @@
       transition: margin-left 0.3s ease;
     }
 
-    h1 {
-      font-size: 2.5em;
-      color: #111;
-      text-align: center;
-      margin-bottom: 20px;
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.show {
+        transform: translateX(0);
+      }
+
+      .sidebar-toggle {
+        display: inline-block;
+      }
+
+      .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+      }
+    }
+
+    /* Profile Image Styling */
+    .profile-image {
+      display: block;
+      margin: 0 auto;
+      width: 150px; /* Set max width */
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border: 4px solid #ffd700;
     }
 
     /* Section Styling */
@@ -131,7 +156,7 @@
       display: flex;
       flex-direction: column;
       padding: 15px;
-      border-left: 4px solid #2ecc71; /* Accent color */
+      border-left: 4px solid #2ecc71;
       margin-bottom: 20px;
       border-radius: 6px;
       background-color: #f9f9f9;
@@ -140,7 +165,7 @@
     }
 
     .experience-item:hover {
-      transform: translateY(-5px); /* Lift on hover */
+      transform: translateY(-5px);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     }
 
@@ -153,7 +178,7 @@
     }
 
     .experience-item h3::before {
-      content: "\\f0b1"; /* Font Awesome briefcase icon */
+      content: "\\f0b1";
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
       color: #2ecc71;
@@ -198,174 +223,74 @@
       <a href="#testimonials">Testimonials</a>
     </nav>
 
-    <!-- Contact Icons Styling -->
-
+    <!-- Contact Icons -->
     <div class="contact-icons">
-
       <a href="mailto:ddeba32@gmail.com" title="Send Email">
-
         <i class="fas fa-envelope"></i>
-
       </a>
-
       <a href="https://github.com/Debashish-deb" target="_blank" title="GitHub Profile">
-
         <i class="fab fa-github"></i>
-
       </a>
-
       <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank" title="LinkedIn Profile">
-
         <i class="fab fa-linkedin"></i>
-
       </a>
-
     </div>
-
   </aside>
 
-
-
   <!-- Sidebar Toggle Button for Mobile -->
-
   <button class="sidebar-toggle" id="toggleButton" aria-label="Toggle Sidebar">☰ Menu</button>
+
   <!-- Main Content -->
-
   <div class="main-content">
-
     <!-- Cover Section -->
-
     <div class="cover-section">
-
       <img src="deba.jpg" alt="Debashish Deb's profile picture" class="profile-image">
-
     </div>
-
-
 
     <!-- About Me Section -->
-
     <div class="section" id="about">
-
       <h2>About Me</h2>
-
-      <p>PAspiring Full-Stack Developer with a background in biotechnology and a knack for solving complex problems through efficient coding and development. Highly skilled in JavaScript, Go, Node.js, and many more.</p>
-
+      <p>Aspiring Full-Stack Developer with a background in biotechnology and a knack for solving complex problems through efficient coding and development. Highly skilled in JavaScript, Go, Node.js, and many more.</p>
     </div>
-
-
 
     <!-- Skills Section -->
-
     <div class="section" id="skills">
-
       <h2>Skills</h2>
-
-      <div class="skills-projects-container">
-
-        <div class="skills">
-
-          <ul>
-
-            <li>JavaScript</li>
-
-            <div class="progress-bar">
-
-              <div class="progress js"></div>
-
-            </div>
-
-            <li>Go</li>
-
-            <div class="progress-bar">
-
-              <div class="progress golang"></div>
-
-            </div>
-
-            <li>Node.js</li>
-
-            <div class="progress-bar">
-
-              <div class="progress node"></div>
-
-            </div>
-
-            <li>HTML</li>
-
-            <div class="progress-bar">
-
-              <div class="progress html"></div>
-
-            </div>
-
-            <li>CSS</li>
-
-            <div class="progress-bar">
-
-              <div class="progress css"></div>
-
-            </div>
-
-          </ul>
-
-        </div>
-
-      </div>
-
+      <ul>
+        <li>JavaScript</li>
+        <li>Go</li>
+        <li>Node.js</li>
+        <li>HTML</li>
+        <li>CSS</li>
+      </ul>
     </div>
 
-
-
-     <!-- Projects Section with Icons and Links -->
-     <div class="section" id="projects">
-      <h2 class="section-header">Projects</h2>
+    <!-- Projects Section -->
+    <div class="section" id="projects">
+      <h2>Projects</h2>
       <div class="projects-grid">
-        <a href="https://github.com/debashish-deb/project1" target="_blank" class="project-item">
-          <i class="fab fa-github"></i>
-          <p>Cars-Viewer Website (coming soon)</p>
-        </a>
-        <a href="https://github.com/debashish-deb/project2" target="_blank" class="project-item">
-          <i class="fab fa-github"></i>
-          <p>Literary Lions Forum (coming soon)</p>
-        </a>
-        <a href="https://github.com/debashish-deb/project3" target="_blank" class="project-item">
-          <i class="fab fa-github"></i>
-          <p>Weather Forecast App (coming soon)</p>
-        </a>
+        <a href="https://github.com/debashish-deb/project1" target="_blank">Cars-Viewer Website (coming soon)</a>
+        <a href="https://github.com/debashish-deb/project2" target="_blank">Literary Lions Forum (coming soon)</a>
+        <a href="https://github.com/debashish-deb/project3" target="_blank">Weather Forecast App (coming soon)</a>
       </div>
     </div>
-
-
 
     <!-- Achievements Section -->
-
     <div class="section" id="achievements">
-
       <h2>Achievements</h2>
-
       <p>In progress</p>
-
       <p>Completed 10+ Web Development Projects</p>
-
     </div>
 
-
-
     <!-- Testimonials Section -->
-
     <div class="section" id="testimonials">
-
       <h2>Testimonials</h2>
-
       <p>Yet to receive :)</p>
-
     </div>
 
     <!-- Experience Section -->
     <div class="section" id="experiences">
       <h2>Experience</h2>
-
       <div class="experience-item">
         <h3>Assembly Technician</h3>
         <p><strong>ABB</strong> | Full-time | Apr 2023 - Sep 2023</p>
@@ -375,7 +300,6 @@
           <li>Manufacturing</li>
         </ul>
       </div>
-
       <div class="experience-item">
         <h3>Senior Production Specialist</h3>
         <p><strong>Swappie</strong> | Full-time | Oct 2022 - Apr 2023</p>
@@ -386,20 +310,17 @@
           <li>Coaching assistance</li>
         </ul>
       </div>
-
-      <div class="experience-item">
-        <h3>Production Specialist</h3>
-        <p><strong>Swappie</strong> | Full-time | Oct 2021 - Oct 2022</p>
-        <p>Helsinki</p>
-        <ul>
-          <li>Software installation and diagnostics</li>
-          <li>Fault fixing and report preparation</li>
-        </ul>
-      </div>
-      
-      <!-- More experience items can follow here -->
     </div>
   </div>
+
+  <script>
+    // Sidebar toggle functionality for mobile
+    const toggleButton = document.getElementById('toggleButton');
+    const sidebar = document.getElementById('sidebar');
+    toggleButton.addEventListener('click', () => {
+      sidebar.classList.toggle('show');
+    });
+  </script>
 </body>
 
 </html>
