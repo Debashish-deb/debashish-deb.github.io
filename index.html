@@ -669,11 +669,11 @@
             </div>
             <li>Node.js</li>
             <div class="progress-bar">
-              <div class="progress Node.js" data-skill-level="50%"></div>
+              <div class="progress js" data-skill-level="80%"></div>
             </div>
             <li>HTML</li>
             <div class="progress-bar">
-              <div class="progress HTML" data-skill-level="75%"></div>
+              <div class="progress js" data-skill-level="70%"></div>
             </div>
           </ul>
 
@@ -793,7 +793,7 @@
 
     if (skillTop < windowHeight - 100 && skill.style.width === '0px') { // Trigger animation when near the viewport
       skill.style.transition = 'width 1s ease-out'; // Add transition effect
-      skill.style.width = skill.dataset.skillLevel;
+      skill.style.width = skill.getAttribute('data-skill-level');
     }
   });
 });
