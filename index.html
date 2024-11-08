@@ -342,11 +342,12 @@
     margin-bottom: 10px;
     }
 
-   .progress {
-   height: 25px;
-   width: 0; /* Will be updated dynamically */
-   transition: width 0.5s;
-   }
+    .progress {
+    height: 25px;
+    width: 0%;
+   transition: width 1s ease-out;
+  }
+
 
     .js {
 
@@ -775,24 +776,6 @@
     </div>
   </div>
    
-
-  <script>
-
-    // Sidebar toggle functionality for mobile
-
-    const sidebar = document.getElementById('sidebar');
-
-    const toggleButton = document.getElementById('toggleButton');
-
-
-
-    toggleButton.addEventListener('click', () => {
-
-      sidebar.classList.toggle('show');
-
-    });
-
-  </script>
 <script>
   // Sidebar toggle functionality for mobile
   const sidebar = document.getElementById('sidebar');
@@ -802,18 +785,18 @@
     sidebar.classList.toggle('show');
   });
 
-  // Skill progress animation
   window.addEventListener('scroll', function() {
-    const skills = document.querySelectorAll('.progress');
-    skills.forEach(skill => {
-      const skillTop = skill.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
+  const skills = document.querySelectorAll('.progress');
+  skills.forEach(skill => {
+    const skillTop = skill.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
 
-      if (skillTop < windowHeight) {
-        skill.style.width = skill.dataset.skillLevel;
-      }
-    });
+    if (skillTop < windowHeight - 100 && skill.style.width === '0px') { // Trigger animation when near the viewport
+      skill.style.transition = 'width 1s ease-out'; // Add transition effect
+      skill.style.width = skill.dataset.skillLevel;
+    }
   });
+});
 </script>
 
 </body>
