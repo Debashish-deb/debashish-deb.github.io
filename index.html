@@ -16,15 +16,21 @@
     }
 
     body {
-  font-family: 'Arial', sans-serif;
-  color: #4f4e4e;
-  background-color: #f0f2f5;
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+      font-family: 'Arial', sans-serif;
+      color: #4f4e4e;
+      background-color: #f0f2f5;
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+      min-height: 100vh;
+      overflow-x: hidden; /* Hide horizontal overflow */
+    }
 
+    /* Wrapper to hold sidebar and main content horizontally */
+    .page-wrapper {
+      display: flex;
+      flex-direction: row; /* Arrange sidebar and main-content in a row */
+      width: 100%;
+    }
 
     /* Sidebar Styling */
     .sidebar {
@@ -38,6 +44,7 @@
       flex-direction: column;
       align-items: center;
       box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
       transition: transform 0.3s ease;
     }
 
@@ -111,10 +118,10 @@
 
     /* Main Content Styling */
     .main-content {
-      margin-left: 270px;
+      margin-left: 270px; /* Space for sidebar */
       padding: 40px;
       width: calc(100% - 270px);
-      transition: margin-left 0.3s ease;
+      overflow-y: auto; /* Allow vertical scrolling */
     }
 
     h1 {
@@ -171,18 +178,6 @@
       padding-bottom: 5px;
     }
 
-    /* Progress Bar Styling */
-    .progress-bar {
-      margin: 15px 0;
-    }
-
-    .progress {
-      height: 20px;
-      background-color: #ffd700;
-      width: 60%;
-      border-radius: 10px;
-    }
-
     /* Responsive Styling */
     @media (max-width: 768px) {
       .sidebar {
@@ -202,204 +197,132 @@
         width: 100%;
       }
     }
-
-    /* Ensure images scale properly */
-    img {
-      max-width: 100%;
-      height: auto;
-    }
   </style>
 </head>
 
 <body>
   <button id="toggleButton" class="sidebar-toggle" aria-expanded="false" aria-controls="sidebar">☰</button>
 
-  <!-- Sidebar for Contacts and Navigation -->
-  <aside class="sidebar" id="sidebar">
-    <h2>Debashish Deb</h2>
-    <nav>
-      <a href="#about">About Me</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#testimonials">Testimonials</a>
-    </nav>
+  <!-- Wrapper to hold Sidebar and Main Content -->
+  <div class="page-wrapper">
+    <!-- Sidebar for Contacts and Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <h2>Debashish Deb</h2>
+      <nav>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#testimonials">Testimonials</a>
+      </nav>
 
-    <!-- Contact Icons -->
-    <div class="contact-icons">
-      <a href="mailto:ddeba32@gmail.com" title="Send Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/Debashish-deb" target="_blank" title="GitHub Profile"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-    </div>
-  </aside>
+      <!-- Contact Icons -->
+      <div class="contact-icons">
+        <a href="mailto:ddeba32@gmail.com" title="Send Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Debashish-deb" target="_blank" title="GitHub Profile"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </aside>
 
-  <div class="main-content">
-    <!-- Cover Section -->
-    <div class="cover-section">
-      <img src="deba.jpg" alt="Debashish Deb's profile picture" class="profile-image">
-    </div>
+    <div class="main-content">
+      <!-- Cover Section -->
+      <div class="cover-section">
+        <img src="deba.jpg" alt="Debashish Deb's profile picture" class="profile-image">
+      </div>
 
-    <!-- About Section -->
-    <section class="section" id="about">
-      <h2>About Me</h2>
-      <p>I am a passionate developer with expertise in web development, bioinformatics, and programming. I am constantly striving to grow my skills and tackle new challenges in coding and science.</p>
-    </section>
+      <!-- About Section -->
+      <section class="section" id="about">
+        <h2>About Me</h2>
+        <p>I am a passionate developer with expertise in web development, bioinformatics, and programming.</p>
+      </section>
 
-    <!-- Skills Section -->
-    <section class="section" id="skills">
-      <h2>Skills</h2>
-      <div class="progress-bar">
-        <div class="progress js"></div>
-      </div>
-      <div class="progress-bar">
-        <div class="progress golang"></div>
-      </div>
-      <div class="progress-bar">
-        <div class="progress node"></div>
-      </div>
-      <div class="progress-bar">
-        <div class="progress html"></div>
-      </div>
-      <div class="progress-bar">
-        <div class="progress css"></div>
-      </div>
-    </section>
+      <!-- Skills Section -->
+      <section class="section" id="skills">
+        <h2>Skills</h2>
+        <!-- Skill progress bars here -->
+      </section>
 
-    <!-- Projects Section with Icons and Links -->
-    <div class="section" id="projects">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-        <a href="https://github.com/your-username/project1" target="_blank" class="project-item">
-          <i class="fab fa-github"></i>
-          <p>Cars-Viewer Website</p>
-        </a>
-        <a href="https://github.com/your-username/project2" target="_blank" class="project-item">
-          <i class="fab fa-github"></i>
-          <p>Literary Lions Forum</p>
-        </a>
-        <a href="https://github.com/your-username/project3" target="_blank" class="project-item">
-          <i class="fab fa-github"></i>
-          <p>Weather Forecast App</p>
-        </a>
-      </div>
+      <!-- Projects Section -->
+      <section class="section" id="projects">
+        <h2>Projects</h2>
+        <!-- Projects grid here -->
+      </section>
+
+      <!-- Achievements Section -->
+      <section class="section" id="achievements">
+        <h2>Achievements</h2>
+        <p>Certified Full-Stack Developer - Codecademy</p>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="section" id="testimonials">
+        <h2>Testimonials</h2>
+        <p>In progress</p>
+      </section>
+
+      <!-- Experience Section -->
+      <section class="section" id="experience">
+        <h2>Experience</h2>
+        <!-- Experience items here -->
+         <div class="section" id="experiences">
+
+             <div class="experience-item">
+                <h3>Assembly Technician</h3>
+                <p><strong>ABB</strong> | Full-time | Apr 2023 - Sep 2023</p>
+                <p>Helsinki, Uusimaa, Finland</p>
+                  <li>Assembly Lines</li>
+                  <li>Manufacturing</li>
+            </div>
+
+            <div class="experience-item">
+                <h3>Senior Production Specialist</h3>
+                <p><strong>Swappie</strong> | Full-time | Oct 2022 - Apr 2023</p>
+                <p>Finland</p>
+                  <li>Repair and assembly of iPhones</li>
+                  <li>Report preparation</li>
+                  <li>Coaching assistance</li>
+            </div>
+
+            <div class="experience-item">
+                <h3>Production Specialist</h3>
+                <p><strong>Swappie</strong> | Full-time | Oct 2021 - Oct 2022</p>
+                <p>Helsinki</p>
+                  <li>Software installation and diagnostics</li>
+                  <li>Fault fixing and report preparation</li>
+            </div>
+          
+            <div class="experience-item">
+                <h3>Assistant, Early Morning Delivery</h3>
+                <p><strong>Posti Group Oyj</strong> | Full-time | Jan 2014 - Aug 2021</p>
+                <p>Helsinki Metropolitan Area</p>
+                  <li>Newspaper delivery</li>
+                  <li>Assistant duties</li>
+                  <li>Logistics and communication</li>
+            </div>
+          
+            <div class="experience-item">
+                <h3>Research Assistant</h3>
+                <p><strong>University of Helsinki</strong> | Full-time | Aug 2015 - Jul 2016</p>
+                <p>Helsinki, Southern Finland, Finland</p>
+                  <li>Research experiment design</li>
+                  <li>Data collection and organization</li>
+                  <li>Report writing</li>
+            </div>
+          
+            <div class="experience-item">
+                <h3>Research Assistant (Apprenticeship)</h3>
+                <p><strong>University of Helsinki</strong> | Apprenticeship | Jun 2014 - Jul 2015</p>
+                <p>Helsinki, Uusimaa, Finland</p>
+              </div>
+        </div>
+      </section>
     </div>
   </div>
-  
-    <!-- Achievements Section -->
-
-    <div class="section" id="achievements">
-
-      <h2>Achievements</h2>
-
-      <p>Certified Full-Stack Developer - Codecademy</p>
-
-      <p>Completed 10+ Web Development Projects</p>
-
-    </div>
-
-
-
-    <!-- Testimonials Section -->
-
-    <div class="section" id="testimonials">
-
-      <h2>Testimonials</h2>
-
-      <p>In Progress</p>
-
-      <p>In progress</p>
-
-    </div>
-
-
-<div class="section" id="experiences">
-
-  <h2>Experience</h2>
-
-
-
-  <div class="experience-item">
-
-    <h3>Assembly Technician</h3>
-
-    <p><strong>ABB</strong> | Full-time | Apr 2023 - Sep 2023</p>
-    <p>Helsinki, Uusimaa, Finland</p>
-      <li>Assembly Lines</li>
-      <li>Manufacturing</li>
-
-  </div>
-
-
-
-  <div class="experience-item">
-
-    <h3>Senior Production Specialist</h3>
-
-    <p><strong>Swappie</strong> | Full-time | Oct 2022 - Apr 2023</p>
-    <p>Finland</p>
-      <li>Repair and assembly of iPhones</li>
-      <li>Report preparation</li>
-      <li>Coaching assistance</li>
-  </div>
-
-
-
-  <div class="experience-item">
-
-    <h3>Production Specialist</h3>
-
-    <p><strong>Swappie</strong> | Full-time | Oct 2021 - Oct 2022</p>
-    <p>Helsinki</p>
-      <li>Software installation and diagnostics</li>
-      <li>Fault fixing and report preparation</li>
-
-  </div>
-
-
-
-  <div class="experience-item">
-
-    <h3>Assistant, Early Morning Delivery</h3>
-
-    <p><strong>Posti Group Oyj</strong> | Full-time | Jan 2014 - Aug 2021</p>
-    <p>Helsinki Metropolitan Area</p>
-      <li>Newspaper delivery</li>
-      <li>Assistant duties</li>
-      <li>Logistics and communication</li>
-
-  </div>
-
-
-
-  <div class="experience-item">
-
-    <h3>Research Assistant</h3>
-
-    <p><strong>University of Helsinki</strong> | Full-time | Aug 2015 - Jul 2016</p>
-    <p>Helsinki, Southern Finland, Finland</p>
-      <li>Research experiment design</li>
-      <li>Data collection and organization</li>
-      <li>Report writing</li>
-
-  </div>
-
-
-
-  <div class="experience-item">
-
-    <h3>Research Assistant (Apprenticeship)</h3>
-
-    <p><strong>University of Helsinki</strong> | Apprenticeship | Jun 2014 - Jul 2015</p>
-    <p>Helsinki, Uusimaa, Finland</p>
-
-    </div>
-
-</div>
-
   <script>
-    const toggleButton = document.getElementById('toggleButton');
-    const sidebar = document.getElementById('sidebar');
+  
+  const toggleButton = document.getElementById('toggleButton');
+  const sidebar = document.getElementById('sidebar');
 
     toggleButton.addEventListener('click', () => {
       sidebar.classList.toggle('show');
@@ -410,3 +333,5 @@
 </body>
 
 </html>
+
+
