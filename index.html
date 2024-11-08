@@ -9,17 +9,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Debashish Deb</title>
-
+  
   <!-- Add Font Awesome CDN -->
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <style>
 
     /* General Styling */
-
     * {
 
       margin: 0;
@@ -80,7 +79,7 @@
 
     .sidebar h2 {
 
-      font-size: 1.9 em;
+      font-size: 1.9em;
 
       color: #173c2c;
 
@@ -552,7 +551,7 @@
     }
 
     .experience-item li::before {
-      content: ""; /
+      content: "";
       background-color: #ffffff;
       display: inline-block;
       width: 10px;
@@ -574,7 +573,7 @@
   <aside class="sidebar" id="sidebar">
 
     <h2>Debashish Deb</h2>
-
+    <div id="calendar"></div>
     <nav>
 
       <a href="#about">About Me</a>
@@ -794,6 +793,16 @@
     }
   });
 });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css" rel="stylesheet">
+
+<script>
+  $(document).ready(function() {
+    $('#calendar').fullCalendar({
+      // FullCalendar options here (e.g., events, default view, etc.)
+    });
+  });
 </script>
 
 </body>
