@@ -1,193 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Basic Page Information -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Debashish Deb</title>
-
-  <!-- Add Font Awesome and jQuery Libraries -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome for icons and CDN dependencies -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css" rel="stylesheet">
-
-  <!-- CSS Styling -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css">
+  
   <style>
-    /* General Styling */
+    /* Reset and basic styling */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    /* Body Styling */
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       color: #736f6f;
       background-color: #f8f9fa;
       display: flex;
+      flex-direction: row;
       min-height: 100vh;
-      overflow-x: hidden;
+      margin: 0;
     }
 
     /* Sidebar Styling */
     .sidebar {
       width: 250px;
       background-color: #f8f9fa;
-      color: #f1f1f1;
+      color: #141410;
       padding: 20px;
       position: fixed;
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
 
-    /* Other Sidebar Elements */
-    .sidebar h2 { /* Sidebar Header Styling */ }
-    .sidebar a { /* Sidebar Links Styling */ }
-    .sidebar-toggle { /* Toggle Button for Mobile */ }
-
-    /* Main Content Styling */
-    .main-content {
-      margin-left: 270px;
-      padding: 40px;
-      width: calc(100% - 270px);
-      transition: margin-left 0.3s ease;
+    .sidebar h2 {
+      font-size: 1.9em;
+      color: #173c2c;
+      margin-bottom: 20px;
     }
 
-    /* Cover Section */
-    .cover-section {
-      background-image: url('cover.jpg'); /* Background image */
-      background-size: cover;
-      height: 80vh;
+    .sidebar a {
+      color: #141410;
+      text-decoration: none;
+      margin: 15px 0;
+      display: block;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s;
     }
 
-    /* Other Sections */
-    .section { /* General Section Styling */ }
-    .skills-projects-container { /* Skills and Projects Flexbox */ }
-    .projects-grid { /* Projects Grid Styling */ }
+    .sidebar a:hover {
+      color: #173c2c;
+    }
 
-    /* Responsive Styling */
+    /* Main Content Area */
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+      flex: 1;
+    }
+
+    /* Sidebar Toggle Button for Mobile View */
+    .sidebar-toggle {
+      display: none;
+      font-size: 1.2em;
+      color: #111;
+      background: #ffd700;
+      border: none;
+      padding: 10px;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      cursor: pointer;
+    }
+
+    /* Responsive styling for smaller screens */
     @media (max-width: 768px) {
-      .sidebar { transform: translateX(-100%); }
-      .sidebar.show { transform: translateX(0); }
-      .sidebar-toggle { display: inline-block; }
-      .main-content { margin-left: 0; width: 100%; }
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .sidebar-toggle {
+        display: block;
+      }
+
+      .content {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
-
 <body>
-  <!-- Sidebar for Contacts and Navigation -->
-  <aside class="sidebar" id="sidebar">
+
+  <!-- Sidebar Toggle Button (Only for Mobile View) -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()">☰ Menu</button>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
     <h2>Debashish Deb</h2>
-    <div id="calendar"></div>
     <nav>
-      <a href="#about">About Me</a>
-      <a href="#skills">Skills</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
       <a href="#projects">Projects</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <!-- Contact Icons -->
-    <div class="contact-icons">
-      <a href="mailto:ddeba32@gmail.com" title="Send Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/Debashish-deb" target="_blank" title="GitHub Profile"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/debashish-deb/" target="_blank" title="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-    </div>
-  </aside>
+  </div>
 
   <!-- Main Content Area -->
-  <div class="main-content">
-    <!-- Cover Section with Profile Image and Title -->
-    <div class="cover-section">
-      <img src="deb2.jpeg" alt="Debashish Deb" class="profile-image">
-      <h1>Web Developer | Biotechnologist | Technology Enthusiast</h1>
-    </div>
-
-    <!-- About Me Section -->
-    <section id="about-me" class="section">
+  <div class="content">
+    <section id="home">
+      <h1>Welcome to My Portfolio</h1>
+      <p>This is a placeholder for your content. Add your text, projects, and more here.</p>
+    </section>
+    <section id="about">
       <h2>About Me</h2>
-      <p>I am a passionate web developer with experience in building full-stack web applications. My goal is to build efficient, scalable, and user-friendly solutions for clients.</p>
+      <p>A brief introduction about yourself.</p>
     </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-      <h2>Skills</h2>
-      <div class="skills-projects-container">
-        <div class="skills">
-          <ul>
-            <li><span class="icon"><i class="fab fa-js"></i></span>JavaScript <div class="progress-bar"><div class="progress js"></div></div></li>
-            <li><span class="icon"><i class="fab fa-go"></i></span>Go <div class="progress-bar"><div class="progress golang"></div></div></li>
-            <li><span class="icon"><i class="fab fa-node"></i></span>Node.js <div class="progress-bar"><div class="progress node"></div></div></li>
-            <li><span class="icon"><i class="fab fa-html5"></i></span>HTML5 <div class="progress-bar"><div class="progress html"></div></div></li>
-          </ul>
-        </div>
-      </div>
+    <section id="projects">
+      <h2>My Projects</h2>
+      <p>Details about your recent work or projects.</p>
     </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-        <a href="https://github.com/your-username/project1" target="_blank" class="project-item"><i class="fab fa-github"></i>Cars-Viewer Website</a>
-        <a href="https://github.com/your-username/project2" target="_blank" class="project-item"><i class="fab fa-github"></i>Literary Lions Forum</a>
-      </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements" class="section">
-      <h2>Achievements</h2>
-      <p>Completed 10+ Web Development Projects</p>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="section">
-      <h2>Testimonials</h2>
-      <p>Yet to receive testimonials.</p>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experiences" class="section">
-      <h2>Experience</h2>
-      <div class="experience-item">
-        <h3>Assembly Technician</h3>
-        <p><strong>ABB</strong> | Full-time | Apr 2023 - Sep 2023</p>
-        <ul><li>Assembly Lines</li><li>Manufacturing</li></ul>
-      </div>
-      <!-- Additional Experience Items Here -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Contact form or details.</p>
     </section>
   </div>
 
-  <!-- jQuery and JavaScript for Sidebar and Animations -->
+  <!-- JavaScript to toggle sidebar -->
   <script>
-    $(document).ready(function () {
-      // Initialize FullCalendar
-      $('#calendar').fullCalendar({ defaultView: 'month', editable: false, events: [] });
-      
-      // Smooth Scroll for Internal Links
-      $('a[href^="#"]').on('click', function (e) {
-        e.preventDefault();
-        $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 500);
-      });
-      
-      // Sidebar Toggle for Mobile View
-      $('#toggle-btn').click(function () {
-        $('.sidebar').toggleClass('show');
-      });
-      
-      // Progress Bar Animation
-      $('.progress').each(function () {
-        var width = $(this).data('width');
-        $(this).css('width', width);
-      });
-    });
+    function toggleSidebar() {
+      document.querySelector('.sidebar').classList.toggle('active');
+    }
   </script>
-
 </body>
-
 </html>
