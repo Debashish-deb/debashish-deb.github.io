@@ -129,19 +129,36 @@ fetch('data.json')
     }
     window.addEventListener('scroll', animateProgressBars);
 
-    // Theme Toggle with Local Storage
+    document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+});
+
+    // Add the theme toggle button inside the sidebar
     const themeToggle = document.createElement('button');
     themeToggle.textContent = 'Toggle Theme';
     themeToggle.classList.add('theme-toggle');
-    document.body.appendChild(themeToggle);
+    sidebar.appendChild(themeToggle);
+
 
     if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark-mode');
-    }
+  document.body.classList.add('dark-mode');
+}
 
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-    });
-  })
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+});
+
   .catch(error => console.error('Error loading data:', error));
