@@ -5,14 +5,14 @@
   "email": "debashish@example.com",
   "github": "https://github.com/debashishdeb",
   "linkedin": "https://linkedin.com/in/debashishdeb",
-  "profileImage": "profile.jpg",
+  "profileImage": "profile.png",
   "skills": [
-    {"name": "JavaScript", "level": 80, "icon": "js"},
-    {"name": "Go", "level": 75, "icon": "golang"},
-    {"name": "Node.js", "level": 70, "icon": "node"},
-    {"name": "HTML5", "level": 85, "icon": "html5"},
-    {"name": "CSS3", "level": 80, "icon": "css3"},
-    {"name": "React", "level": 75, "icon": "react"}
+    {"name": "JavaScript", "level": 40, "icon": "js"},
+    {"name": "Go", "level": 65, "icon": "golang"},
+    {"name": "Node.js", "level": 30, "icon": "node"},
+    {"name": "HTML5", "level": 75, "icon": "html5"},
+    {"name": "CSS3", "level": 50, "icon": "css3"},
+    {"name": "React", "level": 10, "icon": "react"}
   ],
   "projects": [
     {
