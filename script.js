@@ -58,7 +58,7 @@ fetch('data.json')
               <span class="icon"><i class="fab fa-${skill.icon || 'code'}"></i></span>
               ${skill.name}
               <div class="progress-bar" data-width="${skill.level}">
-                <div class="progress"></div>
+                <div class="progress" style="width: 0%"></div>
               </div>
             </li>
           `).join('')}
@@ -121,9 +121,8 @@ fetch('data.json')
     app.appendChild(mainContent);
 
     // Animate Progress Bars
-    const progressBars = document.querySelectorAll('.progress');
     function animateProgressBars() {
-      progressBars.forEach(progressBar => {
+      document.querySelectorAll('.progress').forEach(progressBar => {
         const width = progressBar.parentElement.getAttribute('data-width');
         progressBar.style.width = width + '%';
       });
