@@ -5,7 +5,7 @@
   "email": "debashish@example.com",
   "github": "https://github.com/debashishdeb",
   "linkedin": "https://linkedin.com/in/debashishdeb",
-  "profileImage": "profile.png",
+  "profileImage": "deb2.jpeg",
   "skills": [
     {"name": "JavaScript", "level": 40, "icon": "js"},
     {"name": "Go", "level": 65, "icon": "golang"},
