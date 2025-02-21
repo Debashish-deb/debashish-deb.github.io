@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
 body {
   font-family: 'Arial', sans-serif;
   color: #736f6f;
@@ -244,3 +249,4 @@ h1 {
   margin: 5px 0;
 }.experience-item li {
   list
+
