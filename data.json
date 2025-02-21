@@ -3,13 +3,15 @@
   "title": "Web Developer | Biotechnologist | Technology Enthusiast",
   "about": "I am a passionate web developer...",
   "skills": [
-    {"name": "JavaScript", "level": 50},
-    {"name": "Go", "level": 75},
+    {"name": "JavaScript", "level": 50, "icon": "js", "data-width": 80},
+    {"name": "Go", "level": 55, "icon": "go", "data-width": 80},
     //... more skills
   ],
   "projects": [
     {"name": "Cars-Viewer Website", "link": "https://github.com/..."}
-    //... more projects
+    
   ],
-  //... other sections (experience, etc.)
+  {
+
+
 }
