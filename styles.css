@@ -19,18 +19,20 @@ body {
   overflow-x: hidden;
 }
 
-/* Sidebar Styling */.sidebar {
+.sidebar {
   width: 250px;
   background-color: #f8f9fa;
   color: #f1f1f1;
   padding: 20px;
-  position: fixed;
+  position: fixed; /* Fixed positioning */
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.3s ease;
-}.sidebar h2 {
+  z-index: 999; /* Ensure it stays on top */
+}
+.sidebar h2 {
   font-size: 1.9em;
   color: #173c2c;
   margin-bottom: 20px;
@@ -77,19 +79,23 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Profile Image Styling */.profile-image {
+.profile-image {
   display: block;
   margin: 0 auto;
   width: 180px;
   height: 180px;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 10;
+  position: absolute; /* Use absolute positioning to overlay the image on the cover section */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the image */
+  z-index: 10; /* Ensure it's above the cover section */
 }
 
-/* Cover Section */.cover-section {
-  background-image: url('cover.jpg'); /* Add your background image link here */
+
+.cover-section {
+  background-image: url('cover.jpg'); /* Cover image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -98,7 +104,8 @@ h1 {
   color: white;
   position: relative;
   height: 80vh;
-}.cover-section h1 {
+}
+.cover-section h1 {
   font-size: 3em;
 }
 
