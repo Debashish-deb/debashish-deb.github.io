@@ -1,17 +1,65 @@
 {
   "name": "Debashish Deb",
   "title": "Web Developer | Biotechnologist | Technology Enthusiast",
-  "about": "I am a passionate web developer...",
+  "about": "I am a passionate web developer with a strong background in biotechnology. I love working on innovative projects that merge science and technology.",
+  "email": "debashish@example.com",
+  "github": "https://github.com/debashishdeb",
+  "linkedin": "https://linkedin.com/in/debashishdeb",
+  "profileImage": "profile.jpg",
   "skills": [
-    {"name": "JavaScript", "level": 50, "icon": "js", "data-width": 80},
-    {"name": "Go", "level": 55, "icon": "go", "data-width": 80},
-    //... more skills
+    {"name": "JavaScript", "level": 80, "icon": "js"},
+    {"name": "Go", "level": 75, "icon": "golang"},
+    {"name": "Node.js", "level": 70, "icon": "node"},
+    {"name": "HTML5", "level": 85, "icon": "html5"},
+    {"name": "CSS3", "level": 80, "icon": "css3"},
+    {"name": "React", "level": 75, "icon": "react"}
   ],
   "projects": [
-    {"name": "Cars-Viewer Website", "link": "https://github.com/..."}
-    
+    {
+      "name": "Cars-Viewer Website",
+      "link": "https://github.com/debashishdeb/cars-viewer",
+      "icon": "github"
+    },
+    {
+      "name": "Bioinformatics Toolkit",
+      "link": "https://github.com/debashishdeb/bio-toolkit",
+      "icon": "flask"
+    }
   ],
-  {
-
-
+  "experience": [
+    {
+      "title": "Software Engineer",
+      "company": "Tech Innovations",
+      "time": "2022 - Present",
+      "location": "Remote",
+      "responsibilities": [
+        "Developed scalable web applications using JavaScript and Go.",
+        "Implemented cloud-based solutions for biotech data analysis."
+      ]
+    },
+    {
+      "title": "Biotech Researcher",
+      "company": "Biotech Solutions",
+      "time": "2019 - 2022",
+      "location": "India",
+      "responsibilities": [
+        "Worked on integrating machine learning in bioinformatics research.",
+        "Developed web-based visualization tools for genomic data."
+      ]
+    }
+  ],
+  "achievements": [
+    "Published research on biotech and AI integration.",
+    "Won the Web Developer Hackathon 2021."
+  ],
+  "testimonials": [
+    {
+      "quote": "Debashish is an outstanding developer with deep knowledge of biotech and web technologies.",
+      "author": "Dr. Rajesh Kumar, Biotech Innovations"
+    },
+    {
+      "quote": "A brilliant problem solver who always delivers high-quality work.",
+      "author": "John Doe, Senior Engineer at Tech Innovations"
+    }
+  ]
 }
