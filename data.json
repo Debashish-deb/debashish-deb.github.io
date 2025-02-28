@@ -1,68 +1,171 @@
 {
   "name": "Debashish Deb",
-  "title": "Web Developer | Biotechnologist | Technology Enthusiast",
-  "about": "I am a passionate web developer with a strong background in biotechnology. I love working on innovative projects that merge science and technology.",
-  "email": "debashish@example.com",
-  "github": "https://github.com/debashishdeb",
-  "linkedin": "https://linkedin.com/in/debashishdeb",
-  {
-  "profileImage": "deb2.jpeg"
-}
-
+  "shortName": "D.D",
+  "title": "Full-Stack Web Developer & Biotechnologist",
+  "tagline": "Full-Stack Web Developer & Biotechnologist",
+  "about": "I'm a Full-Stack Web Developer specializing in building exceptional digital experiences. I'm also passionate about the intersection of technology and biology. Currently, I'm focused on learning new technologies and building personal projects.",
+  "profileImage": "profile.jpg",
+  "email": "ddeba32@gmail.com",
+  "github": "https://github.com/Debashish-deb",
+  "linkedin": "https://www.linkedin.com/in/debashish-deb/",
   "skills": [
-    {"name": "JavaScript", "level": 40, "icon": "js"},
-    {"name": "Go", "level": 65, "icon": "golang"},
-    {"name": "Node.js", "level": 30, "icon": "node"},
-    {"name": "HTML5", "level": 75, "icon": "html5"},
-    {"name": "CSS3", "level": 50, "icon": "css3"},
-    {"name": "React", "level": 10, "icon": "react"}
+    { "name": "JavaScript (ES6+)", "level": 75, "icon": "js-square", "includeInResume": true },
+    { "name": "GoLang", "level": 75, "icon": "golang", "includeInResume": true },
+    { "name": "HTML5", "level": 75, "icon": "html5", "includeInResume": true },
+    { "name": "CSS3", "level": 55, "icon": "css3-alt", "includeInResume": true },
+    { "name": "React", "level": 30, "icon": "react", "includeInResume": true },
+    { "name": "Node.js", "level": 45, "icon": "node-js", "includeInResume": true }
+  ],
+  "generalSkills": [
+    "Leadership",
+    "Multitasking",
+    "Project management",
+    "Assembly",
+    "Documentation",
+    "Microsoft Office",
+    "High-throughput flow cytometry"
   ],
   "projects": [
     {
-      "name": "Cars-Viewer Website",
-      "link": "https://github.com/debashishdeb/cars-viewer",
-      "icon": "github"
+      "name": "Cars-Viewer",
+      "link": "#",
+      "github": "https://github.com/Debashish-deb/Cars-viewer",
+      "image": "cars.jpg",
+      "description": "A Golang-based application to view and manage different types of cars and their features. Includes a RESTful API and a basic front-end.",
+      "includeInResume": true
     },
     {
-      "name": "Bioinformatics Toolkit",
-      "link": "https://github.com/debashishdeb/bio-toolkit",
-      "icon": "flask"
+      "name": "Match-Making App",
+      "link": "#",
+      "github": "https://github.com/Debashish-deb/match-making",
+      "image": "match-make.jpg",
+      "description": "A JavaScript and Golang application to find the best match based on user preferences. Uses a matching algorithm and a simple UI.",
+      "includeInResume": true
+    },
+    {
+      "name": "Portfolio Website",
+      "link": "#",
+      "github": "https://github.com/Debashish-deb/portfolio",
+      "image": "portfolio.jpg",
+      "description": "My personal portfolio website showcasing my skills and projects.",
+      "includeInResume": true
     }
   ],
   "experience": [
     {
-      "title": "Software Engineer",
-      "company": "Tech Innovations",
-      "time": "2022 - Present",
-      "location": "Remote",
+      "title": "Production Operator",
+      "company": "ABB Oy",
+      "time": "April 2023 - Sep 2023",
+      "location": "Helsinki, Finland",
       "responsibilities": [
-        "Developed scalable web applications using JavaScript and Go.",
-        "Implemented cloud-based solutions for biotech data analysis."
-      ]
+        "Assembly and packaging of different models of AC drives.",
+        "Learned about industrial manufacturing processes."
+      ],
+      "includeInResume": true
     },
     {
-      "title": "Biotech Researcher",
-      "company": "Biotech Solutions",
-      "time": "2019 - 2022",
-      "location": "India",
+      "title": "Senior Production Specialist",
+      "company": "Swappie Oy",
+      "time": "Oct 2022 - April 2023",
+      "location": "Helsinki, Finland",
       "responsibilities": [
-        "Worked on integrating machine learning in bioinformatics research.",
-        "Developed web-based visualization tools for genomic data."
-      ]
+        "Performed repair and assembly work on smartphones.",
+        "Contributed to process improvement initiatives.",
+        "Took on team leadership responsibilities in the supervisor's absence."
+      ],
+      "includeInResume": true
+    },
+    {
+      "title": "Research Assistant",
+      "company": "Heckman Group, University of Helsinki",
+      "time": "Aug 2015 - Aug 2016",
+      "location": "Helsinki, Finland",
+      "responsibilities": [
+        "Worked on a research project focused on developing anticancer agents.",
+        "Developed and implemented experimental methods.",
+        "Analyzed research findings and maintained detailed laboratory notes."
+      ],
+      "includeInResume": true
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Science in Molecular Biotechnology",
+      "institution": "University of Helsinki",
+      "time": "Dec 2019",
+      "location": "Helsinki, Finland",
+      "includeInResume": true
+    },
+    {
+      "degree": "Bachelor of Science in Biotechnology and Genetic Engineering",
+      "institution": "Khulna University",
+      "time": "Nov 2009",
+      "location": "Khulna, Bangladesh",
+      "includeInResume": true
+    },
+    {
+      "degree": "Full-stack Web Development",
+      "institution": "Kood/Sisu",
+      "time": "Ongoing",
+      "location": "Kuopio, Finland",
+      "includeInResume": true
     }
   ],
   "achievements": [
-    "Published research on biotech and AI integration.",
-    "Won the Web Developer Hackathon 2021."
+    {
+      "achievement": "Publication: Kuusanmäki H, Leppä AM, Pölönen P, et al. Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukaemia. Haematologica 2020;105(3):708-720.",
+      "includeInResume": true
+    },
+    {
+      "achievement": "Publication: Kuusanmäki H, Leppä AM, Deb D, Heckman CA. A High-Throughput Biology Approach to Identify Novel Therapies Specifically Targeting AML Blasts and Leukemic Stem Cells. Blood (2016) 128 (22): 2755.",
+      "includeInResume": true
+    }
+  ],
+  "references": [
+    {
+      "name": "Oskari Jokela",
+      "title": "Production Supervisor",
+      "company": "ABB Oy",
+      "location": "Helsinki, Finland",
+      "email": "oskari.jokela@fi.abb.com",
+      "phone": "+358 50 335 9059",
+      "includeInResume": true
+    },
+    {
+      "name": "Heikki Kuusanmäki, PhD",
+      "title": "Postdoctoral Researcher",
+      "company": "Institute for Molecular Medicine, University of Helsinki",
+      "email": "heikki.kuusanmaki@helsinki.fi",
+      "includeInResume": true
+    },
+    {
+      "name": "Henri Koskinen",
+      "title": "Shop Lead",
+      "company": "Swappie Oy",
+      "email": "henri.koskinen@swappie.com",
+      "phone": "+358505753124",
+      "includeInResume": true
+    }
+  ],
+  "certificates": [
+    { "title": "Python for Non-Programmers", "organization": "LinkedIn" },
+    { "title": "Python Essential Training", "organization": "LinkedIn" },
+    { "title": "LinkedIn Project Management: Healthcare", "organization": "LinkedIn" },
+    { "title": "Excel Essential Training (Microsoft 365)", "organization": "LinkedIn" },
+    { "title": "Project Leadership", "organization": "LinkedIn" }
+
   ],
   "testimonials": [
     {
-      "quote": "Debashish is an outstanding developer with deep knowledge of biotech and web technologies.",
-      "author": "Dr. Rajesh Kumar, Biotech Innovations"
+      "text": "Debashish is a highly motivated learner. His contributions to the project were invaluable, and he quickly adapted to new technologies.",
+      "author": "Heikki Kusäänmäki",
+      "role": "Research Supervisor, University of Helsinki"
     },
     {
-      "quote": "A brilliant problem solver who always delivers high-quality work.",
-      "author": "John Doe, Senior Engineer at Tech Innovations"
+      "text": "Debashish demonstrated a strong work ethic and attention to detail. He was a valuable asset to the team.",
+      "author": "Henri Koskinen",
+      "role": "Production Manager, Swappie Oy"
     }
-  ]
+  ],
+  "aboutOptions": "I'm a Full-Stack Web Developer specializing in building and designing exceptional digital experiences. My passion lies in creating robust user-friendly applications that solve real-world problems. I'm proficient in a wide range of technologies, including JavaScript (ES6+), GoLang, HTML5, CSS3, React, and Node.js. My projects, such as the 'Cars-Viewer' (a Golang-based application with a RESTful API) and the 'Match-Making App' (built with JavaScript and Golang), demonstrate my ability to handle both front-end and back-end development. I enjoy the challenge of crafting intuitive user interfaces and building efficient, scalable server-side logic. I'm currently deepening my expertise through the Kood/Sisu full-stack web development program, and I'm always eager to learn new technologies and take on new challenges. My background in biotechnology (with a Master of Science degree from the University of Helsinki) has also instilled in me a strong analytical mindset and a meticulous approach to problem-solving, qualities that I bring to every project. My focus is on delivering high-quality, well-tested code that meets and exceeds expectations."
 }
