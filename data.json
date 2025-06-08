@@ -3,11 +3,12 @@
   "shortName": "D.D",
   "title": "Full-Stack Web Developer & Biotechnologist",
   "tagline": "Full-Stack Web Developer,  Biotechnologist",
-  "about": "I'm a Full-Stack Web Developer specializing in building exceptional digital experiences.",
+  "about": "I'm an aspiring Full-Stack Web Developer specializing in building exceptional digital experiences.",
   "profileImage": "profile.jpg",
   "email": "ddeba32@gmail.com",
   "github": "https://github.com/Debashish-deb",
   "linkedin": "https://www.linkedin.com/in/debashish-deb/",
+  "website": "https://dsmobiles.com",
   "skills": [
     { "name": "JavaScript", "level": 75, "icon": "js-square", "includeInResume": true },
     { "name": "GoLang", "level": 75, "icon": "golang", "includeInResume": true },
@@ -23,7 +24,8 @@
     "Assembly",
     "Documentation",
     "Microsoft Office",
-    "High-throughput flow cytometry"
+    "High-throughput flow cytometry",
+    "Problem Solving"
   ],
   "projects": [
     {
@@ -40,6 +42,13 @@
       "github": "https://github.com/Debashish-deb/match-making",
       "image": "match-make.jpg",
       "description": "A JavaScript and Golang application to find the best match based on user preferences. Uses a matching algorithm and a simple UI.",
+      "includeInResume": true
+    },
+    {
+      "name": "Stations-Pathfinder",
+      "link": "#",
+      "github": "https://github.com/Debashish-deb/Stations-Pathfinder",
+      "description": "The Stations-Pathfinder helps calculate the best routes for multiple trains, ensuring no two trains end up at the same station at the same time. It works in turns, moving trains across a railway map you provide.",
       "includeInResume": true
     },
     {
@@ -66,7 +75,7 @@
     {
       "title": "Senior Production Specialist",
       "company": "Swappie Oy",
-      "time": "Oct 2022 - April 2023",
+      "time": "Oct 2021 - April 2023",
       "location": "Helsinki, Finland",
       "responsibilities": [
         "Performed repair and assembly work on smartphones.",
@@ -86,9 +95,26 @@
         "Analyzed research findings and maintained detailed laboratory notes."
       ],
       "includeInResume": true
+    },
+    {
+      "title": "Delivery Assistant",
+      "company": "Posti Oy",
+      "time": "Jan 2014 - Aug 2021",
+      "location": "Helsinki, Finland",
+      "responsibilities": [
+        "Started the job as a delivery person, later got promoted as an assistant for the supervisor who assisted in solving different problems regarding job."
+      ],
+      "includeInResume": true
     }
   ],
   "education": [
+     {
+      "degree": "Full-stack Web Development",
+      "institution": "Kood/Sisu",
+      "time": "2024-Ongoing",
+      "location": "Kuopio, Finland",
+      "includeInResume": true
+    },
     {
       "degree": "Master of Science in Molecular Biotechnology",
       "institution": "University of Helsinki",
@@ -101,13 +127,6 @@
       "institution": "Khulna University",
       "time": "Nov 2009",
       "location": "Khulna, Bangladesh",
-      "includeInResume": true
-    },
-    {
-      "degree": "Full-stack Web Development",
-      "institution": "Kood/Sisu",
-      "time": "Ongoing",
-      "location": "Kuopio, Finland",
       "includeInResume": true
     }
   ],
