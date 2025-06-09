@@ -15,7 +15,8 @@
     { "name": "HTML5", "level": 75, "icon": "html5", "includeInResume": true },
     { "name": "CSS3", "level": 55, "icon": "css3-alt", "includeInResume": true },
     { "name": "React", "level": 30, "icon": "react", "includeInResume": true },
-    { "name": "Node.js", "level": 45, "icon": "node-js", "includeInResume": true }
+    { "name": "Node.js", "level": 45, "icon": "node-js", "includeInResume": true },
+    { "name": "flutter-Dart", "level": 50, "icon": "flutter", "includeInResume": true}
   ],
   "generalSkills": [
     "Leadership",
