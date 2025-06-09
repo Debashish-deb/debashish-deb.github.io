@@ -16,33 +16,31 @@
     { "name": "CSS3", "level": 55, "icon": "css3-alt", "includeInResume": true },
     { "name": "React", "level": 30, "icon": "react", "includeInResume": true },
     { "name": "Node.js", "level": 45, "icon": "node-js", "includeInResume": true },
-    { "name": "flutter-Dart", "level": 50, "icon": "flutter", "includeInResume": true}
+    { "name": "Flutter-Dart", "level": 50, "icon": "flutter", "includeInResume": true}
   ],
   "generalSkills": [
     "Leadership",
     "Multitasking",
     "Project management",
-    "Assembly",
-    "Documentation",
+    "Problem Solving",
     "Microsoft Office",
     "High-throughput flow cytometry",
-    "Problem Solving"
+    "Assembly"
   ],
   "projects": [
     {
-      "name": "Cars-Viewer",
+      "name": "Slot-Machine",
       "link": "#",
-      "github": "https://github.com/Debashish-deb/Cars-viewer",
-      "image": "cars.jpg",
-      "description": "A Golang-based application to view and manage different types of cars and their features. Includes a RESTful API and a basic front-end.",
+      "github": "https://github.com/Debashish-deb/Slot-machine/",
+      "description": "A javascript based basic slot machine.",
       "includeInResume": true
     },
     {
-      "name": "Match-Making App",
+      "name": "BD News Reader",
       "link": "#",
-      "github": "https://github.com/Debashish-deb/match-making",
-      "image": "match-make.jpg",
-      "description": "A JavaScript and Golang application to find the best match based on user preferences. Uses a matching algorithm and a simple UI.",
+      "github": "https://github.com/Debashish-deb/droid-news-server",
+      "image": "bdnewsreader.jpg",
+      "description": "A Flutter-Dart based mobile app for reading newspaer, magazines and more.",
       "includeInResume": true
     },
     {
@@ -56,8 +54,21 @@
       "name": "Portfolio Website",
       "link": "#",
       "github": "https://github.com/Debashish-deb/portfolio",
-      "image": "portfolio.jpg",
       "description": "My personal portfolio website showcasing my skills and projects.",
+      "includeInResume": true
+    },
+    {
+      "name": "Art-interface",
+      "link": "#",
+      "github": "https://github.com/Debashish-deb/Art-interface",
+      "description": "This is a command line-based program (written in Golang) to create a simple web interface for users to decode or encode text-based art.",
+      "includeInResume": true
+    },
+    {
+      "name": "Magic eight ball",
+      "link": "#",
+      "github": "https://github.com/Debashish-deb/Magic_Eight_Ball",
+      "description": "A fun fortune telling app.",
       "includeInResume": true
     }
   ],
@@ -106,6 +117,16 @@
         "Started the job as a delivery person, later got promoted as an assistant for the supervisor who assisted in solving different problems regarding job."
       ],
       "includeInResume": true
+    },
+    {
+      "title": "Research Trainee",
+      "company": "Koivunen Group, University of Helsinki",
+      "time": "Jun 2014 - Feb 2015",
+      "location": "Helsinki, Finland",
+      "responsibilities": [
+        "Performed several experiments and research and documented findings. Gathered and organized information for research purposes."
+      ],
+      "includeInResume": true
     }
   ],
   "education": [
@@ -133,11 +154,15 @@
   ],
   "achievements": [
     {
-      "achievement": "Publication: Kuusanmäki H, Leppä AM, Pölönen P, et al. Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukaemia. Haematologica 2020;105(3):708-720.",
+      "achievement": "Publication: Kuusanmäki H, Leppä AM, Pölönen P, Deb D, et al. Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukaemia. Haematologica 2020;105(3):708-720.",
       "includeInResume": true
     },
     {
       "achievement": "Publication: Kuusanmäki H, Leppä AM, Deb D, Heckman CA. A High-Throughput Biology Approach to Identify Novel Therapies Specifically Targeting AML Blasts and Leukemic Stem Cells. Blood (2016) 128 (22): 2755.",
+      "includeInResume": true
+    },
+     {
+      "achievement": "Deb D, Dev S, DAS AK, et al., Antinociceptive, Anti-inflammatory and Anti-diarrheal Activities of the Hydroalcoholic Extract of Lasia spinosa Linn. (Araceae) Roots. Lat. Am. J. Pharm. 2010. 29 (8): 1269-76.",
       "includeInResume": true
     }
   ],
@@ -187,5 +212,5 @@
       "role": "Production Manager, Swappie Oy"
     }
   ],
-  "aboutOptions": "I'm a Full-Stack Web Developer specializing in building and designing exceptional digital experiences. My passion lies in creating robust user-friendly applications that solve real-world problems. I'm proficient in a wide range of technologies, including JavaScript (ES6+), GoLang, HTML5, CSS3, React, and Node.js. My projects, such as the 'Cars-Viewer' (a Golang-based application with a RESTful API) and the 'Match-Making App' (built with JavaScript and Golang), demonstrate my ability to handle both front-end and back-end development. I enjoy the challenge of crafting intuitive user interfaces and building efficient, scalable server-side logic. I'm currently deepening my expertise through the Kood/Sisu full-stack web development program, and I'm always eager to learn new technologies and take on new challenges. My background in biotechnology (with a Master of Science degree from the University of Helsinki) has also instilled in me a strong analytical mindset and a meticulous approach to problem-solving, qualities that I bring to every project. My focus is on delivering high-quality, well-tested code that meets and exceeds expectations."
+  "aboutOptions": "I'm a Full-Stack Web Developer specializing in building and designing exceptional digital experiences. I'm proficient in a wide range of technologies, including JavaScript (ES6+), GoLang, HTML5, CSS3, React, and Node.js. The listed projects here, demonstrate my ability to handle both front-end and back-end development. I enjoy the challenge of crafting intuitive user interfaces and building efficient, scalable server-side logic. My passion lies in creating app that can aid medical Science.  I'm currently deepening my expertise through the Kood/Sisu full-stack web development program, and I'm always eager to learn new technologies and take on new challenges. My background in biotechnology (with a Master of Science degree from the University of Helsinki) has also instilled in me a strong analytical mindset and a meticulous approach to problem-solving, qualities that I bring to every project. My focus is on delivering high-quality, well-tested code that meets and exceeds expectations."
 }
