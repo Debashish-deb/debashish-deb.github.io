@@ -525,10 +525,11 @@ document.addEventListener('DOMContentLoaded', () => {
     section.className = 'section projects-section';
 
     const projectCards = (data.projects || []).map((p, index) => {
+      const catIcon = p.category === 'systems' ? 'fa-dna' : (p.category === 'algorithms' ? 'fa-diagram-project' : 'fa-laptop-code');
       const mediaMarkup = p.image 
         ? `<img src="${p.image}" alt="${p.name} preview" class="project-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-           <div class="project-media-fallback" style="display:none;"><i class="fas fa-code-branch fa-2x"></i><span>${p.name}</span></div>`
-        : `<div class="project-media-fallback"><i class="fas fa-laptop-code fa-2x"></i><span>${p.name}</span></div>`;
+           <div class="project-media-fallback" style="display:none;"><i class="fas ${catIcon} fa-2x"></i><span>${p.name}</span></div>`
+        : `<div class="project-media-fallback"><i class="fas ${catIcon} fa-2x"></i><span>${p.name}</span></div>`;
 
       const tags = (p.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
       

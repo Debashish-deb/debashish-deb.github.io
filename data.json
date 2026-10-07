@@ -206,18 +206,34 @@
   ],
   "projects": [
     {
-      "name": "Infinite IT Digital Ecosystem & Workspace",
-      "badge": "Enterprise Platform",
+      "name": "Infinite Workspace OS",
+      "badge": "Operations SaaS Platform",
       "category": "enterprise",
-      "link": "https://infiniteitbd.com",
+      "link": "https://infiniteitbd.com/projects/infinite-workspace-os.html",
       "github": "",
       "image": "infiniteit-workspace.webp",
-      "description": "Executive architecture and product engineering for Infinite IT's corporate platforms, client workspace systems, and offshore engineering operations. Delivers high-performance Next.js web applications, scalable cloud infrastructure, and AI-assisted workflow automation.",
-      "technologies": ["Next.js", "TypeScript", "FastAPI", "Offshore Architecture", "Cloud Hosting"],
+      "description": "A modular, scalable operational platform engineered for digital agencies, service firms, and distributed offshore teams. Features unified client workspaces, milestone dashboards, automated invoice tracking, and secure role-based access control.",
+      "technologies": ["Next.js", "TypeScript", "FastAPI / Node.js", "PostgreSQL", "Docker", "Tailwind CSS"],
       "highlights": [
-        "Architected scalable offshore delivery model for North American and European enterprise clients",
-        "Automated continuous integration and zero-downtime deployment workflows",
-        "Built modular UI component library and secure client workspace dashboards"
+        "Modular workspace engine allowing teams to activate custom operational tools",
+        "Real-time milestone tracking, task boards, and automated delivery records",
+        "Zero-trust authentication and enterprise role-based authorization hierarchy"
+      ],
+      "includeInResume": true
+    },
+    {
+      "name": "Jutera — Sustainable Living Platform",
+      "badge": "Sustainable eCommerce / 3D",
+      "category": "web",
+      "link": "https://jutera.org",
+      "github": "",
+      "image": "jutera.webp",
+      "description": "Curated digital platform and interactive showcase for handcrafted sustainable jute living objects and European retail/wholesale distribution. Built with React, Three.js 3D model visualization, Tailwind CSS, Vite, and high-performance PWA caching.",
+      "technologies": ["React", "Three.js (WebGL)", "Tailwind CSS", "Vite", "PWA & SEO", "Infinite IT Delivery"],
+      "highlights": [
+        "Integrated interactive Three.js 3D brand logo rendering in real-time WebGL",
+        "Sub-second page loads with modern WebP asset compression and PWA caching",
+        "Full Schema.org structured data and open graph metadata architecture"
       ],
       "includeInResume": true
     },
@@ -241,7 +257,7 @@
       "name": "BDNewsReader",
       "badge": "News Platform / TTS",
       "category": "mobile",
-      "link": "https://infiniteitbd.com/projects/bdnewsreader",
+      "link": "https://infiniteitbd.com/projects/bdnewsreader.html",
       "github": "https://github.com/Debashish-deb/droid-news-server",
       "image": "bdnewsreader.webp",
       "description": "Bilingual news aggregation and reader platform built with Flutter, Riverpod, and a self-hosted Fastify backend. Features native article formatting, offline caching via Drift/SQLite, official YouTube Live TV streaming (IFrame integration), and bilingual Bangla/English text-to-speech audio narration.",
@@ -259,7 +275,7 @@
       "category": "systems",
       "link": "https://farkkilab.org",
       "github": "",
-      "image": "farkkila-deb.webp",
+      "image": "",
       "description": "Coordinating Finnish CSC scientific computing services, relational research databases, and public web platforms for precision oncology and spatial multi-omics at Biomedicum Helsinki.",
       "technologies": ["CSC Scientific Services", "Research Databases", "Web Infrastructure", "Data Pipelines"],
       "highlights": [
@@ -275,7 +291,7 @@
       "category": "algorithms",
       "link": "https://github.com/Debashish-deb/Stations-Pathfinder",
       "github": "https://github.com/Debashish-deb/Stations-Pathfinder",
-      "image": "cars.jpg",
+      "image": "",
       "description": "Graph routing engine written in Golang that calculates optimal collision-free paths for concurrent trains moving across dynamic railway track topologies with turn-based orchestration.",
       "technologies": ["Go", "Graph Theory", "Pathfinding Algorithms", "CLI"],
       "highlights": [
@@ -291,29 +307,13 @@
       "category": "web",
       "link": "https://github.com/Debashish-deb/Art-interface",
       "github": "https://github.com/Debashish-deb/Art-interface",
-      "image": "match-make.jpg",
+      "image": "",
       "description": "Interactive web application and decoding engine in Golang enabling users to transform, parse, and render ASCII art through an intuitive browser interface.",
       "technologies": ["Go", "HTTP Server", "ASCII Art Engine", "HTML/CSS"],
       "highlights": [
         "Custom ASCII font parser and rasterizer written in Go standard library",
         "Real-time client-side preview with responsive export options",
         "Zero-dependency lightweight binary deployment"
-      ],
-      "includeInResume": true
-    },
-    {
-      "name": "Personal Portfolio & Showcase",
-      "badge": "Interactive Web",
-      "category": "web",
-      "link": "https://debashish-deb.github.io",
-      "github": "https://github.com/Debashish-deb/debashish-deb.github.io",
-      "image": "portfolio.jpg",
-      "description": "Linear-grade modern portfolio with dark/light theming, seamless interactive views, responsive glassmorphism UI, command palette, and built-in interactive resume generation.",
-      "technologies": ["JavaScript (ES6+)", "CSS3 Design System", "HTML5", "Responsive A11y"],
-      "highlights": [
-        "100/100 Lighthouse performance with zero external runtime bundle",
-        "Dynamic theme switching with automatic system preference detection",
-        "Command palette (Cmd+K) and interactive filtered views"
       ],
       "includeInResume": true
     }
