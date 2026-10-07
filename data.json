@@ -84,13 +84,33 @@
   ],
   "projects": [
     {
-      "name": "Infinite IT Corporate Portal & Architecture",
+      "name": "Infinite IT Digital Ecosystem & Workspace",
       "badge": "Enterprise Platform",
       "link": "https://infiniteitbd.com",
       "github": "",
-      "image": "",
-      "description": "Executive oversight and architecture of Infinite IT's corporate web ecosystem, delivering vetted software delivery workflows, Next.js web applications, Flutter mobile apps, and offshore engineering services.",
-      "technologies": ["Next.js", "Enterprise Architecture", "Offshore Engineering", "Cloud Hosting"],
+      "image": "infiniteit-workspace.webp",
+      "description": "Executive architecture and product engineering for Infinite IT's corporate platforms, client workspace systems, and offshore engineering operations. Delivers high-performance Next.js web applications, scalable cloud infrastructure, and AI-assisted workflow automation.",
+      "technologies": ["Next.js", "TypeScript", "FastAPI", "Offshore Architecture", "Cloud Hosting"],
+      "includeInResume": true
+    },
+    {
+      "name": "InfiniteScan",
+      "badge": "Flutter Utility / OCR",
+      "link": "https://infiniteitbd.com/apps",
+      "github": "",
+      "image": "infinitescan.webp",
+      "description": "Privacy-first Android utility app engineered in Flutter. Features on-device ML Kit barcode & QR code recognition, zero-account architecture, bilingual Bangla/English interface, Tesseract OCR document extraction, and local SQLite history with zero third-party tracking.",
+      "technologies": ["Flutter", "Dart", "Google ML Kit", "Tesseract OCR", "SQLite", "CameraX"],
+      "includeInResume": true
+    },
+    {
+      "name": "BDNewsReader",
+      "badge": "News Platform / TTS",
+      "link": "https://infiniteitbd.com/projects/bdnewsreader",
+      "github": "https://github.com/Debashish-deb/droid-news-server",
+      "image": "bdnewsreader.webp",
+      "description": "Bilingual news aggregation and reader platform built with Flutter, Riverpod, and a self-hosted Fastify backend. Features native article formatting, offline caching via Drift/SQLite, official YouTube Live TV streaming (IFrame integration), and bilingual Bangla/English text-to-speech audio narration.",
+      "technologies": ["Flutter", "Riverpod", "Fastify Backend", "Bangla TTS", "Drift / SQLite", "Firebase"],
       "includeInResume": true
     },
     {
@@ -98,7 +118,7 @@
       "badge": "Biomedical Systems",
       "link": "https://farkkilab.org",
       "github": "",
-      "image": "",
+      "image": "farkkila-deb.webp",
       "description": "Coordinating Finnish CSC scientific computing services, relational research databases, and public web platforms for precision oncology and spatial multi-omics at Biomedicum Helsinki.",
       "technologies": ["CSC Scientific Services", "Research Databases", "Web Infrastructure", "Data Pipelines"],
       "includeInResume": true
@@ -111,16 +131,6 @@
       "image": "cars.jpg",
       "description": "Graph routing engine written in Golang that calculates optimal collision-free paths for concurrent trains moving across dynamic railway track topologies with turn-based orchestration.",
       "technologies": ["Go", "Graph Theory", "Pathfinding Algorithms", "CLI"],
-      "includeInResume": true
-    },
-    {
-      "name": "BD News Reader",
-      "badge": "Mobile Application",
-      "link": "https://github.com/Debashish-deb/droid-news-server",
-      "github": "https://github.com/Debashish-deb/droid-news-server",
-      "image": "bdnewsreader.png",
-      "description": "Full-featured mobile application built with Flutter & Dart paired with a custom server backend, delivering real-time aggregated news streams, clean typography, and caching.",
-      "technologies": ["Flutter", "Dart", "REST API", "Mobile UX"],
       "includeInResume": true
     },
     {
