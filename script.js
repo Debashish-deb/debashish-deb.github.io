@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const main = document.createElement('main');
       main.id = 'main-content';
       main.appendChild(renderHero(portfolioData));
+      main.appendChild(renderCurrentRoles(portfolioData));
       main.appendChild(renderAbout(portfolioData));
       main.appendChild(renderProjects(portfolioData));
       main.appendChild(renderSkills(portfolioData));
@@ -112,12 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="brand-badge">${data.shortName || 'DD'}</div>
           <div class="brand-text">
             <span class="brand-name">${data.name}</span>
-            <span class="brand-sub">Software & Biotech</span>
+            <span class="brand-sub">CEO & Biotech Specialist</span>
           </div>
         </a>
 
         <nav aria-label="Primary Navigation">
           <ul class="nav-menu" id="nav-menu">
+            <li><a href="#leadership" class="nav-link">Current Roles</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#projects" class="nav-link">Projects</a></li>
             <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -146,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderHero
-   * Generates hero showcase spotlighting dual expertise, call-to-actions, and interactive avatar cards.
+   * Generates hero showcase spotlighting dual leadership & scientific expertise, call-to-actions, and updated portrait.
    */
   function renderHero(data) {
     const heroSection = document.createElement('section');
@@ -158,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="hero-content">
             <div class="hero-status-pill">
               <span class="status-dot"></span>
-              <span>${data.status || 'Available for Software Roles'}</span>
+              <span>${data.status || 'CEO @ Infinite IT • IT Specialist @ Färkkilä Lab'}</span>
             </div>
             <h1 class="hero-title">
               Hi, I'm <span class="gradient-text">${data.name}</span>
@@ -167,8 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="hero-description">${data.about}</p>
 
             <div class="hero-cta-group">
-              <a href="#projects" class="btn btn-primary">
-                <span>Explore Projects</span>
+              <a href="#leadership" class="btn btn-primary">
+                <span>View Leadership Roles</span>
                 <i class="fas fa-arrow-down" aria-hidden="true"></i>
               </a>
               <button class="btn btn-secondary trigger-resume-btn">
@@ -181,14 +183,17 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="hero-socials">
-              <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile">
-                <i class="fab fa-github" aria-hidden="true"></i>
-              </a>
               <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn Profile">
                 <i class="fab fa-linkedin-in" aria-hidden="true"></i>
               </a>
-              <a href="mailto:${data.email}" class="hero-social-link" aria-label="Direct Email">
+              <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </a>
+              <a href="mailto:${data.email}" class="hero-social-link" aria-label="Executive Email">
                 <i class="fas fa-envelope" aria-hidden="true"></i>
+              </a>
+              <a href="https://infiniteitbd.com" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="Infinite IT">
+                <i class="fas fa-globe" aria-hidden="true"></i>
               </a>
             </div>
           </div>
@@ -197,12 +202,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="avatar-wrapper">
               <img src="${data.profileImage}" alt="Debashish Deb portrait" class="avatar-image" loading="eager" />
               <div class="floating-chip chip-tech">
-                <div class="chip-icon"><i class="fas fa-code"></i></div>
-                <span>Full-Stack Dev</span>
+                <div class="chip-icon"><i class="fas fa-briefcase"></i></div>
+                <span>CEO Infinite IT</span>
               </div>
               <div class="floating-chip chip-bio">
                 <div class="chip-icon"><i class="fas fa-dna"></i></div>
-                <span>M.Sc. Biotech</span>
+                <span>Färkkilä Lab UH</span>
               </div>
             </div>
           </div>
@@ -210,6 +215,46 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
     return heroSection;
+  }
+
+  /**
+   * @traceability renderCurrentRoles
+   * Generates a spotlight card section showcasing current primary roles: CEO at Infinite IT & IT Specialist at Farkkila Lab.
+   */
+  function renderCurrentRoles(data) {
+    const section = document.createElement('section');
+    section.id = 'leadership';
+    section.className = 'section leadership-section';
+    
+    const rolesHtml = (data.currentRoles || []).map(role => `
+      <div class="glass-card role-card" style="display:flex; flex-direction:column; justify-content:space-between; border-top: 3px solid var(--accent-primary);">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+            <span class="section-tag" style="margin-bottom:0;"><i class="fas fa-certificate"></i> ${role.period}</span>
+            <a href="${role.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" style="padding:4px 14px; font-size:0.8rem;">
+              <span>Visit Official Site</span> <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+          <h3 style="font-size:1.45rem; margin-bottom:6px;">${role.role}</h3>
+          <h4 style="font-size:1.05rem; color:var(--accent-primary); margin-bottom:14px; font-weight:600;">${role.organization}</h4>
+          <p style="font-size:0.95rem; line-height:1.7; color:var(--text-secondary);">${role.summary}</p>
+        </div>
+      </div>
+    `).join('');
+
+    section.innerHTML = `
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-star"></i> Current Key Positions</span>
+          <h2 class="section-title">Leadership & Institutional Affiliations</h2>
+          <p class="section-subtitle">Driving enterprise software development globally and powering translational precision oncology systems at University of Helsinki.</p>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap:28px;">
+          ${rolesHtml}
+        </div>
+      </div>
+    `;
+    return section;
   }
 
   /**
@@ -236,8 +281,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-user-circle"></i> Profile & Mindset</span>
-          <h2 class="section-title">Bridging Code & Biology</h2>
-          <p class="section-subtitle">A multidisciplinary engineer uniting software craftsmanship with analytical scientific rigor.</p>
+          <h2 class="section-title">Where Executive Leadership Meets Scientific Computing</h2>
+          <p class="section-subtitle">A multidisciplinary background uniting corporate vision, software craftsmanship, and biomedical research data.</p>
         </div>
 
         <div class="about-grid">
@@ -248,15 +293,15 @@ document.addEventListener('DOMContentLoaded', () => {
             <ul class="about-highlights">
               <li class="highlight-row">
                 <i class="fas fa-check-circle highlight-icon"></i>
-                <span><strong>Full-Stack Mastery:</strong> Hands-on experience developing concurrent systems in Go and modern web applications in React & Node.js.</span>
+                <span><strong>Executive Vision:</strong> Leading Infinite IT to engineer enterprise-ready Next.js, Flutter, and AI products with transparent written delivery standards.</span>
               </li>
               <li class="highlight-row">
                 <i class="fas fa-check-circle highlight-icon"></i>
-                <span><strong>Scientific Discipline:</strong> Co-authored peer-reviewed cancer oncology papers at the Institute for Molecular Medicine Finland (FIMM).</span>
+                <span><strong>Supercomputing & Biomedical Data:</strong> Coordinating CSC supercomputing environments, databases, and digital platforms at University of Helsinki's Färkkilä Lab.</span>
               </li>
               <li class="highlight-row">
                 <i class="fas fa-check-circle highlight-icon"></i>
-                <span><strong>Nordic Work Ethic:</strong> Over 10 years of consistent, high-reliability professional experience across Finnish high-tech & industrial firms.</span>
+                <span><strong>High-Impact Research:</strong> Co-authored peer-reviewed cancer oncology papers in <em>Haematologica</em> and <em>Blood</em>.</span>
               </li>
             </ul>
           </div>
@@ -264,40 +309,40 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="pillar-cards">
             <div class="pillar-card">
               <div class="pillar-head">
-                <div class="pillar-icon-box"><i class="fas fa-terminal"></i></div>
+                <div class="pillar-icon-box"><i class="fas fa-briefcase"></i></div>
                 <div>
-                  <h3 class="pillar-title">Software Engineering</h3>
-                  <p class="stat-label">Architectural Precision</p>
+                  <h3 class="pillar-title">Corporate Leadership & Delivery</h3>
+                  <p class="stat-label">Chief Executive Officer — Infinite IT</p>
                 </div>
               </div>
               <p class="pillar-desc">
-                Engineering performant software through clean architectural boundaries, clean algorithmic efficiency (graph pathfinding, concurrent data processing), and modern declarative frontend UIs.
+                Leading software architecture and global partnerships across Bangladesh, Finland, and Western markets. Specializing in high-trust offshore engineering, Next.js web applications, and Flutter mobile apps.
               </p>
             </div>
 
             <div class="pillar-card">
               <div class="pillar-head">
-                <div class="pillar-icon-box"><i class="fas fa-microscope"></i></div>
+                <div class="pillar-icon-box"><i class="fas fa-dna"></i></div>
                 <div>
-                  <h3 class="pillar-title">Molecular Biotechnology</h3>
-                  <p class="stat-label">University of Helsinki M.Sc.</p>
+                  <h3 class="pillar-title">Precision Oncology Infrastructure</h3>
+                  <p class="stat-label">IT Personnel — Färkkilä Laboratory (Biomedicum Helsinki)</p>
                 </div>
               </div>
               <p class="pillar-desc">
-                Applying advanced statistical thinking, data curation, hypothesis validation, and high-throughput experimental workflows to complex technical challenges.
+                Managing CSC scientific computation, web portals, and spatial multi-omics clinical study databases (ONCOSYS-OVA trial) in a world-leading translational oncology research group.
               </p>
             </div>
 
             <div class="pillar-card">
               <div class="pillar-head">
-                <div class="pillar-icon-box"><i class="fas fa-sliders"></i></div>
+                <div class="pillar-icon-box"><i class="fas fa-microchip"></i></div>
                 <div>
-                  <h3 class="pillar-title">Production Quality & Lean</h3>
+                  <h3 class="pillar-title">Industrial Systems & Lean</h3>
                   <p class="stat-label">ABB & Swappie Experience</p>
                 </div>
               </div>
               <p class="pillar-desc">
-                Trained in industrial hardware standards, quality assurance, diagnostics, and team leadership where zero-defect precision is non-negotiable.
+                Trained in industrial hardware standards, quality assurance, diagnostics, and team leadership in Finland where zero-defect precision is non-negotiable.
               </p>
             </div>
           </div>
@@ -344,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
               ${p.link && p.link !== '#' ? `
                 <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                   <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                  <span>Live App</span>
+                  <span>Live App / Site</span>
                 </a>
               ` : ''}
             </div>
@@ -357,8 +402,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-folder-open"></i> Portfolio</span>
-          <h2 class="section-title">Featured Projects</h2>
-          <p class="section-subtitle">Real-world applications spanning concurrent backend algorithms, mobile applications, and web interfaces.</p>
+          <h2 class="section-title">Featured Projects & Systems</h2>
+          <p class="section-subtitle">Real-world systems spanning enterprise offshore delivery, scientific platforms, concurrent graph algorithms, and mobile applications.</p>
         </div>
         <div class="projects-grid">
           ${projectCards}
@@ -370,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderSkills
-   * Generates categorized skills matrix (Frontend, Backend, Scientific Data, Leadership).
+   * Generates categorized skills matrix (Executive Leadership, Software Engineering, Scientific Computing, Industrial Quality).
    */
   function renderSkills(data) {
     const section = document.createElement('section');
@@ -407,8 +452,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-microchip"></i> Capabilities</span>
-          <h2 class="section-title">Technical Skills Matrix</h2>
-          <p class="section-subtitle">A balanced toolkit combining modern engineering languages, frameworks, and scientific data methodologies.</p>
+          <h2 class="section-title">Technical & Executive Skills Matrix</h2>
+          <p class="section-subtitle">A multidisciplinary toolkit combining executive governance, modern web engineering, and high-throughput biomedical computing.</p>
         </div>
         <div class="skills-container">
           ${categoriesHtml}
@@ -420,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderExperience
-   * Generates professional timeline detailing career history in Finland.
+   * Generates professional timeline detailing career history in Finland and executive leadership.
    */
   function renderExperience(data) {
     const section = document.createElement('section');
@@ -455,8 +500,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-briefcase"></i> Track Record</span>
-          <h2 class="section-title">Work Experience</h2>
-          <p class="section-subtitle">Demonstrated ownership, leadership, and technical consistency in high-standards Finnish environments.</p>
+          <h2 class="section-title">Professional Experience</h2>
+          <p class="section-subtitle">Leadership, scientific research, and engineering across international tech ventures and Finnish research institutions.</p>
         </div>
         <div class="timeline">
           ${timelineItems}
@@ -511,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-graduation-cap"></i> Academic Foundation</span>
           <h2 class="section-title">Education & Scientific Publications</h2>
-          <p class="section-subtitle">Rigorous degrees and peer-reviewed cancer biology contributions.</p>
+          <p class="section-subtitle">Rigorous biotechnology degrees and peer-reviewed cancer oncology contributions.</p>
         </div>
 
         <div class="education-grid">
@@ -557,7 +602,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-quote-left"></i> Endorsements</span>
-          <h2 class="section-title">Professional References & Testimonials</h2>
+          <h2 class="section-title">Institutional Endorsements & References</h2>
         </div>
         <div class="testimonials-grid">
           ${testHtml}
@@ -579,21 +624,37 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-paper-plane"></i> Connect</span>
-          <h2 class="section-title">Let's Build Something Exceptional</h2>
-          <p class="section-subtitle">Whether you're looking for a dedicated full-stack developer or have an inquiry, I would love to connect.</p>
+          <h2 class="section-title">Let's Collaborate</h2>
+          <p class="section-subtitle">Whether exploring custom software development, offshore team partnerships via Infinite IT, or scientific collaborations, reach out directly.</p>
         </div>
 
         <div class="contact-grid">
           <div class="glass-card">
             <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Direct Connectivity</h3>
-            <p>Based in Kuopio / Helsinki, Finland. Available for local and hybrid positions.</p>
+            <p>Based in Helsinki & Kuopio, Finland. Serving international clients and research partners.</p>
 
             <div class="contact-info-list">
               <a href="mailto:${data.email}" class="contact-item">
-                <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
+                <div class="contact-icon-box"><i class="fas fa-building"></i></div>
                 <div>
-                  <div class="contact-label">Email Address</div>
+                  <div class="contact-label">Corporate Email (Infinite IT)</div>
                   <div class="contact-val">${data.email}</div>
+                </div>
+              </a>
+
+              <a href="mailto:${data.academicEmail}" class="contact-item">
+                <div class="contact-icon-box"><i class="fas fa-university"></i></div>
+                <div>
+                  <div class="contact-label">Academic Email (University of Helsinki)</div>
+                  <div class="contact-val">${data.academicEmail}</div>
+                </div>
+              </a>
+
+              <a href="tel:${data.phone}" class="contact-item">
+                <div class="contact-icon-box"><i class="fas fa-phone"></i></div>
+                <div>
+                  <div class="contact-label">Direct Phone / WhatsApp</div>
+                  <div class="contact-val">${data.phone}</div>
                 </div>
               </a>
 
@@ -605,21 +666,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
               </a>
 
-              <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="contact-item">
-                <div class="contact-icon-box"><i class="fab fa-github"></i></div>
+              <a href="${data.companyWebsite}" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <div class="contact-icon-box"><i class="fas fa-globe"></i></div>
                 <div>
-                  <div class="contact-label">GitHub</div>
-                  <div class="contact-val">Debashish-deb</div>
+                  <div class="contact-label">Infinite IT Official</div>
+                  <div class="contact-val">infiniteitbd.com</div>
                 </div>
               </a>
-
-              <div class="contact-item">
-                <div class="contact-icon-box"><i class="fas fa-location-dot"></i></div>
-                <div>
-                  <div class="contact-label">Location</div>
-                  <div class="contact-val">${data.location}</div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -638,7 +691,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
               <div class="form-group">
                 <label for="contact-message" class="form-label">Message</label>
-                <textarea id="contact-message" name="message" class="form-control" placeholder="Tell me about your project or opportunity..." required></textarea>
+                <textarea id="contact-message" name="message" class="form-control" placeholder="Tell me about your software project, enterprise scope, or research inquiry..." required></textarea>
               </div>
 
               <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">
@@ -666,7 +719,7 @@ document.addEventListener('DOMContentLoaded', () => {
           Designed & Engineered with scientific precision by <strong>${data.name}</strong> • ${new Date().getFullYear()}
         </p>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">
-          Built with semantic modern HTML5, CSS3 Custom Properties & ES6+. Hosted on GitHub Pages.
+          CEO at <a href="https://infiniteitbd.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">Infinite IT</a> • IT Specialist at <a href="https://farkkilab.org" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">Färkkilä Laboratory, University of Helsinki</a>
         </p>
       </div>
     `;
@@ -744,27 +797,29 @@ document.addEventListener('DOMContentLoaded', () => {
               <div>
                 <h1 style="font-size:1.8rem; margin-bottom:4px;">${data.name}</h1>
                 <p style="color:var(--accent-primary); font-weight:600; font-size:1.05rem;">${data.title}</p>
-                <p style="font-size:0.9rem; color:var(--text-muted);">${data.location} • <a href="mailto:${data.email}">${data.email}</a> • <a href="${data.linkedin}" target="_blank">LinkedIn</a> • <a href="${data.github}" target="_blank">GitHub</a></p>
+                <p style="font-size:0.9rem; color:var(--text-muted);">
+                  ${data.location} • <a href="mailto:${data.email}">${data.email}</a> • Phone: ${data.phone} • <a href="${data.linkedin}" target="_blank">LinkedIn</a> • <a href="${data.companyWebsite}" target="_blank">Infinite IT</a>
+                </p>
               </div>
             </div>
 
             <div class="resume-block">
-              <h4 class="resume-block-title">Professional Summary</h4>
+              <h4 class="resume-block-title">Executive & Professional Summary</h4>
               <p style="font-size:0.95rem; line-height:1.7;">${data.aboutExtended}</p>
             </div>
 
             <div class="resume-block">
-              <h4 class="resume-block-title">Work Experience</h4>
+              <h4 class="resume-block-title">Current & Past Professional Experience</h4>
               ${expMarkup}
             </div>
 
             <div class="resume-block">
-              <h4 class="resume-block-title">Education</h4>
+              <h4 class="resume-block-title">Education & Specialized Training</h4>
               ${eduMarkup}
             </div>
 
             <div class="resume-block">
-              <h4 class="resume-block-title">Publications</h4>
+              <h4 class="resume-block-title">Peer-Reviewed Publications</h4>
               ${pubMarkup}
             </div>
 
@@ -936,7 +991,7 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error('Form submission failed.');
         }
       } catch (err) {
-        showToast('Message could not be sent. Please email directly at ddeba32@gmail.com');
+        showToast('Message could not be sent. Please email directly at debashish.deb@infiniteitbd.com');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;

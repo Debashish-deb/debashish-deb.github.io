@@ -1,67 +1,108 @@
 {
   "name": "Debashish Deb",
   "shortName": "DD",
-  "title": "Full-Stack Software Developer & Biotechnologist",
-  "tagline": "Architecting modern digital solutions with scientific precision and software engineering craft.",
-  "about": "I am a Full-Stack Software Developer with a unique foundation in Molecular Biotechnology (M.Sc. from University of Helsinki). I bridge analytical scientific rigor with modern engineering—building resilient web applications, intuitive interfaces, and scalable backend services.",
-  "aboutExtended": "I specialize in building and designing high-performance digital experiences. Proficient across JavaScript (ES6+), TypeScript, GoLang, React, Node.js, and Flutter-Dart, I develop end-to-end applications from intuitive, accessible frontend user interfaces to robust, concurrent backend architectures.\n\nMy scientific background—including peer-reviewed cancer research publications at the Institute for Molecular Medicine Finland (FIMM)—instills a deep analytical mindset, rigorous attention to detail, and a structured problem-solving approach in every line of code I craft.",
+  "title": "Chief Executive Officer | Full-Stack Software Developer & Biotechnologist",
+  "tagline": "CEO of Infinite IT & IT Specialist at Färkkilä Lab, University of Helsinki. Architecting scalable software and scientific digital infrastructure.",
+  "about": "I am the Chief Executive Officer at Infinite IT and an IT & Systems Specialist at Färkkilä Laboratory (University of Helsinki). With an M.Sc. in Molecular Biotechnology and deep software engineering expertise, I bridge executive leadership, full-stack software development, and biomedical research computing.",
+  "aboutExtended": "As Chief Executive Officer of Infinite IT, I lead company strategy, technical product delivery, and global enterprise software partnerships spanning web, mobile, and workflow automation. Simultaneously, at the University of Helsinki's renowned Färkkilä Laboratory (Biomedicum Helsinki), I coordinate CSC scientific supercomputing services, lab web architecture, and research databases for precision oncology and spatial multi-omics.\n\nMy background in molecular biotechnology, combined with over a decade of operational excellence in Finland and co-authored cancer oncology publications in Haematologica and Blood, drives my commitment to delivering software with scientific rigor, high availability, and flawless execution.",
   "profileImage": "profile.jpg",
-  "email": "ddeba32@gmail.com",
+  "email": "debashish.deb@infiniteitbd.com",
+  "personalEmail": "ddeba32@gmail.com",
+  "academicEmail": "debashish.deb@helsinki.fi",
+  "phone": "+358 45 1600007",
   "github": "https://github.com/Debashish-deb",
   "linkedin": "https://www.linkedin.com/in/debashish-deb/",
   "website": "https://debashish-deb.github.io",
-  "location": "Kuopio / Helsinki, Finland",
-  "status": "Open to Full-Stack & Software Engineering Roles",
+  "companyWebsite": "https://infiniteitbd.com",
+  "labWebsite": "https://farkkilab.org",
+  "location": "Helsinki / Kuopio, Finland",
+  "status": "CEO @ Infinite IT • IT Specialist @ Färkkilä Lab (UH)",
   "stats": [
-    { "label": "Full-Stack Tech Stack", "value": "Go • JS • React" },
-    { "label": "Academic Publications", "value": "3+" },
-    { "label": "Scientific Background", "value": "M.Sc. Helsinki" },
-    { "label": "Experience in Finland", "value": "10+ Years" }
+    { "label": "Executive Leadership", "value": "CEO Infinite IT" },
+    { "label": "Research Institution", "value": "Univ. of Helsinki" },
+    { "label": "Academic Publications", "value": "3+ High-Impact" },
+    { "label": "Scientific Background", "value": "M.Sc. Biotech" }
+  ],
+  "currentRoles": [
+    {
+      "organization": "Infinite IT",
+      "role": "Chief Executive Officer (CEO)",
+      "period": "Current",
+      "link": "https://infiniteitbd.com",
+      "summary": "Directing corporate vision, offshore engineering operations, and delivery of custom Next.js, Flutter, and AI products for Western and South Asian enterprises."
+    },
+    {
+      "organization": "Färkkilä Laboratory (University of Helsinki)",
+      "role": "IT Personnel & Systems Specialist",
+      "period": "Current",
+      "link": "https://farkkilab.org/members",
+      "summary": "Coordinating CSC Finnish IT Center for Science services, lab digital platforms, high-throughput spatial biology databases, and research infrastructure."
+    }
   ],
   "skillCategories": [
     {
-      "category": "Frontend Engineering",
+      "category": "Executive Leadership & Strategy",
+      "icon": "fa-briefcase",
+      "items": [
+        { "name": "Strategic Corporate Vision", "level": 95, "icon": "chess" },
+        { "name": "Enterprise IT Consulting", "level": 90, "icon": "handshake" },
+        { "name": "Global Tech Partnerships", "level": 90, "icon": "globe" },
+        { "name": "Cross-Functional Operations", "level": 95, "icon": "people-roof" }
+      ]
+    },
+    {
+      "category": "Software Engineering & Architecture",
       "icon": "fa-code",
       "items": [
-        { "name": "JavaScript (ES6+)", "level": 85, "icon": "js" },
-        { "name": "React", "level": 75, "icon": "react" },
-        { "name": "HTML5 & Semantic Web", "level": 90, "icon": "html5" },
-        { "name": "Modern CSS3 / UI / A11y", "level": 85, "icon": "css3-alt" },
-        { "name": "Flutter / Dart", "level": 65, "icon": "mobile-screen" }
+        { "name": "Go (Golang)", "level": 85, "icon": "golang" },
+        { "name": "JavaScript (ES6+) & TypeScript", "level": 85, "icon": "js" },
+        { "name": "React & Next.js", "level": 80, "icon": "react" },
+        { "name": "Flutter & Mobile Apps", "level": 75, "icon": "mobile-screen" },
+        { "name": "REST APIs, Systems & Microservices", "level": 85, "icon": "network-wired" }
       ]
     },
     {
-      "category": "Backend & Architecture",
-      "icon": "fa-server",
+      "category": "Scientific Computing & Databases",
+      "icon": "fa-database",
       "items": [
-        { "name": "Go (Golang)", "level": 80, "icon": "golang" },
-        { "name": "Node.js & Express", "level": 75, "icon": "node-js" },
-        { "name": "REST APIs & JSON", "level": 85, "icon": "network-wired" },
-        { "name": "Git & CI/CD Workflows", "level": 85, "icon": "git-alt" }
+        { "name": "CSC Supercomputing & Cloud Coordination", "level": 90, "icon": "server" },
+        { "name": "Scientific Database Architecture", "level": 90, "icon": "database" },
+        { "name": "High-Throughput Flow Cytometry & Spatial Data", "level": 90, "icon": "microscope" },
+        { "name": "Translational Oncology Data Workflows", "level": 85, "icon": "dna" }
       ]
     },
     {
-      "category": "Biotech & Scientific Rigor",
-      "icon": "fa-dna",
+      "category": "Industrial Quality & Lean Execution",
+      "icon": "fa-gears",
       "items": [
-        { "name": "High-Throughput Biology", "level": 90, "icon": "microscope" },
-        { "name": "Flow Cytometry Data", "level": 90, "icon": "chart-pie" },
-        { "name": "Scientific Data Analysis", "level": 85, "icon": "chart-line" },
-        { "name": "Research Documentation", "level": 95, "icon": "book-medical" }
-      ]
-    },
-    {
-      "category": "Professional & Leadership",
-      "icon": "fa-people-roof",
-      "items": [
-        { "name": "Problem Solving & Analysis", "level": 95, "icon": "brain" },
-        { "name": "Cross-Functional Leadership", "level": 85, "icon": "users" },
-        { "name": "Process Improvement", "level": 90, "icon": "arrows-spin" },
-        { "name": "Multitasking & Reliability", "level": 95, "icon": "check-double" }
+        { "name": "Process Improvement & Lean Manufacturing", "level": 90, "icon": "arrows-spin" },
+        { "name": "Hardware Testing & Quality Control", "level": 90, "icon": "microchip" },
+        { "name": "Technical Documentation & SOPs", "level": 95, "icon": "book-medical" },
+        { "name": "Agile Delivery & Milestone Tracking", "level": 90, "icon": "check-double" }
       ]
     }
   ],
   "projects": [
+    {
+      "name": "Infinite IT Corporate Portal & Architecture",
+      "badge": "Enterprise Platform",
+      "link": "https://infiniteitbd.com",
+      "github": "",
+      "image": "",
+      "description": "Executive oversight and architecture of Infinite IT's corporate web ecosystem, delivering vetted software delivery workflows, Next.js web applications, Flutter mobile apps, and offshore engineering services.",
+      "technologies": ["Next.js", "Enterprise Architecture", "Offshore Engineering", "Cloud Hosting"],
+      "includeInResume": true
+    },
+    {
+      "name": "Färkkilä Lab Infrastructure & Systems",
+      "badge": "Biomedical Systems",
+      "link": "https://farkkilab.org",
+      "github": "",
+      "image": "",
+      "description": "Coordinating Finnish CSC scientific computing services, relational research databases, and public web platforms for precision oncology and spatial multi-omics at Biomedicum Helsinki.",
+      "technologies": ["CSC Scientific Services", "Research Databases", "Web Infrastructure", "Data Pipelines"],
+      "includeInResume": true
+    },
     {
       "name": "Stations-Pathfinder",
       "badge": "Algorithms / Go",
@@ -101,29 +142,37 @@
       "description": "Linear-grade modern portfolio with dark/light theming, seamless interactive views, responsive glassmorphism UI, and built-in interactive resume generation.",
       "technologies": ["JavaScript (ES6+)", "CSS3 Design System", "HTML5", "Responsive A11y"],
       "includeInResume": true
-    },
-    {
-      "name": "Slot-Machine Simulator",
-      "badge": "Frontend Game",
-      "link": "https://github.com/Debashish-deb/Slot-machine/",
-      "github": "https://github.com/Debashish-deb/Slot-machine/",
-      "image": "",
-      "description": "Interactive browser-based game engine implementing casino payout algorithms, reels spin animation choreography, and dynamic state tracking.",
-      "technologies": ["JavaScript", "DOM Architecture", "CSS Animations"],
-      "includeInResume": true
-    },
-    {
-      "name": "Magic Eight Ball",
-      "badge": "Fun Web App",
-      "link": "https://github.com/Debashish-deb/Magic_Eight_Ball",
-      "github": "https://github.com/Debashish-deb/Magic_Eight_Ball",
-      "image": "",
-      "description": "Animated fortune-telling web application with playful micro-interactions and responsive state animations.",
-      "technologies": ["JavaScript", "CSS3 Keyframes", "Interactive UI"],
-      "includeInResume": true
     }
   ],
   "experience": [
+    {
+      "title": "Chief Executive Officer (CEO)",
+      "company": "Infinite IT",
+      "time": "Current",
+      "location": "Helsinki, Finland & Bangladesh",
+      "tag": "Executive Leadership",
+      "responsibilities": [
+        "Sets overarching company vision, corporate governance, and growth strategies for international software delivery.",
+        "Leads global client partnerships across Europe, South Asia, and North America for custom web, mobile, and AI solutions.",
+        "Oversees cross-functional engineering teams, ensuring documented scope, milestone delivery, and maintainable architectures."
+      ],
+      "technologies": ["Strategic Leadership", "Enterprise Consulting", "Operations Management", "Global Partnerships"],
+      "includeInResume": true
+    },
+    {
+      "title": "IT Personnel & Systems Specialist",
+      "company": "Färkkilä Laboratory, University of Helsinki",
+      "time": "Current",
+      "location": "Biomedicum Helsinki, Finland",
+      "tag": "Academic & Scientific Systems",
+      "responsibilities": [
+        "Coordinates CSC (Finnish IT Center for Science) computing services and supercomputing resources for spatial biology workloads.",
+        "Maintains and evolves the lab web presence, research data registries, and digital systems supporting precision oncology studies (ONCOSYS-OVA).",
+        "Ensures high-integrity database connectivity and computational reproducibility for multi-disciplinary translational researchers."
+      ],
+      "technologies": ["CSC Cloud & Supercomputing", "Scientific Databases", "Web Architecture", "Data Infrastructure"],
+      "includeInResume": true
+    },
     {
       "title": "Production Operator",
       "company": "ABB Oy",
@@ -253,12 +302,10 @@
   ],
   "references": [
     {
-      "name": "Oskari Jokela",
-      "title": "Production Supervisor",
-      "company": "ABB Oy",
-      "location": "Helsinki, Finland",
-      "email": "oskari.jokela@fi.abb.com",
-      "phone": "+358 50 335 9059",
+      "name": "Anniina Färkkilä, MD PhD",
+      "title": "Associate Professor & Principal Investigator",
+      "company": "Färkkilä Laboratory, University of Helsinki",
+      "email": "anniina.farkkila@helsinki.fi",
       "includeInResume": true
     },
     {
@@ -266,6 +313,15 @@
       "title": "Senior Researcher & Postdoctoral Fellow",
       "company": "Institute for Molecular Medicine Finland (FIMM), University of Helsinki",
       "email": "heikki.kuusanmaki@helsinki.fi",
+      "includeInResume": true
+    },
+    {
+      "name": "Oskari Jokela",
+      "title": "Production Supervisor",
+      "company": "ABB Oy",
+      "location": "Helsinki, Finland",
+      "email": "oskari.jokela@fi.abb.com",
+      "phone": "+358 50 335 9059",
       "includeInResume": true
     },
     {
@@ -279,6 +335,11 @@
     }
   ],
   "testimonials": [
+    {
+      "text": "Debashish Deb coordinates our CSC computing environments, lab web platforms, and clinical study data systems with outstanding diligence, ensuring our spatial multi-omics researchers can work seamlessly on critical precision oncology pipelines.",
+      "author": "Färkkilä Laboratory",
+      "role": "Biomedicum Helsinki, University of Helsinki"
+    },
     {
       "text": "Debashish is a highly motivated and disciplined researcher. His contributions to our high-throughput drug screening pipeline were invaluable, demonstrating keen intellectual curiosity and rapid adaptation to rigorous analytical workflows.",
       "author": "Dr. Heikki Kuusanmäki",
