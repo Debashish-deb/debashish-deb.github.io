@@ -1,0 +1,23 @@
+data.json
+  s_f22797140e1019::t_4280c55754db19 89,95-99,105,111-115,121,127-131,137,143-147,153,159-163,169,175-179,185,189,191-195,329,338,347
+index.html
+  s_f22797140e1019::t_ce2868b1bfb1c8 39,42-44,51,61-65,69-74,76
+styles.css
+  s_f22797140e1019::t_4ca8f14439f17b 1872-2288
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "81ca66c0c110b6e1b3a52dc1552f8990932dac20",
+  "prompts": {},
+  "sessions": {
+    "s_f22797140e1019": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11653-1094-7ed3-99d7-03753d43d54a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "debashishdeb1 <debashish.deb101@outlook.com>"
+    }
+  }
+}
