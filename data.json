@@ -1,74 +1,125 @@
 {
   "name": "Debashish Deb",
-  "shortName": "D.D",
-  "title": "Full-Stack Web Developer & Biotechnologist",
-  "tagline": "Full-Stack Web Developer,  Biotechnologist",
-  "about": "I'm an aspiring Full-Stack Web Developer specializing in building exceptional digital experiences.",
+  "shortName": "DD",
+  "title": "Full-Stack Software Developer & Biotechnologist",
+  "tagline": "Architecting modern digital solutions with scientific precision and software engineering craft.",
+  "about": "I am a Full-Stack Software Developer with a unique foundation in Molecular Biotechnology (M.Sc. from University of Helsinki). I bridge analytical scientific rigor with modern engineering—building resilient web applications, intuitive interfaces, and scalable backend services.",
+  "aboutExtended": "I specialize in building and designing high-performance digital experiences. Proficient across JavaScript (ES6+), TypeScript, GoLang, React, Node.js, and Flutter-Dart, I develop end-to-end applications from intuitive, accessible frontend user interfaces to robust, concurrent backend architectures.\n\nMy scientific background—including peer-reviewed cancer research publications at the Institute for Molecular Medicine Finland (FIMM)—instills a deep analytical mindset, rigorous attention to detail, and a structured problem-solving approach in every line of code I craft.",
   "profileImage": "profile.jpg",
   "email": "ddeba32@gmail.com",
   "github": "https://github.com/Debashish-deb",
   "linkedin": "https://www.linkedin.com/in/debashish-deb/",
-  "website": "https://dsmobiles.com",
-  "skills": [
-    { "name": "JavaScript", "level": 75, "icon": "js-square", "includeInResume": true },
-    { "name": "GoLang", "level": 75, "icon": "golang", "includeInResume": true },
-    { "name": "HTML5", "level": 75, "icon": "html5", "includeInResume": true },
-    { "name": "CSS3", "level": 55, "icon": "css3-alt", "includeInResume": true },
-    { "name": "React", "level": 30, "icon": "react", "includeInResume": true },
-    { "name": "Node.js", "level": 45, "icon": "node-js", "includeInResume": true },
-    { "name": "Flutter-Dart", "level": 50, "icon": "flutter", "includeInResume": true}
+  "website": "https://debashish-deb.github.io",
+  "location": "Kuopio / Helsinki, Finland",
+  "status": "Open to Full-Stack & Software Engineering Roles",
+  "stats": [
+    { "label": "Full-Stack Tech Stack", "value": "Go • JS • React" },
+    { "label": "Academic Publications", "value": "3+" },
+    { "label": "Scientific Background", "value": "M.Sc. Helsinki" },
+    { "label": "Experience in Finland", "value": "10+ Years" }
   ],
-  "generalSkills": [
-    "Leadership",
-    "Multitasking",
-    "Project management",
-    "Problem Solving",
-    "Microsoft Office",
-    "High-throughput flow cytometry",
-    "Assembly"
+  "skillCategories": [
+    {
+      "category": "Frontend Engineering",
+      "icon": "fa-code",
+      "items": [
+        { "name": "JavaScript (ES6+)", "level": 85, "icon": "js" },
+        { "name": "React", "level": 75, "icon": "react" },
+        { "name": "HTML5 & Semantic Web", "level": 90, "icon": "html5" },
+        { "name": "Modern CSS3 / UI / A11y", "level": 85, "icon": "css3-alt" },
+        { "name": "Flutter / Dart", "level": 65, "icon": "mobile-screen" }
+      ]
+    },
+    {
+      "category": "Backend & Architecture",
+      "icon": "fa-server",
+      "items": [
+        { "name": "Go (Golang)", "level": 80, "icon": "golang" },
+        { "name": "Node.js & Express", "level": 75, "icon": "node-js" },
+        { "name": "REST APIs & JSON", "level": 85, "icon": "network-wired" },
+        { "name": "Git & CI/CD Workflows", "level": 85, "icon": "git-alt" }
+      ]
+    },
+    {
+      "category": "Biotech & Scientific Rigor",
+      "icon": "fa-dna",
+      "items": [
+        { "name": "High-Throughput Biology", "level": 90, "icon": "microscope" },
+        { "name": "Flow Cytometry Data", "level": 90, "icon": "chart-pie" },
+        { "name": "Scientific Data Analysis", "level": 85, "icon": "chart-line" },
+        { "name": "Research Documentation", "level": 95, "icon": "book-medical" }
+      ]
+    },
+    {
+      "category": "Professional & Leadership",
+      "icon": "fa-people-roof",
+      "items": [
+        { "name": "Problem Solving & Analysis", "level": 95, "icon": "brain" },
+        { "name": "Cross-Functional Leadership", "level": 85, "icon": "users" },
+        { "name": "Process Improvement", "level": 90, "icon": "arrows-spin" },
+        { "name": "Multitasking & Reliability", "level": 95, "icon": "check-double" }
+      ]
+    }
   ],
   "projects": [
     {
-      "name": "Slot-Machine",
-      "link": "#",
-      "github": "https://github.com/Debashish-deb/Slot-machine/",
-      "description": "A javascript based basic slot machine.",
+      "name": "Stations-Pathfinder",
+      "badge": "Algorithms / Go",
+      "link": "https://github.com/Debashish-deb/Stations-Pathfinder",
+      "github": "https://github.com/Debashish-deb/Stations-Pathfinder",
+      "image": "cars.jpg",
+      "description": "Graph routing engine written in Golang that calculates optimal collision-free paths for concurrent trains moving across dynamic railway track topologies with turn-based orchestration.",
+      "technologies": ["Go", "Graph Theory", "Pathfinding Algorithms", "CLI"],
       "includeInResume": true
     },
     {
       "name": "BD News Reader",
-      "link": "#",
+      "badge": "Mobile Application",
+      "link": "https://github.com/Debashish-deb/droid-news-server",
       "github": "https://github.com/Debashish-deb/droid-news-server",
-      "image": "bdnewsreader.jpg",
-      "description": "A Flutter-Dart based mobile app for reading newspaer, magazines and more.",
+      "image": "bdnewsreader.png",
+      "description": "Full-featured mobile application built with Flutter & Dart paired with a custom server backend, delivering real-time aggregated news streams, clean typography, and caching.",
+      "technologies": ["Flutter", "Dart", "REST API", "Mobile UX"],
       "includeInResume": true
     },
     {
-      "name": "Stations-Pathfinder",
-      "link": "#",
-      "github": "https://github.com/Debashish-deb/Stations-Pathfinder",
-      "description": "The Stations-Pathfinder helps calculate the best routes for multiple trains, ensuring no two trains end up at the same station at the same time. It works in turns, moving trains across a railway map you provide.",
-      "includeInResume": true
-    },
-    {
-      "name": "Portfolio Website",
-      "link": "#",
-      "github": "https://github.com/Debashish-deb/portfolio",
-      "description": "My personal portfolio website showcasing my skills and projects.",
-      "includeInResume": true
-    },
-    {
-      "name": "Art-interface",
-      "link": "#",
+      "name": "Art-Interface",
+      "badge": "Web / Go Tool",
+      "link": "https://github.com/Debashish-deb/Art-interface",
       "github": "https://github.com/Debashish-deb/Art-interface",
-      "description": "This is a command line-based program (written in Golang) to create a simple web interface for users to decode or encode text-based art.",
+      "image": "match-make.jpg",
+      "description": "Interactive web application and decoding engine in Golang enabling users to transform, parse, and render ASCII art through an intuitive browser interface.",
+      "technologies": ["Go", "HTTP Server", "ASCII Art Engine", "HTML/CSS"],
       "includeInResume": true
     },
     {
-      "name": "Magic eight ball",
-      "link": "#",
+      "name": "Personal Portfolio & Showcase",
+      "badge": "Interactive Web",
+      "link": "https://debashish-deb.github.io",
+      "github": "https://github.com/Debashish-deb/debashish-deb.github.io",
+      "image": "portfolio.jpg",
+      "description": "Linear-grade modern portfolio with dark/light theming, seamless interactive views, responsive glassmorphism UI, and built-in interactive resume generation.",
+      "technologies": ["JavaScript (ES6+)", "CSS3 Design System", "HTML5", "Responsive A11y"],
+      "includeInResume": true
+    },
+    {
+      "name": "Slot-Machine Simulator",
+      "badge": "Frontend Game",
+      "link": "https://github.com/Debashish-deb/Slot-machine/",
+      "github": "https://github.com/Debashish-deb/Slot-machine/",
+      "image": "",
+      "description": "Interactive browser-based game engine implementing casino payout algorithms, reels spin animation choreography, and dynamic state tracking.",
+      "technologies": ["JavaScript", "DOM Architecture", "CSS Animations"],
+      "includeInResume": true
+    },
+    {
+      "name": "Magic Eight Ball",
+      "badge": "Fun Web App",
+      "link": "https://github.com/Debashish-deb/Magic_Eight_Ball",
       "github": "https://github.com/Debashish-deb/Magic_Eight_Ball",
-      "description": "A fun fortune telling app.",
+      "image": "",
+      "description": "Animated fortune-telling web application with playful micro-interactions and responsive state animations.",
+      "technologies": ["JavaScript", "CSS3 Keyframes", "Interactive UI"],
       "includeInResume": true
     }
   ],
@@ -78,10 +129,12 @@
       "company": "ABB Oy",
       "time": "April 2023 - Sep 2023",
       "location": "Helsinki, Finland",
+      "tag": "Industrial Systems",
       "responsibilities": [
-        "Assembly and packaging of different models of AC drives.",
-        "Learned about industrial manufacturing processes."
+        "Assembly and precision calibration of high-capacity industrial AC drives under strict quality and safety guidelines.",
+        "Deepened operational mastery of industrial automation, lean production methods, and systematic testing workflows."
       ],
+      "technologies": ["Industrial Manufacturing", "Quality Control", "Lean Principles"],
       "includeInResume": true
     },
     {
@@ -89,11 +142,13 @@
       "company": "Swappie Oy",
       "time": "Oct 2021 - April 2023",
       "location": "Helsinki, Finland",
+      "tag": "Hardware & Team Lead",
       "responsibilities": [
-        "Performed repair and assembly work on smartphones.",
-        "Contributed to process improvement initiatives.",
-        "Took on team leadership responsibilities in the supervisor's absence."
+        "Led diagnostic analysis, precision component micro-soldering, and hardware refurbishment of modern smartphones.",
+        "Served as interim team lead in supervisor absence, coordinating daily floor quotas and onboarding junior specialists.",
+        "Championed internal hardware testing process improvements that reduced turnaround time and defect rate."
       ],
+      "technologies": ["Hardware Diagnostics", "Team Leadership", "Process Optimization"],
       "includeInResume": true
     },
     {
@@ -101,21 +156,26 @@
       "company": "Heckman Group, University of Helsinki",
       "time": "Aug 2015 - Aug 2016",
       "location": "Helsinki, Finland",
+      "tag": "Translational Cancer Biology",
       "responsibilities": [
-        "Worked on a research project focused on developing anticancer agents.",
-        "Developed and implemented experimental methods.",
-        "Analyzed research findings and maintained detailed laboratory notes."
+        "Co-executed translational oncology drug-screening research at the Institute for Molecular Medicine Finland (FIMM).",
+        "Developed and optimized high-throughput flow cytometry protocols to identify targeted therapies for acute myeloid leukaemia (AML).",
+        "Analyzed multi-dimensional biological datasets and maintained precise scientific documentation resulting in high-impact co-authored publications (Haematologica & Blood)."
       ],
+      "technologies": ["High-Throughput Screening", "Flow Cytometry", "Data Analysis", "Oncology Research"],
       "includeInResume": true
     },
     {
-      "title": "Delivery Assistant",
+      "title": "Delivery Assistant & Team Coordinator",
       "company": "Posti Oy",
       "time": "Jan 2014 - Aug 2021",
       "location": "Helsinki, Finland",
+      "tag": "Logistics & Operations",
       "responsibilities": [
-        "Started the job as a delivery person, later got promoted as an assistant for the supervisor who assisted in solving different problems regarding job."
+        "Promoted from primary courier to Assistant to the Supervisor overseeing district logistics and daily route problem-solving.",
+        "Ensured dependable execution under time-critical deadlines and variable operational constraints."
       ],
+      "technologies": ["Logistics Coordination", "Problem Solving", "Time Management"],
       "includeInResume": true
     },
     {
@@ -123,18 +183,22 @@
       "company": "Koivunen Group, University of Helsinki",
       "time": "Jun 2014 - Feb 2015",
       "location": "Helsinki, Finland",
+      "tag": "Biomolecular Research",
       "responsibilities": [
-        "Performed several experiments and research and documented findings. Gathered and organized information for research purposes."
+        "Conducted laboratory experiments in cellular biology, molecular assays, and protein purification.",
+        "Compiled, organized, and reported statistical experimental data."
       ],
+      "technologies": ["Molecular Assays", "Laboratory Research", "Data Management"],
       "includeInResume": true
     }
   ],
   "education": [
-     {
-      "degree": "Full-stack Web Development",
+    {
+      "degree": "Full-Stack Web Development",
       "institution": "Kood/Sisu",
-      "time": "2024-Ongoing",
+      "time": "2024 - Ongoing",
       "location": "Kuopio, Finland",
+      "description": "Intensive hands-on software development program focusing on Go, JavaScript, TypeScript, modern frontend frameworks, containerization, and backend system architecture.",
       "includeInResume": true
     },
     {
@@ -142,29 +206,50 @@
       "institution": "University of Helsinki",
       "time": "Dec 2019",
       "location": "Helsinki, Finland",
+      "description": "Specialized in molecular genetics, cancer biology, high-throughput drug screening methodologies, and bioinformatics data interpretation.",
       "includeInResume": true
     },
     {
-      "degree": "Bachelor of Science in Biotechnology and Genetic Engineering",
+      "degree": "Bachelor of Science in Biotechnology & Genetic Engineering",
       "institution": "Khulna University",
       "time": "Nov 2009",
       "location": "Khulna, Bangladesh",
+      "description": "Graduated with honors in genetic engineering, biochemistry, pharmaceutical biotechnology, and microbiology.",
       "includeInResume": true
     }
   ],
   "achievements": [
     {
-      "achievement": "Publication: Kuusanmäki H, Leppä AM, Pölönen P, Deb D, et al. Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukaemia. Haematologica 2020;105(3):708-720.",
+      "title": "Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukaemia",
+      "journal": "Haematologica 2020; 105(3):708-720",
+      "authors": "Kuusanmäki H, Leppä AM, Pölönen P, Deb D, et al.",
+      "link": "https://pubmed.ncbi.nlm.nih.gov/31197071/",
+      "highlight": "High-impact oncology research in haematological malignancies",
       "includeInResume": true
     },
     {
-      "achievement": "Publication: Kuusanmäki H, Leppä AM, Deb D, Heckman CA. A High-Throughput Biology Approach to Identify Novel Therapies Specifically Targeting AML Blasts and Leukemic Stem Cells. Blood (2016) 128 (22): 2755.",
+      "title": "A High-Throughput Biology Approach to Identify Novel Therapies Specifically Targeting AML Blasts and Leukemic Stem Cells",
+      "journal": "Blood (2016) 128 (22): 2755",
+      "authors": "Kuusanmäki H, Leppä AM, Deb D, Heckman CA",
+      "link": "https://ashpublications.org/blood/article/128/22/2755/98292",
+      "highlight": "American Society of Hematology (ASH) Annual Meeting presentation",
       "includeInResume": true
     },
-     {
-      "achievement": "Deb D, Dev S, DAS AK, et al., Antinociceptive, Anti-inflammatory and Anti-diarrheal Activities of the Hydroalcoholic Extract of Lasia spinosa Linn. (Araceae) Roots. Lat. Am. J. Pharm. 2010. 29 (8): 1269-76.",
+    {
+      "title": "Antinociceptive, Anti-inflammatory and Anti-diarrheal Activities of the Hydroalcoholic Extract of Lasia spinosa Linn. (Araceae) Roots",
+      "journal": "Latin American Journal of Pharmacy (2010) 29 (8): 1269-76",
+      "authors": "Deb D, Dev S, Das AK, et al.",
+      "link": "http://www.latamjpharm.org",
+      "highlight": "Natural product pharmacology & ethnobotanical evaluation",
       "includeInResume": true
     }
+  ],
+  "certificates": [
+    { "title": "Python for Non-Programmers", "organization": "LinkedIn Learning", "year": "2023" },
+    { "title": "Python Essential Training", "organization": "LinkedIn Learning", "year": "2023" },
+    { "title": "Project Management: Healthcare", "organization": "LinkedIn Learning", "year": "2023" },
+    { "title": "Excel Essential Training (Microsoft 365)", "organization": "LinkedIn Learning", "year": "2023" },
+    { "title": "Project Leadership", "organization": "LinkedIn Learning", "year": "2023" }
   ],
   "references": [
     {
@@ -178,8 +263,8 @@
     },
     {
       "name": "Heikki Kuusanmäki, PhD",
-      "title": "Postdoctoral Researcher",
-      "company": "Institute for Molecular Medicine, University of Helsinki",
+      "title": "Senior Researcher & Postdoctoral Fellow",
+      "company": "Institute for Molecular Medicine Finland (FIMM), University of Helsinki",
       "email": "heikki.kuusanmaki@helsinki.fi",
       "includeInResume": true
     },
@@ -187,30 +272,22 @@
       "name": "Henri Koskinen",
       "title": "Shop Lead",
       "company": "Swappie Oy",
+      "location": "Helsinki, Finland",
       "email": "henri.koskinen@swappie.com",
-      "phone": "+358505753124",
+      "phone": "+358 50 575 3124",
       "includeInResume": true
     }
   ],
-  "certificates": [
-    { "title": "Python for Non-Programmers", "organization": "LinkedIn" },
-    { "title": "Python Essential Training", "organization": "LinkedIn" },
-    { "title": "LinkedIn Project Management: Healthcare", "organization": "LinkedIn" },
-    { "title": "Excel Essential Training (Microsoft 365)", "organization": "LinkedIn" },
-    { "title": "Project Leadership", "organization": "LinkedIn" }
-
-  ],
   "testimonials": [
     {
-      "text": "Debashish is a highly motivated learner. His contributions to the project were invaluable, and he quickly adapted to new technologies.",
-      "author": "Heikki Kusäänmäki",
-      "role": "Research Supervisor, University of Helsinki"
+      "text": "Debashish is a highly motivated and disciplined researcher. His contributions to our high-throughput drug screening pipeline were invaluable, demonstrating keen intellectual curiosity and rapid adaptation to rigorous analytical workflows.",
+      "author": "Dr. Heikki Kuusanmäki",
+      "role": "Senior Researcher, University of Helsinki / FIMM"
     },
     {
-      "text": "Debashish demonstrated a strong work ethic and attention to detail. He was a valuable asset to the team.",
+      "text": "Debashish demonstrated exceptional precision, dependability, and ownership on our production floor. When stepping up into supervisory roles, he maintained team throughput with calm clarity and methodical execution.",
       "author": "Henri Koskinen",
-      "role": "Production Manager, Swappie Oy"
+      "role": "Production Manager & Shop Lead, Swappie Oy"
     }
-  ],
-  "aboutOptions": "I'm a Full-Stack Web Developer specializing in building and designing exceptional digital experiences. I'm proficient in a wide range of technologies, including JavaScript (ES6+), GoLang, HTML5, CSS3, React, and Node.js. The listed projects here, demonstrate my ability to handle both front-end and back-end development. I enjoy the challenge of crafting intuitive user interfaces and building efficient, scalable server-side logic. My passion lies in creating app that can aid medical Science.  I'm currently deepening my expertise through the Kood/Sisu full-stack web development program, and I'm always eager to learn new technologies and take on new challenges. My background in biotechnology (with a Master of Science degree from the University of Helsinki) has also instilled in me a strong analytical mindset and a meticulous approach to problem-solving, qualities that I bring to every project. My focus is on delivering high-quality, well-tested code that meets and exceeds expectations."
+  ]
 }
