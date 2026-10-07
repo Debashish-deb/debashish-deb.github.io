@@ -2,7 +2,8 @@
  * @traceability
  * Main client-side application controller for Debashish Deb's Portfolio.
  * Implements data-driven rendering, theme management, scroll-spy navigation,
- * and interactive modal workflows.
+ * project category filtering, architecture modals, live skill search,
+ * command palette (Cmd+K), citation copying, and interactive modal workflows.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=3');
+      const response = await fetch('data.json?v=4');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Clear loader and render the full seamless application
       app.innerHTML = '';
-      
+
       const header = renderHeader(portfolioData);
       const main = document.createElement('main');
       main.id = 'main-content';
@@ -54,9 +55,19 @@ document.addEventListener('DOMContentLoaded', () => {
       setupNavigationEvents();
       setupThemeToggle();
       setupScrollSpy();
+      setupScrollProgressBar();
+      setupBackToTop();
       setupFormHandler();
       setupResumeModal();
       setupSkillsObserver();
+      setupProjectFilters();
+      setupProjectModal(portfolioData);
+      setupSkillSearch();
+      setupCommandPalette(portfolioData);
+      setupTypewriterCycling();
+      setup3DTilt();
+      setupCitationButtons();
+      setupContactCopyButtons();
 
     } catch (error) {
       console.error('Initialization error:', error);
@@ -103,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderHeader
-   * Generates sticky glass navigation with brand monogram, responsive nav menu, resume CTA, and theme toggle.
+   * Generates sticky glass navigation with brand monogram, responsive nav menu, command palette trigger, resume CTA, and theme toggle.
    */
   function renderHeader(data) {
     const header = document.createElement('header');
@@ -131,6 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </nav>
 
         <div class="nav-actions">
+          <button id="cmd-palette-btn" class="nav-icon-btn" aria-label="Open command palette (Cmd+K)" title="Quick Command Palette (Cmd+K)">
+            <i class="fas fa-terminal" aria-hidden="true"></i>
+            <span class="kbd-badge">⌘K</span>
+          </button>
           <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle theme">
             ${activeTheme === 'dark-theme' ? '<i class="fas fa-sun" aria-hidden="true"></i>' : '<i class="fas fa-moon" aria-hidden="true"></i>'}
           </button>
@@ -149,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderHero
-   * Generates hero showcase spotlighting dual leadership & scientific expertise, call-to-actions, and updated portrait.
+   * Generates hero showcase spotlighting dual leadership & scientific expertise, call-to-actions, dynamic typing text, and 3D interactive portrait.
    */
   function renderHero(data) {
     const heroSection = document.createElement('section');
@@ -166,17 +181,25 @@ document.addEventListener('DOMContentLoaded', () => {
             <h1 class="hero-title">
               Hi, I'm <span class="gradient-text">${data.name}.</span>
             </h1>
-            <h2 class="hero-tagline">${data.tagline}</h2>
-            <p class="hero-description">${data.about}</p>
+            <div style="font-size: clamp(1.2rem, 2.5vw, 1.65rem); margin-bottom: 18px; color: var(--text-primary); font-weight: 500;">
+              <span>Focusing on </span>
+              <span class="hero-cycle-wrapper">
+                <span class="hero-cycle-text" id="hero-cycle-text">Executive Software Leadership</span>
+                <span class="cursor-blink">|</span>
+              </span>
+            </div>
+            <p class="hero-description" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 32px;">
+              ${data.about}
+            </p>
 
             <div class="hero-cta-group">
-              <a href="#leadership" class="btn btn-primary">
-                <span>View Leadership Roles</span>
+              <a href="#projects" class="btn btn-primary">
+                <span>Explore Projects</span>
                 <i class="fas fa-arrow-down" aria-hidden="true"></i>
               </a>
               <button class="btn btn-secondary trigger-resume-btn">
                 <i class="fas fa-file-invoice" aria-hidden="true"></i>
-                <span>View Full Resume</span>
+                <span>View Full CV</span>
               </button>
               <a href="#contact" class="btn btn-secondary">
                 <span>Get in Touch</span>
@@ -184,23 +207,26 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="hero-socials">
-              <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn Profile">
+              <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn Profile" title="LinkedIn">
                 <i class="fab fa-linkedin-in" aria-hidden="true"></i>
               </a>
-              <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile">
+              <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile" title="GitHub">
                 <i class="fab fa-github" aria-hidden="true"></i>
               </a>
-              <a href="mailto:${data.email}" class="hero-social-link" aria-label="Executive Email">
+              <a href="mailto:${data.email}" class="hero-social-link" aria-label="Executive Email" title="Email Infinite IT">
                 <i class="fas fa-envelope" aria-hidden="true"></i>
               </a>
-              <a href="https://infiniteitbd.com" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="Infinite IT">
+              <a href="https://infiniteitbd.com" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="Infinite IT" title="Infinite IT Portal">
                 <i class="fas fa-globe" aria-hidden="true"></i>
+              </a>
+              <a href="https://wa.me/358451600007" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="WhatsApp Direct" title="WhatsApp Chat">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
               </a>
             </div>
           </div>
 
           <div class="hero-visual-card">
-            <div class="avatar-wrapper">
+            <div class="avatar-wrapper" id="hero-avatar-wrapper">
               <img src="${data.profileImage}" alt="Debashish Deb portrait" class="avatar-image" loading="eager" />
               <div class="floating-chip chip-tech">
                 <div class="chip-icon"><i class="fas fa-briefcase"></i></div>
@@ -223,7 +249,15 @@ document.addEventListener('DOMContentLoaded', () => {
    * Renders an infinitely scrolling accent strip of key disciplines.
    */
   function renderMarquee() {
-    const items = ['CEO · Infinite IT', 'Full-Stack Engineering', 'Precision Oncology Data', 'Go · React · Flutter', 'University of Helsinki', 'CSC Scientific Computing'];
+    const items = [
+      'CEO · Infinite IT',
+      'Full-Stack Software Architecture',
+      'Precision Oncology Data Workflows',
+      'Next.js · Flutter · Go · Fastify',
+      'University of Helsinki',
+      'CSC Scientific Supercomputing',
+      'High-Impact Cancer Research'
+    ];
     const row = items.map(t => `<span>${t}</span><span aria-hidden="true">✦</span>`).join('');
     const el = document.createElement('div');
     el.className = 'marquee';
@@ -234,23 +268,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderCurrentRoles
-   * Generates a spotlight card section showcasing current primary roles: CEO at Infinite IT & IT Specialist at Farkkila Lab.
+   * Generates spotlight cards for current key positions: CEO at Infinite IT & IT Specialist at Farkkila Lab UH.
    */
   function renderCurrentRoles(data) {
     const section = document.createElement('section');
     section.id = 'leadership';
     section.className = 'section leadership-section';
     
-    const rolesHtml = (data.currentRoles || []).map(role => `
-      <div class="glass-card role-card" style="display:flex; flex-direction:column; justify-content:space-between; border-top: 3px solid var(--accent-primary);">
+    const rolesHtml = (data.currentRoles || []).map((role, idx) => `
+      <div class="glass-card role-card" style="display:flex; flex-direction:column; justify-content:space-between; border-top: 3px solid ${idx === 0 ? 'var(--accent-primary)' : '#60a5fa'};">
         <div>
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
             <span class="section-tag" style="margin-bottom:0;"><i class="fas fa-certificate"></i> ${role.period}</span>
-            <a href="${role.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" style="padding:4px 14px; font-size:0.8rem;">
-              <span>Visit Official Site</span> <i class="fas fa-external-link-alt"></i>
+            <a href="${role.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" style="padding:6px 14px; font-size:0.82rem;">
+              <span>Visit Portal</span> <i class="fas fa-external-link-alt" aria-hidden="true"></i>
             </a>
           </div>
-          <h3 style="font-size:1.45rem; margin-bottom:6px;">${role.role}</h3>
+          <h3 style="font-size:1.45rem; margin-bottom:6px; color:var(--text-primary);">${role.role}</h3>
           <h4 style="font-size:1.05rem; color:var(--accent-primary); margin-bottom:14px; font-weight:600;">${role.organization}</h4>
           <p style="font-size:0.95rem; line-height:1.7; color:var(--text-secondary);">${role.summary}</p>
         </div>
@@ -262,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-star"></i> Current Key Positions</span>
           <h2 class="section-title">Leadership & Institutional Affiliations</h2>
-          <p class="section-subtitle">Driving enterprise software development globally and powering translational precision oncology systems at University of Helsinki.</p>
+          <p class="section-subtitle">Driving enterprise software development globally and powering translational precision oncology computing at University of Helsinki.</p>
         </div>
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap:28px;">
           ${rolesHtml}
@@ -369,23 +403,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderProjects
-   * Generates interactive project cards with media previews, tag badges, and live GitHub links.
+   * Generates interactive project cards with category filtering, highlights, media previews, action links, and Architecture Specs modal trigger.
    */
   function renderProjects(data) {
     const section = document.createElement('section');
     section.id = 'projects';
     section.className = 'section projects-section';
 
-    const projectCards = (data.projects || []).map(p => {
+    const projectCards = (data.projects || []).map((p, index) => {
       const mediaMarkup = p.image 
         ? `<img src="${p.image}" alt="${p.name} preview" class="project-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
            <div class="project-media-fallback" style="display:none;"><i class="fas fa-code-branch fa-2x"></i><span>${p.name}</span></div>`
         : `<div class="project-media-fallback"><i class="fas fa-laptop-code fa-2x"></i><span>${p.name}</span></div>`;
 
       const tags = (p.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
+      
+      const highlightsHtml = (p.highlights || []).slice(0, 2).map(h => `
+        <li class="project-highlight-item">
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <span>${h}</span>
+        </li>
+      `).join('');
 
       return `
-        <article class="glass-card project-card">
+        <article class="glass-card project-card" data-category="${p.category || 'all'}" data-index="${index}">
           <div class="project-media">
             ${mediaMarkup}
             <span class="project-badge-pill">${p.badge || 'Engineering'}</span>
@@ -393,20 +434,25 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="project-content">
             <h3 class="project-title">${p.name}</h3>
             <p class="project-desc">${p.description}</p>
+            ${highlightsHtml ? `<ul class="project-highlights-list">${highlightsHtml}</ul>` : ''}
             <div class="tech-tags">${tags}</div>
-            <div class="project-links">
+            <div class="project-links" style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:16px;">
               ${p.github ? `
-                <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View GitHub repository">
                   <i class="fab fa-github" aria-hidden="true"></i>
-                  <span>Source Code</span>
+                  <span>Source</span>
                 </a>
               ` : ''}
               ${p.link && p.link !== '#' ? `
-                <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="Visit Live Application">
                   <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                  <span>Live App / Site</span>
+                  <span>Live App</span>
                 </a>
               ` : ''}
+              <button class="btn-specs trigger-project-specs" data-index="${index}" aria-label="View architecture specifications for ${p.name}">
+                <i class="fas fa-layer-group" aria-hidden="true"></i>
+                <span>Architecture</span>
+              </button>
             </div>
           </div>
         </article>
@@ -420,7 +466,18 @@ document.addEventListener('DOMContentLoaded', () => {
           <h2 class="section-title">Featured Projects & Systems</h2>
           <p class="section-subtitle">Real-world systems spanning enterprise offshore delivery, scientific platforms, concurrent graph algorithms, and mobile applications.</p>
         </div>
-        <div class="projects-grid">
+
+        <!-- Category Filter Tabs -->
+        <div class="project-filters" id="project-filters" role="tablist" aria-label="Filter projects by category">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Systems (${data.projects.length})</button>
+          <button class="filter-btn" data-filter="enterprise" role="tab" aria-selected="false">Enterprise & Cloud</button>
+          <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">Mobile & Flutter</button>
+          <button class="filter-btn" data-filter="systems" role="tab" aria-selected="false">Biomedical Systems</button>
+          <button class="filter-btn" data-filter="algorithms" role="tab" aria-selected="false">Algorithms & Go</button>
+          <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web & Apps</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
           ${projectCards}
         </div>
       </div>
@@ -430,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderSkills
-   * Generates categorized skills matrix (Executive Leadership, Software Engineering, Scientific Computing, Industrial Quality).
+   * Generates categorized skills matrix with live search bar and level indicators.
    */
   function renderSkills(data) {
     const section = document.createElement('section');
@@ -439,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const categoriesHtml = (data.skillCategories || []).map(cat => {
       const itemsHtml = cat.items.map(item => `
-        <div class="skill-item">
+        <div class="skill-item" data-skill="${item.name.toLowerCase()}">
           <div class="skill-meta">
             <span>${item.name}</span>
             <span>${item.level}%</span>
@@ -451,7 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
 
       return `
-        <div class="glass-card skill-category-card">
+        <div class="glass-card skill-category-card" data-category-title="${cat.category.toLowerCase()}">
           <h3 class="category-title">
             <i class="fas ${cat.icon} category-icon" aria-hidden="true"></i>
             <span>${cat.category}</span>
@@ -470,7 +527,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <h2 class="section-title">Technical & Executive Skills Matrix</h2>
           <p class="section-subtitle">A multidisciplinary toolkit combining executive governance, modern web engineering, and high-throughput biomedical computing.</p>
         </div>
-        <div class="skills-container">
+
+        <!-- Live Skill Search Bar -->
+        <div class="skill-search-wrapper">
+          <i class="fas fa-search skill-search-icon" aria-hidden="true"></i>
+          <input type="text" id="skill-search-input" class="skill-search-input" placeholder="Search skills (e.g. Go, React, CSC, Flutter, Docker)..." aria-label="Search skills" />
+        </div>
+
+        <div class="skills-container" id="skills-container">
           ${categoriesHtml}
         </div>
       </div>
@@ -528,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderEducationAndResearch
-   * Generates education credentials and scientific peer-reviewed publications.
+   * Generates education credentials and scientific peer-reviewed publications with 1-click citation copy.
    */
   function renderEducationAndResearch(data) {
     const section = document.createElement('section');
@@ -544,18 +608,26 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `).join('');
 
-    const pubHtml = (data.achievements || []).map(pub => `
+    const pubHtml = (data.achievements || []).map((pub, idx) => `
       <div class="glass-card pub-card">
         <h3 class="pub-title">${pub.title}</h3>
         <div class="pub-journal">${pub.journal}</div>
         <div class="pub-authors">${pub.authors}</div>
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:14px;">
           <span class="pub-badge"><i class="fas fa-award"></i> ${pub.highlight}</span>
-          ${pub.link ? `
-            <a href="${pub.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" style="padding:4px 12px; font-size:0.8rem;">
-              <i class="fas fa-external-link-alt"></i> View Paper
-            </a>
-          ` : ''}
+          <div style="display:flex; align-items:center; gap:8px;">
+            ${pub.citation ? `
+              <button class="btn-citation copy-citation-btn" data-citation="${encodeURIComponent(pub.citation)}" aria-label="Copy APA citation for ${pub.title}">
+                <i class="fas fa-quote-left" aria-hidden="true"></i>
+                <span>Copy Citation</span>
+              </button>
+            ` : ''}
+            ${pub.link ? `
+              <a href="${pub.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" style="padding:4px 12px; font-size:0.8rem;">
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Paper
+              </a>
+            ` : ''}
+          </div>
         </div>
       </div>
     `).join('');
@@ -629,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderContact
-   * Generates contact methods and functional message form.
+   * Generates contact methods with 1-click copy actions and functional message form.
    */
   function renderContact(data) {
     const section = document.createElement('section');
@@ -646,32 +718,46 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="contact-grid">
           <div class="glass-card">
             <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Direct Connectivity</h3>
-            <p>Based in Helsinki & Kuopio, Finland. Serving international clients and research partners.</p>
+            <p style="margin-bottom: 20px;">Based in Helsinki & Kuopio, Finland. Serving international clients and research partners.</p>
 
             <div class="contact-info-list">
-              <a href="mailto:${data.email}" class="contact-item">
+              <div class="contact-item">
                 <div class="contact-icon-box"><i class="fas fa-building"></i></div>
-                <div>
+                <div style="flex:1;">
                   <div class="contact-label">Corporate Email (Infinite IT)</div>
                   <div class="contact-val">${data.email}</div>
+                  <button class="copy-pill-btn copy-email-btn" data-email="${data.email}">
+                    <i class="far fa-copy" aria-hidden="true"></i> Copy Email
+                  </button>
                 </div>
-              </a>
+              </div>
 
-              <a href="mailto:${data.academicEmail}" class="contact-item">
+              <div class="contact-item">
                 <div class="contact-icon-box"><i class="fas fa-university"></i></div>
-                <div>
+                <div style="flex:1;">
                   <div class="contact-label">Academic Email (University of Helsinki)</div>
                   <div class="contact-val">${data.academicEmail}</div>
+                  <button class="copy-pill-btn copy-email-btn" data-email="${data.academicEmail}">
+                    <i class="far fa-copy" aria-hidden="true"></i> Copy Academic
+                  </button>
                 </div>
-              </a>
+              </div>
 
-              <a href="tel:${data.phone}" class="contact-item">
+              <div class="contact-item">
                 <div class="contact-icon-box"><i class="fas fa-phone"></i></div>
-                <div>
+                <div style="flex:1;">
                   <div class="contact-label">Direct Phone / WhatsApp</div>
                   <div class="contact-val">${data.phone}</div>
+                  <div style="display:flex; gap:8px; margin-top:4px;">
+                    <button class="copy-pill-btn copy-phone-btn" data-phone="${data.phone}">
+                      <i class="far fa-copy" aria-hidden="true"></i> Copy Phone
+                    </button>
+                    <a href="https://wa.me/358451600007" target="_blank" rel="noopener noreferrer" class="copy-pill-btn" style="text-decoration:none;">
+                      <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+                    </a>
+                  </div>
                 </div>
-              </a>
+              </div>
 
               <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item">
                 <div class="contact-icon-box"><i class="fab fa-linkedin-in"></i></div>
@@ -723,7 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderFooter
-   * Generates clean modern footer with credits and back-to-top button.
+   * Generates clean modern footer with credits, affiliation links, and back-to-top trigger.
    */
   function renderFooter(data) {
     const footer = document.createElement('footer');
@@ -733,7 +819,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="footer-copy">
           Designed & Engineered with scientific precision by <strong>${data.name}</strong> • ${new Date().getFullYear()}
         </p>
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 8px;">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">
           CEO at <a href="https://infiniteitbd.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">Infinite IT</a> • IT Specialist at <a href="https://farkkilab.org" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">Färkkilä Laboratory, University of Helsinki</a>
         </p>
       </div>
@@ -883,7 +969,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability setupResumeModal
-   * Hooks up triggers and esc keys for resume modal preview.
+   * Hooks up triggers and escape key for resume modal preview.
    */
   function setupResumeModal() {
     const modal = document.getElementById('resume-modal');
@@ -920,6 +1006,491 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal();
       }
     });
+  }
+
+  /**
+   * @traceability setupScrollProgressBar
+   * Tracks window scroll and updates the top gradient progress bar.
+   */
+  function setupScrollProgressBar() {
+    const progressBar = document.getElementById('scroll-progress-bar');
+    if (!progressBar) return;
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = `${progress}%`;
+    }, { passive: true });
+  }
+
+  /**
+   * @traceability setupBackToTop
+   * Manages back-to-top button appearance and smooth click handler.
+   */
+  function setupBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        btn.classList.add('visible');
+      } else {
+        btn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /**
+   * @traceability setupProjectFilters
+   * Enables interactive category filtering on the projects grid.
+   */
+  function setupProjectFilters() {
+    const filterBtns = document.querySelectorAll('#project-filters .filter-btn');
+    const cards = document.querySelectorAll('#projects-grid .project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const filter = btn.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'flex';
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  /**
+   * @traceability setupProjectModal
+   * Displays modal with architecture specifications and highlights when Architecture button is clicked.
+   */
+  function setupProjectModal(data) {
+    const modal = document.getElementById('project-modal');
+    if (!modal) return;
+
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('.trigger-project-specs');
+      if (trigger) {
+        const index = parseInt(trigger.getAttribute('data-index'), 10);
+        const project = data.projects[index];
+        if (!project) return;
+
+        const highlightsList = (project.highlights || []).map(h => `
+          <li class="specs-list-item">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span>${h}</span>
+          </li>
+        `).join('');
+
+        const techTags = (project.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
+
+        modal.innerHTML = `
+          <div class="specs-modal-window">
+            <div class="specs-header">
+              <div>
+                <span class="project-badge-pill" style="margin-bottom:8px; display:inline-block;">${project.badge || 'Engineering'}</span>
+                <h3 class="specs-title">${project.name}</h3>
+                <p style="font-size:0.92rem; color:var(--text-secondary);">${project.description}</p>
+              </div>
+              <button class="modal-close-btn" id="specs-close-btn" aria-label="Close specifications modal">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <div class="specs-body">
+              <h4 class="specs-section-title"><i class="fas fa-microchip"></i> System Architecture Highlights</h4>
+              <ul class="specs-list">
+                ${highlightsList}
+              </ul>
+
+              <h4 class="specs-section-title"><i class="fas fa-code"></i> Technology Stack</h4>
+              <div class="tech-tags" style="margin-bottom:20px;">${techTags}</div>
+
+              <div style="display:flex; gap:12px; margin-top:24px; padding-top:16px; border-top:1px solid var(--border-subtle);">
+                ${project.link ? `
+                  <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                    <i class="fas fa-external-link-alt"></i> <span>Launch Application</span>
+                  </a>
+                ` : ''}
+                ${project.github ? `
+                  <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                    <i class="fab fa-github"></i> <span>View Source Code</span>
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        const closeBtn = document.getElementById('specs-close-btn');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+          });
+        }
+      }
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  /**
+   * @traceability setupSkillSearch
+   * Filters skill cards and items in real time as the user types.
+   */
+  function setupSkillSearch() {
+    const input = document.getElementById('skill-search-input');
+    if (!input) return;
+
+    input.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      const categories = document.querySelectorAll('#skills-container .skill-category-card');
+
+      categories.forEach(cat => {
+        const items = cat.querySelectorAll('.skill-item');
+        let hasMatch = false;
+
+        items.forEach(item => {
+          const skillName = item.getAttribute('data-skill') || '';
+          if (!query || skillName.includes(query)) {
+            item.style.display = 'block';
+            hasMatch = true;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        // Show/hide category card based on whether any item matches
+        if (hasMatch) {
+          cat.style.display = 'block';
+        } else {
+          cat.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  /**
+   * @traceability setupCommandPalette
+   * Provides Cmd+K / Ctrl+K interactive command palette for lightning-fast site navigation and actions.
+   */
+  function setupCommandPalette(data) {
+    const modal = document.getElementById('cmd-palette');
+    const triggerBtn = document.getElementById('cmd-palette-btn');
+    if (!modal) return;
+
+    const commands = [
+      { title: 'Current Key Positions', icon: 'fa-star', type: 'Section', action: () => scrollToSection('leadership') },
+      { title: 'Executive & Scientific Profile', icon: 'fa-user', type: 'Section', action: () => scrollToSection('about') },
+      { title: 'Featured Projects & Systems', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
+      { title: 'Technical Skills Matrix', icon: 'fa-microchip', type: 'Section', action: () => scrollToSection('skills') },
+      { title: 'Career Timeline', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
+      { title: 'Peer-Reviewed Publications', icon: 'fa-graduation-cap', type: 'Section', action: () => scrollToSection('publications') },
+      { title: 'Contact & Collaboration', icon: 'fa-paper-plane', type: 'Section', action: () => scrollToSection('contact') },
+      { title: 'View / Print Full Resume (CV)', icon: 'fa-file-lines', type: 'Action', action: () => {
+        closeCmd();
+        const resumeBtn = document.getElementById('nav-resume-btn');
+        if (resumeBtn) resumeBtn.click();
+      }},
+      { title: 'Toggle Theme (Dark / Light)', icon: 'fa-circle-half-stroke', type: 'Action', action: () => {
+        applyTheme(activeTheme === 'dark-theme' ? 'light-theme' : 'dark-theme');
+        showToast(`Switched to ${activeTheme === 'dark-theme' ? 'Dark' : 'Light'} mode`);
+      }},
+      { title: 'Copy Corporate Email', icon: 'fa-copy', type: 'Copy', action: () => copyToClipboard(data.email, 'Copied corporate email!') },
+      { title: 'Visit Infinite IT Official Portal', icon: 'fa-arrow-up-right-from-square', type: 'External', action: () => window.open(data.companyWebsite, '_blank') },
+      { title: 'Visit Färkkilä Laboratory (UH)', icon: 'fa-dna', type: 'External', action: () => window.open(data.labWebsite, '_blank') }
+    ];
+
+    function openCmd() {
+      modal.innerHTML = `
+        <div class="cmd-palette-window">
+          <div class="cmd-search-box">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" class="cmd-input" id="cmd-input-field" placeholder="Type a command, jump to section, or search..." autocomplete="off" />
+            <span class="kbd-badge">ESC to close</span>
+          </div>
+          <ul class="cmd-list" id="cmd-list"></ul>
+          <div class="cmd-footer">
+            <span>Navigation: ↑ ↓ to select, ENTER to run</span>
+            <span>Antigravity Engine</span>
+          </div>
+        </div>
+      `;
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      const input = document.getElementById('cmd-input-field');
+      const list = document.getElementById('cmd-list');
+
+      function renderItems(filter = '') {
+        const filtered = commands.filter(c => c.title.toLowerCase().includes(filter.toLowerCase()));
+        list.innerHTML = filtered.map((c, i) => `
+          <li class="cmd-item ${i === 0 ? 'selected' : ''}" data-cmd-index="${i}">
+            <div class="cmd-item-left">
+              <i class="fas ${c.icon}" aria-hidden="true"></i>
+              <span>${c.title}</span>
+            </div>
+            <span class="cmd-badge">${c.type}</span>
+          </li>
+        `).join('');
+
+        // Click handler
+        list.querySelectorAll('.cmd-item').forEach((item, i) => {
+          item.addEventListener('click', () => {
+            filtered[i].action();
+            closeCmd();
+          });
+        });
+      }
+
+      renderItems();
+      input.focus();
+
+      input.addEventListener('input', (e) => {
+        renderItems(e.target.value);
+      });
+
+      // Keyboard arrow navigation
+      input.addEventListener('keydown', (e) => {
+        const items = list.querySelectorAll('.cmd-item');
+        const selected = list.querySelector('.cmd-item.selected');
+        let index = Array.from(items).indexOf(selected);
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (items.length > 0) {
+            if (selected) selected.classList.remove('selected');
+            index = (index + 1) % items.length;
+            items[index].classList.add('selected');
+            items[index].scrollIntoView({ block: 'nearest' });
+          }
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (items.length > 0) {
+            if (selected) selected.classList.remove('selected');
+            index = (index - 1 + items.length) % items.length;
+            items[index].classList.add('selected');
+            items[index].scrollIntoView({ block: 'nearest' });
+          }
+        } else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (selected) {
+            const query = input.value;
+            const filtered = commands.filter(c => c.title.toLowerCase().includes(query.toLowerCase()));
+            if (filtered[index]) {
+              filtered[index].action();
+              closeCmd();
+            }
+          }
+        }
+      });
+    }
+
+    function closeCmd() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function scrollToSection(id) {
+      closeCmd();
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    if (triggerBtn) triggerBtn.addEventListener('click', openCmd);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeCmd();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        if (modal.classList.contains('active')) {
+          closeCmd();
+        } else {
+          openCmd();
+        }
+      } else if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeCmd();
+      }
+    });
+  }
+
+  /**
+   * @traceability setupTypewriterCycling
+   * Cycles key focus areas in the hero headline with smooth cursor animation.
+   */
+  function setupTypewriterCycling() {
+    const el = document.getElementById('hero-cycle-text');
+    if (!el) return;
+
+    const phrases = [
+      'Executive Software Leadership',
+      'Full-Stack Software Architecture',
+      'CSC Supercomputing & Precision Oncology',
+      'Mobile Apps & Flutter Ecosystems',
+      'High-Throughput Biomedical Systems'
+    ];
+
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+
+    function tick() {
+      const current = phrases[phraseIdx];
+      if (isDeleting) {
+        charIdx--;
+        el.textContent = current.substring(0, charIdx);
+      } else {
+        charIdx++;
+        el.textContent = current.substring(0, charIdx);
+      }
+
+      let speed = isDeleting ? 40 : 80;
+
+      if (!isDeleting && charIdx === current.length) {
+        speed = 2200; // Pause at end of phrase
+        isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+        speed = 400; // Brief pause before typing next
+      }
+
+      setTimeout(tick, speed);
+    }
+
+    setTimeout(tick, 1000);
+  }
+
+  /**
+   * @traceability setup3DTilt
+   * Applies subtle 3D perspective tilt to the hero avatar card on mouse hover.
+   */
+  function setup3DTilt() {
+    const card = document.getElementById('hero-avatar-wrapper');
+    if (!card) return;
+
+    // Skip if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const rotateX = (-y / rect.height) * 10;
+      const rotateY = (x / rect.width) * 10;
+
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
+  }
+
+  /**
+   * @traceability setupCitationButtons
+   * Enables 1-click citation copy for peer-reviewed research papers.
+   */
+  function setupCitationButtons() {
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-citation-btn');
+      if (btn) {
+        const citation = decodeURIComponent(btn.getAttribute('data-citation') || '');
+        if (citation) {
+          copyToClipboard(citation, 'Citation copied in APA format!');
+        }
+      }
+    });
+  }
+
+  /**
+   * @traceability setupContactCopyButtons
+   * Adds quick copy triggers for email and phone numbers in the contact section.
+   */
+  function setupContactCopyButtons() {
+    document.addEventListener('click', (e) => {
+      const emailBtn = e.target.closest('.copy-email-btn');
+      if (emailBtn) {
+        const email = emailBtn.getAttribute('data-email');
+        if (email) copyToClipboard(email, `Copied email: ${email}`);
+      }
+
+      const phoneBtn = e.target.closest('.copy-phone-btn');
+      if (phoneBtn) {
+        const phone = phoneBtn.getAttribute('data-phone');
+        if (phone) copyToClipboard(phone, `Copied phone: ${phone}`);
+      }
+    });
+  }
+
+  /**
+   * @traceability copyToClipboard
+   * Helper that writes text to system clipboard with fallback and toast feedback.
+   */
+  function copyToClipboard(text, message) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(message || 'Copied to clipboard!');
+      }).catch(() => {
+        fallbackCopy(text, message);
+      });
+    } else {
+      fallbackCopy(text, message);
+    }
+  }
+
+  function fallbackCopy(text, message) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast(message || 'Copied to clipboard!');
+    } catch (e) {
+      showToast('Could not copy automatically.');
+    }
+    document.body.removeChild(ta);
   }
 
   /**

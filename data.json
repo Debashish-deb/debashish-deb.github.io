@@ -86,71 +86,113 @@
     {
       "name": "Infinite IT Digital Ecosystem & Workspace",
       "badge": "Enterprise Platform",
+      "category": "enterprise",
       "link": "https://infiniteitbd.com",
       "github": "",
       "image": "infiniteit-workspace.webp",
       "description": "Executive architecture and product engineering for Infinite IT's corporate platforms, client workspace systems, and offshore engineering operations. Delivers high-performance Next.js web applications, scalable cloud infrastructure, and AI-assisted workflow automation.",
       "technologies": ["Next.js", "TypeScript", "FastAPI", "Offshore Architecture", "Cloud Hosting"],
+      "highlights": [
+        "Architected scalable offshore delivery model for North American and European enterprise clients",
+        "Automated continuous integration and zero-downtime deployment workflows",
+        "Built modular UI component library and secure client workspace dashboards"
+      ],
       "includeInResume": true
     },
     {
       "name": "InfiniteScan",
       "badge": "Flutter Utility / OCR",
+      "category": "mobile",
       "link": "https://infiniteitbd.com/apps",
       "github": "",
       "image": "infinitescan.webp",
       "description": "Privacy-first Android utility app engineered in Flutter. Features on-device ML Kit barcode & QR code recognition, zero-account architecture, bilingual Bangla/English interface, Tesseract OCR document extraction, and local SQLite history with zero third-party tracking.",
       "technologies": ["Flutter", "Dart", "Google ML Kit", "Tesseract OCR", "SQLite", "CameraX"],
+      "highlights": [
+        "100% on-device ML inference with zero telemetry or network data leakage",
+        "Sub-100ms real-time barcode scanning with auto-focus and low-light flashlight toggle",
+        "Bilingual localization (Bangla & English) and offline SQLite scan history export"
+      ],
       "includeInResume": true
     },
     {
       "name": "BDNewsReader",
       "badge": "News Platform / TTS",
+      "category": "mobile",
       "link": "https://infiniteitbd.com/projects/bdnewsreader",
       "github": "https://github.com/Debashish-deb/droid-news-server",
       "image": "bdnewsreader.webp",
       "description": "Bilingual news aggregation and reader platform built with Flutter, Riverpod, and a self-hosted Fastify backend. Features native article formatting, offline caching via Drift/SQLite, official YouTube Live TV streaming (IFrame integration), and bilingual Bangla/English text-to-speech audio narration.",
       "technologies": ["Flutter", "Riverpod", "Fastify Backend", "Bangla TTS", "Drift / SQLite", "Firebase"],
+      "highlights": [
+        "Self-hosted Fastify backend scraping and caching verified news streams",
+        "Bilingual text-to-speech audio engine for automated article playback",
+        "Offline-first Drift ORM persistence with background periodic syncing"
+      ],
       "includeInResume": true
     },
     {
       "name": "Färkkilä Lab Infrastructure & Systems",
       "badge": "Biomedical Systems",
+      "category": "systems",
       "link": "https://farkkilab.org",
       "github": "",
       "image": "farkkila-deb.webp",
       "description": "Coordinating Finnish CSC scientific computing services, relational research databases, and public web platforms for precision oncology and spatial multi-omics at Biomedicum Helsinki.",
       "technologies": ["CSC Scientific Services", "Research Databases", "Web Infrastructure", "Data Pipelines"],
+      "highlights": [
+        "High-performance computing coordination for spatial multi-omics pipelines",
+        "Clinical registry and patient specimen tracking database architecture",
+        "Web platform development and high-availability scientific data portals"
+      ],
       "includeInResume": true
     },
     {
       "name": "Stations-Pathfinder",
       "badge": "Algorithms / Go",
+      "category": "algorithms",
       "link": "https://github.com/Debashish-deb/Stations-Pathfinder",
       "github": "https://github.com/Debashish-deb/Stations-Pathfinder",
       "image": "cars.jpg",
       "description": "Graph routing engine written in Golang that calculates optimal collision-free paths for concurrent trains moving across dynamic railway track topologies with turn-based orchestration.",
       "technologies": ["Go", "Graph Theory", "Pathfinding Algorithms", "CLI"],
+      "highlights": [
+        "Concurrent turn-based simulation with dynamic collision avoidance",
+        "Algorithmic graph traversal finding Pareto-optimal transit solutions",
+        "Strict Go memory constraints and high-throughput benchmark tests"
+      ],
       "includeInResume": true
     },
     {
       "name": "Art-Interface",
       "badge": "Web / Go Tool",
+      "category": "web",
       "link": "https://github.com/Debashish-deb/Art-interface",
       "github": "https://github.com/Debashish-deb/Art-interface",
       "image": "match-make.jpg",
       "description": "Interactive web application and decoding engine in Golang enabling users to transform, parse, and render ASCII art through an intuitive browser interface.",
       "technologies": ["Go", "HTTP Server", "ASCII Art Engine", "HTML/CSS"],
+      "highlights": [
+        "Custom ASCII font parser and rasterizer written in Go standard library",
+        "Real-time client-side preview with responsive export options",
+        "Zero-dependency lightweight binary deployment"
+      ],
       "includeInResume": true
     },
     {
       "name": "Personal Portfolio & Showcase",
       "badge": "Interactive Web",
+      "category": "web",
       "link": "https://debashish-deb.github.io",
       "github": "https://github.com/Debashish-deb/debashish-deb.github.io",
       "image": "portfolio.jpg",
-      "description": "Linear-grade modern portfolio with dark/light theming, seamless interactive views, responsive glassmorphism UI, and built-in interactive resume generation.",
+      "description": "Linear-grade modern portfolio with dark/light theming, seamless interactive views, responsive glassmorphism UI, command palette, and built-in interactive resume generation.",
       "technologies": ["JavaScript (ES6+)", "CSS3 Design System", "HTML5", "Responsive A11y"],
+      "highlights": [
+        "100/100 Lighthouse performance with zero external runtime bundle",
+        "Dynamic theme switching with automatic system preference detection",
+        "Command palette (Cmd+K) and interactive filtered views"
+      ],
       "includeInResume": true
     }
   ],
@@ -284,6 +326,7 @@
       "authors": "Kuusanmäki H, Leppä AM, Pölönen P, Deb D, et al.",
       "link": "https://pubmed.ncbi.nlm.nih.gov/31197071/",
       "highlight": "High-impact oncology research in haematological malignancies",
+      "citation": "Kuusanmäki, H., Leppä, A. M., Pölönen, P., Deb, D., et al. (2020). Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukaemia. Haematologica, 105(3), 708–720.",
       "includeInResume": true
     },
     {
@@ -292,6 +335,7 @@
       "authors": "Kuusanmäki H, Leppä AM, Deb D, Heckman CA",
       "link": "https://ashpublications.org/blood/article/128/22/2755/98292",
       "highlight": "American Society of Hematology (ASH) Annual Meeting presentation",
+      "citation": "Kuusanmäki, H., Leppä, A. M., Deb, D., & Heckman, C. A. (2016). A High-Throughput Biology Approach to Identify Novel Therapies Specifically Targeting AML Blasts and Leukemic Stem Cells. Blood, 128(22), 2755.",
       "includeInResume": true
     },
     {
@@ -300,6 +344,7 @@
       "authors": "Deb D, Dev S, Das AK, et al.",
       "link": "http://www.latamjpharm.org",
       "highlight": "Natural product pharmacology & ethnobotanical evaluation",
+      "citation": "Deb, D., Dev, S., Das, A. K., et al. (2010). Antinociceptive, Anti-inflammatory and Anti-diarrheal Activities of the Hydroalcoholic Extract of Lasia spinosa Linn. (Araceae) Roots. Latin American Journal of Pharmacy, 29(8), 1269–1276.",
       "includeInResume": true
     }
   ],

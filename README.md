@@ -8,12 +8,16 @@ Deployed live at: [https://debashish-deb.github.io](https://debashish-deb.github
 
 ## 🌟 Highlights & Features
 
-- **Apple / Linear Design System**: Refined aesthetic featuring dynamic ambient mesh radial glows, glassmorphism (`backdrop-filter`), and a 4px tokenized layout scale.
-- **Multidisciplinary Storytelling**: Showcases dual expertise across Full-Stack Web Development (Go, React, Node.js, Flutter) and Molecular Biotechnology (University of Helsinki M.Sc. and published cancer oncology researcher at FIMM).
-- **Responsive & Accessible**: Strict mobile-first architecture, skip navigation links, high-contrast dark/light modes, keyboard-navigable dialogs, and minimum 44px touch targets.
-- **Dynamic Content Architecture**: Zero-build runtime powered by pure Vanilla ES6+ and `data.json` for lightning-fast loading and instant updates.
+- **Apple / Linear Design System**: Refined aesthetic featuring dynamic ambient mesh radial glows, glassmorphism (`backdrop-filter`), 3D perspective mouse tilt, dynamic focus area typing, and a 4px tokenized layout scale.
+- **Executive Leadership & Biotech Profile**: Showcases dual expertise as Chief Executive Officer of Infinite IT and IT Specialist at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki).
+- **Interactive Command Palette (`Cmd+K`)**: Modal keyboard-driven command palette allowing rapid search, section jumps, theme toggle, and external portal shortcuts.
+- **Projects Showcase with Category Filtering & Architecture Modal**: Instant filtering (Enterprise, Mobile, Biomedical, Algorithms, Web) and a dedicated Architecture Specs drawer detailing system design highlights and trade-offs.
+- **Real-Time Skill Search**: Instant search input filtering categorized technical, executive, and scientific capabilities.
+- **1-Click APA Citation Copying**: High-impact peer-reviewed cancer publications (*Haematologica*, *Blood*) with instant citation copying to clipboard.
+- **Direct Connectivity**: 1-click email and phone copying, direct WhatsApp chat, and Formspree async contact form.
+- **Responsive & Accessible**: Strict mobile-first architecture, scroll reading progress bar, floating back-to-top button, skip navigation links, high-contrast dark/light modes, keyboard-navigable dialogs, and minimum 44px touch targets.
+- **Dynamic Content Architecture**: Zero-build runtime powered by pure Vanilla ES6+ and `data.json` for lightning-fast loading (<0.3s) and 100/100 Lighthouse performance.
 - **Print-Ready Curriculum Vitae Modal**: In-browser resume viewer with instant print / save-to-PDF formatting.
-- **Interactive Contact Form**: Direct integration with Formspree and social connectivity badges.
 
 ---
 
