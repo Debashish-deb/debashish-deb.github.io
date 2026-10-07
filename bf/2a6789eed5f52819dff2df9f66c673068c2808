@@ -1,0 +1,19 @@
+data.json
+  s_f22797140e1019::t_917d9a248d24b1 26-147
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "bf2a6789eed5f52819dff2df9f66c673068c2808",
+  "prompts": {},
+  "sessions": {
+    "s_f22797140e1019": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a11653-1094-7ed3-99d7-03753d43d54a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "debashishdeb1 <debashish.deb101@outlook.com>"
+    }
+  }
+}
