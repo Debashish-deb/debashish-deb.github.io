@@ -9,6 +9,8 @@
 | `renderHero(data)` | `script.js` | `initApp()` | Renders hero showcase with status pill, dynamic focus area typing, 3D interactive tilt avatar, and social links |
 | `renderMarquee()` | `script.js` | `initApp()` | Generates infinite horizontal ticker of core disciplines and institutions |
 | `renderCurrentRoles(data)` | `script.js` | `initApp()` | Spotlights current executive roles at Infinite IT and Färkkilä Laboratory (University of Helsinki) |
+| `renderFreelanceServices(data)` | `script.js` | `initApp()` | Generates freelance and consulting service offerings with deliverables checklist and engagement packages |
+| `renderFreelanceProcess(data)` | `script.js` | `initApp()` | Generates 4-step transparent delivery methodology & quality guarantee roadmap |
 | `renderAbout(data)` | `script.js` | `initApp()` | Renders comprehensive bio narrative, metric counters, and 3 multidisciplinary pillars |
 | `renderProjects(data)` | `script.js` | `initApp()` | Renders project cards with category tabs, highlights, links, and Architecture Specs triggers |
 | `renderSkills(data)` | `script.js` | `initApp()` | Renders categorized skill matrix with real-time search bar and animated level bars |
@@ -30,6 +32,7 @@
 | `setup3DTilt()` | `script.js` | `initApp()` | Provides subtle 3D perspective mouse tilt on hero portrait wrapper |
 | `setupCitationButtons()` | `script.js` | `initApp()` | Copies formatted APA research paper citations to clipboard with instant toast |
 | `setupContactCopyButtons()` | `script.js` | `initApp()` | Handles 1-click copy for corporate email, academic email, and phone number |
+| `setupServiceSelectButtons()` | `script.js` | `initApp()` | Auto-populates contact form and scrolls smoothly when inquiring for a service or package |
 | `copyToClipboard(text, message)` | `script.js` | Multiple callers | Copies string to navigator.clipboard with fallback and toast feedback |
 | `setupScrollSpy()` | `script.js` | `initApp()` | Uses IntersectionObserver to update active navigation links during scroll |
 | `setupSkillsObserver()` | `script.js` | `initApp()` | Animates skill level bars when scrolled into viewport |

@@ -8,14 +8,16 @@ Deployed live at: [https://debashish-deb.github.io](https://debashish-deb.github
 
 ## 🌟 Highlights & Features
 
-- **Apple / Linear Design System**: Refined aesthetic featuring dynamic ambient mesh radial glows, glassmorphism (`backdrop-filter`), 3D perspective mouse tilt, dynamic focus area typing, and a 4px tokenized layout scale.
+- **Freelance & Advisory Suite**: Comprehensive client services covering Full-Stack Web & SaaS Architecture, Cross-Platform Mobile Apps (Flutter), Biomedical & Research Data Systems, and Fractional CTO Direction.
+- **Transparent Delivery Methodology**: 4-step execution framework (Discovery Blueprint, Agile Sprints, Rigorous QA under Finnish industrial standards, and 30-Day Post-Launch Warranty).
+- **Flexible Engagement Packages**: Clear options for startups and scale-ups (Product MVP Sprint, Fractional Technical Lead Retainer, Architecture & Code Audit).
+- **Project Inquiry & Direct Booking**: Built-in interactive inquiry form with service type and timeline selectors, alongside 1-click WhatsApp discovery booking.
 - **Executive Leadership & Biotech Profile**: Showcases dual expertise as Chief Executive Officer of Infinite IT and IT Specialist at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki).
 - **Interactive Command Palette (`Cmd+K`)**: Modal keyboard-driven command palette allowing rapid search, section jumps, theme toggle, and external portal shortcuts.
 - **Projects Showcase with Category Filtering & Architecture Modal**: Instant filtering (Enterprise, Mobile, Biomedical, Algorithms, Web) and a dedicated Architecture Specs drawer detailing system design highlights and trade-offs.
 - **Real-Time Skill Search**: Instant search input filtering categorized technical, executive, and scientific capabilities.
 - **1-Click APA Citation Copying**: High-impact peer-reviewed cancer publications (*Haematologica*, *Blood*) with instant citation copying to clipboard.
-- **Direct Connectivity**: 1-click email and phone copying, direct WhatsApp chat, and Formspree async contact form.
-- **Responsive & Accessible**: Strict mobile-first architecture, scroll reading progress bar, floating back-to-top button, skip navigation links, high-contrast dark/light modes, keyboard-navigable dialogs, and minimum 44px touch targets.
+- **Responsive & Accessible (Apple/Linear Grade)**: Strict mobile-first architecture, scroll reading progress bar, floating back-to-top button, skip navigation links, high-contrast dark/light modes, keyboard-navigable dialogs, and minimum 44px touch targets.
 - **Dynamic Content Architecture**: Zero-build runtime powered by pure Vanilla ES6+ and `data.json` for lightning-fast loading (<0.3s) and 100/100 Lighthouse performance.
 - **Print-Ready Curriculum Vitae Modal**: In-browser resume viewer with instant print / save-to-PDF formatting.
 

@@ -23,6 +23,128 @@
     { "label": "Academic Publications", "value": "3+ High-Impact" },
     { "label": "Scientific Background", "value": "M.Sc. Biotech" }
   ],
+  "freelanceAvailability": "Available for Select Client Projects & Fractional Advisory (Q4 2026)",
+  "freelanceServices": [
+    {
+      "id": "web-saas",
+      "title": "Full-Stack Web & SaaS Architecture",
+      "badge": "Web Platforms",
+      "icon": "fa-layer-group",
+      "description": "Architecting and delivering production-ready web applications, responsive customer portals, and microservices backends with sub-second performance.",
+      "deliverables": [
+        "Production Next.js, React, and Go/Fastify application code",
+        "Type-safe REST & GraphQL APIs with PostgreSQL/SQLite persistence",
+        "Automated CI/CD pipelines, Docker containerization, and cloud deployment",
+        "100/100 Core Web Vitals optimization and responsive accessibility"
+      ],
+      "technologies": ["Next.js", "React", "TypeScript", "Go (Golang)", "Fastify", "PostgreSQL", "Docker"]
+    },
+    {
+      "id": "mobile-apps",
+      "title": "Cross-Platform Mobile Apps (Flutter)",
+      "badge": "Mobile Engineering",
+      "icon": "fa-mobile-screen-button",
+      "description": "Building performant iOS & Android mobile apps from a unified codebase, featuring offline-first storage, on-device machine learning, and clean state management.",
+      "deliverables": [
+        "Cross-platform Flutter & Dart codebases with Riverpod / Bloc architecture",
+        "Offline-first SQLite/Drift databases with background sync",
+        "On-device Google ML Kit barcode, QR, and OCR document extraction",
+        "App Store & Google Play Store release orchestration"
+      ],
+      "technologies": ["Flutter", "Dart", "Riverpod", "SQLite", "Google ML Kit", "Firebase", "CameraX"]
+    },
+    {
+      "id": "biotech-data",
+      "title": "Biomedical & Scientific Data Platforms",
+      "badge": "Scientific Computing",
+      "icon": "fa-dna",
+      "description": "Designing high-integrity scientific databases, high-throughput translational oncology data workflows, and secure research web platforms.",
+      "deliverables": [
+        "High-throughput spatial multi-omics and flow cytometry data pipelines",
+        "Relational clinical registry databases and specimen tracking systems",
+        "Finnish CSC scientific supercomputing and cloud service coordination",
+        "Strict computational reproducibility and audit-ready scientific documentation"
+      ],
+      "technologies": ["CSC Supercomputing", "Scientific Databases", "Flow Cytometry", "Translational Oncology", "Python"]
+    },
+    {
+      "id": "fractional-cto",
+      "title": "Fractional CTO & Offshore Tech Direction",
+      "badge": "Executive Advisory",
+      "icon": "fa-chess-rook",
+      "description": "Providing strategic technical leadership, architecture due diligence, code audits, and managed offshore engineering teams through Infinite IT.",
+      "deliverables": [
+        "Full system architecture blueprints and milestone-driven delivery roadmaps",
+        "Code quality, scalability, and security audits for existing products",
+        "Vetted offshore engineering team coordination with European accountability",
+        "Transparent sprint reporting, written specifications, and SLA governance"
+      ],
+      "technologies": ["Executive Governance", "Architecture Reviews", "Offshore Agile Teams", "Quality Assurance", "Lean Systems"]
+    }
+  ],
+  "freelanceProcess": [
+    {
+      "step": "01",
+      "title": "Discovery & Architecture Blueprint",
+      "desc": "We align on your product vision, target users, technical constraints, and define a precise milestone roadmap with fixed deliverables and timelines."
+    },
+    {
+      "step": "02",
+      "title": "Agile Sprints & Staging Previews",
+      "desc": "Development proceeds in focused weekly sprints. You receive live staging previews, transparent progress commits, and async video or written updates."
+    },
+    {
+      "step": "03",
+      "title": "Rigorous QA & Production Launch",
+      "desc": "Trained under Finnish industrial zero-defect standards (ABB/Swappie), every release undergoes cross-device testing, performance profiling, and secure deployment."
+    },
+    {
+      "step": "04",
+      "title": "Handover & 30-Day Guarantee",
+      "desc": "Complete IP and source code handover with technical documentation, walkthrough sessions, and 30 days of included post-launch bug warranty."
+    }
+  ],
+  "freelancePackages": [
+    {
+      "name": "Product MVP Sprint",
+      "badge": "Fixed-Scope Delivery",
+      "highlight": "Ideal for New Products & Startups",
+      "timeline": "3 to 6 Weeks",
+      "features": [
+        "Full architectural specification & database schema",
+        "Frontend & backend implementation (Next.js / Flutter)",
+        "Authentication, payments/APIs, and email notifications",
+        "Production deployment on Vercel / Cloud / App Stores",
+        "Complete source code ownership & 30-day warranty"
+      ]
+    },
+    {
+      "name": "Fractional Technical Lead",
+      "badge": "Monthly Retainer",
+      "highlight": "Ideal for Growing Ventures",
+      "timeline": "Ongoing / Dedicated Hours",
+      "features": [
+        "Senior architecture oversight & system design",
+        "Managing & reviewing engineering team PRs",
+        "Offshore team scaling via Infinite IT",
+        "Weekly technical sync & priority roadmap management",
+        "Direct Slack / WhatsApp executive availability"
+      ]
+    },
+    {
+      "name": "Architecture & Code Audit",
+      "badge": "Deep-Dive Advisory",
+      "highlight": "Ideal for Existing Codebases",
+      "timeline": "1 to 2 Weeks",
+      "features": [
+        "Comprehensive code quality, security, and debt analysis",
+        "Performance and database query optimization",
+        "Actionable written remediation roadmap",
+        "Debrief consultation session with your stakeholders",
+        "Follow-up implementation guidance"
+      ]
+    }
+  ],
   "currentRoles": [
     {
       "organization": "Infinite IT",

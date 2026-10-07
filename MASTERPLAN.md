@@ -9,8 +9,10 @@ The application is a client-side, zero-dependency static web application designe
 - **Single Page Architecture (Seamless Smooth Flow)**:
   - Sticky glass header with brand monogram, smooth nav links, dynamic interactive indicator, Quick Command Palette trigger (`Cmd+K`), Quick Resume trigger, and theme switcher.
   - **Scroll Progress Bar & Back to Top**: Real-time reading progress indicator and smooth return-to-top button.
-  - **Hero Section**: Atmospheric glowing gradient backdrop, animated dynamic focus area typing, bio highlighting dual identity (CEO @ Infinite IT × IT Specialist @ Färkkilä Lab UH), 3D perspective mouse tilt portrait, CTA buttons ("Explore Projects", "View Full CV", "Get in Touch"), social badges with live indicator, and direct WhatsApp connectivity.
+  - **Hero Section**: Atmospheric glowing gradient backdrop, animated dynamic focus area typing, bio highlighting dual identity (CEO @ Infinite IT × IT Specialist @ Färkkilä Lab UH), 3D perspective mouse tilt portrait, CTA buttons ("Freelance & Services", "Explore Projects", "View Full CV", "Book / Contact"), social badges with live indicator, and direct WhatsApp connectivity.
   - **Current Key Positions**: Dual flagship cards spotlighting CEO at Infinite IT and IT Specialist at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki).
+  - **Freelance & Client Services (`#services`)**: Comprehensive service offerings (Full-Stack Web & SaaS, Flutter Mobile Apps, Biomedical Data Platforms, Fractional CTO Advisory) with deliverables checklists and flexible engagement models (MVP Sprint, Monthly Retainer, Architecture Audit).
+  - **Delivery Methodology & Guarantees (`#process`)**: 4-step transparent roadmap (Discovery & Blueprint, Agile Sprints, Rigorous QA under Finnish industrial zero-defect standards, Handover & 30-Day Warranty).
   - **About & Philosophy**: Dual-discipline spotlight (Tech & Biotech), quick metrics/stats counters (Years exp, scientific publications, tech stack depth).
   - **Featured Projects & Category Filtering**: Interactive category filter tabs (All, Enterprise, Mobile, Biomedical Systems, Algorithms, Web), media previews with graceful fallbacks, tag pills, GitHub / live preview links, and Architecture Specifications drawer/modal.
   - **Experience & Timeline**: Clean vertical timeline with company badge, role, achievements, and tech badges.
@@ -18,8 +20,8 @@ The application is a client-side, zero-dependency static web application designe
   - **Education & Scientific Publications**: Dedicated academic card layout spotlighting PubMed / peer-reviewed haematology and oncology publications (University of Helsinki, Heckman group) with 1-click APA citation copy.
   - **Certificates & Honors**: Interactive grid of LinkedIn certifications and recognitions.
   - **Interactive Resume Viewer / Modal**: Instant clean overlay allowing visitors to read and download the complete resume cleanly formatted with print stylesheet.
-  - **Command Palette (`Cmd+K`)**: Modal search allowing rapid keyboard-driven navigation across sections, external portals, and actions.
-  - **Contact Section**: Interactive glass card with direct mailto, 1-click email/phone copy pills, direct WhatsApp link, LinkedIn, GitHub, and functional message form.
+  - **Command Palette (`Cmd+K`)**: Modal search allowing rapid keyboard-driven navigation across sections, freelance services, external portals, and actions.
+  - **Contact & Project Inquiry Section**: Interactive glass card with direct mailto, 1-click email/phone copy pills, direct WhatsApp link, LinkedIn, GitHub, and functional message form with project type and timeline selectors.
   - **Footer**: Refined signature, copyright, status indicator, and quick links.
 
 ## Services / Modules and Boundaries
