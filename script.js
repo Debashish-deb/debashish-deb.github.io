@@ -125,37 +125,29 @@ document.addEventListener('DOMContentLoaded', () => {
     header.innerHTML = `
       <div class="nav-container">
         <a href="#hero" class="brand-link" aria-label="Debashish Deb Home">
-          <div class="brand-badge">${data.shortName || 'DD'}</div>
-          <div class="brand-text">
-            <span class="brand-name">${data.name}</span>
-            <span class="brand-sub">CEO & Biotech Specialist</span>
-          </div>
+          <span class="brand-badge">${data.shortName || 'DD'}</span>
+          <span class="brand-name">${data.name}</span>
         </a>
 
         <nav aria-label="Primary Navigation">
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="#leadership" class="nav-link">Current Roles</a></li>
             <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Work</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#publications" class="nav-link">Research</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
           </ul>
         </nav>
 
         <div class="nav-actions">
-          <button id="cmd-palette-btn" class="nav-icon-btn" aria-label="Open command palette (Cmd+K)" title="Quick Command Palette (Cmd+K)">
-            <i class="fas fa-terminal" aria-hidden="true"></i>
+          <button id="cmd-palette-btn" class="nav-icon-btn" aria-label="Search and command palette (Cmd+K)" title="Command Palette (Cmd+K)">
+            <i class="fas fa-search" aria-hidden="true"></i>
             <span class="kbd-badge">⌘K</span>
           </button>
           <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle theme">
             ${activeTheme === 'dark-theme' ? '<i class="fas fa-sun" aria-hidden="true"></i>' : '<i class="fas fa-moon" aria-hidden="true"></i>'}
           </button>
           <button id="nav-resume-btn" class="btn-resume">
-            <i class="fas fa-file-lines" aria-hidden="true"></i>
-            <span>Resume</span>
+            <span>CV</span>
           </button>
           <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu" aria-expanded="false">
             <i class="fas fa-bars" aria-hidden="true"></i>
@@ -168,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderHero
-   * Generates hero showcase spotlighting dual leadership & scientific expertise, freelance CTAs, dynamic typing text, and 3D interactive portrait.
+   * Generates hero showcase spotlighting dual leadership & scientific expertise, clean CTAs, and dynamic focus area cycling.
    */
   function renderHero(data) {
     const heroSection = document.createElement('section');
@@ -180,36 +172,29 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="hero-content">
             <div class="hero-status-pill">
               <span class="status-dot"></span>
-              <span>${data.status || 'CEO @ Infinite IT • IT Specialist @ Färkkilä Lab'}</span>
+              <span>Available for Select Client Projects & Advisory (Q4 2026)</span>
             </div>
             <h1 class="hero-title">
               Hi, I'm <span class="gradient-text">${data.name}.</span>
             </h1>
-            <div style="font-size: clamp(1.2rem, 2.5vw, 1.65rem); margin-bottom: 18px; color: var(--text-primary); font-weight: 500;">
+            <div style="font-size: clamp(1.2rem, 2.5vw, 1.6rem); margin-bottom: 18px; color: var(--text-primary); font-weight: 500;">
               <span>Focusing on </span>
               <span class="hero-cycle-wrapper">
-                <span class="hero-cycle-text" id="hero-cycle-text">Executive Software Leadership</span>
+                <span class="hero-cycle-text" id="hero-cycle-text">Full-Stack Web & SaaS Architecture</span>
                 <span class="cursor-blink">|</span>
               </span>
             </div>
-            <p class="hero-description" style="font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary); margin-bottom: 32px; max-width: 58ch;">
-              ${data.about}
+            <p class="hero-description" style="font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary); margin-bottom: 32px; max-width: 56ch;">
+              Full-stack software architect & biotechnologist based in Finland. Chief Executive Officer at Infinite IT and IT Specialist at Färkkilä Laboratory (University of Helsinki), delivering enterprise digital products with scientific precision.
             </p>
 
             <div class="hero-cta-group">
               <a href="#services" class="btn btn-primary">
-                <span>Freelance & Services</span>
+                <span>Services & Solutions</span>
                 <i class="fas fa-arrow-down" aria-hidden="true"></i>
               </a>
-              <a href="#projects" class="btn btn-secondary">
-                <span>Featured Projects</span>
-              </a>
-              <button class="btn btn-secondary trigger-resume-btn">
-                <i class="fas fa-file-invoice" aria-hidden="true"></i>
-                <span>View CV</span>
-              </button>
               <a href="#contact" class="btn btn-secondary">
-                <span>Book / Contact</span>
+                <span>Get in Touch</span>
               </a>
             </div>
 
@@ -220,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile" title="GitHub">
                 <i class="fab fa-github" aria-hidden="true"></i>
               </a>
-              <a href="mailto:${data.email}" class="hero-social-link" aria-label="Executive Email" title="Email Infinite IT">
+              <a href="mailto:${data.email}" class="hero-social-link" aria-label="Corporate Email" title="Email Infinite IT">
                 <i class="fas fa-envelope" aria-hidden="true"></i>
               </a>
               <a href="https://infiniteitbd.com" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="Infinite IT" title="Infinite IT Portal">
@@ -235,14 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="hero-visual-card">
             <div class="avatar-wrapper" id="hero-avatar-wrapper">
               <img src="${data.profileImage}" alt="Debashish Deb portrait" class="avatar-image" loading="eager" />
-              <div class="floating-chip chip-tech">
-                <div class="chip-icon"><i class="fas fa-briefcase"></i></div>
-                <span>CEO Infinite IT</span>
-              </div>
-              <div class="floating-chip chip-bio">
-                <div class="chip-icon"><i class="fas fa-dna"></i></div>
-                <span>Färkkilä Lab UH</span>
-              </div>
             </div>
           </div>
         </div>
@@ -253,17 +230,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderMarquee
-   * Renders an infinitely scrolling accent strip of key disciplines.
+   * Renders an infinitely scrolling accent strip of key technical disciplines.
    */
   function renderMarquee() {
     const items = [
-      'CEO · Infinite IT',
-      'Freelance Web & SaaS Architecture',
-      'Cross-Platform Flutter Delivery',
-      'Precision Oncology Data Workflows',
+      'Next.js & TypeScript',
+      'Flutter & Dart Apps',
+      'Go (Golang) Microservices',
+      'CSC Supercomputing',
+      'Translational Oncology Data',
+      'Fastify & REST APIs',
       'Fractional CTO Leadership',
-      'University of Helsinki',
-      'CSC Scientific Supercomputing'
+      'Finnish Industrial QA'
     ];
     const row = items.map(t => `<span>${t}</span><span aria-hidden="true">✦</span>`).join('');
     const el = document.createElement('div');
