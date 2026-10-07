@@ -1,0 +1,16 @@
+data.json
+  h_0b448993649ed1 209-210,212,215-232,234-236,260,278,294,310
+script.js
+  h_0b448993649ed1 528,531-532
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "85a02c0b89a2a1dce507f55faadb71c678b5ba05",
+  "prompts": {},
+  "humans": {
+    "h_0b448993649ed1": {
+      "author": "debashishdeb1 <debashish.deb101@outlook.com>"
+    }
+  }
+}
