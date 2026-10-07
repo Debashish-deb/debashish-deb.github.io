@@ -1,0 +1,18 @@
+MASTERPLAN.md
+  h_0b448993649ed1 10,12
+script.js
+  h_0b448993649ed1 128-129,135,142-143,150,163,175,180,183,187-188,193,197,208,233,237-242,244
+styles.css
+  h_0b448993649ed1 205,210,213-221,223-227,232,242,248-250,257,259,270,279,1766
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8c63c30c9e58e2f0722cfa8fca9b3d83da3caacc",
+  "prompts": {},
+  "humans": {
+    "h_0b448993649ed1": {
+      "author": "debashishdeb1 <debashish.deb101@outlook.com>"
+    }
+  }
+}
