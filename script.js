@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const main = document.createElement('main');
       main.id = 'main-content';
       main.appendChild(renderHero(portfolioData));
+      main.appendChild(renderMarquee());
       main.appendChild(renderCurrentRoles(portfolioData));
       main.appendChild(renderAbout(portfolioData));
       main.appendChild(renderProjects(portfolioData));
@@ -163,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span>${data.status || 'CEO @ Infinite IT • IT Specialist @ Färkkilä Lab'}</span>
             </div>
             <h1 class="hero-title">
-              Hi, I'm <span class="gradient-text">${data.name}</span>
+              Hi, I'm <span class="gradient-text">${data.name}.</span>
             </h1>
             <h2 class="hero-tagline">${data.tagline}</h2>
             <p class="hero-description">${data.about}</p>
@@ -215,6 +216,20 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
     return heroSection;
+  }
+
+  /**
+   * @traceability renderMarquee
+   * Renders an infinitely scrolling accent strip of key disciplines.
+   */
+  function renderMarquee() {
+    const items = ['CEO · Infinite IT', 'Full-Stack Engineering', 'Precision Oncology Data', 'Go · React · Flutter', 'University of Helsinki', 'CSC Scientific Computing'];
+    const row = items.map(t => `<span>${t}</span><span aria-hidden="true">✦</span>`).join('');
+    const el = document.createElement('div');
+    el.className = 'marquee';
+    el.setAttribute('aria-hidden', 'true');
+    el.innerHTML = `<div class="marquee-track">${row}${row}</div>`;
+    return el;
   }
 
   /**
