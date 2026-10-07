@@ -5,7 +5,9 @@ High-end, modern portfolio website for **Debashish Deb** (Full-Stack Web Develop
 The application is a client-side, zero-dependency static web application designed for deployment directly onto GitHub Pages (`debashish-deb.github.io`).
 
 ## Design Architecture & Philosophy
-- **Aesthetic**: Apple & Linear grade luxury minimalist aesthetic. Deep dark mode by default (`#0a0d14` / `#0f1420`), luminous ambient radial glows, glassmorphism (`backdrop-filter: blur(16px)`), sophisticated modern typography (`Plus Jakarta Sans` / `Outfit` / `Inter`), crisp micro-interactions, subtle mesh gradients, and silky transitions.
+- **Aesthetic**: Apple & Linear grade luxury minimalist aesthetic. Calibrated dual-palette system:
+  - **Dark Luxe (Default)**: Deep obsidian canvas (`#0a0c10` / `#0f1218`), luminous Nordic emerald (`#10b981`) and cyber mint (`#34d399`) jewel-tone accents, subtle glassmorphism (`backdrop-filter: blur(20px)`), and gentle radial atmospheric glows.
+  - **Light Luxury**: Crisp porcelain canvas (`#fafafc` / `#ffffff`), authoritative British racing green & deep botanical emerald (`#047857` / `#059669`), deep obsidian typography (`#0f172a`), and delicate sage borders.
 - **Single Page Architecture (Seamless Smooth Flow)**:
   - Streamlined floating glass pill header (`max-width: 1100px`, `58px` height) with brand monogram, essential curated nav links (Services, Work, Experience, Contact), dynamic interactive indicator, Quick Command Palette trigger (`Cmd+K`), CV button, and theme switcher.
   - **Scroll Progress Bar & Back to Top**: Real-time reading progress indicator and smooth return-to-top button.
