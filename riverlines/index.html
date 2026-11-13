@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15211d">
+  <meta property="og:image" content="https://debashish-deb.github.io/riverlines/media/poster.jpg">
+  <meta name="description" content="Watch three archival views of Dhaka’s Buriganga River with a synchronized Bangla and English transcript.">
+  <title>Riverlines — The river remembers</title>
+  <link rel="icon" type="image/svg+xml" href="./riverlines.svg">
+  <link rel="preload" href="./fonts/instrument.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./media/poster.jpg" as="image">
+  <script type="module" crossorigin src="./assets/index-CnwUlZRX.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DkxNr0z1.css">
+</head>
+<body>
+  <a class="skip" href="#film">Skip to the film</a>
+  <header class="masthead frame">
+    <a class="brand" href="./" aria-label="Riverlines home"><img src="./riverlines.svg" alt="" width="32" height="32">Riverlines</a>
+    <a class="archive-link mono" href="#sources">Archive notes <span aria-hidden="true">↘</span></a>
+  </header>
+  <main class="frame" id="film">
+    <header class="title">
+      <div>
+        <p class="locator mono"><span aria-hidden="true">◎</span> Dhaka, Bangladesh <span class="locator-divider" aria-hidden="true">/</span> Buriganga River</p>
+        <h1>The river <em>remembers</em></h1>
+        <p class="film-bn" lang="bn">নদী মনে রাখে</p>
+      </div>
+      <p class="standfirst">Three views of Dhaka’s riverfront, across a century and a half.</p>
+    </header>
+    <section class="screening" aria-label="Film and transcript">
+      <div class="watch">
+        <video-player>
+          <media-container class="player" aria-label="The river remembers video player">
+            <div class="picture" id="picture">
+              <video id="video" aria-label="The river remembers" playsinline preload="metadata" poster="./media/poster.jpg">
+
+                <track kind="captions" src="./media/bn.vtt" srclang="bn" label="বাংলা">
+                <track kind="subtitles" src="./media/en.vtt" srclang="en" label="English">
+              </video>
+              <div class="shot-stamp mono" aria-hidden="true"><span></span><span id="shot-date">1861</span></div>
+              <media-play-button class="center-play" id="center-play"></media-play-button>
+              <div class="media-status" id="media-status" hidden>
+                <p id="media-message" role="status"></p>
+                <button type="button" id="retry" hidden>Retry video</button>
+              </div>
+            </div>
+            <div class="deck">
+              <media-time-slider class="time-slider">
+                <media-slider-track class="slider-track">
+                  <media-slider-buffer class="slider-buffer"></media-slider-buffer>
+                  <media-slider-fill class="slider-fill"></media-slider-fill>
+                </media-slider-track>
+                <media-slider-thumb class="slider-thumb"></media-slider-thumb>
+              </media-time-slider>
+              <div class="toolbar">
+                <media-play-button class="control deck-play" id="deck-play"></media-play-button>
+                <div class="time mono"><media-time type="current"></media-time><span>/</span><media-time type="duration"></media-time></div>
+                <div class="spacer"></div>
+                <div class="sound">
+                  <media-mute-button class="control" id="mute"></media-mute-button>
+                  <media-volume-slider class="volume-slider">
+                    <media-slider-track class="slider-track"><media-slider-fill class="slider-fill"></media-slider-fill></media-slider-track>
+                    <media-slider-thumb class="slider-thumb"></media-slider-thumb>
+                  </media-volume-slider>
+                </div>
+                <div class="captions">
+                  <button type="button" class="control caption-toggle" id="caption-toggle" aria-label="CC, captions" aria-expanded="false" aria-controls="caption-options"><span aria-hidden="true">CC</span></button>
+                  <fieldset id="caption-options" class="caption-options" hidden>
+                    <legend>Captions</legend>
+                    <label><input type="radio" name="caption" value="off" checked> Off</label>
+                    <label><input type="radio" name="caption" value="bn"> <span lang="bn">বাংলা</span></label>
+                    <label><input type="radio" name="caption" value="en"> English</label>
+                  </fieldset>
+                </div>
+                <media-fullscreen-button class="control" id="fullscreen"></media-fullscreen-button>
+              </div>
+            </div>
+          </media-container>
+        </video-player>
+        <nav class="chapters" id="chapters" aria-label="Film chapters"></nav>
+      </div>
+      <aside class="transcript" aria-labelledby="transcript-title">
+        <div class="transcript-header">
+          <div class="transcript-heading">
+            <h2 id="transcript-title">Transcript</h2>
+            <button class="follow mono" type="button" id="follow" aria-pressed="true"><span aria-hidden="true"></span> Follow</button>
+          </div>
+          <div class="languages" role="group" aria-label="Transcript language">
+            <button type="button" data-language="bn" lang="bn" aria-pressed="false">বাংলা</button>
+            <button type="button" data-language="en" aria-pressed="false">English</button>
+            <button type="button" data-language="both" aria-pressed="true">Both</button>
+          </div>
+        </div>
+        <div class="transcript-scroll" id="lines" data-language="both"></div>
+      </aside>
+    </section>
+    <details id="sources" class="sources">
+      <summary><span>Archive notes</span><span class="mono" aria-hidden="true">+</span></summary>
+      <div class="source-content">
+        <p>This short film moves across three archival stills. The film uses synthesized Bangla narration and an original score. The images are cropped and graded. The original records are linked below.</p>
+        <ul id="source-list"></ul>
+      </div>
+    </details>
+  </main>
+  <footer class="frame colophon"><span>Riverlines</span><span>Debashish Deb</span></footer>
+</body>
+</html>

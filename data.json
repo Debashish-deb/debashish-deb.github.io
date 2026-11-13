@@ -206,6 +206,25 @@
   ],
   "projects": [
     {
+      "name": "Riverlines",
+      "badge": "Bilingual Documentary Player",
+      "category": "web",
+      "link": "https://debashish-deb.github.io/riverlines/",
+      "image": "riverlines/media/poster.jpg",
+      "description": "A Video.js skin for documentary archives. Watch three views of Dhaka’s Buriganga River with Bangla and English captions and a transcript that jumps to the spoken line.",
+      "technologies": [
+        "Video.js v10",
+        "TypeScript",
+        "WebVTT",
+        "Mux"
+      ],
+      "highlights": [
+        "The active transcript line and dated filmstrip follow the same playback clock.",
+        "Keyboard and touch controls, dual-language captions, and a local playback fallback."
+      ],
+      "includeInResume": false
+    },
+    {
       "name": "Infinite Workspace OS",
       "badge": "Operations SaaS Platform",
       "category": "enterprise",
