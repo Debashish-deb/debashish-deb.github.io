@@ -1,6 +1,6 @@
 # Debashish Deb — Portfolio & Engineering Showcase
 
-A personal portfolio and software engineering showcase for **Debashish Deb** (Full-Stack Software Developer & Biotechnologist based in Finland).
+A personal portfolio and software engineering showcase for **Debashish Deb** (Biotechnologist turned Software Developer & Lab IT Specialist based in Finland).
 
 Deployed live at: [https://debashish-deb.github.io](https://debashish-deb.github.io)
 
@@ -8,14 +8,13 @@ Deployed live at: [https://debashish-deb.github.io](https://debashish-deb.github
 
 ## 🌟 Highlights & Features
 
-- **Freelance & Advisory Suite**: Comprehensive client services covering Full-Stack Web & SaaS Architecture, Cross-Platform Mobile Apps (Flutter), Biomedical & Research Data Systems, and Fractional CTO Direction.
-- **Transparent Delivery Methodology**: 4-step execution framework (Discovery Blueprint, Agile Sprints, Rigorous QA under Finnish industrial standards, and 30-Day Post-Launch Warranty).
-- **Flexible Engagement Packages**: Clear options for startups and scale-ups (Product MVP Sprint, Fractional Technical Lead Retainer, Architecture & Code Audit).
-- **Project Inquiry & Direct Booking**: Built-in interactive inquiry form with service type and timeline selectors, alongside 1-click WhatsApp discovery booking.
-- **Full-Stack Systems & Scientific Profile**: Showcases expertise as Full-Stack Software Engineer and IT Specialist at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki).
+- **Personal Narrative**: Biotechnologist turned developer, managing IT infrastructure, research databases, and supercomputing workflows at Färkkilä Laboratory (University of Helsinki / Biomedicum).
+- **Growth Mindset**: Practical intermediate-level software developer actively expanding computer science fundamentals at Kood/Sisu, building with Go, React, TypeScript, and Flutter.
+- **Open to Freelance**: Clear client offerings across Full-Stack Web Development, Cross-Platform Mobile Apps (Flutter), and Research/Lab Data Workflows.
+- **Accurate Project Links**: Curated real-world projects with dedicated GitHub source links, external site visits (Riverlines bilingual documentary player, Jutera 3D showcase, Färkkilä Lab portal), and zero misleading buttons.
 - **Interactive Command Palette (`Cmd+K`)**: Modal keyboard-driven command palette allowing rapid search, section jumps, theme toggle, and external portal shortcuts.
-- **Projects Showcase with Category Filtering & Architecture Modal**: Instant filtering (Enterprise, Mobile, Biomedical, Algorithms, Web) and a dedicated Architecture Specs drawer detailing system design highlights and trade-offs.
-- **Real-Time Skill Search**: Instant search input filtering categorized technical, executive, and scientific capabilities.
+- **Projects Showcase with Category Filtering & Architecture Modal**: Instant filtering (Web, Mobile, Biomedical Systems, Algorithms) and a dedicated Architecture Specs drawer detailing system design highlights.
+- **Real-Time Skill Search**: Instant search input filtering categorized technical, systems, and scientific capabilities.
 - **1-Click APA Citation Copying**: High-impact peer-reviewed cancer publications (*Haematologica*, *Blood*) with instant citation copying to clipboard.
 - **Responsive & Accessible (Apple/Linear Grade)**: Strict mobile-first architecture, scroll reading progress bar, floating back-to-top button, skip navigation links, high-contrast dark/light modes, keyboard-navigable dialogs, and minimum 44px touch targets.
 - **Dynamic Content Architecture**: Zero-build runtime powered by pure Vanilla ES6+ and `data.json` for lightning-fast loading (<0.3s) and 100/100 Lighthouse performance.

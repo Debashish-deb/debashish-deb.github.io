@@ -1,10 +1,10 @@
 {
   "name": "Debashish Deb",
   "shortName": "DD",
-  "title": "Full-Stack Software Engineer & Biotechnologist",
-  "tagline": "Full-Stack Software Engineer & IT Specialist at Färkkilä Lab, University of Helsinki. Architecting scalable software and scientific digital infrastructure.",
-  "about": "I am a Full-Stack Software Engineer and IT & Systems Specialist at Färkkilä Laboratory (University of Helsinki). With an M.Sc. in Molecular Biotechnology and deep software engineering expertise, I bridge full-stack software development, distributed algorithms, and biomedical research computing.",
-  "aboutExtended": "At the University of Helsinki's renowned Färkkilä Laboratory (Biomedicum Helsinki), I coordinate CSC scientific supercomputing services, lab web architecture, and research databases for precision oncology (ONCOSYS-OVA) and spatial multi-omics.\n\nMy background in molecular biotechnology, combined with over a decade of operational and engineering experience in Finland and co-authored cancer oncology publications in Haematologica and Blood, drives my commitment to delivering software with scientific rigor, high availability, and flawless execution.",
+  "title": "Biotechnologist Turned Developer • Research Lab IT & Full-Stack",
+  "tagline": "Biotechnologist turned software developer. Managing IT systems, research databases, and supercomputing workflows at Färkkilä Lab (University of Helsinki). Learning continuously as an intermediate developer, building practical software with Go, React, TypeScript, and Flutter, and open to select freelance projects.",
+  "about": "I am a molecular biotechnologist who fell in love with software development. Based in Finland, I handle IT and systems responsibilities at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki). As an intermediate-level developer, I focus on practical problem-solving, clean code, and continuous learning with Go, React, TypeScript, and Flutter, and I'm open to freelance work.",
+  "aboutExtended": "My journey began in molecular biotechnology, earning an M.Sc. at the University of Helsinki and co-authoring cancer research papers in Haematologica and Blood. Working directly with complex laboratory screening data opened my eyes to the incredible power of software engineering.\n\nToday, I work at Färkkilä Laboratory (Biomedicum Helsinki) managing IT infrastructure, research databases, and scientific computing workflows on Finnish CSC supercomputers for precision oncology studies (ONCOSYS-OVA).\n\nI approach software engineering with humility and a growth mindset—I think like an intermediate developer: focusing on fundamental computer science principles at Kood/Sisu, writing maintainable code in Go, React/TypeScript, and Flutter, and applying the zero-defect quality discipline I developed in Finnish high-tech manufacturing (ABB and Swappie). I am also open to select freelance work for teams needing reliable web apps, mobile tools, or research data automation.",
   "profileImage": "profile.png",
   "email": "debashish.deb101@outlook.com",
   "personalEmail": "ddeba32@gmail.com",
@@ -16,15 +16,15 @@
   "companyWebsite": "https://farkkilab.org",
   "labWebsite": "https://farkkilab.org",
   "location": "Helsinki / Kuopio, Finland",
-  "status": "Full-Stack Engineer • IT Specialist @ Färkkilä Lab (UH)",
+  "status": "Biotechnologist & Developer • IT @ Färkkilä Lab (UH) • Open to Freelance",
   "stats": [
     {
-      "label": "Research Institution",
-      "value": "Univ. of Helsinki"
+      "label": "Research Lab",
+      "value": "Färkkilä Lab (UH)"
     },
     {
       "label": "Academic Publications",
-      "value": "3+ High-Impact"
+      "value": "3 Co-Authored"
     },
     {
       "label": "Scientific Background",
@@ -33,6 +33,48 @@
     {
       "label": "Core Tech Stack",
       "value": "Go • React • Flutter"
+    }
+  ],
+  "freelanceAvailability": "Open to Select Freelance & Technical Collaborations",
+  "freelanceServices": [
+    {
+      "title": "Full-Stack Web Development",
+      "badge": "React & Go",
+      "icon": "fa-code",
+      "description": "Modern responsive websites, custom dashboards, and fast APIs. Engineered with clean code, strong accessibility, and crisp interactions.",
+      "deliverables": [
+        "Interactive React & TypeScript web applications",
+        "Performant backend APIs with Go or Fastify/Node",
+        "Database modeling with PostgreSQL or SQLite",
+        "Responsive, accessible design across devices"
+      ],
+      "technologies": ["React", "TypeScript", "Next.js", "Go", "Fastify", "Tailwind CSS"]
+    },
+    {
+      "title": "Cross-Platform Mobile Apps",
+      "badge": "Flutter & Dart",
+      "icon": "fa-mobile-screen-button",
+      "description": "Native iOS and Android mobile apps built from a single codebase. Offline-first architecture, local databases, and smooth animations.",
+      "deliverables": [
+        "Cross-platform iOS & Android mobile applications",
+        "Offline-first SQLite / Drift local caching",
+        "Camera, document scanner, and ML Kit integrations",
+        "Clean state management with Riverpod"
+      ],
+      "technologies": ["Flutter", "Dart", "SQLite / Drift", "Riverpod", "Google ML Kit"]
+    },
+    {
+      "title": "Lab IT & Research Data Workflows",
+      "badge": "Scientific Data & IT",
+      "icon": "fa-flask-vial",
+      "description": "Automated data extraction, cleaning pipelines, research dashboards, and scientific computing coordination tailored for laboratories.",
+      "deliverables": [
+        "Automated data parsing scripts in Python & Go",
+        "Internal lab dashboards & clinical registry tracking",
+        "Database schemas & structured data pipelines",
+        "CSC computing workflow orchestration"
+      ],
+      "technologies": ["Python", "Go", "PostgreSQL", "CSC Cloud", "Data Pipelines"]
     }
   ],
   "currentRoles": [
@@ -158,54 +200,57 @@
   "projects": [
     {
       "name": "Riverlines",
-      "badge": "Bilingual Documentary Player",
+      "badge": "Documentary Video Archive",
       "category": "web",
       "link": "https://debashish-deb.github.io/riverlines/",
+      "linkLabel": "Watch Documentary",
+      "github": "https://github.com/Debashish-deb/debashish-deb.github.io/tree/main/riverlines",
       "image": "riverlines/media/poster.jpg",
-      "description": "A Video.js skin for documentary archives. Watch three views of Dhaka’s Buriganga River with Bangla and English captions and a transcript that jumps to the spoken line.",
+      "description": "A responsive bilingual documentary player and digital archive for Dhaka’s Buriganga River. Built with Video.js, TypeScript, and synchronized WebVTT captions in Bangla and English with chapter timeline scrubbing.",
       "technologies": [
         "Video.js v10",
         "TypeScript",
         "WebVTT",
+        "CSS3",
         "Mux"
       ],
       "highlights": [
-        "The active transcript line and dated filmstrip follow the same playback clock.",
-        "Keyboard and touch controls, dual-language captions, and a local playback fallback."
-      ],
-      "includeInResume": false
-    },
-    {
-      "name": "Workspace OS — Operations Platform",
-      "badge": "Operations SaaS Platform",
-      "category": "enterprise",
-      "link": "https://github.com/Debashish-deb",
-      "github": "",
-      "image": "infiniteit-workspace.webp",
-      "description": "A modular, scalable operational platform engineered for digital agencies, service firms, and distributed offshore teams. Features unified client workspaces, milestone dashboards, automated invoice tracking, and secure role-based access control.",
-      "technologies": [
-        "Next.js",
-        "TypeScript",
-        "FastAPI / Node.js",
-        "PostgreSQL",
-        "Docker",
-        "Tailwind CSS"
-      ],
-      "highlights": [
-        "Modular workspace engine allowing teams to activate custom operational tools",
-        "Real-time milestone tracking, task boards, and automated delivery records",
-        "Zero-trust authentication and enterprise role-based authorization hierarchy"
+        "Active transcript line and dated filmstrip synchronize precisely with playback time",
+        "Dual-language subtitles (Bangla / English), keyboard hotkeys, and mobile touch gestures"
       ],
       "includeInResume": true
     },
     {
-      "name": "Jutera — Sustainable Living Platform",
-      "badge": "Sustainable eCommerce / 3D",
+      "name": "Workspace Operations Manager",
+      "badge": "Full-Stack Project",
+      "category": "web",
+      "link": "",
+      "github": "https://github.com/Debashish-deb",
+      "image": "workspace-ops.webp",
+      "description": "A modular web application for internal team task and milestone orchestration. Features role-based access control, real-time activity timelines, delivery records, and structured database storage with PostgreSQL and Next.js.",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "Docker"
+      ],
+      "highlights": [
+        "Structured task boards and automated project deliverable records",
+        "Role-based authentication hierarchy and responsive team dashboard"
+      ],
+      "includeInResume": true
+    },
+    {
+      "name": "Jutera — Sustainable Living Showcase",
+      "badge": "Web & 3D Interactive",
       "category": "web",
       "link": "https://jutera.org",
+      "linkLabel": "Visit Website",
       "github": "",
       "image": "jutera.webp",
-      "description": "Curated digital platform and interactive showcase for handcrafted sustainable jute living objects and European retail/wholesale distribution. Built with React, Three.js 3D model visualization, Tailwind CSS, Vite, and high-performance PWA caching.",
+      "description": "Modern web showcase for handcrafted eco-friendly living products and European distribution. Built with React, Three.js 3D model visualization, Tailwind CSS, Vite, and high-performance PWA caching.",
       "technologies": [
         "React",
         "Three.js (WebGL)",
@@ -214,9 +259,8 @@
         "PWA & SEO"
       ],
       "highlights": [
-        "Integrated interactive Three.js 3D brand logo rendering in real-time WebGL",
-        "Sub-second page loads with modern WebP asset compression and PWA caching",
-        "Full Schema.org structured data and open graph metadata architecture"
+        "Interactive 3D model rendering via Three.js with real-time WebGL orbit controls",
+        "Sub-second page transitions, responsive layout, and PWA offline caching"
       ],
       "includeInResume": true
     },
@@ -224,10 +268,10 @@
       "name": "BioScan / Mobile Document OCR",
       "badge": "Flutter Utility / OCR",
       "category": "mobile",
-      "link": "https://github.com/Debashish-deb",
-      "github": "",
-      "image": "infinitescan.webp",
-      "description": "Privacy-first Android utility app engineered in Flutter. Features on-device ML Kit barcode & QR code recognition, zero-account architecture, bilingual Bangla/English interface, Tesseract OCR document extraction, and local SQLite history with zero third-party tracking.",
+      "link": "",
+      "github": "https://github.com/Debashish-deb",
+      "image": "bioscan.webp",
+      "description": "Privacy-first Android utility app built with Flutter. Runs 100% on-device with Google ML Kit and Tesseract OCR for barcode and text scanning, offline SQLite scan history, and zero third-party telemetry.",
       "technologies": [
         "Flutter",
         "Dart",
@@ -237,9 +281,8 @@
         "CameraX"
       ],
       "highlights": [
-        "100% on-device ML inference with zero telemetry or network data leakage",
-        "Sub-100ms real-time barcode scanning with auto-focus and low-light flashlight toggle",
-        "Bilingual localization (Bangla & English) and offline SQLite scan history export"
+        "On-device ML inference without requiring external server calls or cloud telemetry",
+        "Sub-100ms real-time barcode scanning with auto-focus and offline history storage"
       ],
       "includeInResume": true
     },
@@ -247,43 +290,41 @@
       "name": "BDNewsReader",
       "badge": "News Platform / TTS",
       "category": "mobile",
-      "link": "https://github.com/Debashish-deb/droid-news-server",
+      "link": "",
       "github": "https://github.com/Debashish-deb/droid-news-server",
       "image": "bdnewsreader.webp",
-      "description": "Bilingual news aggregation and reader platform built with Flutter, Riverpod, and a self-hosted Fastify backend. Features native article formatting, offline caching via Drift/SQLite, official YouTube Live TV streaming (IFrame integration), and bilingual Bangla/English text-to-speech audio narration.",
+      "description": "Bilingual news reader platform built with Flutter, Riverpod, and a self-hosted Fastify backend. Features native article formatting, offline caching via Drift/SQLite, YouTube live stream playback, and bilingual text-to-speech narration.",
       "technologies": [
         "Flutter",
         "Riverpod",
         "Fastify Backend",
         "Bangla TTS",
-        "Drift / SQLite",
-        "Firebase"
+        "Drift / SQLite"
       ],
       "highlights": [
-        "Self-hosted Fastify backend scraping and caching verified news streams",
-        "Bilingual text-to-speech audio engine for automated article playback",
-        "Offline-first Drift ORM persistence with background periodic syncing"
+        "Self-hosted Fastify backend aggregating and caching verified news streams",
+        "Bilingual text-to-speech audio narration and offline SQLite storage"
       ],
       "includeInResume": true
     },
     {
-      "name": "Färkkilä Lab Infrastructure & Systems",
+      "name": "Färkkilä Lab Systems & Research Infrastructure",
       "badge": "Biomedical Systems",
       "category": "systems",
       "link": "https://farkkilab.org",
+      "linkLabel": "Lab Portal",
       "github": "",
-      "image": "",
-      "description": "Coordinating Finnish CSC scientific computing services, relational research databases, and public web platforms for precision oncology and spatial multi-omics at Biomedicum Helsinki.",
+      "image": "farkkila-deb.webp",
+      "description": "Coordinating Finnish CSC scientific computing clusters, research databases, and public web platforms for precision oncology and spatial multi-omics at Biomedicum Helsinki (University of Helsinki).",
       "technologies": [
-        "CSC Scientific Services",
+        "CSC Supercomputing",
         "Research Databases",
         "Web Infrastructure",
         "Data Pipelines"
       ],
       "highlights": [
-        "High-performance computing coordination for spatial multi-omics pipelines",
-        "Clinical registry and patient specimen tracking database architecture",
-        "Web platform development and high-availability scientific data portals"
+        "Computing resource allocation and environment setup for translational researchers",
+        "Research data registry maintenance and secure database workflows"
       ],
       "includeInResume": true
     },
@@ -291,7 +332,7 @@
       "name": "Stations-Pathfinder",
       "badge": "Algorithms / Go",
       "category": "algorithms",
-      "link": "https://github.com/Debashish-deb/Stations-Pathfinder",
+      "link": "",
       "github": "https://github.com/Debashish-deb/Stations-Pathfinder",
       "image": "",
       "description": "Graph routing engine written in Golang that calculates optimal collision-free paths for concurrent trains moving across dynamic railway track topologies with turn-based orchestration.",
@@ -303,8 +344,7 @@
       ],
       "highlights": [
         "Concurrent turn-based simulation with dynamic collision avoidance",
-        "Algorithmic graph traversal finding Pareto-optimal transit solutions",
-        "Strict Go memory constraints and high-throughput benchmark tests"
+        "Graph traversal algorithm finding Pareto-optimal transit solutions"
       ],
       "includeInResume": true
     },
@@ -312,20 +352,19 @@
       "name": "Art-Interface",
       "badge": "Web / Go Tool",
       "category": "web",
-      "link": "https://github.com/Debashish-deb/Art-interface",
+      "link": "",
       "github": "https://github.com/Debashish-deb/Art-interface",
       "image": "",
-      "description": "Interactive web application and decoding engine in Golang enabling users to transform, parse, and render ASCII art through an intuitive browser interface.",
+      "description": "Interactive web application and parsing engine in Golang that transforms, parses, and renders banner-style ASCII art typography through a clean browser interface.",
       "technologies": [
         "Go",
         "HTTP Server",
         "ASCII Art Engine",
-        "HTML/CSS"
+        "HTML5 / CSS3"
       ],
       "highlights": [
-        "Custom ASCII font parser and rasterizer written in Go standard library",
-        "Real-time client-side preview with responsive export options",
-        "Zero-dependency lightweight binary deployment"
+        "Custom ASCII font parser and rasterizer written using Go standard library",
+        "Real-time client-side preview with clean responsive output"
       ],
       "includeInResume": true
     }

@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=4');
+      const response = await fetch('data.json?v=5');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       main.appendChild(renderMarquee());
       main.appendChild(renderCurrentRoles(portfolioData));
       main.appendChild(renderProjects(portfolioData));
+      main.appendChild(renderFreelance(portfolioData));
       main.appendChild(renderAbout(portfolioData));
       main.appendChild(renderSkills(portfolioData));
       main.appendChild(renderExperience(portfolioData));
@@ -130,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <nav aria-label="Primary Navigation">
           <ul class="nav-menu" id="nav-menu">
             <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#freelance" class="nav-link">Freelance</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#skills" class="nav-link">Skills</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
@@ -171,20 +173,20 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="hero-content">
             <div class="hero-status-pill">
               <span class="status-dot"></span>
-              <span>Based in Helsinki, Finland • Systems &amp; Web Engineering</span>
+              <span>Helsinki, Finland • Biotechnologist turned Developer • Open to Freelance</span>
             </div>
             <h1 class="hero-title">
               Hi, I'm <span class="gradient-text">${data.name}.</span>
             </h1>
-            <div style="font-size: clamp(1.2rem, 2.5vw, 1.6rem); margin-bottom: 18px; color: var(--text-primary); font-weight: 500;">
-              <span>Specializing in </span>
+            <div style="font-size: clamp(1.15rem, 2.2vw, 1.45rem); margin-bottom: 14px; color: var(--text-primary); font-weight: 500;">
+              <span>Focusing on </span>
               <span class="hero-cycle-wrapper">
-                <span class="hero-cycle-text" id="hero-cycle-text">Full-Stack Web &amp; Systems Architecture</span>
+                <span class="hero-cycle-text" id="hero-cycle-text">Full-Stack Web (Go, React, TypeScript)</span>
                 <span class="cursor-blink">|</span>
               </span>
             </div>
-            <p class="hero-description" style="font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary); margin-bottom: 32px; max-width: 56ch;">
-              Full-stack software engineer &amp; biotechnologist based in Finland. IT &amp; Systems Specialist at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki), building high-performance web applications, distributed algorithms, and scientific data platforms.
+            <p class="hero-description" style="font-size: 1.02rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 24px; max-width: 54ch;">
+              Biotechnologist turned software developer based in Finland. IT &amp; Systems Specialist at Färkkilä Laboratory (University of Helsinki / Biomedicum), managing lab digital systems, research databases, and CSC supercomputing. Constantly learning as an intermediate-level developer, building real-world tools, and open to select freelance projects.
             </p>
 
             <div class="hero-cta-group">
@@ -192,8 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span>View Projects</span>
                 <i class="fas fa-arrow-down" aria-hidden="true"></i>
               </a>
-              <a href="#contact" class="btn btn-secondary">
-                <span>Get in Touch</span>
+              <a href="#freelance" class="btn btn-secondary">
+                <span>Freelance Services</span>
+                <i class="fas fa-handshake" aria-hidden="true"></i>
               </a>
             </div>
 
@@ -230,14 +233,14 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function renderMarquee() {
     const items = [
-      'Next.js & TypeScript',
-      'Flutter & Dart Apps',
-      'Go (Golang) Microservices',
+      'Go & Fastify APIs',
+      'React & Next.js',
+      'Flutter & Dart Mobile',
       'CSC Supercomputing',
-      'Translational Oncology Data',
-      'Fastify & REST APIs',
-      'Fractional CTO Leadership',
-      'Finnish Industrial QA'
+      'Research Data Pipelines',
+      'Biotechnology to Software',
+      'TypeScript & PostgreSQL',
+      'Open to Freelance'
     ];
     const row = items.map(t => `<span>${t}</span><span aria-hidden="true">✦</span>`).join('');
     const el = document.createElement('div');
@@ -288,12 +291,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * @traceability renderFreelanceServices
-   * Generates freelance and consulting service offerings with deliverables checklist and engagement packages.
+   * @traceability renderFreelance
+   * Generates personal freelance & collaboration offerings with transparent deliverables.
    */
-  function renderFreelanceServices(data) {
+  function renderFreelance(data) {
     const section = document.createElement('section');
-    section.id = 'services';
+    section.id = 'freelance';
     section.className = 'section services-section';
 
     const servicesHtml = (data.freelanceServices || []).map(s => {
@@ -320,34 +323,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="service-footer">
             <div class="tech-tags">${techTags}</div>
             <a href="#contact" class="btn btn-secondary btn-sm select-service-btn" data-service="${s.title}">
-              <span>Inquire for Project</span>
+              <span>Discuss Project</span>
               <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
           </div>
-        </div>
-      `;
-    }).join('');
-
-    const packagesHtml = (data.freelancePackages || []).map((pkg, idx) => {
-      const featuresList = (pkg.features || []).map(f => `
-        <li class="package-feature-item">
-          <i class="fas fa-check" aria-hidden="true"></i>
-          <span>${f}</span>
-        </li>
-      `).join('');
-
-      return `
-        <div class="glass-card package-card ${idx === 0 ? 'featured' : ''}">
-          <div>
-            <span class="package-badge">${pkg.badge}</span>
-            <h3 class="package-name">${pkg.name}</h3>
-            <p class="package-highlight">${pkg.highlight}</p>
-            <div class="package-timeline"><i class="far fa-clock"></i> <span>${pkg.timeline}</span></div>
-            <ul class="package-features">${featuresList}</ul>
-          </div>
-          <a href="#contact" class="btn ${idx === 0 ? 'btn-primary' : 'btn-secondary'} select-package-btn" data-service="${pkg.name}" style="width:100%; text-align:center;">
-            <span>Book / Inquire</span>
-          </a>
         </div>
       `;
     }).join('');
@@ -357,26 +336,14 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="section-header">
           <div class="freelance-status-banner">
             <span class="status-dot"></span>
-            <span>${data.freelanceAvailability || 'Available for Select Engagements'}</span>
+            <span>${data.freelanceAvailability || 'Open to Select Freelance Projects & Collaborations'}</span>
           </div>
-          <h2 class="section-title">Freelance & Technical Advisory Services</h2>
-          <p class="section-subtitle">Delivering high-performance software, cross-platform apps, and executive engineering leadership under European quality standards.</p>
+          <h2 class="section-title">Open to Freelance &amp; Collaboration</h2>
+          <p class="section-subtitle">Alongside my laboratory IT role at University of Helsinki, I take on select freelance contracts. Clear communication, clean code, and practical delivery.</p>
         </div>
 
-        <!-- 4 Primary Service Offerings -->
         <div class="services-grid">
           ${servicesHtml}
-        </div>
-
-        <!-- Engagement Models / Packages -->
-        <div class="section-header" style="margin-top: 64px; margin-bottom: 40px;">
-          <span class="section-tag"><i class="fas fa-cubes"></i> Engagement Models</span>
-          <h3 style="font-size: 2rem; margin-bottom: 12px;">Flexible Collaboration Packages</h3>
-          <p class="section-subtitle">Tailored options for fast-moving startups, established scale-ups, and academic consortia.</p>
-        </div>
-
-        <div class="packages-grid">
-          ${packagesHtml}
         </div>
       </div>
     `;
@@ -549,20 +516,20 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="tech-tags">${tags}</div>
             <div class="project-links" style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:16px;">
               ${p.github ? `
-                <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View GitHub repository">
+                <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
                   <i class="fab fa-github" aria-hidden="true"></i>
-                  <span>Source</span>
+                  <span>GitHub Source</span>
                 </a>
               ` : ''}
-              ${p.link && p.link !== '#' ? `
-                <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="Visit Live Application">
+              ${p.link && !p.link.includes('github.com') ? `
+                <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn project-link-accent" title="${p.linkLabel || 'Visit Website'}">
                   <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                  <span>Live App</span>
+                  <span>${p.linkLabel || 'Visit Website'}</span>
                 </a>
               ` : ''}
               <button class="btn-specs trigger-project-specs" data-index="${index}" aria-label="View architecture specifications for ${p.name}">
                 <i class="fas fa-layer-group" aria-hidden="true"></i>
-                <span>Architecture</span>
+                <span>Details</span>
               </button>
             </div>
           </div>
@@ -574,8 +541,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-folder-open"></i> Portfolio</span>
-          <h2 class="section-title">Featured Projects & Systems</h2>
-          <p class="section-subtitle">Real-world systems spanning enterprise offshore delivery, scientific platforms, concurrent graph algorithms, and mobile applications.</p>
+          <h2 class="section-title">Featured Projects &amp; Software</h2>
+          <p class="section-subtitle">Practical software spanning full-stack web applications, lab data systems, concurrent graph algorithms, and cross-platform mobile apps.</p>
         </div>
 
         <!-- Category Filter Tabs -->
@@ -635,8 +602,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-microchip"></i> Capabilities</span>
-          <h2 class="section-title">Technical & Executive Skills Matrix</h2>
-          <p class="section-subtitle">A multidisciplinary toolkit combining executive governance, modern web engineering, and high-throughput biomedical computing.</p>
+          <h2 class="section-title">Technical &amp; Core Engineering Skills</h2>
+          <p class="section-subtitle">A practical toolkit combining software engineering, modern web &amp; mobile technologies, and biomedical research computing.</p>
         </div>
 
         <!-- Live Skill Search Bar -->
@@ -655,7 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderExperience
-   * Generates professional timeline detailing career history in Finland and executive leadership.
+   * Generates professional timeline detailing career history in Finland and laboratory IT systems.
    */
   function renderExperience(data) {
     const section = document.createElement('section');
@@ -1262,15 +1229,15 @@ document.addEventListener('DOMContentLoaded', () => {
               <h4 class="specs-section-title"><i class="fas fa-code"></i> Technology Stack</h4>
               <div class="tech-tags" style="margin-bottom:20px;">${techTags}</div>
 
-              <div style="display:flex; gap:12px; margin-top:24px; padding-top:16px; border-top:1px solid var(--border-subtle);">
-                ${project.link ? `
+              <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; padding-top:16px; border-top:1px solid var(--border-subtle);">
+                ${project.link && !project.link.includes('github.com') ? `
                   <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                    <i class="fas fa-external-link-alt"></i> <span>Launch Application</span>
+                    <i class="fas fa-external-link-alt"></i> <span>${project.linkLabel || 'Visit Website'}</span>
                   </a>
                 ` : ''}
                 ${project.github ? `
                   <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
-                    <i class="fab fa-github"></i> <span>View Source Code</span>
+                    <i class="fab fa-github"></i> <span>GitHub Source</span>
                   </a>
                 ` : ''}
               </div>
@@ -1353,7 +1320,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const commands = [
       { title: 'Institutional Affiliation (Färkkilä Lab UH)', icon: 'fa-star', type: 'Section', action: () => scrollToSection('leadership') },
       { title: 'Engineering & Scientific Profile', icon: 'fa-user', type: 'Section', action: () => scrollToSection('about') },
-      { title: 'Featured Projects & Systems', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
+      { title: 'Featured Projects & Software', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
+      { title: 'Open to Freelance & Collaboration', icon: 'fa-handshake', type: 'Section', action: () => scrollToSection('freelance') },
       { title: 'Technical Skills Matrix', icon: 'fa-microchip', type: 'Section', action: () => scrollToSection('skills') },
       { title: 'Career Timeline', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
       { title: 'Peer-Reviewed Publications', icon: 'fa-graduation-cap', type: 'Section', action: () => scrollToSection('publications') },
@@ -1496,11 +1464,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!el) return;
 
     const phrases = [
-      'Executive Software Leadership',
-      'Full-Stack Web & SaaS Architecture',
-      'Cross-Platform Flutter Mobile Apps',
-      'CSC Supercomputing & Precision Oncology',
-      'Fractional CTO & Technical Advisory'
+      'Full-Stack Web (Go, React, TypeScript)',
+      'Cross-Platform Mobile (Flutter & Dart)',
+      'Lab IT & Supercomputing Infrastructure',
+      'Biotechnology to Software Engineering',
+      'Continuous Learning & Open to Freelance'
     ];
 
     let phraseIdx = 0;
@@ -1542,7 +1510,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const card = document.getElementById('hero-avatar-wrapper');
     if (!card) return;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -1668,6 +1636,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * Uses IntersectionObserver to highlight current section in navigation bar.
    */
   function setupScrollSpy() {
+    if (typeof IntersectionObserver === 'undefined') return;
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -1697,6 +1666,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * Animates skill bars when scrolled into viewport.
    */
   function setupSkillsObserver() {
+    if (typeof IntersectionObserver === 'undefined') return;
     const skillsSection = document.getElementById('skills');
     if (!skillsSection) return;
 
