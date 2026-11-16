@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=14');
+      const response = await fetch('data.json?v=15');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -1553,9 +1553,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const phrases = [
       'Computational Systems & Supercomputing',
       'Go Distributed Architectures',
-      'High-Performance Web Platforms (React & TypeScript)',
-      'Cross-Platform Mobile Applications (Flutter)',
-      'Multi-Omics Patient Registries'
+      'React & TypeScript Web Platforms',
+      'Flutter Mobile Applications',
+      'Multi-Omics Data Registries'
     ];
 
     let phraseIndex = 0;

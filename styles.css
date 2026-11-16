@@ -4767,6 +4767,7 @@ body.dark-theme .hero-cover-card,
   margin-bottom: 20px !important;
   border-radius: 24px !important;
   overflow: hidden !important;
+  min-height: 440px !important; /* Locks vertical height against animation jitter */
 }
 
 @media (max-width: 900px) {
@@ -4781,6 +4782,7 @@ body.dark-theme .hero-cover-card,
   grid-template-columns: 1.15fr 0.85fr !important;
   align-items: center !important;
   gap: 20px !important;
+  min-height: 380px !important; /* Locks grid height against animation shift */
 }
 
 @media (max-width: 768px) {
@@ -4909,11 +4911,16 @@ body.light-theme .hero-cover-card .hero-focus-line,
 body.dark-theme .hero-cover-card .hero-focus-line,
 .hero-cover-card .hero-focus-line {
   display: flex !important;
-  align-items: baseline !important;
-  flex-wrap: wrap !important;
-  gap: 10px !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+  gap: 8px !important;
   margin-bottom: 12px !important;
-  line-height: 1.4 !important;
+  line-height: 1.3 !important;
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  overflow: hidden !important;
 }
 
 body.light-theme .hero-cover-card .hero-focus-line .focus-label,
@@ -4922,8 +4929,9 @@ body.dark-theme .hero-cover-card .hero-focus-line .focus-label,
 body.light-theme .hero-cover-card .focus-label,
 .hero-cover-card .focus-label {
   color: #f1f5f9 !important;
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem) !important;
+  font-size: clamp(0.95rem, 1.35vw, 1.15rem) !important;
   font-weight: 500 !important;
+  white-space: nowrap !important;
   margin: 0 !important;
   padding: 0 !important;
   line-height: inherit !important;
@@ -4934,19 +4942,22 @@ body.light-theme .hero-cover-card .hero-cycle-wrapper,
 body.dark-theme .hero-cover-card .hero-cycle-wrapper,
 .hero-cover-card .hero-cycle-wrapper {
   display: inline-flex !important;
-  align-items: baseline !important;
+  align-items: center !important;
+  white-space: nowrap !important;
   gap: 3px !important;
   margin: 0 !important;
   padding: 0 !important;
   line-height: inherit !important;
+  height: 100% !important;
 }
 
 body.light-theme .hero-cover-card .hero-cycle-text,
 body.dark-theme .hero-cover-card .hero-cycle-text,
 .hero-cover-card .hero-cycle-text {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem) !important;
+  font-size: clamp(0.95rem, 1.35vw, 1.15rem) !important;
   font-weight: 700 !important;
   color: #38bdf8 !important;
+  white-space: nowrap !important;
   text-shadow: 0 0 12px rgba(56, 189, 248, 0.5) !important;
   line-height: inherit !important;
   margin: 0 !important;
@@ -4955,7 +4966,7 @@ body.dark-theme .hero-cover-card .hero-cycle-text,
 body.light-theme .hero-cover-card .cursor-blink,
 body.dark-theme .hero-cover-card .cursor-blink,
 .hero-cover-card .cursor-blink {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem) !important;
+  font-size: clamp(0.95rem, 1.35vw, 1.15rem) !important;
   color: #38bdf8 !important;
   line-height: inherit !important;
   margin-left: 2px !important;
@@ -4999,38 +5010,40 @@ body.dark-theme .hero-cover-card .status-dot,
   box-shadow: 0 0 10px #38bdf8 !important;
 }
 
-/* 5. Cover Card Buttons (Cohesive Cyan / Blue-Slate Theme) */
+/* 5. Cover Card Buttons (Restored to Signature Emerald Green & Clean White) */
 .hero-cover-card .btn-primary,
 body.light-theme .hero-cover-card .btn-primary,
 body.dark-theme .hero-cover-card .btn-primary {
-  background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%) !important;
-  border: 1px solid #38bdf8 !important;
-  border-bottom: 3px solid #075985 !important;
+  background: linear-gradient(180deg, #10b981 0%, #059669 100%) !important;
+  border: 1px solid #34d399 !important;
+  border-bottom: 3px solid #047857 !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35) !important;
 }
 
 .hero-cover-card .btn-primary:hover,
 body.light-theme .hero-cover-card .btn-primary:hover,
 body.dark-theme .hero-cover-card .btn-primary:hover {
-  background: linear-gradient(180deg, #0369a1 0%, #0284c7 100%) !important;
-  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.45) !important;
+  background: linear-gradient(180deg, #059669 0%, #10b981 100%) !important;
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.45) !important;
   transform: translateY(-1px) !important;
 }
 
 .hero-cover-card .btn-secondary,
 body.light-theme .hero-cover-card .btn-secondary,
 body.dark-theme .hero-cover-card .btn-secondary {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border: 1px solid rgba(255, 255, 255, 0.28) !important;
-  color: #ffffff !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
 }
 
 .hero-cover-card .btn-secondary:hover,
 body.light-theme .hero-cover-card .btn-secondary:hover,
 body.dark-theme .hero-cover-card .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  transform: translateY(-1px) !important;
 }
 
 body.light-theme .hero-cover-card .hero-social-link,
