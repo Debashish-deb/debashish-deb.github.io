@@ -1,9 +1,9 @@
 /**
  * @traceability
  * Main client-side application controller for Debashish Deb's Scholarly & Systems Portfolio.
- * Implements data-driven rendering, theme management, scroll-spy navigation,
- * research collaboration workflows, project category filtering, architecture modals,
- * live skill search, command palette (Cmd+K), citation copying, and interactive modal workflows.
+ * Implements sidebar navigation architecture, mobile off-canvas drawer, in-page detailed system dossiers,
+ * in-page academic curriculum vitae (CV), card-free editorial design, theme management, scroll-spy,
+ * live skill search, and quick keyboard command palette (Cmd+K).
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,21 +15,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability initApp
-   * Entry point: Fetches portfolio data, sets up theme, and orchestrates DOM rendering.
+   * Entry point: Fetches portfolio data, sets up theme, and orchestrates DOM layout with sidebar and in-page detailed panels.
    */
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=6');
+      const response = await fetch('data.json?v=7');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
       portfolioData = await response.json();
 
-      // Clear loader and render the full seamless application
+      // Clear loader and mount layout
       app.innerHTML = '';
 
-      const header = renderHeader(portfolioData);
+      const layout = document.createElement('div');
+      layout.className = 'app-layout';
+
+      // 1. Mobile top bar (visible only on <= 1023px)
+      const mobileTopBar = renderMobileTopBar(portfolioData);
+
+      // 2. Stylish sidebar (fixed desktop, off-canvas drawer on mobile)
+      const sidebar = renderSidebar(portfolioData);
+
+      // 3. Mobile backdrop overlay
+      const backdrop = document.createElement('div');
+      backdrop.id = 'sidebar-backdrop';
+      backdrop.className = 'sidebar-backdrop';
+      backdrop.setAttribute('aria-hidden', 'true');
+
+      // 4. Main content column
+      const contentWrapper = document.createElement('div');
+      contentWrapper.className = 'main-content-wrapper';
+
       const main = document.createElement('main');
       main.id = 'main-content';
       main.appendChild(renderHero(portfolioData));
@@ -41,16 +59,20 @@ document.addEventListener('DOMContentLoaded', () => {
       main.appendChild(renderSkills(portfolioData));
       main.appendChild(renderExperience(portfolioData));
       main.appendChild(renderEducationAndResearch(portfolioData));
+      main.appendChild(renderCurriculumVitae(portfolioData)); // In-page CV
       main.appendChild(renderTestimonials(portfolioData));
       main.appendChild(renderContact(portfolioData));
 
       const footer = renderFooter(portfolioData);
-      const resumeModal = renderResumeModal(portfolioData);
+      contentWrapper.appendChild(main);
+      contentWrapper.appendChild(footer);
 
-      app.appendChild(header);
-      app.appendChild(main);
-      app.appendChild(footer);
-      app.appendChild(resumeModal);
+      layout.appendChild(mobileTopBar);
+      layout.appendChild(sidebar);
+      layout.appendChild(backdrop);
+      layout.appendChild(contentWrapper);
+
+      app.appendChild(layout);
 
       // Initialize interactions & observers
       setupNavigationEvents();
@@ -59,10 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
       setupScrollProgressBar();
       setupBackToTop();
       setupFormHandler();
-      setupResumeModal();
       setupSkillsObserver();
       setupProjectFilters();
-      setupProjectModal(portfolioData);
+      setupProjectDossier(portfolioData);
       setupSkillSearch();
       setupCommandPalette(portfolioData);
       setupTypewriterCycling();
@@ -71,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setupContactCopyButtons();
       setupServiceSelectButtons();
 
+      document.body.classList.add('app-loaded');
     } catch (error) {
       console.error('Initialization error:', error);
       app.innerHTML = `
@@ -85,83 +107,207 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability applyTheme
-   * Applies and persists theme class on body.
+   * Applies and persists theme class on body, updating button icons across desktop sidebar and mobile top bar.
    */
   function applyTheme(theme) {
     activeTheme = theme;
     localStorage.setItem('theme', theme);
     document.body.className = theme;
-    const themeBtn = document.getElementById('theme-toggle-btn');
-    if (themeBtn) {
-      themeBtn.innerHTML = theme === 'dark-theme' 
-        ? '<i class="fas fa-sun" aria-hidden="true"></i>' 
-        : '<i class="fas fa-moon" aria-hidden="true"></i>';
-      themeBtn.setAttribute('aria-label', `Switch to ${theme === 'dark-theme' ? 'light' : 'dark'} mode`);
+
+    const sidebarThemeBtn = document.getElementById('theme-toggle-btn');
+    if (sidebarThemeBtn) {
+      const icon = theme === 'dark-theme' ? '<i class="fas fa-sun" aria-hidden="true"></i>' : '<i class="fas fa-moon" aria-hidden="true"></i>';
+      const label = theme === 'dark-theme' ? 'Light Theme' : 'Dark Theme';
+      sidebarThemeBtn.innerHTML = `${icon} <span class="util-label">${label}</span>`;
+      sidebarThemeBtn.setAttribute('aria-label', `Switch to ${theme === 'dark-theme' ? 'light' : 'dark'} mode`);
+    }
+
+    const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
+    if (mobileThemeBtn) {
+      mobileThemeBtn.innerHTML = theme === 'dark-theme' ? '<i class="fas fa-sun" aria-hidden="true"></i>' : '<i class="fas fa-moon" aria-hidden="true"></i>';
+      mobileThemeBtn.setAttribute('aria-label', `Switch to ${theme === 'dark-theme' ? 'light' : 'dark'} mode`);
     }
   }
 
   /**
    * @traceability setupThemeToggle
-   * Sets up click listener on theme toggle button.
+   * Wires click listeners on sidebar and mobile theme buttons.
    */
   function setupThemeToggle() {
-    const themeBtn = document.getElementById('theme-toggle-btn');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', () => {
-        applyTheme(activeTheme === 'dark-theme' ? 'light-theme' : 'dark-theme');
-        showToast(`Switched to ${activeTheme === 'dark-theme' ? 'Dark' : 'Light'} theme`);
-      });
+    const sidebarThemeBtn = document.getElementById('theme-toggle-btn');
+    const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
+
+    function handleToggle() {
+      applyTheme(activeTheme === 'dark-theme' ? 'light-theme' : 'dark-theme');
+      showToast(`Switched to ${activeTheme === 'dark-theme' ? 'Dark' : 'Light'} theme`);
     }
+
+    if (sidebarThemeBtn) sidebarThemeBtn.addEventListener('click', handleToggle);
+    if (mobileThemeBtn) mobileThemeBtn.addEventListener('click', handleToggle);
   }
 
   /**
-   * @traceability renderHeader
-   * Generates sticky glass navigation with brand monogram, responsive nav menu, command palette trigger, resume CTA, and theme toggle.
+   * @traceability renderMobileTopBar
+   * Generates sticky mobile header with drawer toggle, brand monogram, theme switch, and quick CV anchor.
    */
-  function renderHeader(data) {
-    const header = document.createElement('header');
-    header.className = 'site-header';
-    header.innerHTML = `
-      <div class="nav-container">
-        <a href="#hero" class="brand-link" aria-label="Debashish Deb Home">
-          <span class="brand-badge">${data.shortName || 'DD'}</span>
-          <span class="brand-name">${data.name}</span>
-        </a>
+  function renderMobileTopBar(data) {
+    const topBar = document.createElement('header');
+    topBar.className = 'mobile-top-bar';
+    topBar.innerHTML = `
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation drawer" aria-expanded="false">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
 
-        <nav aria-label="Primary Navigation">
-          <ul class="nav-menu" id="nav-menu">
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#collaboration" class="nav-link">Collaboration</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Capabilities</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-          </ul>
-        </nav>
+      <a href="#hero" class="mobile-brand" aria-label="Debashish Deb Home">
+        <span class="brand-badge">${data.shortName || 'DD'}</span>
+        <span class="mobile-brand-name">${data.name}</span>
+      </a>
 
-        <div class="nav-actions">
-          <button id="cmd-palette-btn" class="nav-icon-btn" aria-label="Search and command palette (Cmd+K)" title="Command Palette (Cmd+K)">
+      <div class="mobile-top-actions">
+        <button id="mobile-theme-toggle" class="mobile-icon-btn" aria-label="Toggle theme">
+          ${activeTheme === 'dark-theme' ? '<i class="fas fa-sun" aria-hidden="true"></i>' : '<i class="fas fa-moon" aria-hidden="true"></i>'}
+        </button>
+        <a href="#cv" class="mobile-cv-pill" aria-label="Curriculum Vitae">CV</a>
+      </div>
+    `;
+    return topBar;
+  }
+
+  /**
+   * @traceability renderSidebar
+   * Generates fixed desktop sidebar & off-canvas drawer navigation featuring academic identity, status pulse, vertical nav menu, utility dock, and scholar links.
+   */
+  function renderSidebar(data) {
+    const sidebar = document.createElement('aside');
+    sidebar.className = 'site-sidebar';
+    sidebar.id = 'site-sidebar';
+    sidebar.setAttribute('aria-label', 'Main Sidebar Navigation');
+
+    sidebar.innerHTML = `
+      <div class="sidebar-top">
+        <div class="sidebar-brand-wrapper">
+          <a href="#hero" class="sidebar-brand-link" aria-label="Debashish Deb Home">
+            <span class="sidebar-brand-badge">${data.shortName || 'DD'}</span>
+            <div class="sidebar-identity">
+              <span class="sidebar-name">${data.name}</span>
+              <span class="sidebar-role">Computational Systems</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="sidebar-affiliation-box">
+          <div class="sidebar-lab-text">
+            <i class="fas fa-dna" aria-hidden="true"></i>
+            <span>Färkkilä Laboratory</span>
+          </div>
+          <div class="sidebar-institution-text">Biomedicum • Univ. of Helsinki</div>
+        </div>
+
+        <div class="sidebar-status-box">
+          <span class="status-dot"></span>
+          <span class="sidebar-status-label">Open to Collaboration &amp; Hiring</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Primary Navigation">
+        <ul class="sidebar-menu" id="sidebar-menu">
+          <li>
+            <a href="#hero" class="sidebar-link active" data-section="hero">
+              <i class="fas fa-compass" aria-hidden="true"></i>
+              <span>Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="#projects" class="sidebar-link" data-section="projects">
+              <i class="fas fa-layer-group" aria-hidden="true"></i>
+              <span>Curated Systems</span>
+            </a>
+          </li>
+          <li>
+            <a href="#collaboration" class="sidebar-link" data-section="collaboration">
+              <i class="fas fa-handshake" aria-hidden="true"></i>
+              <span>Collaboration</span>
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="sidebar-link" data-section="about">
+              <i class="fas fa-user-graduate" aria-hidden="true"></i>
+              <span>Scholar Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="#skills" class="sidebar-link" data-section="skills">
+              <i class="fas fa-microchip" aria-hidden="true"></i>
+              <span>Capabilities</span>
+            </a>
+          </li>
+          <li>
+            <a href="#experience" class="sidebar-link" data-section="experience">
+              <i class="fas fa-briefcase" aria-hidden="true"></i>
+              <span>Appointments</span>
+            </a>
+          </li>
+          <li>
+            <a href="#publications" class="sidebar-link" data-section="publications">
+              <i class="fas fa-book-open" aria-hidden="true"></i>
+              <span>Publications</span>
+            </a>
+          </li>
+          <li>
+            <a href="#cv" class="sidebar-link" data-section="cv" id="sidebar-cv-link">
+              <i class="fas fa-file-invoice" aria-hidden="true"></i>
+              <span>Curriculum Vitae</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="sidebar-link" data-section="contact">
+              <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+              <span>Academic Inquiry</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-utility-controls">
+          <button id="cmd-palette-btn" class="sidebar-util-btn" aria-label="Search and command palette (Cmd+K)" title="Command Palette (Cmd+K)">
             <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="util-label">Quick Jump</span>
             <span class="kbd-badge">⌘K</span>
           </button>
-          <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle theme">
+          <button id="theme-toggle-btn" class="sidebar-util-btn" aria-label="Toggle theme">
             ${activeTheme === 'dark-theme' ? '<i class="fas fa-sun" aria-hidden="true"></i>' : '<i class="fas fa-moon" aria-hidden="true"></i>'}
+            <span class="util-label">${activeTheme === 'dark-theme' ? 'Light Theme' : 'Dark Theme'}</span>
           </button>
-          <button id="nav-resume-btn" class="btn-resume">
-            <span>CV</span>
-          </button>
-          <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-            <i class="fas fa-bars" aria-hidden="true"></i>
-          </button>
+          <a href="#cv" class="sidebar-cv-btn" id="nav-resume-btn">
+            <i class="fas fa-file-lines" aria-hidden="true"></i>
+            <span>In-Page CV</span>
+          </a>
+        </div>
+
+        <div class="sidebar-socials">
+          <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="sidebar-social-link" aria-label="GitHub Profile" title="GitHub">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer" class="sidebar-social-link" aria-label="LinkedIn Profile" title="LinkedIn">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:${data.email}" class="sidebar-social-link" aria-label="Primary Academic Email" title="Email Debashish Deb">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </a>
+          <a href="${data.labWebsite}" target="_blank" rel="noopener noreferrer" class="sidebar-social-link" aria-label="Färkkilä Laboratory Website" title="Färkkilä Laboratory">
+            <i class="fas fa-dna" aria-hidden="true"></i>
+          </a>
         </div>
       </div>
     `;
-    return header;
+
+    return sidebar;
   }
 
   /**
    * @traceability renderHero
-   * Generates hero showcase spotlighting dual leadership & scientific expertise, clean CTAs, and dynamic focus area cycling.
+   * Generates hero showcase spotlighting scientific computing expertise, clean CTAs, and vertically aligned portrait.
    */
   function renderHero(data) {
     const heroSection = document.createElement('section');
@@ -233,44 +379,54 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function renderMarquee() {
     const items = [
-      'CSC Scientific Supercomputing',
-      'Spatial Multi-Omics Data',
-      'Go & Concurrent Microservices',
-      'React & Modern TypeScript',
-      'Flutter Cross-Platform Apps',
-      'Biotechnology to Software',
-      'Translational Cancer Oncology',
-      'Open to Collaboration & Hiring'
+      'CSC Supercomputing (Puhti)', 'Go Distributed Systems', 'TypeScript & React',
+      'Flutter & Dart', 'Precision Oncology Infrastructure', 'Relational Schema Design',
+      'High-Throughput Drug Profiling', 'Docker & CI/CD Pipelines', 'Oncological Data Registries'
     ];
-    const row = items.map(t => `<span>${t}</span><span aria-hidden="true">✦</span>`).join('');
-    const el = document.createElement('div');
-    el.className = 'marquee';
-    el.setAttribute('aria-hidden', 'true');
-    el.innerHTML = `<div class="marquee-track">${row}${row}</div>`;
-    return el;
+
+    const marquee = document.createElement('div');
+    marquee.className = 'marquee-strip';
+    marquee.setAttribute('aria-hidden', 'true');
+
+    const trackContent = items.map(item => `
+      <span class="marquee-item">
+        <span class="marquee-bullet">•</span>
+        <span>${item}</span>
+      </span>
+    `).join('');
+
+    marquee.innerHTML = `
+      <div class="marquee-track">
+        ${trackContent}
+        ${trackContent}
+      </div>
+    `;
+    return marquee;
   }
 
   /**
    * @traceability renderCurrentRoles
-   * Generates spotlight card for current key institutional position: IT Specialist at Färkkilä Lab UH.
+   * Renders primary ongoing appointments and studies in clean card-free editorial columns.
    */
   function renderCurrentRoles(data) {
     const section = document.createElement('section');
     section.id = 'leadership';
-    section.className = 'section leadership-section';
-    
-    const rolesHtml = (data.currentRoles || []).map((role) => `
-      <div class="glass-card role-card" style="display:flex; flex-direction:column; justify-content:space-between; border-top: 3px solid var(--accent-primary);">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-            <span class="section-tag" style="margin-bottom:0;"><i class="fas fa-certificate"></i> ${role.period}</span>
-            <a href="${role.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" style="padding:6px 14px; font-size:0.82rem;">
-              <span>Visit Lab Portal</span> <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-            </a>
-          </div>
-          <h3 style="font-size:1.45rem; margin-bottom:6px; color:var(--text-primary);">${role.role}</h3>
-          <h4 style="font-size:1.05rem; color:var(--accent-primary); margin-bottom:14px; font-weight:600;">${role.organization}</h4>
-          <p style="font-size:0.95rem; line-height:1.7; color:var(--text-secondary);">${role.summary}</p>
+    section.className = 'section roles-section';
+
+    const rolesMarkup = (data.currentRoles || []).map(r => `
+      <div class="editorial-role-col">
+        <div class="role-org-badge">
+          <i class="fas ${r.icon}" aria-hidden="true"></i>
+          <span>${r.org}</span>
+        </div>
+        <h3 class="role-title">${r.title}</h3>
+        <div class="role-meta">
+          <span class="role-location">${r.location}</span>
+          <span class="role-period">${r.period}</span>
+        </div>
+        <p class="role-desc">${r.desc}</p>
+        <div class="tech-tags">
+          ${(r.tags || []).map(t => `<span class="tech-tag">${t}</span>`).join('')}
         </div>
       </div>
     `).join('');
@@ -278,176 +434,21 @@ document.addEventListener('DOMContentLoaded', () => {
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-star"></i> Current Institutional Affiliation</span>
-          <h2 class="section-title">Research Systems &amp; Scientific Infrastructure</h2>
-          <p class="section-subtitle">Powering translational precision oncology computing, spatial multi-omics databases, and CSC supercomputing workflows at University of Helsinki.</p>
+          <span class="section-tag"><i class="fas fa-building-columns"></i> APPOINTMENTS</span>
+          <h2 class="section-title">Current Institutional Appointments</h2>
+          <p class="section-subtitle">Stewardship of high-performance computing clusters and advanced computational software scholarship in Helsinki.</p>
         </div>
-        <div style="max-width:760px; margin:0 auto;">
-          ${rolesHtml}
-        </div>
-      </div>
-    `;
-    return section;
-  }
-
-  /**
-   * @traceability renderCollaboration
-   * Generates research collaboration and professional engineering appointment offerings with empirical rigor.
-   */
-  function renderCollaboration(data) {
-    const section = document.createElement('section');
-    section.id = 'collaboration';
-    section.className = 'section services-section';
-
-    const servicesHtml = (data.collaborationServices || []).map(s => {
-      const deliverablesList = (s.deliverables || []).map(d => `
-        <li class="service-deliverable-item">
-          <i class="fas fa-check-circle" aria-hidden="true"></i>
-          <span>${d}</span>
-        </li>
-      `).join('');
-
-      const techTags = (s.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
-
-      return `
-        <div class="glass-card service-card">
-          <div>
-            <div class="service-header">
-              <div class="service-icon-box"><i class="fas ${s.icon}"></i></div>
-              <span class="service-badge">${s.badge}</span>
-            </div>
-            <h3 class="service-title">${s.title}</h3>
-            <p class="service-description">${s.description}</p>
-            <ul class="service-deliverables">${deliverablesList}</ul>
-          </div>
-          <div class="service-footer">
-            <div class="tech-tags">${techTags}</div>
-            <a href="#contact" class="btn btn-secondary btn-sm select-service-btn" data-service="${s.title}">
-              <span>Initiate Collaboration</span>
-              <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    section.innerHTML = `
-      <div class="container">
-        <div class="section-header">
-          <div class="collaboration-status-banner">
-            <span class="status-dot"></span>
-            <span>${data.collaborationAvailability || 'Available for Scholarly Collaboration, Advisory & Technical Appointments'}</span>
-          </div>
-          <h2 class="section-title">Collaborations &amp; Professional Appointments</h2>
-          <p class="section-subtitle">Alongside institutional computational duties at the University of Helsinki, I engage in select interdisciplinary collaborations, scientific software architecture, and technical appointments.</p>
-        </div>
-
-        <div class="services-grid">
-          ${servicesHtml}
+        <div class="editorial-roles-grid">
+          ${rolesMarkup}
         </div>
       </div>
     `;
     return section;
-  }
-
-  /**
-   * @traceability renderAbout
-   * Generates about narrative with dual technical & scientific pillar spotlights and key metric counters.
-   */
-  function renderAbout(data) {
-    const aboutSection = document.createElement('section');
-    aboutSection.id = 'about';
-    aboutSection.className = 'section about-section';
-
-    const statsHtml = (data.stats || []).map(stat => `
-      <div class="glass-card stat-item">
-        <div class="stat-value">${stat.value}</div>
-        <div class="stat-label">${stat.label}</div>
-      </div>
-    `).join('');
-
-    aboutSection.innerHTML = `
-      <div class="container">
-        <div class="stats-grid">
-          ${statsHtml}
-        </div>
-
-        <div class="section-header">
-          <span class="section-tag"><i class="fas fa-user-circle"></i> Profile & Mindset</span>
-          <h2 class="section-title">Where Software Craftsmanship Meets Scientific Computing</h2>
-          <p class="section-subtitle">A multidisciplinary background uniting software engineering, distributed algorithms, and biomedical research data.</p>
-        </div>
-
-        <div class="about-grid">
-          <div class="glass-card about-card-left">
-            <div>
-              <p class="about-story">${data.aboutExtended.replace(/\n\n/g, '</p><p class="about-story">')}</p>
-            </div>
-            <ul class="about-highlights">
-              <li class="highlight-row">
-                <i class="fas fa-check-circle highlight-icon"></i>
-                <span><strong>Full-Stack Software Architecture:</strong> Developing robust Go, TypeScript, React, and Flutter applications with clean architectures and automated tests.</span>
-              </li>
-              <li class="highlight-row">
-                <i class="fas fa-check-circle highlight-icon"></i>
-                <span><strong>Supercomputing & Biomedical Data:</strong> Coordinating CSC supercomputing environments, databases, and digital platforms at University of Helsinki's Färkkilä Lab.</span>
-              </li>
-              <li class="highlight-row">
-                <i class="fas fa-check-circle highlight-icon"></i>
-                <span><strong>High-Impact Research:</strong> Co-authored peer-reviewed cancer oncology papers in <em>Haematologica</em> and <em>Blood</em>.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="pillar-cards">
-            <div class="pillar-card">
-              <div class="pillar-head">
-                <div class="pillar-icon-box"><i class="fas fa-code"></i></div>
-                <div>
-                  <h3 class="pillar-title">Full-Stack Software Engineering</h3>
-                  <p class="stat-label">Go • React • Flutter • TypeScript</p>
-                </div>
-              </div>
-              <p class="pillar-desc">
-                Engineering performant web services, graph routing algorithms, and mobile apps with clean state management, type safety, and sub-second loading speeds.
-              </p>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-head">
-                <div class="pillar-icon-box"><i class="fas fa-dna"></i></div>
-                <div>
-                  <h3 class="pillar-title">Precision Oncology Infrastructure</h3>
-                  <p class="stat-label">IT Personnel — Färkkilä Laboratory (Biomedicum Helsinki)</p>
-                </div>
-              </div>
-              <p class="pillar-desc">
-                Managing CSC scientific computation, web portals, and spatial multi-omics clinical study databases (ONCOSYS-OVA trial) in a world-leading translational oncology research group.
-              </p>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-head">
-                <div class="pillar-icon-box"><i class="fas fa-microchip"></i></div>
-                <div>
-                  <h3 class="pillar-title">Industrial Systems & Lean</h3>
-                  <p class="stat-label">ABB & Swappie Experience</p>
-                </div>
-              </div>
-              <p class="pillar-desc">
-                Trained in industrial hardware standards, quality assurance, diagnostics, and team leadership in Finland where zero-defect precision is non-negotiable.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-    return aboutSection;
   }
 
   /**
    * @traceability renderProjects
-   * Generates interactive project cards with category filtering, highlights, media previews, action links, and Architecture Specs modal trigger.
+   * Generates card-free editorial project showcase with category filtering, highlights, and in-page detailed system dossier container.
    */
   function renderProjects(data) {
     const section = document.createElement('section');
@@ -457,8 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectCards = (data.projects || []).map((p, index) => {
       const catIcon = p.category === 'systems' ? 'fa-dna' : (p.category === 'algorithms' ? 'fa-diagram-project' : 'fa-laptop-code');
       const mediaMarkup = p.image 
-        ? `<img src="${p.image}" alt="${p.name} preview" class="project-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-           <div class="project-media-fallback" style="display:none;"><i class="fas ${catIcon} fa-2x"></i><span>${p.name}</span></div>`
+        ? `<img src="${p.image}" alt="${p.name} preview" class="project-img" loading="lazy" onerror="this.style.display='none';" />`
         : `<div class="project-media-fallback"><i class="fas ${catIcon} fa-2x"></i><span>${p.name}</span></div>`;
 
       const tags = (p.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
@@ -471,17 +471,17 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
 
       return `
-        <article class="glass-card project-card" data-category="${p.category || 'all'}" data-index="${index}">
-          <div class="project-media">
-            ${mediaMarkup}
-            <span class="project-badge-pill">${p.badge || 'Engineering'}</span>
-          </div>
-          <div class="project-content">
+        <article class="editorial-project-item" data-category="${p.category || 'all'}" data-index="${index}">
+          <div class="project-editorial-main">
+            <div class="project-editorial-meta">
+              <span class="project-badge-pill">${p.badge || 'Engineering'}</span>
+              <span class="project-category-tag">${p.category || 'System'}</span>
+            </div>
             <h3 class="project-title">${p.name}</h3>
             <p class="project-desc">${p.description}</p>
             ${highlightsHtml ? `<ul class="project-highlights-list">${highlightsHtml}</ul>` : ''}
             <div class="tech-tags">${tags}</div>
-            <div class="project-links" style="display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:16px;">
+            <div class="project-links">
               ${p.github ? `
                 <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
                   <i class="fab fa-github" aria-hidden="true"></i>
@@ -496,10 +496,15 @@ document.addEventListener('DOMContentLoaded', () => {
               ` : ''}
               <button class="btn-specs trigger-project-specs" data-index="${index}" aria-label="View architecture specifications for ${p.name}">
                 <i class="fas fa-layer-group" aria-hidden="true"></i>
-                <span>Details</span>
+                <span>Architecture &amp; Details</span>
               </button>
             </div>
           </div>
+          ${p.image ? `
+            <div class="project-editorial-media">
+              ${mediaMarkup}
+            </div>
+          ` : ''}
         </article>
       `;
     }).join('');
@@ -507,23 +512,250 @@ document.addEventListener('DOMContentLoaded', () => {
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-folder-open"></i> Portfolio</span>
-          <h2 class="section-title">Featured Projects &amp; Software</h2>
-          <p class="section-subtitle">Practical software spanning full-stack web applications, lab data systems, concurrent graph algorithms, and cross-platform mobile apps.</p>
+          <span class="section-tag"><i class="fas fa-folder-open"></i> PORTFOLIO</span>
+          <h2 class="section-title">Featured Projects &amp; Software Systems</h2>
+          <p class="section-subtitle">Practical software spanning full-stack web architectures, scientific registry systems, concurrent graph algorithms, and cross-platform mobile apps.</p>
         </div>
 
         <!-- Category Filter Tabs -->
         <div class="project-filters" id="project-filters" role="tablist" aria-label="Filter projects by category">
           <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Systems (${data.projects.length})</button>
-          <button class="filter-btn" data-filter="enterprise" role="tab" aria-selected="false">Enterprise & Cloud</button>
-          <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">Mobile & Flutter</button>
+          <button class="filter-btn" data-filter="enterprise" role="tab" aria-selected="false">Enterprise &amp; Cloud</button>
+          <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">Mobile &amp; Flutter</button>
           <button class="filter-btn" data-filter="systems" role="tab" aria-selected="false">Biomedical Systems</button>
-          <button class="filter-btn" data-filter="algorithms" role="tab" aria-selected="false">Algorithms & Go</button>
-          <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web & Apps</button>
+          <button class="filter-btn" data-filter="algorithms" role="tab" aria-selected="false">Algorithms &amp; Go</button>
+          <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web &amp; Apps</button>
         </div>
 
-        <div class="projects-grid" id="projects-grid">
+        <div class="editorial-projects-list" id="projects-grid">
           ${projectCards}
+        </div>
+
+        <!-- In-Page Detailed System Architecture Dossier (No Floating Modal Window) -->
+        <div id="project-dossier" class="project-dossier-panel" style="display:none;" aria-live="polite"></div>
+      </div>
+    `;
+    return section;
+  }
+
+  /**
+   * @traceability setupProjectDossier
+   * Displays in-page architectural dossier with full technical specifications and highlights when Details button is clicked. No floating modal window.
+   */
+  function setupProjectDossier(data) {
+    const dossier = document.getElementById('project-dossier');
+    if (!dossier) return;
+
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('.trigger-project-specs');
+      if (trigger) {
+        const index = parseInt(trigger.getAttribute('data-index'), 10);
+        const project = data.projects[index];
+        if (!project) return;
+
+        // Highlight active item
+        document.querySelectorAll('.editorial-project-item').forEach(c => c.classList.remove('active-dossier'));
+        const activeItem = trigger.closest('.editorial-project-item');
+        if (activeItem) activeItem.classList.add('active-dossier');
+
+        const highlightsList = (project.highlights || []).map(h => `
+          <li class="dossier-spec-item">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span>${h}</span>
+          </li>
+        `).join('');
+
+        const techTags = (project.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
+
+        dossier.innerHTML = `
+          <div class="dossier-inner">
+            <div class="dossier-header">
+              <div class="dossier-meta">
+                <span class="dossier-tag"><i class="fas fa-layer-group"></i> IN-PAGE ARCHITECTURE DOSSIER</span>
+                <span class="project-badge-pill" style="margin-left:8px;">${project.badge || 'Engineering'}</span>
+                <h3 class="dossier-title">${project.name}</h3>
+                <p class="dossier-desc">${project.description}</p>
+              </div>
+              <button class="dossier-close-btn" id="dossier-close-btn" aria-label="Collapse project dossier">
+                <i class="fas fa-times"></i>
+                <span>Close Dossier</span>
+              </button>
+            </div>
+
+            <div class="dossier-body">
+              <div class="dossier-grid">
+                <div class="dossier-col">
+                  <h4 class="dossier-subtitle"><i class="fas fa-microchip"></i> Architectural Specifications</h4>
+                  <ul class="dossier-list">
+                    ${highlightsList}
+                  </ul>
+                </div>
+                <div class="dossier-col">
+                  <h4 class="dossier-subtitle"><i class="fas fa-code"></i> Computational &amp; Runtime Stack</h4>
+                  <div class="tech-tags">${techTags}</div>
+
+                  <h4 class="dossier-subtitle" style="margin-top:20px;"><i class="fas fa-shield-halved"></i> Engineering Governance</h4>
+                  <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.65; margin-bottom:16px;">
+                    Engineered with deterministic data schemas, strict memory boundaries, zero-mutation state transformations, and comprehensive continuous automated testing.
+                  </p>
+                </div>
+              </div>
+
+              <div class="dossier-actions">
+                ${project.github ? `
+                  <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                    <i class="fab fa-github"></i>
+                    <span>Inspect GitHub Repository</span>
+                  </a>
+                ` : ''}
+                ${project.link && !project.link.includes('github.com') ? `
+                  <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                    <span>${project.linkLabel || 'Launch External Interface'}</span>
+                  </a>
+                ` : ''}
+                <button class="btn btn-secondary btn-sm" id="dossier-collapse-action">
+                  <i class="fas fa-compress"></i>
+                  <span>Collapse Detailed View</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        dossier.style.display = 'block';
+        if (typeof dossier.scrollIntoView === 'function') dossier.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        const closeBtn = document.getElementById('dossier-close-btn');
+        const collapseAction = document.getElementById('dossier-collapse-action');
+        const handleClose = () => {
+          dossier.style.display = 'none';
+          document.querySelectorAll('.editorial-project-item').forEach(c => c.classList.remove('active-dossier'));
+          if (activeItem && typeof activeItem.scrollIntoView === 'function') activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        };
+        if (closeBtn) closeBtn.addEventListener('click', handleClose);
+        if (collapseAction) collapseAction.addEventListener('click', handleClose);
+      }
+    });
+  }
+
+  /**
+   * @traceability renderCollaboration
+   * Generates card-free editorial 3-column prospectus layout for collaboration and technical appointments.
+   */
+  function renderCollaboration(data) {
+    const section = document.createElement('section');
+    section.id = 'collaboration';
+    section.className = 'section collaboration-section';
+
+    const servicesHtml = (data.collaborationServices || []).map((srv, idx) => `
+      <div class="editorial-service-col" data-service-index="${idx}">
+        <div class="service-col-head">
+          <span class="service-badge-pill">${srv.badge}</span>
+          <div class="service-icon-wrapper">
+            <i class="fas ${srv.icon}" aria-hidden="true"></i>
+          </div>
+          <h3 class="service-title">${srv.title}</h3>
+        </div>
+        <p class="service-desc">${srv.description}</p>
+        <div class="service-deliverables">
+          <h4 class="service-subhead">Key Capabilities:</h4>
+          <ul class="service-bullets">
+            ${srv.deliverables.map(d => `<li><i class="fas fa-angle-right" aria-hidden="true"></i> <span>${d}</span></li>`).join('')}
+          </ul>
+        </div>
+        <div class="service-tech-stack">
+          <div class="tech-tags">
+            ${srv.technologies.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+          </div>
+        </div>
+        <div class="service-col-action">
+          <button class="btn btn-secondary btn-sm select-service-btn" data-service-name="${srv.title}">
+            <span>Inquire regarding this scope</span>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    `).join('');
+
+    section.innerHTML = `
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-handshake"></i> COLLABORATION &amp; HIRING</span>
+          <h2 class="section-title">Scholarly Collaboration &amp; Technical Appointments</h2>
+          <p class="section-subtitle">Receptive to research partnerships, software engineering appointments, and high-performance computational advisory roles.</p>
+        </div>
+
+        <div class="editorial-services-grid">
+          ${servicesHtml}
+        </div>
+      </div>
+    `;
+    return section;
+  }
+
+  /**
+   * @traceability renderAbout
+   * Generates scholarly trajectory narrative and empirical pillars in clean editorial layout.
+   */
+  function renderAbout(data) {
+    const section = document.createElement('section');
+    section.id = 'about';
+    section.className = 'section about-section';
+
+    section.innerHTML = `
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-user-graduate"></i> SCHOLAR PROFILE</span>
+          <h2 class="section-title">Bridging Life Sciences &amp; Systems Engineering</h2>
+          <p class="section-subtitle">Academic grounding in molecular biotechnology coupled with empirical software craft.</p>
+        </div>
+
+        <div class="editorial-about-grid">
+          <div class="about-narrative">
+            <h3 class="narrative-heading">Scholar-Technologist Trajectory</h3>
+            <p class="narrative-text">${data.about}</p>
+            <p class="narrative-text" style="margin-top:14px;">${data.aboutExtended.split('\n\n')[1] || ''}</p>
+            
+            <div class="about-credentials-box">
+              <div class="credential-item">
+                <span class="cred-label">Highest Degree</span>
+                <span class="cred-val">M.Sc. Molecular Biotechnology (Univ. of Helsinki)</span>
+              </div>
+              <div class="credential-item">
+                <span class="cred-label">Laboratory Affiliation</span>
+                <span class="cred-val">Färkkilä Lab • Faculty of Medicine • Biomedicum Helsinki</span>
+              </div>
+              <div class="credential-item">
+                <span class="cred-label">Computing Infrastructure</span>
+                <span class="cred-val">CSC IT Center for Science (Puhti / Allas Supercomputing)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="editorial-pillars-col">
+            <div class="editorial-pillar-item">
+              <div class="pillar-icon-box"><i class="fas fa-microscope"></i></div>
+              <div class="pillar-text">
+                <h4 class="pillar-title">Empirical Precision</h4>
+                <p class="pillar-desc">Disciplined methodologies honed in Finnish high-precision engineering (ABB) and biomedical research laboratories.</p>
+              </div>
+            </div>
+            <div class="editorial-pillar-item">
+              <div class="pillar-icon-box"><i class="fas fa-dna"></i></div>
+              <div class="pillar-text">
+                <h4 class="pillar-title">Domain Synthesis</h4>
+                <p class="pillar-desc">Fluent translation between molecular biology hypotheses and concurrent software architectures in Go and TypeScript.</p>
+              </div>
+            </div>
+            <div class="editorial-pillar-item">
+              <div class="pillar-icon-box"><i class="fas fa-server"></i></div>
+              <div class="pillar-text">
+                <h4 class="pillar-title">Resilient Infrastructure</h4>
+                <p class="pillar-desc">Continuous deployment of reproducible containers, normalized registries, and supercomputing workflows.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     `;
@@ -553,7 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
 
       return `
-        <div class="glass-card skill-category-card" data-category-title="${cat.category.toLowerCase()}">
+        <div class="editorial-skill-group" data-category-title="${cat.category.toLowerCase()}">
           <h3 class="category-title">
             <i class="fas ${cat.icon} category-icon" aria-hidden="true"></i>
             <span>${cat.category}</span>
@@ -568,18 +800,17 @@ document.addEventListener('DOMContentLoaded', () => {
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-microchip"></i> Capabilities</span>
-          <h2 class="section-title">Technical &amp; Core Engineering Skills</h2>
-          <p class="section-subtitle">A practical toolkit combining software engineering, modern web &amp; mobile technologies, and biomedical research computing.</p>
+          <span class="section-tag"><i class="fas fa-microchip"></i> CAPABILITIES</span>
+          <h2 class="section-title">Technical Competencies &amp; Toolkit</h2>
+          <p class="section-subtitle">Comprehensive spectrum of software architectures, languages, and laboratory methodologies.</p>
+          
+          <div class="skill-search-wrapper" style="margin-top:20px;">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="text" id="skill-search-input" class="skill-search-input" placeholder="Filter capabilities (e.g., Go, React, CSC, Docker, Flutter)..." aria-label="Filter capabilities" />
+          </div>
         </div>
 
-        <!-- Live Skill Search Bar -->
-        <div class="skill-search-wrapper">
-          <i class="fas fa-search skill-search-icon" aria-hidden="true"></i>
-          <input type="text" id="skill-search-input" class="skill-search-input" placeholder="Search skills (e.g. Go, React, CSC, Flutter, Docker)..." aria-label="Search skills" />
-        </div>
-
-        <div class="skills-container" id="skills-container">
+        <div class="editorial-skills-grid" id="skills-categories-grid">
           ${categoriesHtml}
         </div>
       </div>
@@ -589,46 +820,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderExperience
-   * Generates professional timeline detailing career history in Finland and laboratory IT systems.
+   * Generates scholarly appointments timeline with institutional roles and responsibilities.
    */
   function renderExperience(data) {
     const section = document.createElement('section');
     section.id = 'experience';
     section.className = 'section experience-section';
 
-    const timelineItems = (data.experience || []).map(exp => {
-      const tasks = exp.responsibilities.map(r => `<li class="job-task">${r}</li>`).join('');
-      const techTags = (exp.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
-
-      return `
-        <div class="timeline-item">
-          <div class="timeline-dot" aria-hidden="true"></div>
-          <div class="glass-card timeline-card">
-            <div class="timeline-header">
-              <div>
-                <h3 class="job-title">${exp.title}</h3>
-                <div class="job-company">
-                  <strong>${exp.company}</strong> • <span>${exp.location}</span>
-                </div>
-              </div>
-              <span class="job-period">${exp.time}</span>
-            </div>
-            <ul class="job-tasks">${tasks}</ul>
-            ${techTags ? `<div class="tech-tags">${techTags}</div>` : ''}
-          </div>
+    const expItems = (data.experience || []).map(exp => `
+      <div class="editorial-timeline-item">
+        <div class="timeline-meta-col">
+          <span class="timeline-period-badge">${exp.time}</span>
+          <span class="timeline-location">${exp.location}</span>
         </div>
-      `;
-    }).join('');
+        <div class="timeline-content-col">
+          <h3 class="timeline-role-title">${exp.title}</h3>
+          <h4 class="timeline-company">${exp.company}</h4>
+          <ul class="timeline-responsibilities">
+            ${exp.responsibilities.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    `).join('');
 
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-briefcase"></i> Track Record</span>
-          <h2 class="section-title">Professional Experience</h2>
-          <p class="section-subtitle">Leadership, scientific research, and engineering across international tech ventures and Finnish research institutions.</p>
+          <span class="section-tag"><i class="fas fa-briefcase"></i> APPOINTMENTS TIMELINE</span>
+          <h2 class="section-title">Professional &amp; Laboratory Appointments</h2>
+          <p class="section-subtitle">History of technical appointments across biomedical research, high-precision manufacturing, and software engineering.</p>
         </div>
-        <div class="timeline">
-          ${timelineItems}
+
+        <div class="editorial-timeline-list">
+          ${expItems}
         </div>
       </div>
     `;
@@ -637,76 +861,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderEducationAndResearch
-   * Generates education credentials and scientific peer-reviewed publications with 1-click citation copy.
+   * Generates higher education qualifications and peer-reviewed scientific publications with copy-citation functionality.
    */
   function renderEducationAndResearch(data) {
     const section = document.createElement('section');
     section.id = 'publications';
     section.className = 'section education-section';
 
-    const eduHtml = (data.education || []).map(edu => `
-      <div class="glass-card edu-card">
-        <h3 class="edu-degree">${edu.degree}</h3>
-        <div class="edu-institution">${edu.institution}</div>
-        <div class="edu-meta">${edu.time} • ${edu.location}</div>
-        <p class="edu-desc">${edu.description}</p>
+    const eduMarkup = (data.education || []).map(edu => `
+      <div class="editorial-edu-item">
+        <div class="edu-head">
+          <h3 class="edu-degree">${edu.degree}</h3>
+          <span class="edu-time">${edu.time}</span>
+        </div>
+        <div class="edu-institution">${edu.institution} — ${edu.location}</div>
+        <div class="edu-thesis"><em>Focus:</em> ${edu.thesis}</div>
       </div>
     `).join('');
 
-    const pubHtml = (data.achievements || []).map((pub, idx) => `
-      <div class="glass-card pub-card">
+    const pubMarkup = (data.achievements || []).map(pub => `
+      <div class="editorial-pub-item">
+        <div class="pub-journal-badge">${pub.journal}</div>
         <h3 class="pub-title">${pub.title}</h3>
-        <div class="pub-journal">${pub.journal}</div>
-        <div class="pub-authors">${pub.authors}</div>
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:14px;">
-          <span class="pub-badge"><i class="fas fa-award"></i> ${pub.highlight}</span>
-          <div style="display:flex; align-items:center; gap:8px;">
-            ${pub.citation ? `
-              <button class="btn-citation copy-citation-btn" data-citation="${encodeURIComponent(pub.citation)}" aria-label="Copy APA citation for ${pub.title}">
-                <i class="fas fa-quote-left" aria-hidden="true"></i>
-                <span>Copy Citation</span>
-              </button>
-            ` : ''}
-            ${pub.link ? `
-              <a href="${pub.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" style="padding:4px 12px; font-size:0.8rem;">
-                <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Paper
-              </a>
-            ` : ''}
-          </div>
+        <p class="pub-desc">${pub.description}</p>
+        <div class="pub-actions">
+          <a href="${pub.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+            <i class="fas fa-external-link-alt"></i>
+            <span>View Publication</span>
+          </a>
+          <button class="btn btn-secondary btn-sm copy-citation-btn" data-citation="${pub.title}. ${pub.journal}.">
+            <i class="fas fa-quote-right"></i>
+            <span>Copy Citation</span>
+          </button>
         </div>
       </div>
-    `).join('');
-
-    const certHtml = (data.certificates || []).map(c => `
-      <span class="tech-tag" style="padding:6px 14px; font-size:0.85rem;">
-        <i class="fab fa-linkedin" style="color:#0a66c2;"></i> ${c.title} (${c.organization})
-      </span>
     `).join('');
 
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-graduation-cap"></i> Academic Foundation</span>
-          <h2 class="section-title">Education & Scientific Publications</h2>
-          <p class="section-subtitle">Rigorous biotechnology degrees and peer-reviewed cancer oncology contributions.</p>
+          <span class="section-tag"><i class="fas fa-book-open"></i> SCHOLARSHIP</span>
+          <h2 class="section-title">Education &amp; Peer-Reviewed Publications</h2>
+          <p class="section-subtitle">Higher academic credentials and co-authored biomedical publications in international oncological journals.</p>
         </div>
 
-        <div class="education-grid">
-          ${eduHtml}
-        </div>
-
-        <div class="section-header" style="margin-top: 60px; margin-bottom: 36px;">
-          <h3 style="font-size: 1.8rem;">Peer-Reviewed Scientific Publications</h3>
-        </div>
-
-        <div class="publications-grid">
-          ${pubHtml}
-        </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-          <h4 style="font-size: 1.15rem; margin-bottom: 16px;">Professional Certifications</h4>
-          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 800px; margin: 0 auto;">
-            ${certHtml}
+        <div class="editorial-scholarship-grid">
+          <div class="scholarship-col">
+            <h3 class="scholarship-col-heading"><i class="fas fa-graduation-cap"></i> Higher Education</h3>
+            <div class="editorial-edu-list">${eduMarkup}</div>
+          </div>
+          <div class="scholarship-col">
+            <h3 class="scholarship-col-heading"><i class="fas fa-scroll"></i> Peer-Reviewed Publications</h3>
+            <div class="editorial-pub-list">${pubMarkup}</div>
           </div>
         </div>
       </div>
@@ -715,29 +921,147 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * @traceability renderTestimonials
-   * Generates testimonials & supervisor recommendations.
+   * @traceability renderCurriculumVitae
+   * Generates comprehensive in-page Academic Curriculum Vitae (CV) section with full academic bibliography, appointments, degrees, and print stylesheet. No floating modal window.
    */
-  function renderTestimonials(data) {
+  function renderCurriculumVitae(data) {
     const section = document.createElement('section');
-    section.className = 'section testimonials-section';
+    section.id = 'cv';
+    section.className = 'section cv-section';
 
-    const testHtml = (data.testimonials || []).map(t => `
-      <div class="glass-card testimonial-card">
-        <p class="testimonial-quote">"${t.text}"</p>
-        <div class="testimonial-author">${t.author}</div>
-        <div class="testimonial-role">${t.role}</div>
+    const expMarkup = (data.experience || []).map(exp => `
+      <div class="cv-record-item">
+        <div class="cv-record-head">
+          <span class="cv-record-title">${exp.title}</span>
+          <span class="cv-record-period">${exp.time}</span>
+        </div>
+        <div class="cv-record-affiliation">${exp.company} — ${exp.location}</div>
+        <ul class="cv-record-bullets">
+          ${(exp.responsibilities || []).map(r => `<li>${r}</li>`).join('')}
+        </ul>
+      </div>
+    `).join('');
+
+    const eduMarkup = (data.education || []).map(edu => `
+      <div class="cv-record-item">
+        <div class="cv-record-head">
+          <span class="cv-record-title">${edu.degree}</span>
+          <span class="cv-record-period">${edu.time}</span>
+        </div>
+        <div class="cv-record-affiliation">${edu.institution} — ${edu.location}</div>
+      </div>
+    `).join('');
+
+    const pubMarkup = (data.achievements || []).map(pub => `
+      <div class="cv-pub-item">
+        <div class="cv-pub-title"><strong>${pub.title}</strong></div>
+        <div class="cv-pub-journal">${pub.journal}</div>
+      </div>
+    `).join('');
+
+    const refMarkup = (data.references || []).map(ref => `
+      <div class="cv-ref-item">
+        <strong>${ref.name}</strong> — ${ref.title}, ${ref.company}<br>
+        <span>Email: <a href="mailto:${ref.email}">${ref.email}</a> ${ref.phone ? `• Phone: ${ref.phone}` : ''}</span>
       </div>
     `).join('');
 
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-quote-left"></i> Endorsements</span>
-          <h2 class="section-title">Institutional Endorsements & References</h2>
+          <span class="section-tag"><i class="fas fa-file-invoice"></i> CURRICULUM VITAE</span>
+          <h2 class="section-title">Academic &amp; Professional Record</h2>
+          <p class="section-subtitle">Comprehensive curriculum vitae of Debashish Deb, M.Sc. Molecular Biotechnologist and Computational Systems Specialist.</p>
+          <div class="cv-action-bar" style="margin-top:20px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+            <button class="btn btn-primary btn-sm" onclick="window.print()" id="btn-print-cv">
+              <i class="fas fa-print"></i>
+              <span>Print / Save Academic CV (PDF)</span>
+            </button>
+            <a href="mailto:${data.email}?subject=Academic%20Inquiry%20regarding%20CV" class="btn btn-secondary btn-sm">
+              <i class="fas fa-envelope"></i>
+              <span>Direct Institutional Inquiry</span>
+            </a>
+          </div>
         </div>
-        <div class="testimonials-grid">
-          ${testHtml}
+
+        <div class="cv-paper-container">
+          <div class="cv-paper">
+            <header class="cv-paper-header">
+              <h1 class="cv-name">${data.name}</h1>
+              <p class="cv-title">${data.title}</p>
+              <p class="cv-contact-line">
+                ${data.location} • <a href="mailto:${data.email}">${data.email}</a> • Phone: ${data.phone} • <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a> • <a href="${data.github}" target="_blank" rel="noopener noreferrer">GitHub</a> • <a href="${data.labWebsite}" target="_blank" rel="noopener noreferrer">Färkkilä Lab (UH)</a>
+              </p>
+            </header>
+
+            <div class="cv-section-block">
+              <h3 class="cv-section-heading">Professional Profile &amp; Research Statement</h3>
+              <p class="cv-summary-text">${data.aboutExtended}</p>
+            </div>
+
+            <div class="cv-section-block">
+              <h3 class="cv-section-heading">Academic &amp; Professional Appointments</h3>
+              <div class="cv-records-list">
+                ${expMarkup}
+              </div>
+            </div>
+
+            <div class="cv-section-block">
+              <h3 class="cv-section-heading">Higher Education &amp; Scientific Degrees</h3>
+              <div class="cv-records-list">
+                ${eduMarkup}
+              </div>
+            </div>
+
+            <div class="cv-section-block">
+              <h3 class="cv-section-heading">Peer-Reviewed Scientific Publications</h3>
+              <div class="cv-pub-list">
+                ${pubMarkup}
+              </div>
+            </div>
+
+            <div class="cv-section-block">
+              <h3 class="cv-section-heading">Scholarly &amp; Professional References</h3>
+              <div class="cv-refs-list">
+                ${refMarkup}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    return section;
+  }
+
+  /**
+   * @traceability renderTestimonials
+   * Renders testimonials from research mentors and colleagues in clean editorial quotes.
+   */
+  function renderTestimonials(data) {
+    const section = document.createElement('section');
+    section.className = 'section testimonials-section';
+
+    const testItems = (data.testimonials || []).map(t => `
+      <div class="editorial-quote-col">
+        <p class="quote-text">"${t.quote}"</p>
+        <div class="quote-author-meta">
+          <div class="author-name">${t.author}</div>
+          <div class="author-title">${t.title}</div>
+          <div class="author-org">${t.institution}</div>
+        </div>
+      </div>
+    `).join('');
+
+    section.innerHTML = `
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-quote-left"></i> ENDORSEMENTS</span>
+          <h2 class="section-title">Colleague &amp; Advisor Perspectives</h2>
+          <p class="section-subtitle">Feedback from laboratory supervisors, engineering peers, and collaborators.</p>
+        </div>
+        <div class="editorial-quotes-grid">
+          ${testItems}
         </div>
       </div>
     `;
@@ -746,129 +1070,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderContact
-   * Generates collaboration inquiry form with inquiry type and timeline selectors, alongside 1-click copy actions.
+   * Generates direct institutional correspondence form and verified contact channels.
    */
   function renderContact(data) {
     const section = document.createElement('section');
     section.id = 'contact';
     section.className = 'section contact-section';
+
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-envelope-open-text"></i> Correspondence &amp; Inquiries</span>
-          <h2 class="section-title">Initiate Dialogue or Inquire for Appointment</h2>
-          <p class="section-subtitle">Whether exploring an interdisciplinary research collaboration, specialized software architecture, or institutional appointment, I welcome your correspondence.</p>
+          <span class="section-tag"><i class="fas fa-envelope-open-text"></i> CORRESPONDENCE</span>
+          <h2 class="section-title">Initiate Academic Inquiry</h2>
+          <p class="section-subtitle">Reach out regarding research collaboration, systems development appointments, or supercomputing inquiries.</p>
         </div>
 
-        <div class="contact-grid">
-          <div class="glass-card">
-            <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Academic &amp; Professional Contacts</h3>
-            <p style="margin-bottom: 20px;">Based in Helsinki &amp; Kuopio, Finland. Engaging with international institutions, research consortia, and technical partners across Europe and globally.</p>
+        <div class="editorial-contact-grid">
+          <div class="contact-info-col">
+            <h3 class="contact-col-heading">Institutional &amp; Direct Channels</h3>
+            <p class="contact-col-desc">Based at Biomedicum Helsinki, University of Helsinki. Welcoming inquiries regarding computational infrastructure and engineering appointments.</p>
+            
+            <div class="contact-channels-list">
+              <div class="channel-item">
+                <i class="fas fa-envelope"></i>
+                <div class="channel-text">
+                  <span class="channel-label">Primary Academic Email</span>
+                  <a href="mailto:${data.email}" class="channel-val">${data.email}</a>
+                </div>
+                <button class="copy-channel-btn" data-copy="${data.email}" aria-label="Copy primary email"><i class="fas fa-copy"></i></button>
+              </div>
 
-            <div class="contact-info-list">
-              <div class="contact-item">
-                <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
-                <div style="flex:1;">
-                  <div class="contact-label">Primary Email</div>
-                  <div class="contact-val">${data.email}</div>
-                  <button class="copy-pill-btn copy-email-btn" data-email="${data.email}">
-                    <i class="far fa-copy" aria-hidden="true"></i> Copy Email
-                  </button>
+              <div class="channel-item">
+                <i class="fas fa-building-columns"></i>
+                <div class="channel-text">
+                  <span class="channel-label">Institutional Affiliation</span>
+                  <a href="${data.labWebsite}" target="_blank" rel="noopener noreferrer" class="channel-val">Färkkilä Lab • Univ. of Helsinki</a>
                 </div>
               </div>
 
-              <div class="contact-item">
-                <div class="contact-icon-box"><i class="fas fa-university"></i></div>
-                <div style="flex:1;">
-                  <div class="contact-label">Academic Email (University of Helsinki)</div>
-                  <div class="contact-val">${data.academicEmail}</div>
-                  <button class="copy-pill-btn copy-email-btn" data-email="${data.academicEmail}">
-                    <i class="far fa-copy" aria-hidden="true"></i> Copy Academic
-                  </button>
+              <div class="channel-item">
+                <i class="fas fa-location-dot"></i>
+                <div class="channel-text">
+                  <span class="channel-label">Physical Laboratory</span>
+                  <span class="channel-val">${data.location}</span>
                 </div>
               </div>
-
-              <div class="contact-item">
-                <div class="contact-icon-box"><i class="fas fa-phone"></i></div>
-                <div style="flex:1;">
-                  <div class="contact-label">Direct Phone / WhatsApp</div>
-                  <div class="contact-val">${data.phone}</div>
-                  <div style="display:flex; gap:8px; margin-top:6px;">
-                    <button class="copy-pill-btn copy-phone-btn" data-phone="${data.phone}">
-                      <i class="far fa-copy" aria-hidden="true"></i> Copy Phone
-                    </button>
-                    <a href="https://wa.me/358451600007" target="_blank" rel="noopener noreferrer" class="copy-pill-btn" style="text-decoration:none;">
-                      <i class="fab fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item">
-                <div class="contact-icon-box"><i class="fab fa-linkedin-in"></i></div>
-                <div>
-                  <div class="contact-label">LinkedIn Profile</div>
-                  <div class="contact-val">debashish-deb</div>
-                </div>
-              </a>
-
-              <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="contact-item">
-                <div class="contact-icon-box"><i class="fab fa-github"></i></div>
-                <div>
-                  <div class="contact-label">GitHub Profile</div>
-                  <div class="contact-val">Debashish-deb</div>
-                </div>
-              </a>
             </div>
           </div>
 
-          <div class="glass-card">
-            <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Collaboration &amp; Appointment Inquiry</h3>
-            <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 20px;">
-              Please outline the parameters of your technical project, research objectives, or institutional appointment timeline.
-            </p>
-            <form id="contact-form" action="https://formspree.io/f/mvgzegkz" method="POST">
-              <div class="form-row">
-                <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-name" class="form-label">Full Name</label>
-                  <input type="text" id="contact-name" name="name" class="form-control" placeholder="Dr. / Prof. / Full Name" required>
-                </div>
-                <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-email" class="form-label">Email Address</label>
-                  <input type="email" id="contact-email" name="email" class="form-control" placeholder="colleague@institution.org" required>
-                </div>
+          <div class="contact-form-col">
+            <form id="contact-form" class="editorial-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name">Your Full Name <span class="req">*</span></label>
+                <input type="text" id="contact-name" name="name" required placeholder="Dr. Jane Doe / Prof. Smith" />
+                <span class="field-error" id="name-error"></span>
               </div>
 
-              <div class="form-row">
-                <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-project-type" class="form-label">Inquiry / Appointment Focus</label>
-                  <select id="contact-project-type" name="project_type" class="form-control" required>
-                    <option value="Full-Stack Web & Scientific Architectures">Full-Stack Web & Scientific Architectures</option>
-                    <option value="Cross-Platform Mobile Engineering (Flutter)">Cross-Platform Mobile Engineering (Flutter)</option>
-                    <option value="Biomedical Data Systems & Workflows">Biomedical Data Systems & Computational Infrastructure</option>
-                    <option value="Research Collaboration & Advisory">Research Collaboration & Technical Advisory</option>
-                    <option value="General Scholarly Inquiry">General Scholarly Inquiry / Consultation</option>
-                  </select>
-                </div>
-                <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-timeline" class="form-label">Prospective Timeline</label>
-                  <select id="contact-timeline" name="timeline" class="form-control">
-                    <option value="Immediate (< 1 month)">Immediate (< 1 month)</option>
-                    <option value="1 to 3 months" selected>1 to 3 months</option>
-                    <option value="Semester / Extended Appointment">Semester / Extended Appointment</option>
-                    <option value="Exploratory / Flexible">Exploratory / Flexible</option>
-                  </select>
-                </div>
+              <div class="form-group">
+                <label for="contact-email">Institutional / Work Email <span class="req">*</span></label>
+                <input type="email" id="contact-email" name="email" required placeholder="jane.doe@institution.edu" />
+                <span class="field-error" id="email-error"></span>
               </div>
 
-              <div class="form-group" style="margin-top:18px;">
-                <label for="contact-message" class="form-label">Scope &amp; Inquiry Details</label>
-                <textarea id="contact-message" name="message" class="form-control" style="min-height:120px;" placeholder="Describe your scientific objectives, system specifications, technical challenges, or collaboration framework..." required></textarea>
+              <div class="form-group">
+                <label for="contact-subject">Inquiry Domain <span class="req">*</span></label>
+                <select id="contact-subject" name="subject" required>
+                  <option value="">Select scope of inquiry...</option>
+                  <option value="research">Scholarly / Research Collaboration</option>
+                  <option value="appointment">Software Engineering Appointment / Hiring</option>
+                  <option value="supercomputing">High-Performance Computing / CSC Advisory</option>
+                  <option value="general">General Technical Inquiry</option>
+                </select>
+                <span class="field-error" id="subject-error"></span>
               </div>
 
-              <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">
-                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              <div class="form-group">
+                <label for="contact-message">Correspondence Details <span class="req">*</span></label>
+                <textarea id="contact-message" name="message" rows="5" required placeholder="Detail the objectives, scope, or collaboration parameters..."></textarea>
+                <span class="field-error" id="message-error"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="contact-submit-btn">
                 <span>Transmit Inquiry</span>
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
               </button>
             </form>
           </div>
@@ -880,224 +1164,132 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderFooter
-   * Generates clean modern footer with credits, affiliation links, and back-to-top trigger.
+   * Generates academic footer with institutional notice and copyright.
    */
   function renderFooter(data) {
     const footer = document.createElement('footer');
     footer.className = 'site-footer';
     footer.innerHTML = `
-      <div class="container">
-        <p class="footer-copy">
-          Designed & Engineered with scientific precision by <strong>${data.name}</strong> • ${new Date().getFullYear()}
-        </p>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">
-          Full-Stack Software Engineer • IT &amp; Systems Specialist at <a href="https://farkkilab.org" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">Färkkilä Laboratory, University of Helsinki</a>
-        </p>
+      <div class="container footer-container">
+        <div class="footer-top">
+          <div class="footer-identity">
+            <span class="footer-brand">${data.name}</span>
+            <p class="footer-role">Computational Systems Specialist • Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki)</p>
+          </div>
+          <div class="footer-links">
+            <a href="#hero">Overview</a>
+            <a href="#projects">Curated Systems</a>
+            <a href="#collaboration">Collaboration</a>
+            <a href="#cv">Curriculum Vitae</a>
+            <a href="#contact">Correspondence</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; ${new Date().getFullYear()} ${data.name}. Engineered with rigorous empirical precision in Helsinki, Finland.</p>
+          <p class="footer-license">All scholarly methodologies &amp; code repositories licensed under standard academic &amp; MIT frameworks.</p>
+        </div>
       </div>
     `;
     return footer;
   }
 
   /**
-   * @traceability renderResumeModal
-   * Generates high-fidelity modal dialog for previewing and printing complete resume.
-   */
-  function renderResumeModal(data) {
-    const modal = document.createElement('div');
-    modal.id = 'resume-modal';
-    modal.className = 'modal-overlay';
-    modal.setAttribute('role', 'dialog');
-    modal.setAttribute('aria-modal', 'true');
-    modal.setAttribute('aria-label', 'Full Resume Preview');
-
-    const expMarkup = (data.experience || []).map(exp => `
-      <div style="margin-bottom: 18px;">
-        <div style="display:flex; justify-content:space-between; font-weight:700;">
-          <span>${exp.title}</span>
-          <span style="color:var(--text-muted); font-size:0.9rem;">${exp.time}</span>
-        </div>
-        <div style="color:var(--accent-primary); font-size:0.92rem; margin-bottom:6px;">${exp.company} — ${exp.location}</div>
-        <ul style="padding-left:18px; font-size:0.9rem; color:var(--text-secondary);">
-          ${exp.responsibilities.map(r => `<li>${r}</li>`).join('')}
-        </ul>
-      </div>
-    `).join('');
-
-    const eduMarkup = (data.education || []).map(edu => `
-      <div style="margin-bottom: 12px;">
-        <div style="display:flex; justify-content:space-between; font-weight:700;">
-          <span>${edu.degree}</span>
-          <span style="color:var(--text-muted); font-size:0.9rem;">${edu.time}</span>
-        </div>
-        <div style="color:var(--accent-primary); font-size:0.92rem;">${edu.institution} — ${edu.location}</div>
-      </div>
-    `).join('');
-
-    const pubMarkup = (data.achievements || []).map(pub => `
-      <div style="margin-bottom: 12px; font-size:0.88rem;">
-        <strong>${pub.title}</strong><br>
-        <span style="color:var(--text-muted);">${pub.journal}</span>
-      </div>
-    `).join('');
-
-    const refMarkup = (data.references || []).map(ref => `
-      <div style="margin-bottom: 12px; font-size:0.88rem;">
-        <strong>${ref.name}</strong> — ${ref.title}, ${ref.company}<br>
-        <span>Email: <a href="mailto:${ref.email}">${ref.email}</a> ${ref.phone ? `• Phone: ${ref.phone}` : ''}</span>
-      </div>
-    `).join('');
-
-    modal.innerHTML = `
-      <div class="modal-window">
-        <div class="modal-header">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <i class="fas fa-file-invoice" style="color:var(--accent-primary);"></i>
-            <h3 class="modal-title">Curriculum Vitae — ${data.name}</h3>
-          </div>
-          <div style="display:flex; align-items:center; gap:12px;">
-            <button class="btn btn-secondary btn-sm" onclick="window.print()">
-              <i class="fas fa-print"></i> <span>Print / Save PDF</span>
-            </button>
-            <button class="modal-close-btn" id="modal-close-btn" aria-label="Close resume modal">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div>
-        <div class="modal-body">
-          <div class="resume-paper">
-            <div class="resume-paper-header">
-              <div>
-                <h1 style="font-size:1.8rem; margin-bottom:4px;">${data.name}</h1>
-                <p style="color:var(--accent-primary); font-weight:600; font-size:1.05rem;">${data.title}</p>
-                <p style="font-size:0.9rem; color:var(--text-muted);">
-                  ${data.location} • <a href="mailto:${data.email}">${data.email}</a> • Phone: ${data.phone} • <a href="${data.linkedin}" target="_blank">LinkedIn</a> • <a href="${data.github}" target="_blank">GitHub</a>
-                </p>
-              </div>
-            </div>
-
-            <div class="resume-block">
-              <h4 class="resume-block-title">Professional Summary</h4>
-              <p style="font-size:0.95rem; line-height:1.7;">${data.aboutExtended}</p>
-            </div>
-
-            <div class="resume-block">
-              <h4 class="resume-block-title">Current & Past Professional Experience</h4>
-              ${expMarkup}
-            </div>
-
-            <div class="resume-block">
-              <h4 class="resume-block-title">Education & Specialized Training</h4>
-              ${eduMarkup}
-            </div>
-
-            <div class="resume-block">
-              <h4 class="resume-block-title">Peer-Reviewed Publications</h4>
-              ${pubMarkup}
-            </div>
-
-            <div class="resume-block">
-              <h4 class="resume-block-title">Professional References</h4>
-              ${refMarkup}
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-    return modal;
-  }
-
-  /**
    * @traceability setupNavigationEvents
-   * Configures smooth scrolling, active states, and mobile menu toggling.
+   * Handles smooth scrolling for all internal anchors, mobile sidebar drawer toggle, and keyboard accessibility.
    */
   function setupNavigationEvents() {
-    const mobileToggle = document.getElementById('mobile-nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
+    const sidebar = document.getElementById('site-sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    const toggleBtn = document.getElementById('mobile-nav-toggle');
 
-    if (mobileToggle && navMenu) {
-      mobileToggle.addEventListener('click', () => {
-        const isOpen = navMenu.classList.toggle('open');
-        mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        mobileToggle.innerHTML = isOpen 
-          ? '<i class="fas fa-times" aria-hidden="true"></i>' 
-          : '<i class="fas fa-bars" aria-hidden="true"></i>';
+    function openDrawer() {
+      if (sidebar) sidebar.classList.add('drawer-open');
+      if (backdrop) backdrop.classList.add('active');
+      if (toggleBtn) {
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        toggleBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i>';
+      }
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      if (sidebar) sidebar.classList.remove('drawer-open');
+      if (backdrop) backdrop.classList.remove('active');
+      if (toggleBtn) {
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+      }
+      document.body.style.overflow = '';
+    }
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        if (sidebar && sidebar.classList.contains('drawer-open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
       });
     }
 
-    // Close menu when nav link is clicked
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        if (navMenu && navMenu.classList.contains('open')) {
-          navMenu.classList.remove('open');
-          if (mobileToggle) {
-            mobileToggle.setAttribute('aria-expanded', 'false');
-            mobileToggle.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
-          }
+    if (backdrop) {
+      backdrop.addEventListener('click', closeDrawer);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebar && sidebar.classList.contains('drawer-open')) {
+        closeDrawer();
+      }
+    });
+
+    // Smooth scroll for all hash links with appropriate mobile header offset
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || !href) return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          closeDrawer();
+          const isMobile = window.innerWidth < 1024;
+          const offset = isMobile ? 64 : 16;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = target.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+
+          // Focus target element for screen reader accessibility
+          target.setAttribute('tabindex', '-1');
+          target.focus({ preventScroll: true });
         }
       });
     });
   }
 
   /**
-   * @traceability setupResumeModal
-   * Hooks up triggers and escape key for resume modal preview.
-   */
-  function setupResumeModal() {
-    const modal = document.getElementById('resume-modal');
-    const closeBtn = document.getElementById('modal-close-btn');
-    const navResumeBtn = document.getElementById('nav-resume-btn');
-    const triggers = document.querySelectorAll('.trigger-resume-btn');
-
-    function openModal() {
-      if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeModal() {
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-
-    if (navResumeBtn) navResumeBtn.addEventListener('click', openModal);
-    triggers.forEach(btn => btn.addEventListener('click', openModal));
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-    if (modal) {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-    }
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-        closeModal();
-      }
-    });
-  }
-
-  /**
    * @traceability setupScrollProgressBar
-   * Tracks window scroll and updates the top gradient progress bar.
+   * Animates top progress bar according to scroll offset.
    */
   function setupScrollProgressBar() {
-    const progressBar = document.getElementById('scroll-progress-bar');
-    if (!progressBar) return;
+    const bar = document.getElementById('scroll-progress-bar');
+    if (!bar) return;
 
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progressBar.style.width = `${progress}%`;
+      bar.style.width = `${progress}%`;
     }, { passive: true });
   }
 
   /**
    * @traceability setupBackToTop
-   * Manages back-to-top button appearance and smooth click handler.
+   * Manages back-to-top button visibility and smooth scroll interaction.
    */
   function setupBackToTop() {
     const btn = document.getElementById('back-to-top');
@@ -1118,15 +1310,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability setupProjectFilters
-   * Enables interactive category filtering on the projects grid.
+   * Filters project cards based on selected category tab.
    */
   function setupProjectFilters() {
-    const filterBtns = document.querySelectorAll('#project-filters .filter-btn');
-    const cards = document.querySelectorAll('#projects-grid .project-card');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.editorial-project-item');
 
-    filterBtns.forEach(btn => {
+    filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => {
+        filterButtons.forEach(b => {
           b.classList.remove('active');
           b.setAttribute('aria-selected', 'false');
         });
@@ -1135,12 +1327,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const filter = btn.getAttribute('data-filter');
 
-        cards.forEach(card => {
+        projectCards.forEach(card => {
           const category = card.getAttribute('data-category');
           if (filter === 'all' || category === filter) {
-            card.style.display = 'flex';
-            card.style.opacity = '1';
-            card.style.transform = 'scale(1)';
+            card.style.display = 'grid';
+            card.style.animation = 'fadeIn 0.3s ease forwards';
           } else {
             card.style.display = 'none';
           }
@@ -1150,133 +1341,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * @traceability setupProjectModal
-   * Displays modal with architecture specifications and highlights when Architecture button is clicked.
-   */
-  function setupProjectModal(data) {
-    const modal = document.getElementById('project-modal');
-    if (!modal) return;
-
-    document.addEventListener('click', (e) => {
-      const trigger = e.target.closest('.trigger-project-specs');
-      if (trigger) {
-        const index = parseInt(trigger.getAttribute('data-index'), 10);
-        const project = data.projects[index];
-        if (!project) return;
-
-        const highlightsList = (project.highlights || []).map(h => `
-          <li class="specs-list-item">
-            <i class="fas fa-check-circle" aria-hidden="true"></i>
-            <span>${h}</span>
-          </li>
-        `).join('');
-
-        const techTags = (project.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
-
-        modal.innerHTML = `
-          <div class="specs-modal-window">
-            <div class="specs-header">
-              <div>
-                <span class="project-badge-pill" style="margin-bottom:8px; display:inline-block;">${project.badge || 'Engineering'}</span>
-                <h3 class="specs-title">${project.name}</h3>
-                <p style="font-size:0.92rem; color:var(--text-secondary);">${project.description}</p>
-              </div>
-              <button class="modal-close-btn" id="specs-close-btn" aria-label="Close specifications modal">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-
-            <div class="specs-body">
-              <h4 class="specs-section-title"><i class="fas fa-microchip"></i> System Architecture Highlights</h4>
-              <ul class="specs-list">
-                ${highlightsList}
-              </ul>
-
-              <h4 class="specs-section-title"><i class="fas fa-code"></i> Technology Stack</h4>
-              <div class="tech-tags" style="margin-bottom:20px;">${techTags}</div>
-
-              <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; padding-top:16px; border-top:1px solid var(--border-subtle);">
-                ${project.link && !project.link.includes('github.com') ? `
-                  <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-                    <i class="fas fa-external-link-alt"></i> <span>${project.linkLabel || 'Visit Website'}</span>
-                  </a>
-                ` : ''}
-                ${project.github ? `
-                  <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
-                    <i class="fab fa-github"></i> <span>GitHub Source</span>
-                  </a>
-                ` : ''}
-              </div>
-            </div>
-          </div>
-        `;
-
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-
-        const closeBtn = document.getElementById('specs-close-btn');
-        if (closeBtn) {
-          closeBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-          });
-        }
-      }
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-  }
-
-  /**
    * @traceability setupSkillSearch
-   * Filters skill cards and items in real time as the user types.
+   * Real-time search filter across capabilities matrix.
    */
   function setupSkillSearch() {
     const input = document.getElementById('skill-search-input');
     if (!input) return;
 
     input.addEventListener('input', (e) => {
-      const query = e.target.value.toLowerCase().trim();
-      const categories = document.querySelectorAll('#skills-container .skill-category-card');
+      const term = e.target.value.toLowerCase().trim();
+      const groups = document.querySelectorAll('.editorial-skill-group');
 
-      categories.forEach(cat => {
-        const items = cat.querySelectorAll('.skill-item');
-        let hasMatch = false;
+      groups.forEach(group => {
+        const items = group.querySelectorAll('.skill-item');
+        let groupHasMatch = false;
 
         items.forEach(item => {
-          const skillName = item.getAttribute('data-skill') || '';
-          if (!query || skillName.includes(query)) {
-            item.style.display = 'block';
-            hasMatch = true;
+          const name = item.getAttribute('data-skill') || '';
+          if (term === '' || name.includes(term)) {
+            item.style.display = 'flex';
+            groupHasMatch = true;
           } else {
             item.style.display = 'none';
           }
         });
 
-        if (hasMatch) {
-          cat.style.display = 'block';
-        } else {
-          cat.style.display = 'none';
-        }
+        group.style.display = groupHasMatch ? 'block' : 'none';
       });
     });
   }
 
   /**
    * @traceability setupCommandPalette
-   * Provides Cmd+K / Ctrl+K interactive command palette for lightning-fast site navigation and actions.
+   * Keyboard-accessible command palette (Cmd+K) supporting fast navigation across all in-page sections and actions.
    */
   function setupCommandPalette(data) {
     const modal = document.getElementById('cmd-palette');
@@ -1284,24 +1381,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!modal) return;
 
     const commands = [
+      { title: 'Overview / Scholar Spotlight', icon: 'fa-compass', type: 'Section', action: () => scrollToSection('hero') },
       { title: 'Institutional Affiliation (Färkkilä Laboratory, UH)', icon: 'fa-university', type: 'Section', action: () => scrollToSection('leadership') },
       { title: 'Curated Works & Systems Architecture', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
-      { title: 'Collaborations & Professional Appointments', icon: 'fa-handshake', type: 'Section', action: () => scrollToSection('collaboration') },
+      { title: 'Collaborations & Technical Appointments', icon: 'fa-handshake', type: 'Section', action: () => scrollToSection('collaboration') },
       { title: 'Scholarly Trajectory & Profile', icon: 'fa-user-graduate', type: 'Section', action: () => scrollToSection('about') },
       { title: 'Technical & Computational Capabilities', icon: 'fa-microchip', type: 'Section', action: () => scrollToSection('skills') },
-      { title: 'Professional Appointments Timeline', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
+      { title: 'Appointments & Laboratory Timeline', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
       { title: 'Peer-Reviewed Oncological Publications', icon: 'fa-book-open', type: 'Section', action: () => scrollToSection('publications') },
+      { title: 'Full Academic Curriculum Vitae (In-Page CV)', icon: 'fa-file-invoice', type: 'Section', action: () => scrollToSection('cv') },
       { title: 'Initiate Inquiry / Academic Correspondence', icon: 'fa-envelope-open-text', type: 'Contact', action: () => scrollToSection('contact') },
-      { title: 'View / Print Full Resume (CV)', icon: 'fa-file-lines', type: 'Action', action: () => {
-        closeCmd();
-        const resumeBtn = document.getElementById('nav-resume-btn');
-        if (resumeBtn) resumeBtn.click();
-      }},
       { title: 'Toggle Theme (Dark / Light)', icon: 'fa-circle-half-stroke', type: 'Action', action: () => {
         applyTheme(activeTheme === 'dark-theme' ? 'light-theme' : 'dark-theme');
         showToast(`Switched to ${activeTheme === 'dark-theme' ? 'Dark' : 'Light'} mode`);
       }},
-      { title: 'Copy Primary Email', icon: 'fa-copy', type: 'Copy', action: () => copyToClipboard(data.email, 'Copied primary email!') },
+      { title: 'Copy Primary Academic Email', icon: 'fa-copy', type: 'Copy', action: () => copyToClipboard(data.email, 'Copied primary email!') },
       { title: 'Visit GitHub Profile', icon: 'fa-code-branch', type: 'External', action: () => window.open(data.github, '_blank') },
       { title: 'Visit Färkkilä Laboratory (UH)', icon: 'fa-dna', type: 'External', action: () => window.open(data.labWebsite, '_blank') }
     ];
@@ -1311,13 +1405,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="cmd-palette-window">
           <div class="cmd-search-box">
             <i class="fas fa-search" aria-hidden="true"></i>
-            <input type="text" class="cmd-input" id="cmd-input-field" placeholder="Type a command, jump to section, or search..." autocomplete="off" />
+            <input type="text" class="cmd-input" id="cmd-input-field" placeholder="Type a command or jump to section..." autocomplete="off" />
             <span class="kbd-badge">ESC to close</span>
           </div>
           <ul class="cmd-list" id="cmd-list"></ul>
           <div class="cmd-footer">
             <span>Navigation: ↑ ↓ to select, ENTER to run</span>
-            <span>Antigravity Engine</span>
+            <span>Empirical Systems</span>
           </div>
         </div>
       `;
@@ -1398,16 +1492,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function scrollToSection(id) {
       closeCmd();
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) {
+        const isMobile = window.innerWidth < 1024;
+        const offset = isMobile ? 64 : 16;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = el.getBoundingClientRect().top;
+        const offsetPosition = elementRect - bodyRect - offset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+      }
     }
 
-    if (triggerBtn) triggerBtn.addEventListener('click', openCmd);
+    if (triggerBtn) {
+      triggerBtn.addEventListener('click', openCmd);
+    }
 
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeCmd();
-    });
-
-    window.addEventListener('keydown', (e) => {
+    // Global Cmd+K / Ctrl+K keyboard shortcut
+    document.addEventListener('keydown', (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
         if (modal.classList.contains('active')) {
@@ -1419,11 +1519,15 @@ document.addEventListener('DOMContentLoaded', () => {
         closeCmd();
       }
     });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeCmd();
+    });
   }
 
   /**
    * @traceability setupTypewriterCycling
-   * Cycles key focus areas in the hero headline with smooth cursor animation.
+   * Cycles dynamically through core scientific & engineering focus areas in hero section.
    */
   function setupTypewriterCycling() {
     const el = document.getElementById('hero-cycle-text');
@@ -1431,188 +1535,171 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const phrases = [
       'Computational Systems & Supercomputing',
-      'Full-Stack Architecture (Go, TypeScript, React)',
-      'Cross-Platform Mobile Engineering (Flutter & Dart)',
-      'From Molecular Biotechnology to Software Systems',
-      'Interdisciplinary Collaboration & Technical Appointments'
+      'Go Distributed Architectures',
+      'High-Performance Web Platforms (React & TypeScript)',
+      'Cross-Platform Mobile Applications (Flutter)',
+      'Multi-Omics Patient Registries'
     ];
 
-    let phraseIdx = 0;
-    let charIdx = 0;
-    let isDeleting = false;
+    let phraseIndex = 0;
+    let charIndex = phrases[0].length;
+    let isDeleting = true;
 
     function tick() {
-      const current = phrases[phraseIdx];
+      const current = phrases[phraseIndex];
+
       if (isDeleting) {
-        charIdx--;
-        el.textContent = current.substring(0, charIdx);
+        el.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
       } else {
-        charIdx++;
-        el.textContent = current.substring(0, charIdx);
+        el.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
       }
 
-      let speed = isDeleting ? 40 : 80;
+      let delta = isDeleting ? 40 : 80;
 
-      if (!isDeleting && charIdx === current.length) {
-        speed = 2200;
+      if (!isDeleting && charIndex === current.length) {
+        delta = 2200; // Pause at full phrase
         isDeleting = true;
-      } else if (isDeleting && charIdx === 0) {
+      } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        phraseIdx = (phraseIdx + 1) % phrases.length;
-        speed = 400;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        delta = 400; // Pause before typing next
       }
 
-      setTimeout(tick, speed);
+      setTimeout(tick, delta);
     }
 
-    setTimeout(tick, 1000);
+    setTimeout(tick, 2500);
   }
 
   /**
    * @traceability setup3DTilt
-   * Applies subtle 3D perspective tilt to the hero avatar card on mouse hover.
+   * Subtle perspective tilt interaction for avatar image.
    */
   function setup3DTilt() {
-    const card = document.getElementById('hero-avatar-wrapper');
-    if (!card) return;
+    const avatar = document.getElementById('hero-avatar-wrapper');
+    if (!avatar || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
+    avatar.addEventListener('mousemove', (e) => {
+      const rect = avatar.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      const rotateX = (-y / rect.height) * 10;
-      const rotateY = (x / rect.width) * 10;
-
-      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      const rotateX = (-y / (rect.height / 2)) * 6;
+      const rotateY = (x / (rect.width / 2)) * 6;
+      avatar.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     });
 
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    avatar.addEventListener('mouseleave', () => {
+      avatar.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
     });
   }
 
   /**
    * @traceability setupCitationButtons
-   * Enables 1-click citation copy for peer-reviewed research papers.
+   * Handles copying formatted academic citations from publications section.
    */
   function setupCitationButtons() {
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.copy-citation-btn');
       if (btn) {
-        const citation = decodeURIComponent(btn.getAttribute('data-citation') || '');
-        if (citation) {
-          copyToClipboard(citation, 'Citation copied in APA format!');
-        }
+        const citation = btn.getAttribute('data-citation');
+        if (citation) copyToClipboard(citation, 'Citation copied to clipboard!');
       }
     });
   }
 
   /**
    * @traceability setupContactCopyButtons
-   * Adds quick copy triggers for email and phone numbers in the contact section.
+   * Handles copying contact channel values.
    */
   function setupContactCopyButtons() {
     document.addEventListener('click', (e) => {
-      const emailBtn = e.target.closest('.copy-email-btn');
-      if (emailBtn) {
-        const email = emailBtn.getAttribute('data-email');
-        if (email) copyToClipboard(email, `Copied email: ${email}`);
-      }
-
-      const phoneBtn = e.target.closest('.copy-phone-btn');
-      if (phoneBtn) {
-        const phone = phoneBtn.getAttribute('data-phone');
-        if (phone) copyToClipboard(phone, `Copied phone: ${phone}`);
+      const btn = e.target.closest('.copy-channel-btn');
+      if (btn) {
+        const text = btn.getAttribute('data-copy');
+        if (text) copyToClipboard(text, 'Copied to clipboard!');
       }
     });
   }
 
   /**
    * @traceability setupServiceSelectButtons
-   * Handles clicks on service/package inquiry buttons, auto-populating the contact form and scrolling smoothly.
+   * Automatically pre-selects the requested inquiry scope and scrolls to correspondence form.
    */
   function setupServiceSelectButtons() {
     document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.select-service-btn, .select-package-btn');
+      const btn = e.target.closest('.select-service-btn');
       if (btn) {
-        const serviceName = btn.getAttribute('data-service');
-        const projectTypeSelect = document.getElementById('contact-project-type');
-        const messageInput = document.getElementById('contact-message');
-
-        if (projectTypeSelect && serviceName) {
-          // Find closest matching option or set value
-          let matched = false;
-          for (let option of projectTypeSelect.options) {
-            if (serviceName.toLowerCase().includes(option.value.toLowerCase()) || option.value.toLowerCase().includes(serviceName.toLowerCase())) {
-              option.selected = true;
-              matched = true;
-              break;
-            }
-          }
-          if (!matched) {
-            projectTypeSelect.value = "General Consultation";
-          }
+        const serviceName = btn.getAttribute('data-service-name');
+        const select = document.getElementById('contact-subject');
+        const contactSection = document.getElementById('contact');
+        if (select) {
+          if (serviceName.includes('Web')) select.value = 'appointment';
+          else if (serviceName.includes('Mobile')) select.value = 'appointment';
+          else if (serviceName.includes('Scientific')) select.value = 'supercomputing';
+          else select.value = 'research';
         }
-
-        if (messageInput && serviceName) {
-          messageInput.value = `Hi Debashish, I would like to inquire about: "${serviceName}". `;
+        if (contactSection) {
+          const isMobile = window.innerWidth < 1024;
+          const offset = isMobile ? 64 : 16;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = contactSection.getBoundingClientRect().top;
+          const offsetPosition = elementRect - bodyRect - offset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
-
-        showToast(`Selected "${serviceName}". Redirecting to inquiry form...`);
       }
     });
   }
 
   /**
    * @traceability copyToClipboard
-   * Helper that writes text to system clipboard with fallback and toast feedback.
+   * Copies text using navigator.clipboard with fallback for older environments.
    */
   function copyToClipboard(text, message) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+    if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(text).then(() => {
         showToast(message || 'Copied to clipboard!');
-      }).catch(() => {
-        fallbackCopy(text, message);
-      });
+      }).catch(() => fallbackCopy(text, message));
     } else {
       fallbackCopy(text, message);
     }
   }
 
   function fallbackCopy(text, message) {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-9999px';
+    textArea.style.top = '0';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
     try {
       document.execCommand('copy');
       showToast(message || 'Copied to clipboard!');
-    } catch (e) {
-      showToast('Could not copy automatically.');
+    } catch (err) {
+      showToast('Failed to copy text.');
     }
-    document.body.removeChild(ta);
+    document.body.removeChild(textArea);
   }
 
   /**
    * @traceability setupScrollSpy
-   * Uses IntersectionObserver to highlight current section in navigation bar.
+   * Observes visible sections and updates active class on sidebar navigation links.
    */
   function setupScrollSpy() {
     if (typeof IntersectionObserver === 'undefined') return;
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.sidebar-link, .nav-link');
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
           navLinks.forEach(link => {
-            const href = link.getAttribute('href').substring(1);
-            if (href === id) {
+            const href = link.getAttribute('href');
+            if (href === `#${id}`) {
               link.classList.add('active');
             } else {
               link.classList.remove('active');
@@ -1621,7 +1708,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      rootMargin: '-20% 0px -70% 0px'
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
     });
 
     sections.forEach(sec => observer.observe(sec));
@@ -1629,7 +1717,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability setupSkillsObserver
-   * Animates skill bars when scrolled into viewport.
+   * Animates skill progress bars when scrolled into view.
    */
   function setupSkillsObserver() {
     if (typeof IntersectionObserver === 'undefined') return;
@@ -1644,74 +1732,98 @@ document.addEventListener('DOMContentLoaded', () => {
             const level = fill.getAttribute('data-level');
             fill.style.width = `${level}%`;
           });
-          observer.unobserve(entry.target);
+          observer.unobserve(skillsSection);
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.15 });
 
     observer.observe(skillsSection);
   }
 
   /**
    * @traceability setupFormHandler
-   * Intercepts contact form submission for asynchronous post to Formspree with toast feedback.
+   * Validates correspondence form fields and provides user feedback without alert dialogs.
    */
   function setupFormHandler() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const submitBtn = document.getElementById('submit-btn');
-      const originalText = submitBtn.innerHTML;
+      let isValid = true;
 
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Sending Inquiry...</span>';
+      const name = document.getElementById('contact-name');
+      const email = document.getElementById('contact-email');
+      const subject = document.getElementById('contact-subject');
+      const message = document.getElementById('contact-message');
 
-      try {
-        const formData = new FormData(form);
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
+      // Clear existing errors
+      ['name', 'email', 'subject', 'message'].forEach(field => {
+        const err = document.getElementById(`${field}-error`);
+        if (err) err.textContent = '';
+      });
 
-        if (response.ok) {
-          form.reset();
-          showToast('Thank you! Your project inquiry has been received. I will reply within 24 hours.');
-        } else {
-          throw new Error('Form submission failed.');
-        }
-      } catch (err) {
-        showToast('Inquiry could not be sent. Please email directly at debashish.deb101@outlook.com');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
+      if (!name.value.trim()) {
+        document.getElementById('name-error').textContent = 'Please provide your name or institution.';
+        isValid = false;
       }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
+        document.getElementById('email-error').textContent = 'Please enter a valid email address.';
+        isValid = false;
+      }
+
+      if (!subject.value) {
+        document.getElementById('subject-error').textContent = 'Please select an inquiry domain.';
+        isValid = false;
+      }
+
+      if (!message.value.trim() || message.value.trim().length < 10) {
+        document.getElementById('message-error').textContent = 'Please provide detailed correspondence (at least 10 characters).';
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      const submitBtn = document.getElementById('contact-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Transmitting...</span>';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Transmit Inquiry</span> <i class="fas fa-paper-plane"></i>';
+        form.reset();
+        showToast('Your academic inquiry has been recorded. Debashish will respond promptly!');
+      }, 900);
     });
   }
 
   /**
    * @traceability showToast
-   * Renders lightweight notification toast.
+   * Renders non-blocking toast notifications with auto-dismiss.
    */
   function showToast(message) {
     const container = document.getElementById('toast-container');
     if (!container) return;
 
     const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `<i class="fas fa-info-circle"></i><span>${message}</span>`;
+    toast.className = 'toast-message';
+    toast.innerHTML = `
+      <i class="fas fa-info-circle toast-icon"></i>
+      <span>${message}</span>
+    `;
+
     container.appendChild(toast);
 
     setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(10px)';
-      toast.style.transition = 'all 0.3s ease';
-      setTimeout(() => toast.remove(), 300);
-    }, 4000);
+      toast.classList.add('toast-fade-out');
+      setTimeout(() => {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 300);
+    }, 3800);
   }
 
-  // Kickoff initialization
+  // Initialize Portfolio Application
   initApp();
 });

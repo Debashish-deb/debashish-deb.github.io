@@ -3058,3 +3058,1511 @@ body.light-theme .scroll-progress-bar {
   background: linear-gradient(90deg, #10b981, #047857);
 }
 
+
+
+/* ==========================================================================
+   SIDEBAR ARCHITECTURE & CARD-FREE EDITORIAL DESIGN (v7 System)
+   ========================================================================== */
+
+:root {
+  --sidebar-width: 290px;
+  --bg-sidebar: #0c0f17;
+  --sidebar-border: rgba(255, 255, 255, 0.07);
+}
+
+body.light-theme {
+  --bg-sidebar: #ffffff;
+  --sidebar-border: rgba(15, 23, 42, 0.08);
+}
+
+/* App Layout Grid / Flex Structure */
+.app-layout {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .app-layout {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Desktop Fixed Sidebar Navigation & Identity Dock
+   -------------------------------------------------------------------------- */
+.site-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--sidebar-border);
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+@media (min-width: 1024px) {
+  .site-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    padding: 32px 24px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 1023px) {
+  .site-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: 85vw;
+    height: 100vh;
+    padding: 24px 20px;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+  }
+  
+  .site-sidebar.drawer-open {
+    transform: translateX(0);
+  }
+}
+
+/* Sidebar Top Section */
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-brand-wrapper {
+  margin-bottom: 4px;
+}
+
+.sidebar-brand-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.sidebar-brand-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  flex-shrink: 0;
+}
+
+.sidebar-identity {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.sidebar-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.12rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.sidebar-role {
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.sidebar-affiliation-box {
+  background: var(--bg-pill);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sidebar-lab-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-lab-text i {
+  color: var(--accent-primary);
+  font-size: 0.85rem;
+}
+
+.sidebar-institution-text {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.sidebar-status-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+}
+
+.sidebar-status-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.02em;
+}
+
+/* Sidebar Navigation Menu */
+.sidebar-nav {
+  margin: 24px 0;
+  flex: 1;
+}
+
+.sidebar-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.sidebar-link i {
+  font-size: 0.95rem;
+  width: 18px;
+  text-align: center;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.sidebar-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-pill);
+}
+
+.sidebar-link:hover i {
+  color: var(--accent-primary);
+}
+
+.sidebar-link.active {
+  color: var(--text-primary);
+  background: var(--bg-pill);
+  font-weight: 600;
+}
+
+.sidebar-link.active i {
+  color: var(--accent-primary);
+}
+
+.sidebar-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--accent-primary);
+}
+
+/* Sidebar Footer / Utility Dock */
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid var(--sidebar-border);
+}
+
+.sidebar-utility-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-util-btn, .sidebar-cv-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--bg-pill);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.sidebar-util-btn i, .sidebar-cv-btn i {
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+}
+
+.sidebar-util-btn .util-label {
+  flex: 1;
+  text-align: left;
+}
+
+.sidebar-util-btn .kbd-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.sidebar-util-btn:hover, .sidebar-cv-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-cv-btn {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.22);
+  color: var(--accent-primary);
+  font-weight: 600;
+  justify-content: center;
+}
+
+.sidebar-cv-btn:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
+}
+
+.sidebar-cv-btn:hover i {
+  color: #ffffff;
+}
+
+.sidebar-socials {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.sidebar-social-link {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-social-link:hover {
+  color: var(--accent-primary);
+  background: var(--bg-pill);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Sticky Top Bar & Off-Canvas Backdrop
+   -------------------------------------------------------------------------- */
+.mobile-top-bar {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .mobile-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    z-index: 95;
+    padding: 0 16px;
+    background: var(--bg-sidebar);
+    border-bottom: 1px solid var(--sidebar-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .mobile-nav-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: var(--bg-pill);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .mobile-brand .brand-badge {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+  }
+
+  .mobile-brand-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .mobile-top-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobile-icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--bg-pill);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .mobile-cv-pill {
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--accent-primary);
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 190;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Main Content Column & Page Alignment
+   -------------------------------------------------------------------------- */
+.main-content-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .main-content-wrapper {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   WALKING AWAY FROM CARD STYLING: EDITORIAL SWISS MINIMALISM
+   -------------------------------------------------------------------------- */
+
+/* Projects: Card-Free Editorial Showcase */
+.editorial-projects-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+.editorial-project-item {
+  border-top: 1px solid var(--border-subtle);
+  padding: 32px 0;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 32px;
+  align-items: center;
+  transition: background var(--transition-fast);
+}
+
+.editorial-project-item:last-child {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.editorial-project-item.active-dossier {
+  border-left: 3px solid var(--accent-primary);
+  padding-left: 16px;
+}
+
+@media (max-width: 900px) {
+  .editorial-project-item {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.project-editorial-main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.project-editorial-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-category-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.editorial-project-item .project-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.editorial-project-item .project-desc {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 65ch;
+  margin: 0;
+}
+
+.project-editorial-media {
+  width: 100%;
+  height: 190px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-editorial-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.editorial-project-item:hover .project-editorial-media img {
+  transform: scale(1.03);
+}
+
+/* --------------------------------------------------------------------------
+   In-Page System Architecture Dossier Panel (NO FLOATING MODAL)
+   -------------------------------------------------------------------------- */
+.project-dossier-panel {
+  margin-top: 40px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-border);
+  border-radius: 16px;
+  padding: 36px 32px;
+  position: relative;
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.dossier-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.dossier-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 20px;
+}
+
+.dossier-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.08em;
+}
+
+.dossier-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 8px 0 6px 0;
+  color: var(--text-primary);
+}
+
+.dossier-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 65ch;
+  line-height: 1.6;
+}
+
+.dossier-close-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--bg-pill);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.dossier-close-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--border-strong);
+}
+
+.dossier-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 36px;
+}
+
+@media (max-width: 800px) {
+  .dossier-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.dossier-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.dossier-subtitle i {
+  color: var(--accent-primary);
+}
+
+.dossier-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dossier-spec-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.dossier-spec-item i {
+  color: var(--accent-primary);
+  margin-top: 4px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.dossier-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   Collaboration: Card-Free 3-Column Editorial Prospectus
+   -------------------------------------------------------------------------- */
+.editorial-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 28px;
+  background: var(--bg-secondary);
+}
+
+@media (max-width: 960px) {
+  .editorial-services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.editorial-service-col {
+  padding: 32px 28px;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.editorial-service-col:last-child {
+  border-right: none;
+}
+
+@media (max-width: 960px) {
+  .editorial-service-col {
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .editorial-service-col:last-child {
+    border-bottom: none;
+  }
+}
+
+.service-col-head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service-badge-pill {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: var(--accent-soft);
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-border);
+}
+
+.service-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--bg-pill);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary);
+  font-size: 1.15rem;
+}
+
+.service-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.service-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.service-subhead {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.service-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.service-bullets li i {
+  color: var(--accent-primary);
+  margin-top: 3px;
+  font-size: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------
+   Current Appointments & Studies (Editorial 2-Column Split)
+   -------------------------------------------------------------------------- */
+.editorial-roles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  margin-top: 28px;
+}
+
+@media (max-width: 800px) {
+  .editorial-roles-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.editorial-role-col {
+  border-top: 2px solid var(--accent-primary);
+  padding: 24px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.role-org-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+.role-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.role-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.role-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   About & Pillars (Editorial Typography Split)
+   -------------------------------------------------------------------------- */
+.editorial-about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  margin-top: 28px;
+}
+
+@media (max-width: 860px) {
+  .editorial-about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.narrative-heading {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+.narrative-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.about-credentials-box {
+  margin-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.credential-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cred-label {
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cred-val {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.editorial-pillars-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.editorial-pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.editorial-pillar-item:first-child {
+  padding-top: 0;
+}
+
+.pillar-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.pillar-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Skills Matrix: Card-Free Category Groups
+   -------------------------------------------------------------------------- */
+.editorial-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 28px;
+}
+
+.editorial-skill-group {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   Experience Timeline: Card-Free Academic Chronology
+   -------------------------------------------------------------------------- */
+.editorial-timeline-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+.editorial-timeline-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.editorial-timeline-item:last-child {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 720px) {
+  .editorial-timeline-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.timeline-period-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: 4px;
+}
+
+.timeline-location {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.timeline-role-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.timeline-company {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: 12px;
+}
+
+.timeline-responsibilities {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-responsibilities li {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 18px;
+}
+
+.timeline-responsibilities li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Education & Publications: Card-Free Scholarship Grid
+   -------------------------------------------------------------------------- */
+.editorial-scholarship-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 28px;
+}
+
+@media (max-width: 860px) {
+  .editorial-scholarship-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scholarship-col-heading {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
+}
+
+.scholarship-col-heading i {
+  color: var(--accent-primary);
+}
+
+.editorial-edu-list, .editorial-pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.editorial-edu-item, .editorial-pub-item {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.edu-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.edu-degree {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.edu-time {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.edu-institution {
+  font-size: 0.9rem;
+  color: var(--accent-primary);
+  font-weight: 500;
+  margin: 3px 0 6px 0;
+}
+
+.edu-thesis {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.pub-journal-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: 6px;
+}
+
+.pub-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.pub-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.pub-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   IN-PAGE DETAILED CURRICULUM VITAE (CV Section & Print Stylesheet)
+   -------------------------------------------------------------------------- */
+.cv-section {
+  padding: 48px 0;
+}
+
+.cv-paper-container {
+  margin-top: 32px;
+}
+
+.cv-paper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  padding: 48px 40px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (max-width: 640px) {
+  .cv-paper {
+    padding: 28px 20px;
+  }
+}
+
+.cv-paper-header {
+  border-bottom: 2px solid var(--accent-primary);
+  padding-bottom: 20px;
+}
+
+.cv-name {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.cv-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-bottom: 8px;
+}
+
+.cv-contact-line {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.cv-contact-line a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+}
+
+.cv-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cv-section-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 8px;
+}
+
+.cv-summary-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.cv-records-list, .cv-pub-list, .cv-refs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cv-record-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cv-record-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.cv-record-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.cv-record-period {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.cv-record-affiliation {
+  font-size: 0.92rem;
+  color: var(--accent-primary);
+  font-weight: 500;
+}
+
+.cv-record-bullets {
+  padding-left: 20px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+.cv-pub-title {
+  font-size: 0.94rem;
+  color: var(--text-primary);
+}
+
+.cv-pub-journal {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.cv-ref-item {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.cv-ref-item strong {
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   PRINT STYLESHEET FOR ACADEMIC CV
+   -------------------------------------------------------------------------- */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .site-sidebar,
+  .mobile-top-bar,
+  .scroll-progress-bar,
+  #back-to-top,
+  #toast-container,
+  #cmd-palette,
+  .ambient-glow,
+  .hero-section,
+  .marquee-strip,
+  .roles-section,
+  .projects-section,
+  .collaboration-section,
+  .about-section,
+  .skills-section,
+  .experience-section,
+  .education-section,
+  .testimonials-section,
+  .contact-section,
+  .site-footer,
+  .cv-action-bar {
+    display: none !important;
+  }
+
+  .main-content-wrapper {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .cv-section {
+    padding: 0 !important;
+  }
+
+  .cv-paper {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .cv-name, .cv-record-title, .cv-pub-title, .cv-section-heading {
+    color: #000000 !important;
+  }
+
+  .cv-title, .cv-record-affiliation {
+    color: #047857 !important;
+  }
+
+  .cv-summary-text, .cv-record-bullets, .cv-ref-item, .cv-pub-journal {
+    color: #333333 !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Testimonials & Contact: Card-Free Editorial Layout
+   -------------------------------------------------------------------------- */
+.editorial-quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.editorial-quote-col {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 20px;
+}
+
+.quote-text {
+  font-size: 0.98rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.author-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.author-title {
+  font-size: 0.85rem;
+  color: var(--accent-primary);
+}
+
+.author-org {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.editorial-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  margin-top: 28px;
+}
+
+@media (max-width: 860px) {
+  .editorial-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.contact-col-heading {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.contact-col-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.contact-channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.channel-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--bg-pill);
+  border: 1px solid var(--border-subtle);
+}
+
+.channel-item i {
+  font-size: 1.1rem;
+  color: var(--accent-primary);
+}
+
+.channel-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.channel-val {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.copy-channel-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+}
+
+.copy-channel-btn:hover {
+  color: var(--accent-primary);
+}
+
+.editorial-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

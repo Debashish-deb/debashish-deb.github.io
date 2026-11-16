@@ -1,6 +1,6 @@
-# Debashish Deb — Portfolio & Engineering Showcase
+# Debashish Deb — Scholarly & Systems Engineering Portfolio
 
-A personal portfolio and software engineering showcase for **Debashish Deb** (Biotechnologist turned Software Developer & Lab IT Specialist based in Finland).
+A personal academic portfolio and software engineering showcase for **Debashish Deb** (Molecular Biotechnologist turned Software Developer & Computational Systems Specialist at Färkkilä Laboratory, University of Helsinki).
 
 Deployed live at: [https://debashish-deb.github.io](https://debashish-deb.github.io)
 
@@ -8,25 +8,25 @@ Deployed live at: [https://debashish-deb.github.io](https://debashish-deb.github
 
 ## 🌟 Highlights & Features
 
-- **Personal Narrative**: Biotechnologist turned developer, managing IT infrastructure, research databases, and supercomputing workflows at Färkkilä Laboratory (University of Helsinki / Biomedicum).
-- **Growth Mindset**: Practical intermediate-level software developer actively expanding computer science fundamentals at Kood/Sisu, building with Go, React, TypeScript, and Flutter.
-- **Collaborations & Appointments**: Clear collaborative frameworks across Full-Stack Web & Scientific Architectures, Cross-Platform Mobile Engineering (Flutter), and Research/Lab Data Computational Workflows.
-- **Accurate Project Links**: Curated real-world projects with dedicated GitHub source links, external site visits (Riverlines bilingual documentary player, Jutera 3D showcase, Färkkilä Lab portal), and zero misleading buttons.
-- **Interactive Command Palette (`Cmd+K`)**: Modal keyboard-driven command palette allowing rapid search, section jumps, theme toggle, and external portal shortcuts.
-- **Projects Showcase with Category Filtering & Architecture Modal**: Instant filtering (Web, Mobile, Biomedical Systems, Algorithms) and a dedicated Architecture Specs drawer detailing system design highlights.
-- **Real-Time Skill Search**: Instant search input filtering categorized technical, systems, and scientific capabilities.
-- **1-Click APA Citation Copying**: High-impact peer-reviewed cancer publications (*Haematologica*, *Blood*) with instant citation copying to clipboard.
-- **Responsive & Accessible (Apple/Linear Grade)**: Strict mobile-first architecture, scroll reading progress bar, floating back-to-top button, skip navigation links, high-contrast dark/light modes, keyboard-navigable dialogs, and minimum 44px touch targets.
-- **Dynamic Content Architecture**: Zero-build runtime powered by pure Vanilla ES6+ and `data.json` for lightning-fast loading (<0.3s) and 100/100 Lighthouse performance.
-- **Print-Ready Curriculum Vitae Modal**: In-browser resume viewer with instant print / save-to-PDF formatting.
+- **Sidebar Navigation Architecture**: Fixed desktop sidebar (`290px`) featuring academic monogram, identity, institutional affiliations, status indicator, active scroll-spy navigation, ⌘K search trigger, theme switcher, and direct scholar links. On mobile, transitions seamlessly into an off-canvas sliding drawer with darkened backdrop.
+- **Card-Free Editorial Layout**: Moved away from heavy boxed card envelopes and bulky shadows to an elegant, typography-driven Swiss/academic aesthetic with crisp hairline dividers and generous whitespace.
+- **In-Page Detailed System Architecture Dossiers**: Deep dive into system architecture, concurrency models, data persistence, and engineering governance directly in-page beneath project showcases with smooth scroll and collapse controls. Zero floating modal popups.
+- **In-Page Academic Curriculum Vitae (CV)**: Full academic curriculum vitae embedded natively in the page flow (`#cv`), formatted with print stylesheet for high-precision PDF exports (`window.print()`).
+- **Scholar-Technologist Narrative**: Molecular biotechnologist managing CSC supercomputing workflows, scientific databases, and precision oncology platforms at Färkkilä Laboratory (Biomedicum Helsinki).
+- **Collaborations & Technical Appointments**: Structured 3-column editorial prospectus for Full-Stack Web & Scientific Architectures, Flutter Mobile Engineering, and Supercomputing/Data Infrastructure.
+- **Accurate Project Links**: Real-world projects with dedicated GitHub source repositories, external live demos, and laboratory portals.
+- **Interactive Command Palette (`Cmd+K`)**: Rapid keyboard-driven search and in-page navigation launcher.
+- **Real-Time Skill Search**: Instant search filtering across computational, software, and laboratory capabilities.
+- **1-Click Academic Citation Copying**: Peer-reviewed oncological publications (*Haematologica*, *Blood*) with instant citation copying.
+- **Responsive & Accessible (Apple/Linear Grade)**: Strict mobile-first architecture, reading progress indicator, floating back-to-top button, skip links, high-contrast dark/light modes, and keyboard navigation.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Core**: Semantic HTML5, Modern CSS3 Custom Properties, Vanilla JavaScript (ES6+)
-- **Typography**: Outfit & Plus Jakarta Sans via Google Fonts, Font Awesome 6 Icons
-- **Deployment**: GitHub Pages (Static hosting)
+- **Core**: Semantic HTML5, Modern CSS3 Custom Properties (4px grid scale), Vanilla JavaScript (ES6+)
+- **Typography**: Outfit, Plus Jakarta Sans, and JetBrains Mono via Google Fonts, Font Awesome 6
+- **Hosting**: GitHub Pages (Static hosting)
 
 ---
 
@@ -34,29 +34,23 @@ Deployed live at: [https://debashish-deb.github.io](https://debashish-deb.github
 
 ```text
 ├── index.html                 # Semantic application entrypoint & meta tags
-├── styles.css                 # Comprehensive design system & responsive rules
-├── script.js                  # Dynamic controller, modal, theme, and animations
-├── data.json                  # Single source of truth for projects, bio & history
+├── styles.css                 # Sidebar architecture, editorial card-free styles & print rules
+├── script.js                  # Dynamic controller, sidebar drawer, in-page dossier & CV
+├── data.json                  # Single source of truth for systems, bio & history
 ├── MASTERPLAN.md              # System topology and architectural specifications
 ├── docs/
 │   ├── adr/
 │   │   └── 0001-premium-redesign-architecture.md
 │   └── traceability.md       # Function-to-caller traceability matrix
-└── assets/images/             # Project screenshots & profile images
+└── *.webp, *.png              # Project previews and scholar profile portrait
 ```
 
 ---
 
 ## 🚀 Local Development
 
-To run locally without build tools:
-
 ```bash
-# Python 3
-python3 -m http.server 8000
-
-# or Node.js npx
-npx serve .
+# Serve locally
+python3 -m http.server 8080
+# Open http://localhost:8080
 ```
-
-Then open `http://localhost:8000` in your browser.
