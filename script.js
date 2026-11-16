@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=12');
+      const response = await fetch('data.json?v=13');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -369,14 +369,16 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="hero-visual-card">
               <div class="avatar-wrapper" id="hero-avatar-wrapper">
                 <img src="${data.profileImage}" alt="Debashish Deb portrait" class="avatar-image" loading="eager" />
-                <div class="floating-chip chip-tech">
-                  <span class="chip-led-dot"></span>
+              </div>
+              <div class="hero-portrait-badges">
+                <span class="portrait-badge">
+                  <span class="badge-dot dot-cyan"></span>
                   <span>CSC Puhti &bull; Go</span>
-                </div>
-                <div class="floating-chip chip-bio">
-                  <span class="chip-led-dot chip-amber-dot"></span>
+                </span>
+                <span class="portrait-badge">
+                  <span class="badge-dot dot-amber"></span>
                   <span>Multi-Omics &bull; M.Sc.</span>
-                </div>
+                </span>
               </div>
             </div>
           </div>
@@ -664,13 +666,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const servicesHtml = (data.collaborationServices || []).map((srv, idx) => `
       <div class="editorial-service-col" data-service-index="${idx}">
         <div class="service-col-head">
-          <span class="service-badge-pill">${srv.badge}</span>
-          <div class="service-title-row">
+          <div class="service-top-row">
             <div class="service-icon-wrapper">
               <i class="fas ${srv.icon}" aria-hidden="true"></i>
             </div>
-            <h3 class="service-title">${srv.title}</h3>
+            <span class="service-badge-pill">${srv.badge}</span>
           </div>
+          <h3 class="service-title">${srv.title}</h3>
         </div>
         <p class="service-desc">${srv.description}</p>
         <div class="service-deliverables">
