@@ -35,8 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
       main.appendChild(renderHero(portfolioData));
       main.appendChild(renderMarquee());
       main.appendChild(renderCurrentRoles(portfolioData));
-      main.appendChild(renderFreelanceServices(portfolioData));
-      main.appendChild(renderFreelanceProcess(portfolioData));
       main.appendChild(renderProjects(portfolioData));
       main.appendChild(renderAbout(portfolioData));
       main.appendChild(renderSkills(portfolioData));
@@ -131,8 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <nav aria-label="Primary Navigation">
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="#services" class="nav-link">Services</a></li>
-            <li><a href="#projects" class="nav-link">Work</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
           </ul>
@@ -172,25 +171,25 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="hero-content">
             <div class="hero-status-pill">
               <span class="status-dot"></span>
-              <span>Available for Select Client Projects & Advisory (Q4 2026)</span>
+              <span>Based in Helsinki, Finland • Systems &amp; Web Engineering</span>
             </div>
             <h1 class="hero-title">
               Hi, I'm <span class="gradient-text">${data.name}.</span>
             </h1>
             <div style="font-size: clamp(1.2rem, 2.5vw, 1.6rem); margin-bottom: 18px; color: var(--text-primary); font-weight: 500;">
-              <span>Focusing on </span>
+              <span>Specializing in </span>
               <span class="hero-cycle-wrapper">
-                <span class="hero-cycle-text" id="hero-cycle-text">Full-Stack Web & SaaS Architecture</span>
+                <span class="hero-cycle-text" id="hero-cycle-text">Full-Stack Web &amp; Systems Architecture</span>
                 <span class="cursor-blink">|</span>
               </span>
             </div>
             <p class="hero-description" style="font-size: 1.05rem; line-height: 1.75; color: var(--text-secondary); margin-bottom: 32px; max-width: 56ch;">
-              Full-stack software architect & biotechnologist based in Finland. Chief Executive Officer at Infinite IT and IT Specialist at Färkkilä Laboratory (University of Helsinki), delivering enterprise digital products with scientific precision.
+              Full-stack software engineer &amp; biotechnologist based in Finland. IT &amp; Systems Specialist at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki), building high-performance web applications, distributed algorithms, and scientific data platforms.
             </p>
 
             <div class="hero-cta-group">
-              <a href="#services" class="btn btn-primary">
-                <span>Services & Solutions</span>
+              <a href="#projects" class="btn btn-primary">
+                <span>View Projects</span>
                 <i class="fas fa-arrow-down" aria-hidden="true"></i>
               </a>
               <a href="#contact" class="btn btn-secondary">
@@ -205,11 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
               <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile" title="GitHub">
                 <i class="fab fa-github" aria-hidden="true"></i>
               </a>
-              <a href="mailto:${data.email}" class="hero-social-link" aria-label="Corporate Email" title="Email Infinite IT">
+              <a href="mailto:${data.email}" class="hero-social-link" aria-label="Primary Email" title="Email Debashish Deb">
                 <i class="fas fa-envelope" aria-hidden="true"></i>
-              </a>
-              <a href="https://infiniteitbd.com" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="Infinite IT" title="Infinite IT Portal">
-                <i class="fas fa-globe" aria-hidden="true"></i>
               </a>
               <a href="https://wa.me/358451600007" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="WhatsApp Direct" title="WhatsApp Chat">
                 <i class="fab fa-whatsapp" aria-hidden="true"></i>
@@ -253,20 +249,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderCurrentRoles
-   * Generates spotlight cards for current key positions: CEO at Infinite IT & IT Specialist at Farkkila Lab UH.
+   * Generates spotlight card for current key institutional position: IT Specialist at Färkkilä Lab UH.
    */
   function renderCurrentRoles(data) {
     const section = document.createElement('section');
     section.id = 'leadership';
     section.className = 'section leadership-section';
     
-    const rolesHtml = (data.currentRoles || []).map((role, idx) => `
-      <div class="glass-card role-card" style="display:flex; flex-direction:column; justify-content:space-between; border-top: 3px solid ${idx === 0 ? 'var(--accent-primary)' : '#60a5fa'};">
+    const rolesHtml = (data.currentRoles || []).map((role) => `
+      <div class="glass-card role-card" style="display:flex; flex-direction:column; justify-content:space-between; border-top: 3px solid var(--accent-primary);">
         <div>
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
             <span class="section-tag" style="margin-bottom:0;"><i class="fas fa-certificate"></i> ${role.period}</span>
             <a href="${role.link}" target="_blank" rel="noopener noreferrer" class="project-link-btn" style="padding:6px 14px; font-size:0.82rem;">
-              <span>Visit Portal</span> <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              <span>Visit Lab Portal</span> <i class="fas fa-external-link-alt" aria-hidden="true"></i>
             </a>
           </div>
           <h3 style="font-size:1.45rem; margin-bottom:6px; color:var(--text-primary);">${role.role}</h3>
@@ -279,11 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-star"></i> Current Key Positions</span>
-          <h2 class="section-title">Leadership & Institutional Affiliations</h2>
-          <p class="section-subtitle">Driving enterprise software development globally and powering translational precision oncology computing at University of Helsinki.</p>
+          <span class="section-tag"><i class="fas fa-star"></i> Current Institutional Affiliation</span>
+          <h2 class="section-title">Research Systems &amp; Scientific Infrastructure</h2>
+          <p class="section-subtitle">Powering translational precision oncology computing, spatial multi-omics databases, and CSC supercomputing workflows at University of Helsinki.</p>
         </div>
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap:28px;">
+        <div style="max-width:760px; margin:0 auto;">
           ${rolesHtml}
         </div>
       </div>
@@ -444,8 +440,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-user-circle"></i> Profile & Mindset</span>
-          <h2 class="section-title">Where Executive Leadership Meets Scientific Computing</h2>
-          <p class="section-subtitle">A multidisciplinary background uniting corporate vision, software craftsmanship, and biomedical research data.</p>
+          <h2 class="section-title">Where Software Craftsmanship Meets Scientific Computing</h2>
+          <p class="section-subtitle">A multidisciplinary background uniting software engineering, distributed algorithms, and biomedical research data.</p>
         </div>
 
         <div class="about-grid">
@@ -456,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <ul class="about-highlights">
               <li class="highlight-row">
                 <i class="fas fa-check-circle highlight-icon"></i>
-                <span><strong>Executive Vision:</strong> Leading Infinite IT to engineer enterprise-ready Next.js, Flutter, and AI products with transparent written delivery standards.</span>
+                <span><strong>Full-Stack Software Architecture:</strong> Developing robust Go, TypeScript, React, and Flutter applications with clean architectures and automated tests.</span>
               </li>
               <li class="highlight-row">
                 <i class="fas fa-check-circle highlight-icon"></i>
@@ -472,14 +468,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="pillar-cards">
             <div class="pillar-card">
               <div class="pillar-head">
-                <div class="pillar-icon-box"><i class="fas fa-briefcase"></i></div>
+                <div class="pillar-icon-box"><i class="fas fa-code"></i></div>
                 <div>
-                  <h3 class="pillar-title">Corporate Leadership & Delivery</h3>
-                  <p class="stat-label">Chief Executive Officer — Infinite IT</p>
+                  <h3 class="pillar-title">Full-Stack Software Engineering</h3>
+                  <p class="stat-label">Go • React • Flutter • TypeScript</p>
                 </div>
               </div>
               <p class="pillar-desc">
-                Leading software architecture and global partnerships across Bangladesh, Finland, and Western markets. Specializing in high-trust offshore engineering, Next.js web applications, and Flutter mobile apps.
+                Engineering performant web services, graph routing algorithms, and mobile apps with clean state management, type safety, and sub-second loading speeds.
               </p>
             </div>
 
@@ -837,12 +833,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="contact-info-list">
               <div class="contact-item">
-                <div class="contact-icon-box"><i class="fas fa-building"></i></div>
+                <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
                 <div style="flex:1;">
-                  <div class="contact-label">Corporate Email (Infinite IT)</div>
+                  <div class="contact-label">Primary Email</div>
                   <div class="contact-val">${data.email}</div>
                   <button class="copy-pill-btn copy-email-btn" data-email="${data.email}">
-                    <i class="far fa-copy" aria-hidden="true"></i> Copy Corporate Email
+                    <i class="far fa-copy" aria-hidden="true"></i> Copy Email
                   </button>
                 </div>
               </div>
@@ -882,11 +878,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
               </a>
 
-              <a href="${data.companyWebsite}" target="_blank" rel="noopener noreferrer" class="contact-item">
-                <div class="contact-icon-box"><i class="fas fa-globe"></i></div>
+              <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <div class="contact-icon-box"><i class="fab fa-github"></i></div>
                 <div>
-                  <div class="contact-label">Infinite IT Official Portal</div>
-                  <div class="contact-val">infiniteitbd.com</div>
+                  <div class="contact-label">GitHub Profile</div>
+                  <div class="contact-val">Debashish-deb</div>
                 </div>
               </a>
             </div>
@@ -962,7 +958,7 @@ document.addEventListener('DOMContentLoaded', () => {
           Designed & Engineered with scientific precision by <strong>${data.name}</strong> • ${new Date().getFullYear()}
         </p>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">
-          CEO at <a href="https://infiniteitbd.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">Infinite IT</a> • IT Specialist at <a href="https://farkkilab.org" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">Färkkilä Laboratory, University of Helsinki</a>
+          Full-Stack Software Engineer • IT &amp; Systems Specialist at <a href="https://farkkilab.org" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">Färkkilä Laboratory, University of Helsinki</a>
         </p>
       </div>
     `;
@@ -1041,13 +1037,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h1 style="font-size:1.8rem; margin-bottom:4px;">${data.name}</h1>
                 <p style="color:var(--accent-primary); font-weight:600; font-size:1.05rem;">${data.title}</p>
                 <p style="font-size:0.9rem; color:var(--text-muted);">
-                  ${data.location} • <a href="mailto:${data.email}">${data.email}</a> • Phone: ${data.phone} • <a href="${data.linkedin}" target="_blank">LinkedIn</a> • <a href="${data.companyWebsite}" target="_blank">Infinite IT</a>
+                  ${data.location} • <a href="mailto:${data.email}">${data.email}</a> • Phone: ${data.phone} • <a href="${data.linkedin}" target="_blank">LinkedIn</a> • <a href="${data.github}" target="_blank">GitHub</a>
                 </p>
               </div>
             </div>
 
             <div class="resume-block">
-              <h4 class="resume-block-title">Executive & Professional Summary</h4>
+              <h4 class="resume-block-title">Professional Summary</h4>
               <p style="font-size:0.95rem; line-height:1.7;">${data.aboutExtended}</p>
             </div>
 
@@ -1355,15 +1351,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!modal) return;
 
     const commands = [
-      { title: 'Freelance & Advisory Services', icon: 'fa-handshake', type: 'Services', action: () => scrollToSection('services') },
-      { title: 'Collaboration Methodology & Process', icon: 'fa-route', type: 'Process', action: () => scrollToSection('process') },
-      { title: 'Current Key Positions (Infinite IT / UH)', icon: 'fa-star', type: 'Section', action: () => scrollToSection('leadership') },
-      { title: 'Executive & Scientific Profile', icon: 'fa-user', type: 'Section', action: () => scrollToSection('about') },
+      { title: 'Institutional Affiliation (Färkkilä Lab UH)', icon: 'fa-star', type: 'Section', action: () => scrollToSection('leadership') },
+      { title: 'Engineering & Scientific Profile', icon: 'fa-user', type: 'Section', action: () => scrollToSection('about') },
       { title: 'Featured Projects & Systems', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
       { title: 'Technical Skills Matrix', icon: 'fa-microchip', type: 'Section', action: () => scrollToSection('skills') },
       { title: 'Career Timeline', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
       { title: 'Peer-Reviewed Publications', icon: 'fa-graduation-cap', type: 'Section', action: () => scrollToSection('publications') },
-      { title: 'Start a Project / Inquiry Form', icon: 'fa-paper-plane', type: 'Contact', action: () => scrollToSection('contact') },
+      { title: 'Start a Conversation / Inquiry Form', icon: 'fa-paper-plane', type: 'Contact', action: () => scrollToSection('contact') },
       { title: 'View / Print Full Resume (CV)', icon: 'fa-file-lines', type: 'Action', action: () => {
         closeCmd();
         const resumeBtn = document.getElementById('nav-resume-btn');
@@ -1373,8 +1367,8 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme(activeTheme === 'dark-theme' ? 'light-theme' : 'dark-theme');
         showToast(`Switched to ${activeTheme === 'dark-theme' ? 'Dark' : 'Light'} mode`);
       }},
-      { title: 'Copy Corporate Email', icon: 'fa-copy', type: 'Copy', action: () => copyToClipboard(data.email, 'Copied corporate email!') },
-      { title: 'Visit Infinite IT Official Portal', icon: 'fa-arrow-up-right-from-square', type: 'External', action: () => window.open(data.companyWebsite, '_blank') },
+      { title: 'Copy Primary Email', icon: 'fa-copy', type: 'Copy', action: () => copyToClipboard(data.email, 'Copied primary email!') },
+      { title: 'Visit GitHub Profile', icon: 'fa-code-branch', type: 'External', action: () => window.open(data.github, '_blank') },
       { title: 'Visit Färkkilä Laboratory (UH)', icon: 'fa-dna', type: 'External', action: () => window.open(data.labWebsite, '_blank') }
     ];
 
@@ -1753,7 +1747,7 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error('Form submission failed.');
         }
       } catch (err) {
-        showToast('Inquiry could not be sent. Please email directly at debashish.deb@infiniteitbd.com');
+        showToast('Inquiry could not be sent. Please email directly at debashish.deb101@outlook.com');
       } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;

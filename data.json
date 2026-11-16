@@ -1,206 +1,157 @@
 {
   "name": "Debashish Deb",
   "shortName": "DD",
-  "title": "Chief Executive Officer | Full-Stack Software Developer & Biotechnologist",
-  "tagline": "CEO of Infinite IT & IT Specialist at Färkkilä Lab, University of Helsinki. Architecting scalable software and scientific digital infrastructure.",
-  "about": "I am the Chief Executive Officer at Infinite IT and an IT & Systems Specialist at Färkkilä Laboratory (University of Helsinki). With an M.Sc. in Molecular Biotechnology and deep software engineering expertise, I bridge executive leadership, full-stack software development, and biomedical research computing.",
-  "aboutExtended": "As Chief Executive Officer of Infinite IT, I lead company strategy, technical product delivery, and global enterprise software partnerships spanning web, mobile, and workflow automation. Simultaneously, at the University of Helsinki's renowned Färkkilä Laboratory (Biomedicum Helsinki), I coordinate CSC scientific supercomputing services, lab web architecture, and research databases for precision oncology and spatial multi-omics.\n\nMy background in molecular biotechnology, combined with over a decade of operational excellence in Finland and co-authored cancer oncology publications in Haematologica and Blood, drives my commitment to delivering software with scientific rigor, high availability, and flawless execution.",
+  "title": "Full-Stack Software Engineer & Biotechnologist",
+  "tagline": "Full-Stack Software Engineer & IT Specialist at Färkkilä Lab, University of Helsinki. Architecting scalable software and scientific digital infrastructure.",
+  "about": "I am a Full-Stack Software Engineer and IT & Systems Specialist at Färkkilä Laboratory (University of Helsinki). With an M.Sc. in Molecular Biotechnology and deep software engineering expertise, I bridge full-stack software development, distributed algorithms, and biomedical research computing.",
+  "aboutExtended": "At the University of Helsinki's renowned Färkkilä Laboratory (Biomedicum Helsinki), I coordinate CSC scientific supercomputing services, lab web architecture, and research databases for precision oncology (ONCOSYS-OVA) and spatial multi-omics.\n\nMy background in molecular biotechnology, combined with over a decade of operational and engineering experience in Finland and co-authored cancer oncology publications in Haematologica and Blood, drives my commitment to delivering software with scientific rigor, high availability, and flawless execution.",
   "profileImage": "profile.png",
-  "email": "debashish.deb@infiniteitbd.com",
+  "email": "debashish.deb101@outlook.com",
   "personalEmail": "ddeba32@gmail.com",
   "academicEmail": "debashish.deb@helsinki.fi",
   "phone": "+358 45 1600007",
   "github": "https://github.com/Debashish-deb",
   "linkedin": "https://www.linkedin.com/in/debashish-deb/",
   "website": "https://debashish-deb.github.io",
-  "companyWebsite": "https://infiniteitbd.com",
+  "companyWebsite": "https://farkkilab.org",
   "labWebsite": "https://farkkilab.org",
   "location": "Helsinki / Kuopio, Finland",
-  "status": "CEO @ Infinite IT • IT Specialist @ Färkkilä Lab (UH)",
+  "status": "Full-Stack Engineer • IT Specialist @ Färkkilä Lab (UH)",
   "stats": [
-    { "label": "Executive Leadership", "value": "CEO Infinite IT" },
-    { "label": "Research Institution", "value": "Univ. of Helsinki" },
-    { "label": "Academic Publications", "value": "3+ High-Impact" },
-    { "label": "Scientific Background", "value": "M.Sc. Biotech" }
-  ],
-  "freelanceAvailability": "Available for Select Client Projects & Fractional Advisory (Q4 2026)",
-  "freelanceServices": [
     {
-      "id": "web-saas",
-      "title": "Full-Stack Web & SaaS Architecture",
-      "badge": "Web Platforms",
-      "icon": "fa-layer-group",
-      "description": "Architecting and delivering production-ready web applications, responsive customer portals, and microservices backends with sub-second performance.",
-      "deliverables": [
-        "Production Next.js, React, and Go/Fastify application code",
-        "Type-safe REST & GraphQL APIs with PostgreSQL/SQLite persistence",
-        "Automated CI/CD pipelines, Docker containerization, and cloud deployment",
-        "100/100 Core Web Vitals optimization and responsive accessibility"
-      ],
-      "technologies": ["Next.js", "React", "TypeScript", "Go (Golang)", "Fastify", "PostgreSQL", "Docker"]
+      "label": "Research Institution",
+      "value": "Univ. of Helsinki"
     },
     {
-      "id": "mobile-apps",
-      "title": "Cross-Platform Mobile Apps (Flutter)",
-      "badge": "Mobile Engineering",
-      "icon": "fa-mobile-screen-button",
-      "description": "Building performant iOS & Android mobile apps from a unified codebase, featuring offline-first storage, on-device machine learning, and clean state management.",
-      "deliverables": [
-        "Cross-platform Flutter & Dart codebases with Riverpod / Bloc architecture",
-        "Offline-first SQLite/Drift databases with background sync",
-        "On-device Google ML Kit barcode, QR, and OCR document extraction",
-        "App Store & Google Play Store release orchestration"
-      ],
-      "technologies": ["Flutter", "Dart", "Riverpod", "SQLite", "Google ML Kit", "Firebase", "CameraX"]
+      "label": "Academic Publications",
+      "value": "3+ High-Impact"
     },
     {
-      "id": "biotech-data",
-      "title": "Biomedical & Scientific Data Platforms",
-      "badge": "Scientific Computing",
-      "icon": "fa-dna",
-      "description": "Designing high-integrity scientific databases, high-throughput translational oncology data workflows, and secure research web platforms.",
-      "deliverables": [
-        "High-throughput spatial multi-omics and flow cytometry data pipelines",
-        "Relational clinical registry databases and specimen tracking systems",
-        "Finnish CSC scientific supercomputing and cloud service coordination",
-        "Strict computational reproducibility and audit-ready scientific documentation"
-      ],
-      "technologies": ["CSC Supercomputing", "Scientific Databases", "Flow Cytometry", "Translational Oncology", "Python"]
+      "label": "Scientific Background",
+      "value": "M.Sc. Biotech"
     },
     {
-      "id": "fractional-cto",
-      "title": "Fractional CTO & Offshore Tech Direction",
-      "badge": "Executive Advisory",
-      "icon": "fa-chess-rook",
-      "description": "Providing strategic technical leadership, architecture due diligence, code audits, and managed offshore engineering teams through Infinite IT.",
-      "deliverables": [
-        "Full system architecture blueprints and milestone-driven delivery roadmaps",
-        "Code quality, scalability, and security audits for existing products",
-        "Vetted offshore engineering team coordination with European accountability",
-        "Transparent sprint reporting, written specifications, and SLA governance"
-      ],
-      "technologies": ["Executive Governance", "Architecture Reviews", "Offshore Agile Teams", "Quality Assurance", "Lean Systems"]
-    }
-  ],
-  "freelanceProcess": [
-    {
-      "step": "01",
-      "title": "Discovery & Architecture Blueprint",
-      "desc": "We align on your product vision, target users, technical constraints, and define a precise milestone roadmap with fixed deliverables and timelines."
-    },
-    {
-      "step": "02",
-      "title": "Agile Sprints & Staging Previews",
-      "desc": "Development proceeds in focused weekly sprints. You receive live staging previews, transparent progress commits, and async video or written updates."
-    },
-    {
-      "step": "03",
-      "title": "Rigorous QA & Production Launch",
-      "desc": "Trained under Finnish industrial zero-defect standards (ABB/Swappie), every release undergoes cross-device testing, performance profiling, and secure deployment."
-    },
-    {
-      "step": "04",
-      "title": "Handover & 30-Day Guarantee",
-      "desc": "Complete IP and source code handover with technical documentation, walkthrough sessions, and 30 days of included post-launch bug warranty."
-    }
-  ],
-  "freelancePackages": [
-    {
-      "name": "Product MVP Sprint",
-      "badge": "Fixed-Scope Delivery",
-      "highlight": "Ideal for New Products & Startups",
-      "timeline": "3 to 6 Weeks",
-      "features": [
-        "Full architectural specification & database schema",
-        "Frontend & backend implementation (Next.js / Flutter)",
-        "Authentication, payments/APIs, and email notifications",
-        "Production deployment on Vercel / Cloud / App Stores",
-        "Complete source code ownership & 30-day warranty"
-      ]
-    },
-    {
-      "name": "Fractional Technical Lead",
-      "badge": "Monthly Retainer",
-      "highlight": "Ideal for Growing Ventures",
-      "timeline": "Ongoing / Dedicated Hours",
-      "features": [
-        "Senior architecture oversight & system design",
-        "Managing & reviewing engineering team PRs",
-        "Offshore team scaling via Infinite IT",
-        "Weekly technical sync & priority roadmap management",
-        "Direct Slack / WhatsApp executive availability"
-      ]
-    },
-    {
-      "name": "Architecture & Code Audit",
-      "badge": "Deep-Dive Advisory",
-      "highlight": "Ideal for Existing Codebases",
-      "timeline": "1 to 2 Weeks",
-      "features": [
-        "Comprehensive code quality, security, and debt analysis",
-        "Performance and database query optimization",
-        "Actionable written remediation roadmap",
-        "Debrief consultation session with your stakeholders",
-        "Follow-up implementation guidance"
-      ]
+      "label": "Core Tech Stack",
+      "value": "Go • React • Flutter"
     }
   ],
   "currentRoles": [
     {
-      "organization": "Infinite IT",
-      "role": "Chief Executive Officer (CEO)",
-      "period": "Current",
-      "link": "https://infiniteitbd.com",
-      "summary": "Directing corporate vision, offshore engineering operations, and delivery of custom Next.js, Flutter, and AI products for Western and South Asian enterprises."
-    },
-    {
       "organization": "Färkkilä Laboratory (University of Helsinki)",
       "role": "IT Personnel & Systems Specialist",
       "period": "Current",
-      "link": "https://farkkilab.org/members",
+      "link": "https://farkkilab.org",
       "summary": "Coordinating CSC Finnish IT Center for Science services, lab digital platforms, high-throughput spatial biology databases, and research infrastructure."
     }
   ],
   "skillCategories": [
     {
-      "category": "Executive Leadership & Strategy",
-      "icon": "fa-briefcase",
+      "category": "Core Languages & Systems",
+      "icon": "fa-terminal",
       "items": [
-        { "name": "Strategic Corporate Vision", "level": 95, "icon": "chess" },
-        { "name": "Enterprise IT Consulting", "level": 90, "icon": "handshake" },
-        { "name": "Global Tech Partnerships", "level": 90, "icon": "globe" },
-        { "name": "Cross-Functional Operations", "level": 95, "icon": "people-roof" }
+        {
+          "name": "Go (Golang)",
+          "level": 90,
+          "icon": "golang"
+        },
+        {
+          "name": "TypeScript & JavaScript",
+          "level": 90,
+          "icon": "js"
+        },
+        {
+          "name": "Python",
+          "level": 85,
+          "icon": "python"
+        },
+        {
+          "name": "Dart / Flutter",
+          "level": 85,
+          "icon": "mobile"
+        }
       ]
     },
     {
       "category": "Software Engineering & Architecture",
       "icon": "fa-code",
       "items": [
-        { "name": "Go (Golang)", "level": 85, "icon": "golang" },
-        { "name": "JavaScript (ES6+) & TypeScript", "level": 85, "icon": "js" },
-        { "name": "React & Next.js", "level": 80, "icon": "react" },
-        { "name": "Flutter & Mobile Apps", "level": 75, "icon": "mobile-screen" },
-        { "name": "REST APIs, Systems & Microservices", "level": 85, "icon": "network-wired" }
+        {
+          "name": "React & Next.js",
+          "level": 90,
+          "icon": "react"
+        },
+        {
+          "name": "Fastify & Node.js",
+          "level": 85,
+          "icon": "node-js"
+        },
+        {
+          "name": "REST & GraphQL APIs",
+          "level": 90,
+          "icon": "network-wired"
+        },
+        {
+          "name": "PostgreSQL & SQLite",
+          "level": 85,
+          "icon": "database"
+        },
+        {
+          "name": "Docker & Containerization",
+          "level": 80,
+          "icon": "docker"
+        }
       ]
     },
     {
       "category": "Scientific Computing & Databases",
       "icon": "fa-database",
       "items": [
-        { "name": "CSC Supercomputing & Cloud Coordination", "level": 90, "icon": "server" },
-        { "name": "Scientific Database Architecture", "level": 90, "icon": "database" },
-        { "name": "High-Throughput Flow Cytometry & Spatial Data", "level": 90, "icon": "microscope" },
-        { "name": "Translational Oncology Data Workflows", "level": 85, "icon": "dna" }
+        {
+          "name": "CSC Scientific Supercomputing",
+          "level": 90,
+          "icon": "server"
+        },
+        {
+          "name": "High-Throughput Bio Data",
+          "level": 85,
+          "icon": "chart-line"
+        },
+        {
+          "name": "Spatial Biology Registries",
+          "level": 85,
+          "icon": "folder-tree"
+        },
+        {
+          "name": "Research Data Infrastructure",
+          "level": 90,
+          "icon": "cubes"
+        }
       ]
     },
     {
       "category": "Industrial Quality & Lean Execution",
       "icon": "fa-gears",
       "items": [
-        { "name": "Process Improvement & Lean Manufacturing", "level": 90, "icon": "arrows-spin" },
-        { "name": "Hardware Testing & Quality Control", "level": 90, "icon": "microchip" },
-        { "name": "Technical Documentation & SOPs", "level": 95, "icon": "book-medical" },
-        { "name": "Agile Delivery & Milestone Tracking", "level": 90, "icon": "check-double" }
+        {
+          "name": "Zero-Defect Quality Standards",
+          "level": 95,
+          "icon": "shield-halved"
+        },
+        {
+          "name": "Industrial Automation (ABB Oy)",
+          "level": 85,
+          "icon": "industry"
+        },
+        {
+          "name": "Hardware Diagnostics (Swappie)",
+          "level": 90,
+          "icon": "microchip"
+        },
+        {
+          "name": "Lean Operations & Logistics (Posti)",
+          "level": 90,
+          "icon": "boxes-packing"
+        }
       ]
     }
   ],
@@ -225,14 +176,21 @@
       "includeInResume": false
     },
     {
-      "name": "Infinite Workspace OS",
+      "name": "Workspace OS — Operations Platform",
       "badge": "Operations SaaS Platform",
       "category": "enterprise",
-      "link": "https://infiniteitbd.com/projects/infinite-workspace-os.html",
+      "link": "https://github.com/Debashish-deb",
       "github": "",
       "image": "infiniteit-workspace.webp",
       "description": "A modular, scalable operational platform engineered for digital agencies, service firms, and distributed offshore teams. Features unified client workspaces, milestone dashboards, automated invoice tracking, and secure role-based access control.",
-      "technologies": ["Next.js", "TypeScript", "FastAPI / Node.js", "PostgreSQL", "Docker", "Tailwind CSS"],
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "FastAPI / Node.js",
+        "PostgreSQL",
+        "Docker",
+        "Tailwind CSS"
+      ],
       "highlights": [
         "Modular workspace engine allowing teams to activate custom operational tools",
         "Real-time milestone tracking, task boards, and automated delivery records",
@@ -248,7 +206,13 @@
       "github": "",
       "image": "jutera.webp",
       "description": "Curated digital platform and interactive showcase for handcrafted sustainable jute living objects and European retail/wholesale distribution. Built with React, Three.js 3D model visualization, Tailwind CSS, Vite, and high-performance PWA caching.",
-      "technologies": ["React", "Three.js (WebGL)", "Tailwind CSS", "Vite", "PWA & SEO", "Infinite IT Delivery"],
+      "technologies": [
+        "React",
+        "Three.js (WebGL)",
+        "Tailwind CSS",
+        "Vite",
+        "PWA & SEO"
+      ],
       "highlights": [
         "Integrated interactive Three.js 3D brand logo rendering in real-time WebGL",
         "Sub-second page loads with modern WebP asset compression and PWA caching",
@@ -257,14 +221,21 @@
       "includeInResume": true
     },
     {
-      "name": "InfiniteScan",
+      "name": "BioScan / Mobile Document OCR",
       "badge": "Flutter Utility / OCR",
       "category": "mobile",
-      "link": "https://infiniteitbd.com/apps",
+      "link": "https://github.com/Debashish-deb",
       "github": "",
       "image": "infinitescan.webp",
       "description": "Privacy-first Android utility app engineered in Flutter. Features on-device ML Kit barcode & QR code recognition, zero-account architecture, bilingual Bangla/English interface, Tesseract OCR document extraction, and local SQLite history with zero third-party tracking.",
-      "technologies": ["Flutter", "Dart", "Google ML Kit", "Tesseract OCR", "SQLite", "CameraX"],
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Google ML Kit",
+        "Tesseract OCR",
+        "SQLite",
+        "CameraX"
+      ],
       "highlights": [
         "100% on-device ML inference with zero telemetry or network data leakage",
         "Sub-100ms real-time barcode scanning with auto-focus and low-light flashlight toggle",
@@ -276,11 +247,18 @@
       "name": "BDNewsReader",
       "badge": "News Platform / TTS",
       "category": "mobile",
-      "link": "https://infiniteitbd.com/projects/bdnewsreader.html",
+      "link": "https://github.com/Debashish-deb/droid-news-server",
       "github": "https://github.com/Debashish-deb/droid-news-server",
       "image": "bdnewsreader.webp",
       "description": "Bilingual news aggregation and reader platform built with Flutter, Riverpod, and a self-hosted Fastify backend. Features native article formatting, offline caching via Drift/SQLite, official YouTube Live TV streaming (IFrame integration), and bilingual Bangla/English text-to-speech audio narration.",
-      "technologies": ["Flutter", "Riverpod", "Fastify Backend", "Bangla TTS", "Drift / SQLite", "Firebase"],
+      "technologies": [
+        "Flutter",
+        "Riverpod",
+        "Fastify Backend",
+        "Bangla TTS",
+        "Drift / SQLite",
+        "Firebase"
+      ],
       "highlights": [
         "Self-hosted Fastify backend scraping and caching verified news streams",
         "Bilingual text-to-speech audio engine for automated article playback",
@@ -296,7 +274,12 @@
       "github": "",
       "image": "",
       "description": "Coordinating Finnish CSC scientific computing services, relational research databases, and public web platforms for precision oncology and spatial multi-omics at Biomedicum Helsinki.",
-      "technologies": ["CSC Scientific Services", "Research Databases", "Web Infrastructure", "Data Pipelines"],
+      "technologies": [
+        "CSC Scientific Services",
+        "Research Databases",
+        "Web Infrastructure",
+        "Data Pipelines"
+      ],
       "highlights": [
         "High-performance computing coordination for spatial multi-omics pipelines",
         "Clinical registry and patient specimen tracking database architecture",
@@ -312,7 +295,12 @@
       "github": "https://github.com/Debashish-deb/Stations-Pathfinder",
       "image": "",
       "description": "Graph routing engine written in Golang that calculates optimal collision-free paths for concurrent trains moving across dynamic railway track topologies with turn-based orchestration.",
-      "technologies": ["Go", "Graph Theory", "Pathfinding Algorithms", "CLI"],
+      "technologies": [
+        "Go",
+        "Graph Theory",
+        "Pathfinding Algorithms",
+        "CLI"
+      ],
       "highlights": [
         "Concurrent turn-based simulation with dynamic collision avoidance",
         "Algorithmic graph traversal finding Pareto-optimal transit solutions",
@@ -328,7 +316,12 @@
       "github": "https://github.com/Debashish-deb/Art-interface",
       "image": "",
       "description": "Interactive web application and decoding engine in Golang enabling users to transform, parse, and render ASCII art through an intuitive browser interface.",
-      "technologies": ["Go", "HTTP Server", "ASCII Art Engine", "HTML/CSS"],
+      "technologies": [
+        "Go",
+        "HTTP Server",
+        "ASCII Art Engine",
+        "HTML/CSS"
+      ],
       "highlights": [
         "Custom ASCII font parser and rasterizer written in Go standard library",
         "Real-time client-side preview with responsive export options",
@@ -338,20 +331,6 @@
     }
   ],
   "experience": [
-    {
-      "title": "Chief Executive Officer (CEO)",
-      "company": "Infinite IT",
-      "time": "Current",
-      "location": "Helsinki, Finland & Bangladesh",
-      "tag": "Executive Leadership",
-      "responsibilities": [
-        "Sets overarching company vision, corporate governance, and growth strategies for international software delivery.",
-        "Leads global client partnerships across Europe, South Asia, and North America for custom web, mobile, and AI solutions.",
-        "Oversees cross-functional engineering teams, ensuring documented scope, milestone delivery, and maintainable architectures."
-      ],
-      "technologies": ["Strategic Leadership", "Enterprise Consulting", "Operations Management", "Global Partnerships"],
-      "includeInResume": true
-    },
     {
       "title": "IT Personnel & Systems Specialist",
       "company": "Färkkilä Laboratory, University of Helsinki",
@@ -363,7 +342,12 @@
         "Maintains and evolves the lab web presence, research data registries, and digital systems supporting precision oncology studies (ONCOSYS-OVA).",
         "Ensures high-integrity database connectivity and computational reproducibility for multi-disciplinary translational researchers."
       ],
-      "technologies": ["CSC Cloud & Supercomputing", "Scientific Databases", "Web Architecture", "Data Infrastructure"],
+      "technologies": [
+        "CSC Cloud & Supercomputing",
+        "Scientific Databases",
+        "Web Architecture",
+        "Data Infrastructure"
+      ],
       "includeInResume": true
     },
     {
@@ -376,7 +360,11 @@
         "Assembly and precision calibration of high-capacity industrial AC drives under strict quality and safety guidelines.",
         "Deepened operational mastery of industrial automation, lean production methods, and systematic testing workflows."
       ],
-      "technologies": ["Industrial Manufacturing", "Quality Control", "Lean Principles"],
+      "technologies": [
+        "Industrial Manufacturing",
+        "Quality Control",
+        "Lean Principles"
+      ],
       "includeInResume": true
     },
     {
@@ -390,7 +378,11 @@
         "Served as interim team lead in supervisor absence, coordinating daily floor quotas and onboarding junior specialists.",
         "Championed internal hardware testing process improvements that reduced turnaround time and defect rate."
       ],
-      "technologies": ["Hardware Diagnostics", "Team Leadership", "Process Optimization"],
+      "technologies": [
+        "Hardware Diagnostics",
+        "Team Leadership",
+        "Process Optimization"
+      ],
       "includeInResume": true
     },
     {
@@ -404,7 +396,12 @@
         "Developed and optimized high-throughput flow cytometry protocols to identify targeted therapies for acute myeloid leukaemia (AML).",
         "Analyzed multi-dimensional biological datasets and maintained precise scientific documentation resulting in high-impact co-authored publications (Haematologica & Blood)."
       ],
-      "technologies": ["High-Throughput Screening", "Flow Cytometry", "Data Analysis", "Oncology Research"],
+      "technologies": [
+        "High-Throughput Screening",
+        "Flow Cytometry",
+        "Data Analysis",
+        "Oncology Research"
+      ],
       "includeInResume": true
     },
     {
@@ -417,7 +414,11 @@
         "Promoted from primary courier to Assistant to the Supervisor overseeing district logistics and daily route problem-solving.",
         "Ensured dependable execution under time-critical deadlines and variable operational constraints."
       ],
-      "technologies": ["Logistics Coordination", "Problem Solving", "Time Management"],
+      "technologies": [
+        "Logistics Coordination",
+        "Problem Solving",
+        "Time Management"
+      ],
       "includeInResume": true
     },
     {
@@ -430,7 +431,11 @@
         "Conducted laboratory experiments in cellular biology, molecular assays, and protein purification.",
         "Compiled, organized, and reported statistical experimental data."
       ],
-      "technologies": ["Molecular Assays", "Laboratory Research", "Data Management"],
+      "technologies": [
+        "Molecular Assays",
+        "Laboratory Research",
+        "Data Management"
+      ],
       "includeInResume": true
     }
   ],
@@ -490,11 +495,31 @@
     }
   ],
   "certificates": [
-    { "title": "Python for Non-Programmers", "organization": "LinkedIn Learning", "year": "2023" },
-    { "title": "Python Essential Training", "organization": "LinkedIn Learning", "year": "2023" },
-    { "title": "Project Management: Healthcare", "organization": "LinkedIn Learning", "year": "2023" },
-    { "title": "Excel Essential Training (Microsoft 365)", "organization": "LinkedIn Learning", "year": "2023" },
-    { "title": "Project Leadership", "organization": "LinkedIn Learning", "year": "2023" }
+    {
+      "title": "Python for Non-Programmers",
+      "organization": "LinkedIn Learning",
+      "year": "2023"
+    },
+    {
+      "title": "Python Essential Training",
+      "organization": "LinkedIn Learning",
+      "year": "2023"
+    },
+    {
+      "title": "Project Management: Healthcare",
+      "organization": "LinkedIn Learning",
+      "year": "2023"
+    },
+    {
+      "title": "Excel Essential Training (Microsoft 365)",
+      "organization": "LinkedIn Learning",
+      "year": "2023"
+    },
+    {
+      "title": "Project Leadership",
+      "organization": "LinkedIn Learning",
+      "year": "2023"
+    }
   ],
   "references": [
     {

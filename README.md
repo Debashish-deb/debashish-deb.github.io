@@ -12,7 +12,7 @@ Deployed live at: [https://debashish-deb.github.io](https://debashish-deb.github
 - **Transparent Delivery Methodology**: 4-step execution framework (Discovery Blueprint, Agile Sprints, Rigorous QA under Finnish industrial standards, and 30-Day Post-Launch Warranty).
 - **Flexible Engagement Packages**: Clear options for startups and scale-ups (Product MVP Sprint, Fractional Technical Lead Retainer, Architecture & Code Audit).
 - **Project Inquiry & Direct Booking**: Built-in interactive inquiry form with service type and timeline selectors, alongside 1-click WhatsApp discovery booking.
-- **Executive Leadership & Biotech Profile**: Showcases dual expertise as Chief Executive Officer of Infinite IT and IT Specialist at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki).
+- **Full-Stack Systems & Scientific Profile**: Showcases expertise as Full-Stack Software Engineer and IT Specialist at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki).
 - **Interactive Command Palette (`Cmd+K`)**: Modal keyboard-driven command palette allowing rapid search, section jumps, theme toggle, and external portal shortcuts.
 - **Projects Showcase with Category Filtering & Architecture Modal**: Instant filtering (Enterprise, Mobile, Biomedical, Algorithms, Web) and a dedicated Architecture Specs drawer detailing system design highlights and trade-offs.
 - **Real-Time Skill Search**: Instant search input filtering categorized technical, executive, and scientific capabilities.
