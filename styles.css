@@ -3823,9 +3823,16 @@ body.light-theme {
   border: 1px solid var(--accent-border);
 }
 
+.service-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
 .service-icon-wrapper {
   width: 44px;
   height: 44px;
+  min-width: 44px;
   border-radius: 10px;
   background: var(--bg-pill);
   border: 1px solid var(--border-subtle);
@@ -3834,14 +3841,17 @@ body.light-theme {
   justify-content: center;
   color: var(--accent-primary);
   font-size: 1.15rem;
+  flex-shrink: 0;
 }
 
 .service-title {
-  font-size: 1.25rem;
+  font-size: 1.18rem;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
   margin: 0;
+  line-height: 1.3;
+  text-align: left !important;
 }
 
 .service-desc {
@@ -4729,25 +4739,144 @@ body.light-theme {
   box-shadow: 0 0 8px #fac988;
 }
 
-/* Theme Adaptation */
-body.light-theme .hero-cover-card {
-  background: #092636;
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 24px 60px -15px rgba(6, 49, 67, 0.35);
+/* Theme Adaptation & Cover Card High-Contrast Rules (Dark & Light) */
+body.light-theme .hero-cover-card,
+body.dark-theme .hero-cover-card,
+.hero-cover-card {
+  background: #061e2b !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75) !important;
 }
 
-body.light-theme .hero-cover-card .hero-title {
-  color: #ffffff;
+body.light-theme .hero-cover-card .hero-title,
+body.dark-theme .hero-cover-card .hero-title,
+.hero-cover-card .hero-title {
+  font-size: clamp(2rem, 3.4vw, 2.75rem) !important;
+  color: #ffffff !important;
+  margin-bottom: 6px !important;
+  line-height: 1.1 !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
 }
 
-body.light-theme .hero-cover-card .hero-description {
-  color: #cbd5e1;
+body.light-theme .hero-cover-card .hero-title .gradient-text,
+body.dark-theme .hero-cover-card .hero-title .gradient-text,
+.hero-cover-card .hero-title .gradient-text {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #10b981 !important;
 }
 
-body.light-theme .hero-cover-card .hero-status-pill {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.24);
-  color: #f1f5f9;
+body.light-theme .hero-cover-card .hero-focus-line,
+body.dark-theme .hero-cover-card .hero-focus-line,
+.hero-cover-card .hero-focus-line {
+  font-size: clamp(1rem, 1.8vw, 1.2rem) !important;
+  color: #f1f5f9 !important;
+  font-weight: 500 !important;
+  margin-bottom: 10px !important;
+}
+
+body.light-theme .hero-cover-card .hero-focus-line .focus-label,
+body.dark-theme .hero-cover-card .hero-focus-line .focus-label,
+.hero-cover-card .hero-focus-line .focus-label,
+body.light-theme .hero-cover-card .focus-label,
+.hero-cover-card .focus-label {
+  color: #f1f5f9 !important;
+  font-weight: 500 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+body.light-theme .hero-cover-card .hero-cycle-wrapper,
+body.dark-theme .hero-cover-card .hero-cycle-wrapper,
+.hero-cover-card .hero-cycle-wrapper {
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
+  margin-bottom: 12px !important;
+}
+
+body.light-theme .hero-cover-card .hero-cycle-text,
+body.dark-theme .hero-cover-card .hero-cycle-text,
+.hero-cover-card .hero-cycle-text {
+  color: #38bdf8 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.6) !important;
+}
+
+body.light-theme .hero-cover-card .cursor-blink,
+body.dark-theme .hero-cover-card .cursor-blink,
+.hero-cover-card .cursor-blink {
+  color: #38bdf8 !important;
+}
+
+body.light-theme .hero-cover-card .hero-description,
+body.dark-theme .hero-cover-card .hero-description,
+.hero-cover-card .hero-description {
+  color: #f8fafc !important;
+  opacity: 1 !important;
+  font-size: 0.94rem !important;
+  line-height: 1.65 !important;
+  margin-bottom: 16px !important;
+  max-width: 54ch !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
+}
+
+body.light-theme .hero-cover-card .hero-status-pill,
+body.dark-theme .hero-cover-card .hero-status-pill,
+.hero-cover-card .hero-status-pill {
+  background: rgba(10, 25, 36, 0.82) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #f8fafc !important;
+  margin-bottom: 10px !important;
+  padding: 4px 12px !important;
+  font-size: 0.78rem !important;
+}
+
+body.light-theme .hero-cover-card .hero-status-pill span,
+body.dark-theme .hero-cover-card .hero-status-pill span,
+.hero-cover-card .hero-status-pill span {
+  color: #f8fafc !important;
+}
+
+body.light-theme .hero-cover-card .status-dot,
+body.dark-theme .hero-cover-card .status-dot,
+.hero-cover-card .status-dot {
+  background: #34d399 !important;
+  box-shadow: 0 0 10px #34d399 !important;
+}
+
+body.light-theme .hero-cover-card .hero-social-link,
+body.dark-theme .hero-cover-card .hero-social-link,
+.hero-cover-card .hero-social-link {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.light-theme .hero-cover-card .hero-social-link:hover,
+body.dark-theme .hero-cover-card .hero-social-link:hover,
+.hero-cover-card .hero-social-link:hover {
+  background: rgba(52, 211, 153, 0.25) !important;
+  border-color: #34d399 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+body.light-theme .hero-cover-card .floating-chip,
+body.dark-theme .hero-cover-card .floating-chip,
+.hero-cover-card .floating-chip {
+  background: rgba(10, 25, 36, 0.88) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45) !important;
+}
+
+body.light-theme .hero-cover-card .floating-chip span,
+body.dark-theme .hero-cover-card .floating-chip span,
+.hero-cover-card .floating-chip span {
+  color: #ffffff !important;
 }
 
 

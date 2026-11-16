@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=11');
+      const response = await fetch('data.json?v=12');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -665,10 +665,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="editorial-service-col" data-service-index="${idx}">
         <div class="service-col-head">
           <span class="service-badge-pill">${srv.badge}</span>
-          <div class="service-icon-wrapper">
-            <i class="fas ${srv.icon}" aria-hidden="true"></i>
+          <div class="service-title-row">
+            <div class="service-icon-wrapper">
+              <i class="fas ${srv.icon}" aria-hidden="true"></i>
+            </div>
+            <h3 class="service-title">${srv.title}</h3>
           </div>
-          <h3 class="service-title">${srv.title}</h3>
         </div>
         <p class="service-desc">${srv.description}</p>
         <div class="service-deliverables">
