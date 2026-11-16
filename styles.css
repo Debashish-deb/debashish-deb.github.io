@@ -4739,6 +4739,21 @@ body.light-theme {
   box-shadow: 0 0 8px #fac988;
 }
 
+/* ==========================================================================
+   TRIM TOP GAP (Align Hero Cover Card Cleanly with Desktop Sidebar)
+   ========================================================================== */
+.main-content-wrapper {
+  padding-top: 0 !important;
+}
+
+#main-content {
+  padding-top: 0 !important;
+}
+
+.hero-section {
+  padding: 8px 0 16px 0 !important;
+}
+
 /* Theme Adaptation & Cover Card High-Contrast Rules (Dark & Light) */
 body.light-theme .hero-cover-card,
 body.dark-theme .hero-cover-card,
@@ -4747,7 +4762,7 @@ body.dark-theme .hero-cover-card,
   background: #061e2b !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75) !important;
-  padding: 20px 32px !important;
+  padding: 24px 32px !important;
   margin-top: 0 !important;
   margin-bottom: 20px !important;
   border-radius: 24px !important;
@@ -4756,15 +4771,15 @@ body.dark-theme .hero-cover-card,
 
 @media (max-width: 900px) {
   .hero-cover-card {
-    padding: 16px 18px !important;
+    padding: 18px 20px !important;
     border-radius: 20px !important;
   }
 }
 
 .hero-cover-card .hero-grid {
   display: grid !important;
-  grid-template-columns: 1.25fr 0.75fr !important;
-  align-items: flex-start !important;
+  grid-template-columns: 1.15fr 0.85fr !important;
+  align-items: center !important;
   gap: 20px !important;
 }
 
@@ -4775,46 +4790,56 @@ body.dark-theme .hero-cover-card,
   }
 }
 
-/* 1. Portrait Arch Background - Deep Petroleum Navy & Amber Rim (No Clashing Green) */
+/* 1. Frameless Big Cutout Portrait Standing Cleanly in Cover Card */
 .hero-cover-card .hero-visual-card {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  justify-content: flex-start !important;
-  margin-top: -10px !important;
+  justify-content: flex-end !important;
+  margin-top: 0 !important;
 }
 
 .hero-cover-card .avatar-wrapper {
-  width: 210px !important;
-  height: 240px !important;
+  width: 290px !important;
+  max-width: 85vw !important;
+  height: 320px !important;
   margin: 0 auto !important;
   position: relative !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
+@media (max-width: 600px) {
+  .hero-cover-card .avatar-wrapper {
+    width: 240px !important;
+    height: 270px !important;
+  }
+}
+
+/* Remove the frame completely from the profile picture */
 .hero-cover-card .avatar-wrapper::before,
 body.dark-theme .hero-cover-card .avatar-wrapper::before,
 body.light-theme .hero-cover-card .avatar-wrapper::before {
-  content: '' !important;
-  position: absolute !important;
-  left: 6% !important;
-  right: 6% !important;
-  bottom: 0 !important;
-  height: 80% !important;
-  border-radius: 160px 160px 20px 20px !important;
-  background: linear-gradient(165deg, #134e6f 0%, #0c3349 50%, #061c29 100%) !important;
-  border: 1.5px solid rgba(245, 158, 11, 0.5) !important;
-  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.8), 0 0 25px rgba(245, 158, 11, 0.25) !important;
-  z-index: 0 !important;
+  display: none !important;
+  content: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: none !important;
 }
 
 .hero-cover-card .avatar-image {
   position: relative !important;
-  z-index: 1 !important;
-  border-radius: 0 0 20px 20px !important;
+  z-index: 2 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   object-fit: contain !important;
-  object-position: bottom !important;
+  object-position: bottom center !important;
   width: 100% !important;
   height: 100% !important;
+  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.65)) !important;
 }
 
 /* 2. Portrait Badges Placed Differently Beneath the Image (Not Over the Photo) */

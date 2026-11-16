@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=13');
+      const response = await fetch('data.json?v=14');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
