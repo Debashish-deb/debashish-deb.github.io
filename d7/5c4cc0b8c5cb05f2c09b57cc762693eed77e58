@@ -1,0 +1,18 @@
+index.html
+  h_0b448993649ed1 38-39,72-73
+script.js
+  h_0b448993649ed1 23,310-320,322-366,369-380
+styles.css
+  h_0b448993649ed1 4569-4751
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d75c4cc0b8c5cb05f2c09b57cc762693eed77e58",
+  "prompts": {},
+  "humans": {
+    "h_0b448993649ed1": {
+      "author": "debashishdeb1 <debashish.deb101@outlook.com>"
+    }
+  }
+}
