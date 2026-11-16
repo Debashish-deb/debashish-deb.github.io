@@ -1,0 +1,45 @@
+data.json
+  s_486882142165f1::t_be399dccd183d1 208-226
+riverlines/LICENSE
+  s_486882142165f1::t_4e7f1fefb3355c 1-202
+riverlines/assets/hls-D6a35TnA.js
+  s_486882142165f1::t_052aff87527c59 1-44
+riverlines/assets/index-CnwUlZRX.js
+  s_486882142165f1::t_9746950f97fd64 1
+riverlines/assets/index-DkxNr0z1.css
+  s_486882142165f1::t_f749b9028cf54e 1
+riverlines/assets/parse-vtt-K656xMUW.js
+  s_486882142165f1::t_4a8f887d9a6ea6 1
+riverlines/fonts/ibmplexmono-OFL.txt
+  s_486882142165f1::t_ad5c47319dca7b 1-93
+riverlines/fonts/instrumentserif-OFL.txt
+  s_486882142165f1::t_09ad846bf790fb 1-93
+riverlines/fonts/inter-OFL.txt
+  s_486882142165f1::t_3a485df195032c 1-93
+riverlines/fonts/notoserifbengali-OFL.txt
+  s_486882142165f1::t_e9d598e829eb7c 1-93
+riverlines/index.html
+  s_486882142165f1::t_848d85c2dbaa58 1-108
+riverlines/media/bn.vtt
+  s_486882142165f1::t_c0d42dd3c7e5fa 1-19
+riverlines/media/en.vtt
+  s_486882142165f1::t_fa42f8bb0e23fa 1-19
+riverlines/riverlines.svg
+  s_486882142165f1::t_e20a2e9500e26b 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d614dc23b4ce9eec3f14899f82a81286ac40397d",
+  "prompts": {},
+  "sessions": {
+    "s_486882142165f1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1d56f-71d6-76a0-b5a5-8c197bea5897",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "debashishdeb1 <debashish.deb101@outlook.com>"
+    }
+  }
+}
