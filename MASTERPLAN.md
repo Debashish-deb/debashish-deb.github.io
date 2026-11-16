@@ -13,7 +13,7 @@ The application is a client-side, zero-dependency static web application designe
   - **Scroll Progress Bar & Back to Top**: Real-time reading progress indicator and smooth return-to-top button.
   - **Hero Section**: Atmospheric glowing gradient backdrop, animated dynamic focus area typing, bio highlighting background as Full-Stack Engineer & IT Specialist at Färkkilä Lab UH, 3D perspective mouse tilt portrait, streamlined CTA buttons ("View Projects", "Get in Touch"), social badges with live indicator, and direct WhatsApp connectivity.
   - **Current Key Positions**: Flagship spotlight card on IT Specialist at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki).
-  - **Freelance & Client Services (`#services`)**: Comprehensive service offerings (Full-Stack Web & SaaS, Flutter Mobile Apps, Biomedical Data Platforms, Fractional CTO Advisory) with deliverables checklists and flexible engagement models (MVP Sprint, Monthly Retainer, Architecture Audit).
+  - **Collaborations & Professional Appointments (`#collaboration`)**: Comprehensive offerings (Full-Stack Web & Scientific Architectures, Flutter Mobile Engineering, Biomedical Data Platforms & Supercomputing Workflows) with deliverables checklists and appointment models.
   - **Delivery Methodology & Guarantees (`#process`)**: 4-step transparent roadmap (Discovery & Blueprint, Agile Sprints, Rigorous QA under Finnish industrial zero-defect standards, Handover & 30-Day Warranty).
   - **About & Philosophy**: Dual-discipline spotlight (Tech & Biotech), quick metrics/stats counters (Years exp, scientific publications, tech stack depth).
   - **Featured Projects & Category Filtering**: Interactive category filter tabs (All, Enterprise, Mobile, Biomedical Systems, Algorithms, Web), media previews with graceful fallbacks, tag pills, GitHub / live preview links, and Architecture Specifications drawer/modal.
@@ -22,7 +22,7 @@ The application is a client-side, zero-dependency static web application designe
   - **Education & Scientific Publications**: Dedicated academic card layout spotlighting PubMed / peer-reviewed haematology and oncology publications (University of Helsinki, Heckman group) with 1-click APA citation copy.
   - **Certificates & Honors**: Interactive grid of LinkedIn certifications and recognitions.
   - **Interactive Resume Viewer / Modal**: Instant clean overlay allowing visitors to read and download the complete resume cleanly formatted with print stylesheet.
-  - **Command Palette (`Cmd+K`)**: Modal search allowing rapid keyboard-driven navigation across sections, freelance services, external portals, and actions.
+  - **Command Palette (`Cmd+K`)**: Modal search allowing rapid keyboard-driven navigation across sections, research collaborations, external portals, and actions.
   - **Contact & Project Inquiry Section**: Interactive glass card with direct mailto, 1-click email/phone copy pills, direct WhatsApp link, LinkedIn, GitHub, and functional message form with project type and timeline selectors.
   - **Footer**: Refined signature, copyright, status indicator, and quick links.
 

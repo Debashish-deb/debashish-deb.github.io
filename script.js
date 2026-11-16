@@ -1,8 +1,8 @@
 /**
  * @traceability
- * Main client-side application controller for Debashish Deb's Portfolio & Freelance Suite.
+ * Main client-side application controller for Debashish Deb's Scholarly & Systems Portfolio.
  * Implements data-driven rendering, theme management, scroll-spy navigation,
- * freelance services and process workflows, project category filtering, architecture modals,
+ * research collaboration workflows, project category filtering, architecture modals,
  * live skill search, command palette (Cmd+K), citation copying, and interactive modal workflows.
  */
 
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=5');
+      const response = await fetch('data.json?v=6');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       main.appendChild(renderMarquee());
       main.appendChild(renderCurrentRoles(portfolioData));
       main.appendChild(renderProjects(portfolioData));
-      main.appendChild(renderFreelance(portfolioData));
+      main.appendChild(renderCollaboration(portfolioData));
       main.appendChild(renderAbout(portfolioData));
       main.appendChild(renderSkills(portfolioData));
       main.appendChild(renderExperience(portfolioData));
@@ -131,9 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <nav aria-label="Primary Navigation">
           <ul class="nav-menu" id="nav-menu">
             <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#freelance" class="nav-link">Freelance</a></li>
+            <li><a href="#collaboration" class="nav-link">Collaboration</a></li>
             <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#skills" class="nav-link">Capabilities</a></li>
             <li><a href="#experience" class="nav-link">Experience</a></li>
             <li><a href="#contact" class="nav-link">Contact</a></li>
           </ul>
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="hero-content">
             <div class="hero-status-pill">
               <span class="status-dot"></span>
-              <span>Helsinki, Finland • Biotechnologist turned Developer • Open to Freelance</span>
+              <span>Helsinki, Finland • Biomedicum Helsinki • Open to Collaboration &amp; Appointments</span>
             </div>
             <h1 class="hero-title">
               Hi, I'm <span class="gradient-text">${data.name}.</span>
@@ -181,21 +181,21 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="font-size: clamp(1.15rem, 2.2vw, 1.45rem); margin-bottom: 14px; color: var(--text-primary); font-weight: 500;">
               <span>Focusing on </span>
               <span class="hero-cycle-wrapper">
-                <span class="hero-cycle-text" id="hero-cycle-text">Full-Stack Web (Go, React, TypeScript)</span>
+                <span class="hero-cycle-text" id="hero-cycle-text">Computational Systems &amp; Supercomputing</span>
                 <span class="cursor-blink">|</span>
               </span>
             </div>
             <p class="hero-description" style="font-size: 1.02rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 24px; max-width: 54ch;">
-              Biotechnologist turned software developer based in Finland. IT &amp; Systems Specialist at Färkkilä Laboratory (University of Helsinki / Biomedicum), managing lab digital systems, research databases, and CSC supercomputing. Constantly learning as an intermediate-level developer, building real-world tools, and open to select freelance projects.
+              Biotechnologist turned software engineer based in Helsinki. Managing scientific computing environments, multi-omics registries, and high-performance CSC supercomputing infrastructure at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki). Fostering rigorous computational methodologies, pursuing continuous technical scholarship, and welcoming select research collaborations and professional appointments.
             </p>
 
             <div class="hero-cta-group">
               <a href="#projects" class="btn btn-primary">
-                <span>View Projects</span>
+                <span>Explore Works</span>
                 <i class="fas fa-arrow-down" aria-hidden="true"></i>
               </a>
-              <a href="#freelance" class="btn btn-secondary">
-                <span>Freelance Services</span>
+              <a href="#collaboration" class="btn btn-secondary">
+                <span>Collaboration &amp; Hiring</span>
                 <i class="fas fa-handshake" aria-hidden="true"></i>
               </a>
             </div>
@@ -233,14 +233,14 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function renderMarquee() {
     const items = [
-      'Go & Fastify APIs',
-      'React & Next.js',
-      'Flutter & Dart Mobile',
-      'CSC Supercomputing',
-      'Research Data Pipelines',
+      'CSC Scientific Supercomputing',
+      'Spatial Multi-Omics Data',
+      'Go & Concurrent Microservices',
+      'React & Modern TypeScript',
+      'Flutter Cross-Platform Apps',
       'Biotechnology to Software',
-      'TypeScript & PostgreSQL',
-      'Open to Freelance'
+      'Translational Cancer Oncology',
+      'Open to Collaboration & Hiring'
     ];
     const row = items.map(t => `<span>${t}</span><span aria-hidden="true">✦</span>`).join('');
     const el = document.createElement('div');
@@ -291,15 +291,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * @traceability renderFreelance
-   * Generates personal freelance & collaboration offerings with transparent deliverables.
+   * @traceability renderCollaboration
+   * Generates research collaboration and professional engineering appointment offerings with empirical rigor.
    */
-  function renderFreelance(data) {
+  function renderCollaboration(data) {
     const section = document.createElement('section');
-    section.id = 'freelance';
+    section.id = 'collaboration';
     section.className = 'section services-section';
 
-    const servicesHtml = (data.freelanceServices || []).map(s => {
+    const servicesHtml = (data.collaborationServices || []).map(s => {
       const deliverablesList = (s.deliverables || []).map(d => `
         <li class="service-deliverable-item">
           <i class="fas fa-check-circle" aria-hidden="true"></i>
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="service-footer">
             <div class="tech-tags">${techTags}</div>
             <a href="#contact" class="btn btn-secondary btn-sm select-service-btn" data-service="${s.title}">
-              <span>Discuss Project</span>
+              <span>Initiate Collaboration</span>
               <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
           </div>
@@ -334,49 +334,16 @@ document.addEventListener('DOMContentLoaded', () => {
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <div class="freelance-status-banner">
+          <div class="collaboration-status-banner">
             <span class="status-dot"></span>
-            <span>${data.freelanceAvailability || 'Open to Select Freelance Projects & Collaborations'}</span>
+            <span>${data.collaborationAvailability || 'Available for Scholarly Collaboration, Advisory & Technical Appointments'}</span>
           </div>
-          <h2 class="section-title">Open to Freelance &amp; Collaboration</h2>
-          <p class="section-subtitle">Alongside my laboratory IT role at University of Helsinki, I take on select freelance contracts. Clear communication, clean code, and practical delivery.</p>
+          <h2 class="section-title">Collaborations &amp; Professional Appointments</h2>
+          <p class="section-subtitle">Alongside institutional computational duties at the University of Helsinki, I engage in select interdisciplinary collaborations, scientific software architecture, and technical appointments.</p>
         </div>
 
         <div class="services-grid">
           ${servicesHtml}
-        </div>
-      </div>
-    `;
-    return section;
-  }
-
-  /**
-   * @traceability renderFreelanceProcess
-   * Generates the 4-step transparent delivery methodology & quality guarantee roadmap.
-   */
-  function renderFreelanceProcess(data) {
-    const section = document.createElement('section');
-    section.id = 'process';
-    section.className = 'section process-section';
-
-    const stepsHtml = (data.freelanceProcess || []).map(p => `
-      <div class="glass-card process-card">
-        <span class="process-step-num">${p.step}</span>
-        <h3 class="process-card-title">${p.title}</h3>
-        <p class="process-card-desc">${p.desc}</p>
-      </div>
-    `).join('');
-
-    section.innerHTML = `
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag"><i class="fas fa-route"></i> Methodology & Guarantees</span>
-          <h2 class="section-title">How We Collaborate: From Vision to Launch</h2>
-          <p class="section-subtitle">Trained under Finnish industrial precision standards (ABB & Swappie), every engagement follows a disciplined, transparent execution cycle.</p>
-        </div>
-
-        <div class="process-grid">
-          ${stepsHtml}
         </div>
       </div>
     `;
@@ -779,7 +746,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderContact
-   * Generates freelance project inquiry form with project type and timeline selectors, alongside 1-click copy actions.
+   * Generates collaboration inquiry form with inquiry type and timeline selectors, alongside 1-click copy actions.
    */
   function renderContact(data) {
     const section = document.createElement('section');
@@ -788,15 +755,15 @@ document.addEventListener('DOMContentLoaded', () => {
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-paper-plane"></i> Work Together</span>
-          <h2 class="section-title">Start a Project or Consultation</h2>
-          <p class="section-subtitle">Whether scoping a custom web/mobile product, exploring fractional CTO advisory, or scientific systems architecture, let's connect directly.</p>
+          <span class="section-tag"><i class="fas fa-envelope-open-text"></i> Correspondence &amp; Inquiries</span>
+          <h2 class="section-title">Initiate Dialogue or Inquire for Appointment</h2>
+          <p class="section-subtitle">Whether exploring an interdisciplinary research collaboration, specialized software architecture, or institutional appointment, I welcome your correspondence.</p>
         </div>
 
         <div class="contact-grid">
           <div class="glass-card">
-            <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Direct Connectivity</h3>
-            <p style="margin-bottom: 20px;">Based in Helsinki & Kuopio, Finland. Serving international clients and research partners across Europe, North America, and South Asia.</p>
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Academic &amp; Professional Contacts</h3>
+            <p style="margin-bottom: 20px;">Based in Helsinki &amp; Kuopio, Finland. Engaging with international institutions, research consortia, and technical partners across Europe and globally.</p>
 
             <div class="contact-info-list">
               <div class="contact-item">
@@ -856,53 +823,52 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <div class="glass-card">
-            <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Project Inquiry Form</h3>
+            <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Collaboration &amp; Appointment Inquiry</h3>
             <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 20px;">
-              Share your project scope, target timeline, or consultation needs. Direct reply within 24 hours.
+              Please outline the parameters of your technical project, research objectives, or institutional appointment timeline.
             </p>
             <form id="contact-form" action="https://formspree.io/f/mvgzegkz" method="POST">
               <div class="form-row">
                 <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-name" class="form-label">Your Name</label>
-                  <input type="text" id="contact-name" name="name" class="form-control" placeholder="John Doe" required>
+                  <label for="contact-name" class="form-label">Full Name</label>
+                  <input type="text" id="contact-name" name="name" class="form-control" placeholder="Dr. / Prof. / Full Name" required>
                 </div>
                 <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-email" class="form-label">Your Email</label>
-                  <input type="email" id="contact-email" name="email" class="form-control" placeholder="john@company.com" required>
+                  <label for="contact-email" class="form-label">Email Address</label>
+                  <input type="email" id="contact-email" name="email" class="form-control" placeholder="colleague@institution.org" required>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-project-type" class="form-label">Service / Project Type</label>
+                  <label for="contact-project-type" class="form-label">Inquiry / Appointment Focus</label>
                   <select id="contact-project-type" name="project_type" class="form-control" required>
-                    <option value="Full-Stack Web & SaaS">Full-Stack Web & SaaS Architecture</option>
-                    <option value="Cross-Platform Mobile App (Flutter)">Cross-Platform Mobile App (Flutter)</option>
-                    <option value="Biomedical Data Platform">Biomedical & Research Computing Platform</option>
-                    <option value="Fractional CTO & Advisory">Fractional CTO & Technical Advisory</option>
-                    <option value="Architecture & Code Audit">Architecture Review / Code Audit</option>
-                    <option value="General Consultation">General Project Inquiry / Other</option>
+                    <option value="Full-Stack Web & Scientific Architectures">Full-Stack Web & Scientific Architectures</option>
+                    <option value="Cross-Platform Mobile Engineering (Flutter)">Cross-Platform Mobile Engineering (Flutter)</option>
+                    <option value="Biomedical Data Systems & Workflows">Biomedical Data Systems & Computational Infrastructure</option>
+                    <option value="Research Collaboration & Advisory">Research Collaboration & Technical Advisory</option>
+                    <option value="General Scholarly Inquiry">General Scholarly Inquiry / Consultation</option>
                   </select>
                 </div>
                 <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-timeline" class="form-label">Estimated Timeline</label>
+                  <label for="contact-timeline" class="form-label">Prospective Timeline</label>
                   <select id="contact-timeline" name="timeline" class="form-control">
                     <option value="Immediate (< 1 month)">Immediate (< 1 month)</option>
                     <option value="1 to 3 months" selected>1 to 3 months</option>
-                    <option value="3+ months / Retainer">3+ months / Monthly Retainer</option>
-                    <option value="Flexible">Flexible / Exploring scope</option>
+                    <option value="Semester / Extended Appointment">Semester / Extended Appointment</option>
+                    <option value="Exploratory / Flexible">Exploratory / Flexible</option>
                   </select>
                 </div>
               </div>
 
               <div class="form-group" style="margin-top:18px;">
-                <label for="contact-message" class="form-label">Project Scope & Details</label>
-                <textarea id="contact-message" name="message" class="form-control" style="min-height:120px;" placeholder="Tell me about your product vision, required features, technical challenges, or advisory scope..." required></textarea>
+                <label for="contact-message" class="form-label">Scope &amp; Inquiry Details</label>
+                <textarea id="contact-message" name="message" class="form-control" style="min-height:120px;" placeholder="Describe your scientific objectives, system specifications, technical challenges, or collaboration framework..." required></textarea>
               </div>
 
               <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%;">
                 <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                <span>Send Project Inquiry</span>
+                <span>Transmit Inquiry</span>
               </button>
             </form>
           </div>
@@ -1318,14 +1284,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!modal) return;
 
     const commands = [
-      { title: 'Institutional Affiliation (Färkkilä Lab UH)', icon: 'fa-star', type: 'Section', action: () => scrollToSection('leadership') },
-      { title: 'Engineering & Scientific Profile', icon: 'fa-user', type: 'Section', action: () => scrollToSection('about') },
-      { title: 'Featured Projects & Software', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
-      { title: 'Open to Freelance & Collaboration', icon: 'fa-handshake', type: 'Section', action: () => scrollToSection('freelance') },
-      { title: 'Technical Skills Matrix', icon: 'fa-microchip', type: 'Section', action: () => scrollToSection('skills') },
-      { title: 'Career Timeline', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
-      { title: 'Peer-Reviewed Publications', icon: 'fa-graduation-cap', type: 'Section', action: () => scrollToSection('publications') },
-      { title: 'Start a Conversation / Inquiry Form', icon: 'fa-paper-plane', type: 'Contact', action: () => scrollToSection('contact') },
+      { title: 'Institutional Affiliation (Färkkilä Laboratory, UH)', icon: 'fa-university', type: 'Section', action: () => scrollToSection('leadership') },
+      { title: 'Curated Works & Systems Architecture', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
+      { title: 'Collaborations & Professional Appointments', icon: 'fa-handshake', type: 'Section', action: () => scrollToSection('collaboration') },
+      { title: 'Scholarly Trajectory & Profile', icon: 'fa-user-graduate', type: 'Section', action: () => scrollToSection('about') },
+      { title: 'Technical & Computational Capabilities', icon: 'fa-microchip', type: 'Section', action: () => scrollToSection('skills') },
+      { title: 'Professional Appointments Timeline', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
+      { title: 'Peer-Reviewed Oncological Publications', icon: 'fa-book-open', type: 'Section', action: () => scrollToSection('publications') },
+      { title: 'Initiate Inquiry / Academic Correspondence', icon: 'fa-envelope-open-text', type: 'Contact', action: () => scrollToSection('contact') },
       { title: 'View / Print Full Resume (CV)', icon: 'fa-file-lines', type: 'Action', action: () => {
         closeCmd();
         const resumeBtn = document.getElementById('nav-resume-btn');
@@ -1464,11 +1430,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!el) return;
 
     const phrases = [
-      'Full-Stack Web (Go, React, TypeScript)',
-      'Cross-Platform Mobile (Flutter & Dart)',
-      'Lab IT & Supercomputing Infrastructure',
-      'Biotechnology to Software Engineering',
-      'Continuous Learning & Open to Freelance'
+      'Computational Systems & Supercomputing',
+      'Full-Stack Architecture (Go, TypeScript, React)',
+      'Cross-Platform Mobile Engineering (Flutter & Dart)',
+      'From Molecular Biotechnology to Software Systems',
+      'Interdisciplinary Collaboration & Technical Appointments'
     ];
 
     let phraseIdx = 0;

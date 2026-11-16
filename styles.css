@@ -2289,11 +2289,11 @@ body.dark-theme .stat-item.glass-card { background: none; box-shadow: none; }
 }
 
 /* ==========================================================================
-   FREELANCE & CLIENT SERVICES SUITE (Spacing & Layout Architecture)
+   COLLABORATIONS & PROFESSIONAL APPOINTMENTS (Spacing & Layout Architecture)
    ========================================================================== */
 
-/* Freelance Availability Banner */
-.freelance-status-banner {
+/* Collaboration Availability Banner */
+.collaboration-status-banner {
   display: inline-flex;
   align-items: center;
   gap: 10px;

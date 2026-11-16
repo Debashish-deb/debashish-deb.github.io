@@ -1,10 +1,10 @@
 {
   "name": "Debashish Deb",
   "shortName": "DD",
-  "title": "Biotechnologist Turned Developer • Research Lab IT & Full-Stack",
-  "tagline": "Biotechnologist turned software developer. Managing IT systems, research databases, and supercomputing workflows at Färkkilä Lab (University of Helsinki). Learning continuously as an intermediate developer, building practical software with Go, React, TypeScript, and Flutter, and open to select freelance projects.",
-  "about": "I am a molecular biotechnologist who fell in love with software development. Based in Finland, I handle IT and systems responsibilities at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki). As an intermediate-level developer, I focus on practical problem-solving, clean code, and continuous learning with Go, React, TypeScript, and Flutter, and I'm open to freelance work.",
-  "aboutExtended": "My journey began in molecular biotechnology, earning an M.Sc. at the University of Helsinki and co-authoring cancer research papers in Haematologica and Blood. Working directly with complex laboratory screening data opened my eyes to the incredible power of software engineering.\n\nToday, I work at Färkkilä Laboratory (Biomedicum Helsinki) managing IT infrastructure, research databases, and scientific computing workflows on Finnish CSC supercomputers for precision oncology studies (ONCOSYS-OVA).\n\nI approach software engineering with humility and a growth mindset—I think like an intermediate developer: focusing on fundamental computer science principles at Kood/Sisu, writing maintainable code in Go, React/TypeScript, and Flutter, and applying the zero-defect quality discipline I developed in Finnish high-tech manufacturing (ABB and Swappie). I am also open to select freelance work for teams needing reliable web apps, mobile tools, or research data automation.",
+  "title": "Computational Systems Specialist & Full-Stack Engineer",
+  "tagline": "Bridging molecular biotechnology, computational infrastructure, and modern software engineering. Managing research platforms and CSC supercomputing at Färkkilä Laboratory (University of Helsinki). Open to scholarly collaborations and technical appointments.",
+  "about": "I am a molecular biotechnologist turned computational systems specialist and software engineer based in Helsinki, Finland. At Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki), I oversee research databases, digital platforms, and high-performance CSC computing clusters. Dedicated to continuous scholarship and pragmatic engineering, I welcome interdisciplinary collaborations and technical appointments.",
+  "aboutExtended": "My academic trajectory commenced in molecular biotechnology, earning a Master of Science degree at the University of Helsinki and co-authoring peer-reviewed oncological investigations in Haematologica and Blood. Conducting high-throughput drug phenotypic screenings and interpreting complex multi-omic data underscored the profound necessity for rigorous, reproducible software architecture in modern life sciences.\n\nPresently, I serve as IT & Systems Specialist at Färkkilä Laboratory (Biomedicum Helsinki, Faculty of Medicine, University of Helsinki), stewarding scientific computing clusters hosted by the Finnish IT Center for Science (CSC), maintaining curated patient specimen registries, and advancing bespoke web portals for precision oncology (ONCOSYS-OVA).\n\nI view software development as a disciplined scholarly craft. Pursuing advanced computational coursework at Kood/Sisu, I engineer performant solutions in Go, TypeScript, React, and Flutter, upholding the zero-defect empirical precision instilled during my industrial tenure in Finnish high-precision manufacturing (ABB and Swappie). I am receptive to selective research collaborations, technical consultations, and professional appointments.",
   "profileImage": "profile.png",
   "email": "debashish.deb101@outlook.com",
   "personalEmail": "ddeba32@gmail.com",
@@ -16,63 +16,63 @@
   "companyWebsite": "https://farkkilab.org",
   "labWebsite": "https://farkkilab.org",
   "location": "Helsinki / Kuopio, Finland",
-  "status": "Biotechnologist & Developer • IT @ Färkkilä Lab (UH) • Open to Freelance",
+  "status": "Computational Systems • Färkkilä Lab (UH) • Open to Collaboration & Hiring",
   "stats": [
     {
-      "label": "Research Lab",
-      "value": "Färkkilä Lab (UH)"
+      "label": "Research Institution",
+      "value": "Univ. of Helsinki"
     },
     {
-      "label": "Academic Publications",
-      "value": "3 Co-Authored"
+      "label": "Scholarly Publications",
+      "value": "3 High-Impact"
     },
     {
-      "label": "Scientific Background",
+      "label": "Scientific Degree",
       "value": "M.Sc. Biotech"
     },
     {
-      "label": "Core Tech Stack",
+      "label": "Core Technologies",
       "value": "Go • React • Flutter"
     }
   ],
-  "freelanceAvailability": "Open to Select Freelance & Technical Collaborations",
-  "freelanceServices": [
+  "collaborationAvailability": "Available for Scholarly Collaboration, Advisory & Technical Appointments",
+  "collaborationServices": [
     {
-      "title": "Full-Stack Web Development",
-      "badge": "React & Go",
+      "title": "Full-Stack Web & Scientific Architectures",
+      "badge": "Web & Distributed Systems",
       "icon": "fa-code",
-      "description": "Modern responsive websites, custom dashboards, and fast APIs. Engineered with clean code, strong accessibility, and crisp interactions.",
+      "description": "Architecting performant, accessible digital interfaces, research dissemination platforms, and low-latency REST/GraphQL APIs utilizing React, Next.js, TypeScript, Fastify, and Go with rigorous computational standards.",
       "deliverables": [
-        "Interactive React & TypeScript web applications",
-        "Performant backend APIs with Go or Fastify/Node",
-        "Database modeling with PostgreSQL or SQLite",
-        "Responsive, accessible design across devices"
+        "Bespoke, accessible web interfaces engineered with React & TypeScript",
+        "Low-latency API architecture constructed in Go and Fastify/Node",
+        "Relational data schema normalization (PostgreSQL & SQLite)",
+        "Strict compliance with accessibility guidelines and empirical performance profiling"
       ],
       "technologies": ["React", "TypeScript", "Next.js", "Go", "Fastify", "Tailwind CSS"]
     },
     {
-      "title": "Cross-Platform Mobile Apps",
+      "title": "Cross-Platform Mobile Engineering",
       "badge": "Flutter & Dart",
       "icon": "fa-mobile-screen-button",
-      "description": "Native iOS and Android mobile apps built from a single codebase. Offline-first architecture, local databases, and smooth animations.",
+      "description": "Developing deterministic, offline-first mobile applications for iOS and Android from unified codebases, emphasizing on-device machine learning, edge processing, and resilient data persistence.",
       "deliverables": [
-        "Cross-platform iOS & Android mobile applications",
-        "Offline-first SQLite / Drift local caching",
-        "Camera, document scanner, and ML Kit integrations",
-        "Clean state management with Riverpod"
+        "Production-grade cross-platform applications built with Flutter & Dart",
+        "Offline-first relational persistence via Drift / SQLite architectures",
+        "Edge computer vision and optical character recognition (Google ML Kit / OCR)",
+        "Deterministic reactive state architecture orchestrated with Riverpod"
       ],
       "technologies": ["Flutter", "Dart", "SQLite / Drift", "Riverpod", "Google ML Kit"]
     },
     {
-      "title": "Lab IT & Research Data Workflows",
-      "badge": "Scientific Data & IT",
+      "title": "Biomedical Data Systems & Computational Workflows",
+      "badge": "Scientific Computing & Pipelines",
       "icon": "fa-flask-vial",
-      "description": "Automated data extraction, cleaning pipelines, research dashboards, and scientific computing coordination tailored for laboratories.",
+      "description": "Formulating automated data pipelines, translational clinical registries, and high-throughput computational workflows optimized for supercomputing environments and academic laboratories.",
       "deliverables": [
-        "Automated data parsing scripts in Python & Go",
-        "Internal lab dashboards & clinical registry tracking",
-        "Database schemas & structured data pipelines",
-        "CSC computing workflow orchestration"
+        "High-throughput data parsing and transformation pipelines in Python and Go",
+        "Secure clinical specimen tracking registries and observational study databases",
+        "Database provenance, migration protocols, and analytical reproducibility",
+        "CSC (Finnish IT Center for Science) cloud and supercomputing orchestration"
       ],
       "technologies": ["Python", "Go", "PostgreSQL", "CSC Cloud", "Data Pipelines"]
     }

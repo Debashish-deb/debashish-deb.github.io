@@ -10,7 +10,7 @@ Deployed live at: [https://debashish-deb.github.io](https://debashish-deb.github
 
 - **Personal Narrative**: Biotechnologist turned developer, managing IT infrastructure, research databases, and supercomputing workflows at Färkkilä Laboratory (University of Helsinki / Biomedicum).
 - **Growth Mindset**: Practical intermediate-level software developer actively expanding computer science fundamentals at Kood/Sisu, building with Go, React, TypeScript, and Flutter.
-- **Open to Freelance**: Clear client offerings across Full-Stack Web Development, Cross-Platform Mobile Apps (Flutter), and Research/Lab Data Workflows.
+- **Collaborations & Appointments**: Clear collaborative frameworks across Full-Stack Web & Scientific Architectures, Cross-Platform Mobile Engineering (Flutter), and Research/Lab Data Computational Workflows.
 - **Accurate Project Links**: Curated real-world projects with dedicated GitHub source links, external site visits (Riverlines bilingual documentary player, Jutera 3D showcase, Färkkilä Lab portal), and zero misleading buttons.
 - **Interactive Command Palette (`Cmd+K`)**: Modal keyboard-driven command palette allowing rapid search, section jumps, theme toggle, and external portal shortcuts.
 - **Projects Showcase with Category Filtering & Architecture Modal**: Instant filtering (Web, Mobile, Biomedical Systems, Algorithms) and a dedicated Architecture Specs drawer detailing system design highlights.

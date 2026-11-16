@@ -9,7 +9,7 @@
 | `renderHero(data)` | `script.js` | `initApp()` | Renders hero showcase with status pill, dynamic focus area typing, 3D interactive tilt avatar, and social links |
 | `renderMarquee()` | `script.js` | `initApp()` | Generates infinite horizontal ticker of core disciplines and institutions |
 | `renderCurrentRoles(data)` | `script.js` | `initApp()` | Spotlights current institutional role at Färkkilä Laboratory (University of Helsinki) |
-| `renderFreelance(data)` | `script.js` | `initApp()` | Generates personal freelance & collaboration offerings with deliverables checklist |
+| `renderCollaboration(data)` | `script.js` | `initApp()` | Generates scholarly collaboration and professional appointment offerings with deliverables |
 | `renderAbout(data)` | `script.js` | `initApp()` | Renders comprehensive bio narrative, metric counters, and 3 multidisciplinary pillars |
 | `renderProjects(data)` | `script.js` | `initApp()` | Renders project cards with category tabs, highlights, links, and Architecture Specs triggers |
 | `renderSkills(data)` | `script.js` | `initApp()` | Renders categorized skill matrix with real-time search bar and animated level bars |
