@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=8');
+      const response = await fetch('data.json?v=9');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -307,56 +307,77 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSection.className = 'section hero-section';
     heroSection.innerHTML = `
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <div class="hero-status-pill">
-              <span class="status-dot"></span>
-              <span>Helsinki, Finland • Biomedicum Helsinki • Open to Collaboration &amp; Appointments</span>
-            </div>
-            <h1 class="hero-title">
-              Hi, I'm <span class="gradient-text">${data.name}.</span>
-            </h1>
-            <div style="font-size: clamp(1.15rem, 2.2vw, 1.45rem); margin-bottom: 14px; color: var(--text-primary); font-weight: 500;">
-              <span>Focusing on </span>
-              <span class="hero-cycle-wrapper">
-                <span class="hero-cycle-text" id="hero-cycle-text">Computational Systems &amp; Supercomputing</span>
-                <span class="cursor-blink">|</span>
-              </span>
-            </div>
-            <p class="hero-description" style="font-size: 1.02rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 24px; max-width: 54ch;">
-              Biotechnologist turned software engineer based in Helsinki. Managing scientific computing environments, multi-omics registries, and high-performance CSC supercomputing infrastructure at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki). Fostering rigorous computational methodologies, pursuing continuous technical scholarship, and welcoming select research collaborations and professional appointments.
-            </p>
-
-            <div class="hero-cta-group">
-              <a href="#projects" class="btn btn-primary">
-                <span>Explore Works</span>
-                <i class="fas fa-arrow-down" aria-hidden="true"></i>
-              </a>
-              <a href="#collaboration" class="btn btn-secondary">
-                <span>Collaboration &amp; Hiring</span>
-                <i class="fas fa-handshake" aria-hidden="true"></i>
-              </a>
-            </div>
-
-            <div class="hero-socials">
-              <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn Profile" title="LinkedIn">
-                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-              </a>
-              <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile" title="GitHub">
-                <i class="fab fa-github" aria-hidden="true"></i>
-              </a>
-              <a href="mailto:${data.email}" class="hero-social-link" aria-label="Primary Email" title="Email Debashish Deb">
-                <i class="fas fa-envelope" aria-hidden="true"></i>
-              </a>
-              <a href="https://wa.me/358451600007" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="WhatsApp Direct" title="WhatsApp Chat">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              </a>
-            </div>
+        <div class="hero-cover-card">
+          <!-- Reference-Inspired Angular LED Geometric Backdrop -->
+          <div class="hero-cover-backdrop" aria-hidden="true">
+            <div class="facet-polygon facet-navy-deep"></div>
+            <div class="facet-polygon facet-navy-angle"></div>
+            <div class="facet-polygon facet-teal-facet"></div>
+            <div class="facet-polygon facet-amber-shard"></div>
+            <div class="led-glow-line led-line-primary"></div>
+            <div class="led-glow-line led-line-secondary"></div>
+            <div class="glass-sheen-overlay"></div>
           </div>
 
-          <div class="hero-visual-card">
-            <div class="avatar-wrapper" id="hero-avatar-wrapper">
-              <img src="${data.profileImage}" alt="Debashish Deb portrait" class="avatar-image" loading="eager" />
+          <div class="hero-grid">
+            <div class="hero-content">
+              <div class="hero-status-pill">
+                <span class="status-dot"></span>
+                <span>Helsinki, Finland • Biomedicum Helsinki • Open to Collaboration &amp; Appointments</span>
+              </div>
+              <h1 class="hero-title">
+                Hi, I'm <span class="gradient-text">${data.name}.</span>
+              </h1>
+              <div style="font-size: clamp(1.15rem, 2.2vw, 1.45rem); margin-bottom: 14px; color: var(--text-primary); font-weight: 500;">
+                <span>Focusing on </span>
+                <span class="hero-cycle-wrapper">
+                  <span class="hero-cycle-text" id="hero-cycle-text">Computational Systems &amp; Supercomputing</span>
+                  <span class="cursor-blink">|</span>
+                </span>
+              </div>
+              <p class="hero-description" style="font-size: 1.02rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 24px; max-width: 54ch;">
+                Biotechnologist turned software engineer based in Helsinki. Managing scientific computing environments, multi-omics registries, and high-performance CSC supercomputing infrastructure at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki). Fostering rigorous computational methodologies, pursuing continuous technical scholarship, and welcoming select research collaborations and professional appointments.
+              </p>
+
+              <div class="hero-cta-group">
+                <a href="#projects" class="btn btn-primary">
+                  <span>Explore Works</span>
+                  <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                </a>
+                <a href="#collaboration" class="btn btn-secondary">
+                  <span>Collaboration &amp; Hiring</span>
+                  <i class="fas fa-handshake" aria-hidden="true"></i>
+                </a>
+              </div>
+
+              <div class="hero-socials">
+                <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn Profile" title="LinkedIn">
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub Profile" title="GitHub">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="mailto:${data.email}" class="hero-social-link" aria-label="Primary Email" title="Email Debashish Deb">
+                  <i class="fas fa-envelope" aria-hidden="true"></i>
+                </a>
+                <a href="https://wa.me/358451600007" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="WhatsApp Direct" title="WhatsApp Chat">
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-visual-card">
+              <div class="avatar-wrapper" id="hero-avatar-wrapper">
+                <img src="${data.profileImage}" alt="Debashish Deb portrait" class="avatar-image" loading="eager" />
+                <div class="floating-chip chip-tech">
+                  <span class="chip-led-dot"></span>
+                  <span>CSC Puhti &bull; Go</span>
+                </div>
+                <div class="floating-chip chip-bio">
+                  <span class="chip-led-dot chip-amber-dot"></span>
+                  <span>Multi-Omics &bull; M.Sc.</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

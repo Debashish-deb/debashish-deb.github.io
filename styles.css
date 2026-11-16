@@ -4566,3 +4566,186 @@ body.light-theme {
   flex-direction: column;
   gap: 18px;
 }
+
+
+/* ==========================================================================
+   HOMEPAGE LED GLASSMORPHIC COVER CARD (Reference Angular Faceted Aesthetic)
+   ========================================================================== */
+
+.hero-cover-card {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #061e2b;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 70px -15px rgba(3, 20, 30, 0.75), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+  padding: 44px 40px;
+  margin-top: 10px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 900px) {
+  .hero-cover-card {
+    padding: 32px 24px;
+    border-radius: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-cover-card {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+}
+
+.hero-cover-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Base Deep Petroleum Blue Facet */
+.facet-polygon.facet-navy-deep {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 15%, #0e4c6a 0%, #082d3f 50%, #051a25 100%);
+  z-index: 1;
+}
+
+/* Angular Diagonal Shard 1 (Deep Navy/Cyan tone) */
+.facet-polygon.facet-navy-angle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 58%;
+  height: 85%;
+  background: linear-gradient(140deg, #051620 0%, #092c3d 60%, #0d425b 100%);
+  clip-path: polygon(0 0, 100% 0, 30% 100%, 0 100%);
+  opacity: 0.95;
+  z-index: 2;
+}
+
+/* Angular Shard 2 (Teal Highlight) */
+.facet-polygon.facet-teal-facet {
+  position: absolute;
+  top: 0;
+  left: 18%;
+  width: 45%;
+  height: 60%;
+  background: linear-gradient(135deg, rgba(14, 76, 106, 0.8) 0%, rgba(11, 47, 65, 0.3) 100%);
+  clip-path: polygon(30% 0, 100% 30%, 55% 100%, 0 45%);
+  z-index: 3;
+}
+
+/* Signature Warm Amber / Golden Facet (as in Reference Image) */
+.facet-polygon.facet-amber-shard {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 44%;
+  height: 80%;
+  background: linear-gradient(145deg, #fbe0b3 0%, #fac988 35%, #f39c12 70%, #d35400 100%);
+  clip-path: polygon(0 42%, 78% 100%, 0 100%);
+  opacity: 0.96;
+  z-index: 4;
+  box-shadow: 0 -10px 30px rgba(243, 156, 18, 0.3);
+}
+
+/* LED Glowing Neon Seams / Hairline Dividers */
+.led-glow-line {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Primary LED line tracing the Amber Facet edge */
+.led-glow-line.led-line-primary {
+  bottom: 0;
+  left: 0;
+  width: 44%;
+  height: 80%;
+  clip-path: polygon(0 42%, 78% 100%, 77% 100%, 0 43.5%);
+  background: linear-gradient(90deg, #ffffff 0%, #3ddc84 40%, #00b4d8 100%);
+  filter: drop-shadow(0 0 6px #3ddc84) drop-shadow(0 0 14px #00b4d8);
+  opacity: 0.9;
+}
+
+/* Secondary LED Line tracing the Navy Facet intersection */
+.led-glow-line.led-line-secondary {
+  top: 0;
+  left: 0;
+  width: 58%;
+  height: 85%;
+  clip-path: polygon(100% 0, 100% 1px, 30% 100%, 29.5% 100%);
+  background: linear-gradient(180deg, #00b4d8 0%, rgba(56, 189, 248, 0.5) 100%);
+  filter: drop-shadow(0 0 8px #00b4d8);
+  opacity: 0.65;
+}
+
+/* Glassmorphic frosted sheen overlay */
+.glass-sheen-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.16) 0%, transparent 40%),
+              linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.25) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 6;
+}
+
+/* Ensure hero grid sits cleanly above backdrop with full interactivity */
+.hero-cover-card .hero-grid {
+  position: relative;
+  z-index: 10;
+  margin: 0;
+}
+
+.hero-cover-card .hero-content {
+  position: relative;
+  z-index: 11;
+}
+
+.hero-cover-card .hero-visual-card {
+  position: relative;
+  z-index: 11;
+}
+
+/* Floating chips with glowing LED dots */
+.chip-led-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3ddc84;
+  box-shadow: 0 0 8px #3ddc84;
+  display: inline-block;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.chip-amber-dot {
+  background: #fac988;
+  box-shadow: 0 0 8px #fac988;
+}
+
+/* Theme Adaptation */
+body.light-theme .hero-cover-card {
+  background: #092636;
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 24px 60px -15px rgba(6, 49, 67, 0.35);
+}
+
+body.light-theme .hero-cover-card .hero-title {
+  color: #ffffff;
+}
+
+body.light-theme .hero-cover-card .hero-description {
+  color: #cbd5e1;
+}
+
+body.light-theme .hero-cover-card .hero-status-pill {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: #f1f5f9;
+}
