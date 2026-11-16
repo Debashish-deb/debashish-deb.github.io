@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=7');
+      const response = await fetch('data.json?v=8');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -193,14 +193,6 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="sidebar-role">Computational Systems</span>
             </div>
           </a>
-        </div>
-
-        <div class="sidebar-affiliation-box">
-          <div class="sidebar-lab-text">
-            <i class="fas fa-dna" aria-hidden="true"></i>
-            <span>Färkkilä Laboratory</span>
-          </div>
-          <div class="sidebar-institution-text">Biomedicum • Univ. of Helsinki</div>
         </div>
 
         <div class="sidebar-status-box">
