@@ -80,7 +80,7 @@
   "currentRoles": [
     {
       "organization": "Färkkilä Laboratory (University of Helsinki)",
-      "role": "IT Personnel & Systems Specialist",
+      "role": "Technical Assistant",
       "period": "Current",
       "link": "https://farkkilab.org",
       "summary": "Coordinating CSC Finnish IT Center for Science services, lab digital platforms, high-throughput spatial biology databases, and research infrastructure."
@@ -371,7 +371,7 @@
   ],
   "experience": [
     {
-      "title": "IT Personnel & Systems Specialist",
+      "title": "Technical Assistant",
       "company": "Färkkilä Laboratory, University of Helsinki",
       "time": "Current",
       "location": "Biomedicum Helsinki, Finland",

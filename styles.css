@@ -4749,3 +4749,266 @@ body.light-theme .hero-cover-card .hero-status-pill {
   border-color: rgba(255, 255, 255, 0.24);
   color: #f1f5f9;
 }
+
+
+/* ==========================================================================
+   VISIBILITY FIXES, SLIM COVER CARD & 3D TACTILE FILTERS (v10 System)
+   ========================================================================== */
+
+/* 1. Trim Top Gap & Slim Hero Cover Card */
+.hero-section {
+  padding: 10px 0 20px 0 !important;
+}
+
+.hero-cover-card {
+  padding: 24px 36px !important;
+  margin-top: 0 !important;
+  margin-bottom: 24px !important;
+}
+
+@media (max-width: 900px) {
+  .hero-cover-card {
+    padding: 20px 20px !important;
+  }
+}
+
+.hero-cover-card .hero-grid {
+  align-items: center !important;
+  gap: 24px !important;
+}
+
+.hero-cover-card .hero-visual-card {
+  margin-top: 0 !important;
+}
+
+.hero-cover-card .avatar-wrapper {
+  width: 240px !important;
+  height: 270px !important;
+  margin: 0 auto !important;
+}
+
+.hero-cover-card .avatar-wrapper::before {
+  height: 82% !important;
+  border-radius: 180px 180px 24px 24px !important;
+}
+
+/* 2. Cover Card Text High-Contrast Visibility */
+.hero-cover-card .hero-title {
+  font-size: clamp(2rem, 3.8vw, 2.85rem) !important;
+  color: #ffffff !important;
+  margin-bottom: 8px !important;
+  line-height: 1.1 !important;
+}
+
+.hero-cover-card .hero-title .gradient-text {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: #10b981 !important;
+}
+
+.hero-cover-card .hero-cycle-wrapper {
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
+  margin-bottom: 12px !important;
+}
+
+.hero-cover-card .hero-cycle-text {
+  color: #34d399 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 10px rgba(52, 211, 153, 0.5) !important;
+}
+
+.hero-cover-card .hero-description {
+  color: #f1f5f9 !important;
+  opacity: 1 !important;
+  font-size: 0.94rem !important;
+  line-height: 1.6 !important;
+  margin-bottom: 18px !important;
+  max-width: 56ch !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+.hero-cover-card .hero-status-pill {
+  background: rgba(10, 25, 36, 0.78) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  color: #f8fafc !important;
+  margin-bottom: 12px !important;
+  padding: 4px 12px !important;
+  font-size: 0.78rem !important;
+}
+
+.hero-cover-card .status-dot {
+  background: #34d399 !important;
+  box-shadow: 0 0 10px #34d399 !important;
+}
+
+/* 3. Left-Aligned Project Category Filter Labels & 3D Tactile Styling */
+.project-filters {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  justify-content: flex-start !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-bottom: 28px !important;
+}
+
+.filter-btn {
+  border-radius: 10px !important;
+  font-size: 0.86rem !important;
+  font-weight: 600 !important;
+  padding: 9px 18px !important;
+  background: linear-gradient(180deg, #1e2430 0%, #121620 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+  color: #e2e8f0 !important;
+  transition: all 120ms ease !important;
+  cursor: pointer !important;
+}
+
+.filter-btn:hover {
+  background: linear-gradient(180deg, #272f3e 0%, #181d29 100%) !important;
+  border-color: rgba(255, 255, 255, 0.24) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+.filter-btn.active {
+  background: linear-gradient(180deg, #10b981 0%, #059669 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-bottom: 3px solid #047857 !important;
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  transform: translateY(-1px) !important;
+}
+
+.filter-btn:active {
+  transform: translateY(2px) !important;
+  border-bottom-width: 1px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.light-theme .filter-btn {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%) !important;
+  border: 1px solid #cbd5e1 !important;
+  border-bottom: 3px solid #94a3b8 !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), inset 0 1px 0 #ffffff !important;
+  color: #1e293b !important;
+}
+
+body.light-theme .filter-btn:hover {
+  background: #ffffff !important;
+  border-color: #64748b !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .filter-btn.active {
+  background: linear-gradient(180deg, #059669 0%, #047857 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-bottom: 3px solid #064e3b !important;
+  box-shadow: 0 6px 16px rgba(4, 120, 87, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
+}
+
+/* 4. 3D Tactile Tech Tags */
+.tech-tag {
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.74rem !important;
+  font-weight: 600 !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  color: #e2e8f0 !important;
+}
+
+body.light-theme .tech-tag {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%) !important;
+  border: 1px solid #cbd5e1 !important;
+  border-bottom: 2px solid #94a3b8 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  color: #1e293b !important;
+}
+
+/* 5. Command Palette Visibility Fix (High Contrast & Clear Typography) */
+.cmd-palette-window {
+  background: #0f141d !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85) !important;
+}
+
+.cmd-search-box {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.cmd-search-box i {
+  color: #34d399 !important;
+  font-size: 1.15rem !important;
+}
+
+.cmd-input {
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+}
+
+.cmd-input::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+.cmd-item {
+  color: #f1f5f9 !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+}
+
+.cmd-item-left span {
+  color: #f1f5f9 !important;
+  font-weight: 500 !important;
+}
+
+.cmd-item-left i {
+  color: #34d399 !important;
+  font-size: 1.05rem !important;
+}
+
+.cmd-badge {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  font-size: 0.74rem !important;
+  font-family: var(--font-mono) !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+}
+
+.cmd-item:hover, .cmd-item.selected {
+  background: rgba(16, 185, 129, 0.22) !important;
+  color: #ffffff !important;
+  border-left: 3px solid #10b981 !important;
+}
+
+.cmd-item.selected .cmd-item-left span {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.cmd-footer {
+  color: #94a3b8 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  font-size: 0.8rem !important;
+}
+
+.cmd-search-box .kbd-badge {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
