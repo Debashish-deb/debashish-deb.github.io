@@ -4752,52 +4752,68 @@ body.light-theme .hero-cover-card .hero-status-pill {
 
 
 /* ==========================================================================
-   VISIBILITY FIXES, SLIM COVER CARD & 3D TACTILE FILTERS (v10 System)
+   VISIBILITY FIXES, SLIM COVER CARD & 3D TACTILE FILTERS (v11 System)
    ========================================================================== */
 
 /* 1. Trim Top Gap & Slim Hero Cover Card */
+.main-content-wrapper {
+  padding-top: 0 !important;
+}
+
+#main-content {
+  padding-top: 0 !important;
+}
+
 .hero-section {
-  padding: 10px 0 20px 0 !important;
+  padding: 4px 0 16px 0 !important;
 }
 
 .hero-cover-card {
-  padding: 24px 36px !important;
+  padding: 20px 32px !important;
   margin-top: 0 !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 20px !important;
+  border-radius: 24px !important;
 }
 
 @media (max-width: 900px) {
   .hero-cover-card {
-    padding: 20px 20px !important;
+    padding: 16px 18px !important;
+    border-radius: 20px !important;
   }
 }
 
 .hero-cover-card .hero-grid {
-  align-items: center !important;
-  gap: 24px !important;
+  display: grid !important;
+  grid-template-columns: 1.25fr 0.75fr !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
 }
 
 .hero-cover-card .hero-visual-card {
-  margin-top: 0 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  margin-top: -10px !important; /* Pushes profile picture vertically up to align with left text */
 }
 
 .hero-cover-card .avatar-wrapper {
-  width: 240px !important;
-  height: 270px !important;
+  width: 210px !important;
+  height: 240px !important;
   margin: 0 auto !important;
 }
 
 .hero-cover-card .avatar-wrapper::before {
-  height: 82% !important;
-  border-radius: 180px 180px 24px 24px !important;
+  height: 80% !important;
+  border-radius: 160px 160px 20px 20px !important;
 }
 
 /* 2. Cover Card Text High-Contrast Visibility */
 .hero-cover-card .hero-title {
-  font-size: clamp(2rem, 3.8vw, 2.85rem) !important;
+  font-size: clamp(2rem, 3.4vw, 2.75rem) !important;
   color: #ffffff !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 6px !important;
   line-height: 1.1 !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
 }
 
 .hero-cover-card .hero-title .gradient-text {
@@ -4805,6 +4821,13 @@ body.light-theme .hero-cover-card .hero-status-pill {
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: #10b981 !important;
+}
+
+.hero-cover-card .hero-focus-line {
+  font-size: clamp(1rem, 1.8vw, 1.2rem) !important;
+  color: #e2e8f0 !important;
+  font-weight: 500 !important;
+  margin-bottom: 10px !important;
 }
 
 .hero-cover-card .hero-cycle-wrapper {
@@ -4820,20 +4843,22 @@ body.light-theme .hero-cover-card .hero-status-pill {
 }
 
 .hero-cover-card .hero-description {
-  color: #f1f5f9 !important;
+  color: #f8fafc !important;
   opacity: 1 !important;
   font-size: 0.94rem !important;
-  line-height: 1.6 !important;
-  margin-bottom: 18px !important;
-  max-width: 56ch !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7) !important;
+  line-height: 1.65 !important;
+  margin-bottom: 16px !important;
+  max-width: 54ch !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  text-align: justify !important;
+  text-justify: inter-word !important;
 }
 
 .hero-cover-card .hero-status-pill {
-  background: rgba(10, 25, 36, 0.78) !important;
-  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  background: rgba(10, 25, 36, 0.82) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
   color: #f8fafc !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 10px !important;
   padding: 4px 12px !important;
   font-size: 0.78rem !important;
 }
@@ -5011,4 +5036,53 @@ body.light-theme .tech-tag {
   background: rgba(255, 255, 255, 0.12) !important;
   color: #cbd5e1 !important;
   border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+
+/* ==========================================================================
+   TYPOGRAPHIC JUSTIFICATION & HARMONIZED TEXT SPACING (v11 System)
+   ========================================================================== */
+
+p,
+.hero-description,
+.hero-cover-card .hero-description,
+.section-subtitle,
+.project-desc,
+.editorial-project-item .project-desc,
+.dossier-desc,
+.narrative-text,
+.pillar-desc,
+.role-desc,
+.service-desc,
+.cv-summary-text,
+.edu-thesis,
+.pub-desc,
+.quote-text,
+.contact-col-desc {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+  letter-spacing: -0.01em !important;
+  word-spacing: normal !important;
+  hyphens: auto !important;
+  -webkit-hyphens: auto !important;
+}
+
+/* Ensure headings and buttons maintain crisp, natural left alignment without justification */
+h1, h2, h3, h4, h5, h6,
+.hero-title,
+.section-title,
+.dossier-title,
+.project-title,
+.service-title,
+.role-title,
+.author-name,
+.btn,
+.filter-btn,
+.tech-tag,
+.cmd-item,
+.sidebar-link,
+.nav-link {
+  text-align: left !important;
+  letter-spacing: -0.025em !important;
+  word-spacing: normal !important;
 }

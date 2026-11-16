@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=10');
+      const response = await fetch('data.json?v=11');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -328,14 +328,14 @@ document.addEventListener('DOMContentLoaded', () => {
               <h1 class="hero-title">
                 Hi, I'm <span class="gradient-text">${data.name}.</span>
               </h1>
-              <div style="font-size: clamp(1.15rem, 2.2vw, 1.45rem); margin-bottom: 14px; color: var(--text-primary); font-weight: 500;">
-                <span>Focusing on </span>
+              <div class="hero-focus-line">
+                <span class="focus-label">Focusing on </span>
                 <span class="hero-cycle-wrapper">
                   <span class="hero-cycle-text" id="hero-cycle-text">Computational Systems &amp; Supercomputing</span>
                   <span class="cursor-blink">|</span>
                 </span>
               </div>
-              <p class="hero-description" style="font-size: 1.02rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 24px; max-width: 54ch;">
+              <p class="hero-description">
                 Biotechnologist turned software engineer based in Helsinki. Managing scientific computing environments, multi-omics registries, and high-performance CSC supercomputing infrastructure at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki). Fostering rigorous computational methodologies, pursuing continuous technical scholarship, and welcoming select research collaborations and professional appointments.
               </p>
 
