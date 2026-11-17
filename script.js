@@ -345,21 +345,12 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             </div>
 
-            <div class="hero-visual-card">
+            <figure class="hero-visual-card">
               <div class="avatar-wrapper">
                 <img src="${data.profileImage}" alt="Debashish Deb portrait" class="avatar-image" loading="eager" />
               </div>
-              <div class="hero-portrait-badges">
-                <span class="portrait-badge">
-                  <span class="badge-dot dot-cyan"></span>
-                  <span>CSC &bull; Scientific computing</span>
-                </span>
-                <span class="portrait-badge">
-                  <span class="badge-dot dot-amber"></span>
-                  <span>Research data &bull; M.Sc.</span>
-                </span>
-              </div>
-            </div>
+              <figcaption class="hero-portrait-caption">Scientific computing and research data</figcaption>
+            </figure>
           </div>
         </div>
       </div>
