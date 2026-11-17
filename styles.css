@@ -4986,10 +4986,10 @@ body.dark-theme .hero-cover-card .hero-title,
 body.light-theme .hero-cover-card .hero-title .gradient-text,
 body.dark-theme .hero-cover-card .hero-title .gradient-text,
 .hero-cover-card .hero-title .gradient-text {
-  background: linear-gradient(135deg, #34d399 0%, #10b981 60%, #059669 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: #10b981 !important;
+  background: none !important;
+  color: #a7f3d0 !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-shadow: none !important;
 }
 
 /* 4. "Focusing on" Clean Horizontal Spacing & Exact Vertical Level */
