@@ -1128,41 +1128,46 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <div class="contact-form-col">
-            <form id="contact-form" class="editorial-form" novalidate>
+            <form id="contact-form" class="editorial-form" aria-labelledby="contact-form-title" novalidate>
+              <h3 id="contact-form-title">Write a message</h3>
               <div class="form-group">
-                <label for="contact-name">Your Full Name <span class="req">*</span></label>
-                <input type="text" id="contact-name" name="name" required placeholder="Dr. Jane Doe / Prof. Smith" />
+                <label class="form-label" for="contact-name">Your name</label>
+                <input class="form-control" type="text" id="contact-name" name="name" autocomplete="name" aria-describedby="name-error" required />
                 <span class="field-error" id="name-error"></span>
               </div>
 
               <div class="form-group">
-                <label for="contact-email">Institutional / Work Email <span class="req">*</span></label>
-                <input type="email" id="contact-email" name="email" required placeholder="jane.doe@institution.edu" />
+                <label class="form-label" for="contact-email">Your email</label>
+                <input class="form-control" type="email" id="contact-email" name="email" autocomplete="email" aria-describedby="email-error" required />
                 <span class="field-error" id="email-error"></span>
               </div>
 
               <div class="form-group">
-                <label for="contact-subject">Inquiry Domain <span class="req">*</span></label>
-                <select id="contact-subject" name="subject" required>
-                  <option value="">Select scope of inquiry...</option>
-                  <option value="research">Scholarly / Research Collaboration</option>
-                  <option value="appointment">Software Engineering Appointment / Hiring</option>
-                  <option value="supercomputing">High-Performance Computing / CSC Advisory</option>
-                  <option value="general">General Technical Inquiry</option>
+                <label class="form-label" for="contact-subject">Topic</label>
+                <select class="form-control" id="contact-subject" name="subject" aria-describedby="subject-error" required>
+                  <option value="">Choose a topic</option>
+                  <option value="research">Research collaboration</option>
+                  <option value="appointment">Job opportunity</option>
+                  <option value="supercomputing">Research computing</option>
+                  <option value="general">General inquiry</option>
                 </select>
                 <span class="field-error" id="subject-error"></span>
               </div>
 
               <div class="form-group">
-                <label for="contact-message">Correspondence Details <span class="req">*</span></label>
-                <textarea id="contact-message" name="message" rows="5" required placeholder="Detail the objectives, scope, or collaboration parameters..."></textarea>
+                <label class="form-label" for="contact-message">Message</label>
+                <textarea class="form-control" id="contact-message" name="message" rows="4" aria-describedby="message-error" minlength="10" required placeholder="What would you like to discuss?"></textarea>
                 <span class="field-error" id="message-error"></span>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block" id="contact-submit-btn">
-                <span>Transmit Inquiry</span>
+              <button type="submit" class="btn btn-primary btn-block" id="contact-submit-btn" aria-describedby="contact-form-note">
+                <span>Open email draft</span>
                 <i class="fas fa-paper-plane" aria-hidden="true"></i>
               </button>
+              <p id="contact-form-note" class="contact-form-note">Review and send the draft in your email app.</p>
+              <p id="contact-draft-status" class="contact-form-note" role="status" hidden>
+                Draft ready. <a id="contact-draft-link" href="mailto:${data.email}">Open it again</a> if your email app didn’t open.
+              </p>
             </form>
           </div>
         </div>
@@ -1726,60 +1731,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability setupFormHandler
-   * Validates correspondence form fields and provides user feedback without alert dialogs.
+   * Validates the form and prepares an email draft for the visitor to send.
    */
   function setupFormHandler() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      let isValid = true;
+    const fields = [...form.querySelectorAll('.form-control')];
+    const draftLink = document.getElementById('contact-draft-link');
+    const draftStatus = document.getElementById('contact-draft-status');
 
-      const name = document.getElementById('contact-name');
-      const email = document.getElementById('contact-email');
-      const subject = document.getElementById('contact-subject');
-      const message = document.getElementById('contact-message');
+    form.addEventListener('input', () => {
+      draftStatus.hidden = true;
+    });
 
-      // Clear existing errors
-      ['name', 'email', 'subject', 'message'].forEach(field => {
-        const err = document.getElementById(`${field}-error`);
-        if (err) err.textContent = '';
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      draftStatus.hidden = true;
+
+      const name = form.elements.name.value.trim();
+      const email = form.elements.email.value.trim();
+      const topic = form.elements.subject;
+      const message = form.elements.message.value.trim();
+      const errors = {
+        name: name ? '' : 'Enter your name.',
+        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? '' : 'Enter a valid email address.',
+        subject: topic.value ? '' : 'Choose a topic.',
+        message: message.length >= 10 ? '' : 'Enter a message of at least 10 characters.'
+      };
+
+      fields.forEach(field => {
+        const error = errors[field.name];
+        field.setAttribute('aria-invalid', String(Boolean(error)));
+        document.getElementById(`${field.name}-error`).textContent = error;
       });
 
-      if (!name.value.trim()) {
-        document.getElementById('name-error').textContent = 'Please provide your name or institution.';
-        isValid = false;
+      const firstInvalid = fields.find(field => errors[field.name]);
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
       }
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
-        document.getElementById('email-error').textContent = 'Please enter a valid email address.';
-        isValid = false;
-      }
-
-      if (!subject.value) {
-        document.getElementById('subject-error').textContent = 'Please select an inquiry domain.';
-        isValid = false;
-      }
-
-      if (!message.value.trim() || message.value.trim().length < 10) {
-        document.getElementById('message-error').textContent = 'Please provide detailed correspondence (at least 10 characters).';
-        isValid = false;
-      }
-
-      if (!isValid) return;
-
-      const submitBtn = document.getElementById('contact-submit-btn');
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Transmitting...</span>';
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>Transmit Inquiry</span> <i class="fas fa-paper-plane"></i>';
-        form.reset();
-        showToast('Your academic inquiry has been recorded. Debashish will respond promptly!');
-      }, 900);
+      const subject = topic.selectedOptions[0].textContent.trim();
+      const body = [message, '', `From: ${name}`, `Reply email: ${email}`].join('\r\n');
+      draftLink.href = `mailto:${portfolioData.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      draftStatus.hidden = false;
+      draftLink.click();
     });
   }
 
