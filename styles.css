@@ -463,6 +463,7 @@ img {
   font-size: 2.25rem;
   margin-bottom: 12px;
   letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
 }
 
 .section-subtitle {
@@ -554,11 +555,13 @@ img {
 
 .hero-socials {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 16px;
 }
 
 .hero-social-link {
+  flex: 0 0 auto;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -3279,9 +3282,15 @@ body.light-theme {
 .sidebar-link i {
   font-size: 0.95rem;
   width: 18px;
+  flex-shrink: 0;
   text-align: center;
   color: var(--text-muted);
   transition: color var(--transition-fast);
+}
+
+.sidebar-link span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .sidebar-link:hover {
@@ -3526,6 +3535,7 @@ body.light-theme {
    -------------------------------------------------------------------------- */
 .main-content-wrapper {
   width: 100%;
+  min-width: 0;
   min-height: 100vh;
   position: relative;
   box-sizing: border-box;
@@ -3538,9 +3548,15 @@ body.light-theme {
   }
 }
 
-@media (min-width: 1600px) {
+@media screen and (min-width: 1600px) {
   .main-content-wrapper {
-    --max-width: clamp(1200px, 76vw, 1480px);
+    --max-width: 1680px;
+    --page-gutter: clamp(24px, 1.7vw, 44px);
+  }
+
+  #main-content > .section > .container,
+  .main-content-wrapper .footer-container {
+    margin-inline: 0 auto;
   }
 }
 
@@ -5190,6 +5206,7 @@ body.dark-theme .hero-cover-card .hero-title,
   color: #ffffff !important;
   margin-bottom: 6px !important;
   line-height: 1.1 !important;
+  overflow-wrap: anywhere;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
 }
 
@@ -5202,36 +5219,25 @@ body.dark-theme .hero-cover-card .hero-title .gradient-text,
   text-shadow: none !important;
 }
 
-/* 4. "Focusing on" Clean Horizontal Spacing & Exact Vertical Level */
+/* Cover focus line */
 body.light-theme .hero-cover-card .hero-focus-line,
 body.dark-theme .hero-cover-card .hero-focus-line,
 .hero-cover-card .hero-focus-line {
   display: flex !important;
-  align-items: center !important;
-  flex-wrap: nowrap !important;
-  white-space: nowrap !important;
-  gap: 8px !important;
+  align-items: baseline !important;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 2px;
   margin-bottom: 12px !important;
   line-height: 1.3 !important;
-  height: 34px !important;
-  min-height: 34px !important;
-  max-height: 34px !important;
-  overflow: hidden !important;
+  min-height: 34px;
 }
 
 @media (max-width: 360px) {
-  #hero .hero-focus-line {
+  .hero-cover-card .hero-focus-line {
     flex-direction: column;
-    align-items: flex-start !important;
     justify-content: center;
-    gap: 2px !important;
-    height: 46px !important;
-    min-height: 46px !important;
-    max-height: 46px !important;
-  }
-
-  #hero .hero-cycle-wrapper {
-    height: auto !important;
+    min-height: 46px;
   }
 }
 
@@ -5254,13 +5260,13 @@ body.light-theme .hero-cover-card .hero-cycle-wrapper,
 body.dark-theme .hero-cover-card .hero-cycle-wrapper,
 .hero-cover-card .hero-cycle-wrapper {
   display: inline-flex !important;
-  align-items: center !important;
-  white-space: nowrap !important;
+  align-items: baseline !important;
+  min-width: 0;
+  max-width: 100%;
   gap: 3px !important;
   margin: 0 !important;
   padding: 0 !important;
   line-height: inherit !important;
-  height: 100% !important;
 }
 
 body.light-theme .hero-cover-card .hero-cycle-text,
@@ -5269,7 +5275,7 @@ body.dark-theme .hero-cover-card .hero-cycle-text,
   font-size: clamp(0.95rem, 1.35vw, 1.15rem) !important;
   font-weight: 700 !important;
   color: #38bdf8 !important;
-  white-space: nowrap !important;
+  overflow-wrap: anywhere;
   text-shadow: 0 0 12px rgba(56, 189, 248, 0.5) !important;
   line-height: inherit !important;
   margin: 0 !important;
@@ -5282,6 +5288,7 @@ body.dark-theme .hero-cover-card .cursor-blink,
   color: #38bdf8 !important;
   line-height: inherit !important;
   margin-left: 2px !important;
+  flex-shrink: 0;
 }
 
 body.light-theme .hero-cover-card .hero-description,
@@ -5307,12 +5314,14 @@ body.dark-theme .hero-cover-card .hero-status-pill,
   margin-bottom: 10px !important;
   padding: 4px 12px !important;
   font-size: 0.78rem !important;
+  max-width: 100%;
 }
 
 body.light-theme .hero-cover-card .hero-status-pill span,
 body.dark-theme .hero-cover-card .hero-status-pill span,
 .hero-cover-card .hero-status-pill span {
   color: #f8fafc !important;
+  overflow-wrap: anywhere;
 }
 
 body.light-theme .hero-cover-card .status-dot,
@@ -5320,6 +5329,23 @@ body.dark-theme .hero-cover-card .status-dot,
 .hero-cover-card .status-dot {
   background: #38bdf8 !important;
   box-shadow: 0 0 10px #38bdf8 !important;
+  flex-shrink: 0;
+}
+
+.hero-cover-card .hero-cta-group .btn {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center !important;
+}
+
+.hero-cover-card .hero-cta-group .btn span,
+.portrait-badge {
+  min-width: 0;
+}
+
+.hero-cover-card .hero-cta-group .btn i {
+  flex-shrink: 0;
 }
 
 /* 5. Cover Card Buttons (Restored to Signature Emerald Green & Clean White) */

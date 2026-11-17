@@ -1287,6 +1287,10 @@ document.addEventListener('DOMContentLoaded', () => {
       backdrop.addEventListener('click', closeDrawer);
     }
 
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', event => {
+      if (event.matches && sidebar?.classList.contains('drawer-open')) closeDrawer();
+    });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && sidebar && sidebar.classList.contains('drawer-open')) {
         closeDrawer();
