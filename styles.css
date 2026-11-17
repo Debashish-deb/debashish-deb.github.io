@@ -166,7 +166,7 @@ body {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding-inline: var(--page-gutter, 24px);
 }
 
 /* Typography Defaults */
@@ -900,6 +900,7 @@ img {
 
 .project-links {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 12px;
   margin-top: auto;
@@ -1714,6 +1715,7 @@ main { padding-top: var(--header-height); }
 .role-card { border-top: 0 !important; }
 
 /* Marquee strip */
+.marquee-strip { overflow: hidden; }
 .marquee { overflow: hidden; border-block: 1px solid var(--border-subtle); padding: 12px 0; background: var(--accent-primary); color: var(--on-accent); }
 .marquee-track { display: flex; gap: 48px; width: max-content; animation: marquee 30s linear infinite; font-family: var(--font-display); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.02em; white-space: nowrap; }
 @keyframes marquee { to { transform: translateX(-50%); } }
@@ -1729,7 +1731,13 @@ main { padding-top: var(--header-height); }
 }
 @media (max-width: 768px) {
   .nav-container { padding: 0 24px; }
-  .section { padding: 32px 0; }
+  #main-content {
+    --page-gutter: clamp(14px, 4vw, 22px);
+    --paragraph-align: start;
+    --paragraph-hyphens: manual;
+  }
+  .section { padding: 24px 0; }
+  .section-header { margin-bottom: 20px; }
   .nav-menu { top: calc(var(--header-height) + 8px); margin: 0 16px; border-radius: 24px; border: 1px solid var(--border-subtle); }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -3530,6 +3538,12 @@ body.light-theme {
   }
 }
 
+@media (min-width: 1600px) {
+  .main-content-wrapper {
+    --max-width: clamp(1200px, 76vw, 1480px);
+  }
+}
+
 /* --------------------------------------------------------------------------
    WALKING AWAY FROM CARD STYLING: EDITORIAL SWISS MINIMALISM
    -------------------------------------------------------------------------- */
@@ -3545,7 +3559,7 @@ body.light-theme {
   border-top: 1px solid var(--border-subtle);
   padding: 32px 0;
   display: grid;
-  grid-template-columns: 1fr 280px;
+  grid-template-columns: minmax(0, 1fr) 280px;
   gap: 32px;
   align-items: center;
   transition: background var(--transition-fast);
@@ -3562,7 +3576,7 @@ body.light-theme {
 
 @media (max-width: 900px) {
   .editorial-project-item {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 20px;
   }
 }
@@ -3708,8 +3722,24 @@ body.light-theme {
 
 @media (max-width: 800px) {
   .dossier-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-dossier-panel {
+    margin-top: 24px;
+    padding: 16px;
+  }
+
+  .dossier-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .dossier-close-btn {
+    min-height: 44px;
   }
 }
 
@@ -3897,14 +3927,13 @@ body.light-theme {
    -------------------------------------------------------------------------- */
 .editorial-roles-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 36px;
   margin-top: 28px;
 }
 
 @media (max-width: 800px) {
   .editorial-roles-grid {
-    grid-template-columns: 1fr;
     gap: 24px;
   }
 }
@@ -4084,7 +4113,7 @@ body.light-theme {
    -------------------------------------------------------------------------- */
 .editorial-skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 32px;
   margin-top: 28px;
 }
@@ -4492,7 +4521,7 @@ body.light-theme {
    -------------------------------------------------------------------------- */
 .editorial-quotes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 32px;
   margin-top: 24px;
 }
@@ -4820,34 +4849,29 @@ body.dark-theme .hero-cover-card,
   background: #061e2b !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75) !important;
-  padding: 24px 32px !important;
+  padding: var(--cover-padding, 24px 32px) !important;
   margin-top: 0 !important;
-  margin-bottom: 20px !important;
+  margin-bottom: var(--cover-bottom-space, 20px) !important;
   border-radius: 24px !important;
   overflow: hidden !important;
-  min-height: 440px !important; /* Locks vertical height against animation jitter */
+  min-height: var(--cover-min-height, 440px) !important;
 }
 
 @media (max-width: 900px) {
   .hero-cover-card {
-    padding: 18px 20px !important;
+    --cover-padding: 20px 22px;
+    --cover-min-height: 0px;
+    --cover-grid-min-height: 0px;
     border-radius: 20px !important;
   }
 }
 
 .hero-cover-card .hero-grid {
   display: grid !important;
-  grid-template-columns: 1.15fr 0.85fr !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
   align-items: center !important;
   gap: 20px !important;
-  min-height: 380px !important; /* Locks grid height against animation shift */
-}
-
-@media (max-width: 768px) {
-  .hero-cover-card .hero-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
+  min-height: var(--cover-grid-min-height, 380px) !important;
 }
 
 /* 1. Frameless Big Cutout Portrait Standing Cleanly in Cover Card */
@@ -4856,13 +4880,17 @@ body.dark-theme .hero-cover-card,
   flex-direction: column !important;
   align-items: center !important;
   justify-content: flex-end !important;
-  margin-top: 0 !important;
+  order: 0;
+  min-height: 0;
+  margin: 0 !important;
 }
 
 .hero-cover-card .avatar-wrapper {
-  width: 290px !important;
-  max-width: 85vw !important;
-  height: 320px !important;
+  width: min(var(--cover-portrait-width, 290px), 100%) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  aspect-ratio: 574 / 605;
   margin: 0 auto !important;
   position: relative !important;
   background: transparent !important;
@@ -4871,10 +4899,35 @@ body.dark-theme .hero-cover-card,
   border-radius: 0 !important;
 }
 
-@media (max-width: 600px) {
-  .hero-cover-card .avatar-wrapper {
-    width: 240px !important;
-    height: 270px !important;
+@media (min-width: 1600px) {
+  .hero-cover-card {
+    --cover-portrait-width: 320px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-cover-card {
+    --cover-padding: 12px 18px 22px;
+    --cover-bottom-space: 8px;
+    --cover-portrait-width: clamp(210px, 55vw, 248px);
+  }
+
+  .hero-cover-card .hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
+  }
+
+  .hero-cover-card .hero-visual-card {
+    order: -1;
+  }
+
+  .hero-cover-card .hero-cta-group {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .hero-cover-card .hero-socials {
+    gap: 12px;
   }
 }
 
@@ -4981,6 +5034,22 @@ body.dark-theme .hero-cover-card .hero-focus-line,
   overflow: hidden !important;
 }
 
+@media (max-width: 360px) {
+  #hero .hero-focus-line {
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: center;
+    gap: 2px !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+  }
+
+  #hero .hero-cycle-wrapper {
+    height: auto !important;
+  }
+}
+
 body.light-theme .hero-cover-card .hero-focus-line .focus-label,
 body.dark-theme .hero-cover-card .hero-focus-line .focus-label,
 .hero-cover-card .hero-focus-line .focus-label,
@@ -5040,7 +5109,7 @@ body.dark-theme .hero-cover-card .hero-description,
   margin-bottom: 16px !important;
   max-width: 54ch !important;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
-  text-align: justify !important;
+  text-align: var(--paragraph-align, justify) !important;
   text-justify: inter-word !important;
 }
 
@@ -5313,12 +5382,12 @@ p,
 .pub-desc,
 .quote-text,
 .contact-col-desc {
-  text-align: justify !important;
+  text-align: var(--paragraph-align, justify) !important;
   text-justify: inter-word !important;
   letter-spacing: -0.01em !important;
   word-spacing: normal !important;
-  hyphens: auto !important;
-  -webkit-hyphens: auto !important;
+  hyphens: var(--paragraph-hyphens, auto) !important;
+  -webkit-hyphens: var(--paragraph-hyphens, auto) !important;
 }
 
 /* Ensure headings and buttons maintain crisp, natural left alignment without justification */
