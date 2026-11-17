@@ -103,111 +103,58 @@
   ],
   "skillCategories": [
     {
-      "category": "Core Languages & Systems",
+      "category": "Research computing",
       "icon": "fa-terminal",
       "items": [
         {
-          "name": "Go (Golang)",
-          "level": 90,
-          "icon": "golang"
+          "name": "CSC systems",
+          "use": "Run and troubleshoot research jobs."
         },
         {
-          "name": "TypeScript & JavaScript",
-          "level": 90,
-          "icon": "js"
-        },
-        {
-          "name": "Python",
-          "level": 85,
-          "icon": "python"
-        },
-        {
-          "name": "Dart / Flutter",
-          "level": 85,
-          "icon": "mobile"
+          "name": "Snakemake and Slurm",
+          "use": "Maintain workflows for preparing microscopy images."
         }
       ]
     },
     {
-      "category": "Software Engineering & Architecture",
-      "icon": "fa-code",
-      "items": [
-        {
-          "name": "React & Next.js",
-          "level": 90,
-          "icon": "react"
-        },
-        {
-          "name": "Fastify & Node.js",
-          "level": 85,
-          "icon": "node-js"
-        },
-        {
-          "name": "REST & GraphQL APIs",
-          "level": 90,
-          "icon": "network-wired"
-        },
-        {
-          "name": "PostgreSQL & SQLite",
-          "level": 85,
-          "icon": "database"
-        },
-        {
-          "name": "Docker & Containerization",
-          "level": 80,
-          "icon": "docker"
-        }
-      ]
-    },
-    {
-      "category": "Scientific Computing & Databases",
+      "category": "Research data",
       "icon": "fa-database",
       "items": [
         {
-          "name": "CSC Scientific Supercomputing",
-          "level": 90,
-          "icon": "server"
+          "name": "Lab databases",
+          "use": "Maintain records and help the team with access."
         },
         {
-          "name": "High-Throughput Bio Data",
-          "level": 85,
-          "icon": "chart-line"
-        },
-        {
-          "name": "Spatial Biology Registries",
-          "level": 85,
-          "icon": "folder-tree"
-        },
-        {
-          "name": "Research Data Infrastructure",
-          "level": 90,
-          "icon": "cubes"
+          "name": "Local and cloud storage",
+          "use": "Organize research files and support day-to-day use."
         }
       ]
     },
     {
-      "category": "Industrial Quality & Lean Execution",
-      "icon": "fa-gears",
+      "category": "Lab website",
+      "icon": "fa-code",
       "items": [
         {
-          "name": "Zero-Defect Quality Standards",
-          "level": 95,
-          "icon": "shield-halved"
+          "name": "React and Vite",
+          "use": "Build and maintain the Färkkilä Lab website."
         },
         {
-          "name": "Industrial Automation (ABB Oy)",
-          "level": 85,
-          "icon": "industry"
+          "name": "Browser testing",
+          "use": "Check navigation and completed changes on desktop and mobile."
+        }
+      ]
+    },
+    {
+      "category": "Independent projects",
+      "icon": "fa-mobile-screen-button",
+      "items": [
+        {
+          "name": "Flutter and Dart",
+          "use": "Build and test Android apps such as InfiniteScan."
         },
         {
-          "name": "Hardware Diagnostics (Swappie)",
-          "level": 90,
-          "icon": "microchip"
-        },
-        {
-          "name": "Lean Operations & Logistics (Posti)",
-          "level": 90,
-          "icon": "boxes-packing"
+          "name": "JavaScript",
+          "use": "Build browser features such as Riverlines’ timed transcript."
         }
       ]
     }

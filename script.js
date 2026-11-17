@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=17');
+      const response = await fetch('data.json?v=18');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setupScrollProgressBar();
       setupBackToTop();
       setupFormHandler();
-      setupSkillsObserver();
       setupProjectFilters();
       setupProjectDossier(portfolioData);
       setupSkillSearch();
@@ -779,7 +778,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderSkills
-   * Generates categorized skills matrix with live search bar and level indicators.
+   * Lists tools and their uses, grouped by type of work.
    */
   function renderSkills(data) {
     const section = document.createElement('section');
@@ -789,13 +788,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoriesHtml = (data.skillCategories || []).map(cat => {
       const itemsHtml = cat.items.map(item => `
         <div class="skill-item" data-skill="${item.name.toLowerCase()}">
-          <div class="skill-meta">
-            <span>${item.name}</span>
-            <span>${item.level}%</span>
-          </div>
-          <div class="skill-bar-track">
-            <div class="skill-bar-fill" data-level="${item.level}" style="width: 0%;"></div>
-          </div>
+          <div class="skill-meta"><strong>${item.name}</strong></div>
+          <p><small>${item.use}</small></p>
         </div>
       `).join('');
 
@@ -815,13 +809,13 @@ document.addEventListener('DOMContentLoaded', () => {
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-microchip"></i> CAPABILITIES</span>
-          <h2 class="section-title">Technical Competencies &amp; Toolkit</h2>
-          <p class="section-subtitle">Comprehensive spectrum of software architectures, languages, and laboratory methodologies.</p>
+          <span class="section-tag"><i class="fas fa-microchip"></i> TOOLS</span>
+          <h2 class="section-title">Tools I Use</h2>
+          <p class="section-subtitle">How I use these tools at Färkkilä Lab and in a few independent projects.</p>
           
           <div class="skill-search-wrapper" style="margin-top:20px;">
             <i class="fas fa-search" aria-hidden="true"></i>
-            <input type="text" id="skill-search-input" class="skill-search-input" placeholder="Filter capabilities (e.g., Go, React, CSC, Docker, Flutter)..." aria-label="Filter capabilities" />
+            <input type="text" id="skill-search-input" class="skill-search-input" placeholder="Filter tools (e.g., CSC, React, Flutter)" aria-label="Filter tools" />
           </div>
         </div>
 
@@ -1357,7 +1351,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability setupSkillSearch
-   * Real-time search filter across capabilities matrix.
+   * Filters the tools by name.
    */
   function setupSkillSearch() {
     const input = document.getElementById('skill-search-input');
@@ -1374,7 +1368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         items.forEach(item => {
           const name = item.getAttribute('data-skill') || '';
           if (term === '' || name.includes(term)) {
-            item.style.display = 'flex';
+            item.style.display = '';
             groupHasMatch = true;
           } else {
             item.style.display = 'none';
@@ -1401,7 +1395,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { title: 'Curated Works & Systems Architecture', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
       { title: 'Collaborations & Technical Appointments', icon: 'fa-handshake', type: 'Section', action: () => scrollToSection('collaboration') },
       { title: 'Scholarly Trajectory & Profile', icon: 'fa-user-graduate', type: 'Section', action: () => scrollToSection('about') },
-      { title: 'Technical & Computational Capabilities', icon: 'fa-microchip', type: 'Section', action: () => scrollToSection('skills') },
+      { title: 'Tools I Use', icon: 'fa-microchip', type: 'Section', action: () => scrollToSection('skills') },
       { title: 'Appointments & Laboratory Timeline', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
       { title: 'Peer-Reviewed Oncological Publications', icon: 'fa-book-open', type: 'Section', action: () => scrollToSection('publications') },
       { title: 'Full Academic Curriculum Vitae (In-Page CV)', icon: 'fa-file-invoice', type: 'Section', action: () => scrollToSection('cv') },
@@ -1728,31 +1722,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sections.forEach(sec => observer.observe(sec));
-  }
-
-  /**
-   * @traceability setupSkillsObserver
-   * Animates skill progress bars when scrolled into view.
-   */
-  function setupSkillsObserver() {
-    if (typeof IntersectionObserver === 'undefined') return;
-    const skillsSection = document.getElementById('skills');
-    if (!skillsSection) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const fills = skillsSection.querySelectorAll('.skill-bar-fill');
-          fills.forEach(fill => {
-            const level = fill.getAttribute('data-level');
-            fill.style.width = `${level}%`;
-          });
-          observer.unobserve(skillsSection);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    observer.observe(skillsSection);
   }
 
   /**
