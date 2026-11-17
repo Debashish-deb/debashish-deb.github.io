@@ -3897,7 +3897,7 @@ body.light-theme {
    -------------------------------------------------------------------------- */
 .editorial-roles-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 36px;
   margin-top: 28px;
 }
@@ -3915,6 +3915,44 @@ body.light-theme {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.editorial-role-col .tech-tags {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 6px !important;
+  margin-bottom: 0 !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.editorial-role-col .tech-tags::-webkit-scrollbar {
+  display: none !important;
+}
+
+.editorial-role-col .tech-tag {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  font-size: 0.84rem !important;
+  font-weight: 500 !important;
+  padding: 6px 14px !important;
+  border-radius: 999px !important;
+  background: var(--accent-soft) !important;
+  color: var(--accent-primary) !important;
+  border: 1px solid var(--accent-border) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  transition: all 0.2s ease !important;
+}
+
+.editorial-role-col .tech-tag:hover {
+  background: var(--accent-primary) !important;
+  color: var(--on-accent) !important;
+  transform: translateY(-1px) !important;
 }
 
 .role-org-badge {
