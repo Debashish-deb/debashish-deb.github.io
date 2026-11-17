@@ -5009,7 +5009,9 @@ body.light-theme .hero-cover-card,
 body.dark-theme .hero-cover-card,
 .hero-cover-card {
   position: relative !important;
-  background: linear-gradient(110deg, #0b1e2c, #102d3c) !important;
+  background:
+    radial-gradient(ellipse at var(--cover-highlight-position, 78% 44%), #266978, transparent 58%),
+    linear-gradient(110deg, #102738 8%, #14384b 62%, #185365) !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75) !important;
   padding: var(--cover-padding, 30px 28px) !important;
@@ -5073,6 +5075,7 @@ body.dark-theme .hero-cover-card,
   .hero-cover-card {
     --cover-padding: 12px 18px 22px;
     --cover-bottom-space: 8px;
+    --cover-highlight-position: 50% 18%;
     --cover-portrait-width: clamp(210px, 55vw, 248px);
   }
 
