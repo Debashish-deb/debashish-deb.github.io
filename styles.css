@@ -4703,7 +4703,7 @@ body.light-theme .editorial-form {
 
 
 /* ==========================================================================
-   HOMEPAGE LED GLASSMORPHIC COVER CARD (Reference Angular Faceted Aesthetic)
+   HOMEPAGE COVER CARD
    ========================================================================== */
 
 .hero-cover-card {
@@ -4733,100 +4733,34 @@ body.light-theme .editorial-form {
 }
 
 .hero-cover-backdrop {
+  --cover-overlay: linear-gradient(100deg, rgba(6, 24, 35, 0.94) 0%, rgba(6, 24, 35, 0.80) 48%, rgba(6, 24, 35, 0.58) 100%);
   position: absolute;
   inset: 0;
   pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
+  background: var(--cover-overlay), url("./biomedicum-cover.webp") center 48% / cover no-repeat;
 }
 
-/* Base Deep Petroleum Blue Facet */
-.facet-polygon.facet-navy-deep {
+@media (max-width: 768px) {
+  .hero-cover-backdrop {
+    --cover-overlay: linear-gradient(180deg, rgba(6, 24, 35, 0.90), rgba(6, 24, 35, 0.72));
+  }
+}
+
+.hero-cover-credit {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 85% 15%, #0e4c6a 0%, #082d3f 50%, #051a25 100%);
-  z-index: 1;
+  right: 12px;
+  bottom: 3px;
+  z-index: 12;
+  color: #e2e8f0;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-shadow: 0 1px 4px #061823;
 }
 
-/* Angular Diagonal Shard 1 (Deep Navy/Cyan tone) */
-.facet-polygon.facet-navy-angle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 58%;
-  height: 85%;
-  background: linear-gradient(140deg, #051620 0%, #092c3d 60%, #0d425b 100%);
-  clip-path: polygon(0 0, 100% 0, 30% 100%, 0 100%);
-  opacity: 0.95;
-  z-index: 2;
-}
-
-/* Angular Shard 2 (Teal Highlight) */
-.facet-polygon.facet-teal-facet {
-  position: absolute;
-  top: 0;
-  left: 18%;
-  width: 45%;
-  height: 60%;
-  background: linear-gradient(135deg, rgba(14, 76, 106, 0.8) 0%, rgba(11, 47, 65, 0.3) 100%);
-  clip-path: polygon(30% 0, 100% 30%, 55% 100%, 0 45%);
-  z-index: 3;
-}
-
-/* Signature Warm Amber / Golden Facet (as in Reference Image) */
-.facet-polygon.facet-amber-shard {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 44%;
-  height: 80%;
-  background: linear-gradient(145deg, #fbe0b3 0%, #fac988 35%, #f39c12 70%, #d35400 100%);
-  clip-path: polygon(0 42%, 78% 100%, 0 100%);
-  opacity: 0.96;
-  z-index: 4;
-  box-shadow: 0 -10px 30px rgba(243, 156, 18, 0.3);
-}
-
-/* LED Glowing Neon Seams / Hairline Dividers */
-.led-glow-line {
-  position: absolute;
-  pointer-events: none;
-  z-index: 5;
-}
-
-/* Primary LED line tracing the Amber Facet edge */
-.led-glow-line.led-line-primary {
-  bottom: 0;
-  left: 0;
-  width: 44%;
-  height: 80%;
-  clip-path: polygon(0 42%, 78% 100%, 77% 100%, 0 43.5%);
-  background: linear-gradient(90deg, #ffffff 0%, #3ddc84 40%, #00b4d8 100%);
-  filter: drop-shadow(0 0 6px #3ddc84) drop-shadow(0 0 14px #00b4d8);
-  opacity: 0.9;
-}
-
-/* Secondary LED Line tracing the Navy Facet intersection */
-.led-glow-line.led-line-secondary {
-  top: 0;
-  left: 0;
-  width: 58%;
-  height: 85%;
-  clip-path: polygon(100% 0, 100% 1px, 30% 100%, 29.5% 100%);
-  background: linear-gradient(180deg, #00b4d8 0%, rgba(56, 189, 248, 0.5) 100%);
-  filter: drop-shadow(0 0 8px #00b4d8);
-  opacity: 0.65;
-}
-
-/* Glassmorphic frosted sheen overlay */
-.glass-sheen-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.16) 0%, transparent 40%),
-              linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.25) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  z-index: 6;
+.hero-cover-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* Ensure hero grid sits cleanly above backdrop with full interactivity */

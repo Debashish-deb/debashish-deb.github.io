@@ -307,16 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSection.innerHTML = `
       <div class="container">
         <div class="hero-cover-card">
-          <!-- Reference-Inspired Angular LED Geometric Backdrop -->
-          <div class="hero-cover-backdrop" aria-hidden="true">
-            <div class="facet-polygon facet-navy-deep"></div>
-            <div class="facet-polygon facet-navy-angle"></div>
-            <div class="facet-polygon facet-teal-facet"></div>
-            <div class="facet-polygon facet-amber-shard"></div>
-            <div class="led-glow-line led-line-primary"></div>
-            <div class="led-glow-line led-line-secondary"></div>
-            <div class="glass-sheen-overlay"></div>
-          </div>
+          <div class="hero-cover-backdrop" aria-hidden="true"></div>
 
           <div class="hero-grid">
             <div class="hero-content">
@@ -379,6 +370,9 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             </div>
           </div>
+          <small class="hero-cover-credit">
+            Photo by <a href="https://commons.wikimedia.org/wiki/File:Biomedicum_Helsinki_inside_view.jpg">Mjeltsch</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+          </small>
         </div>
       </div>
     `;
