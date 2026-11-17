@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=25');
+      const response = await fetch('data.json?v=26');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -980,7 +980,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <i class="fas fa-print" aria-hidden="true"></i>
               <span>Print or save PDF</span>
             </button>
-            <a class="btn btn-secondary btn-sm" href="Debashish-Deb-CV.pdf" download="Debashish-Deb-CV.pdf">
+            <a class="btn btn-secondary btn-sm" href="Debashish-Deb-CV.pdf?v=2" download="Debashish-Deb-CV.pdf">
               <i class="fas fa-download" aria-hidden="true"></i>
               <span>Download CV</span>
             </a>
