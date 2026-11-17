@@ -1,0 +1,23 @@
+data.json
+  s_cad165870cbc4d::t_334d0091f52e0a 164-171,173-175,178-179,205-224,443,446,448,454,456,465
+script.js
+  s_cad165870cbc4d::t_22b1ce2d7ff311 23,192,199,214,226,232,238,244,250,269,881,901-902,911,955,1179,1183,1185-1186,1386,1388-1390,1392-1395
+index.html
+  s_cad165870cbc4d::t_22b1ce2d7ff311 73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "aff4d83cc56299b674b527db59e68fe6c2632c24",
+  "prompts": {},
+  "sessions": {
+    "s_cad165870cbc4d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1c2b3-1f74-7ae2-bded-719410ab975c",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "debashishdeb1 <debashish.deb101@outlook.com>"
+    }
+  }
+}
