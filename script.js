@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=15');
+      const response = await fetch('data.json?v=16');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -431,17 +431,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const rolesMarkup = (data.currentRoles || []).map(r => `
       <div class="editorial-role-col">
         <div class="role-org-badge">
-          <i class="fas ${r.icon}" aria-hidden="true"></i>
-          <span>${r.org}</span>
+          <i class="fas ${r.icon || 'fa-building-columns'}" aria-hidden="true"></i>
+          <span>${r.org || r.organization || 'Färkkilä Laboratory (University of Helsinki)'}</span>
         </div>
-        <h3 class="role-title">${r.title}</h3>
+        <h3 class="role-title">${r.title || r.role || 'IT & Systems Specialist'}</h3>
         <div class="role-meta">
-          <span class="role-location">${r.location}</span>
-          <span class="role-period">${r.period}</span>
+          <span class="role-location">${r.location || 'Biomedicum Helsinki, Finland'}</span>
+          <span class="role-period">${r.period || 'Current'}</span>
         </div>
-        <p class="role-desc">${r.desc}</p>
+        <p class="role-desc">${r.desc || r.summary || ''}</p>
         <div class="tech-tags">
-          ${(r.tags || []).map(t => `<span class="tech-tag">${t}</span>`).join('')}
+          ${(r.tags || ['CSC Supercomputing', 'Research Databases', 'Spatial Multi-omics', 'Snakemake']).map(t => `<span class="tech-tag">${t}</span>`).join('')}
         </div>
       </div>
     `).join('');

@@ -824,9 +824,7 @@ img {
   transition: transform var(--transition-slow);
 }
 
-/* For square app icons like BioScan and BDNewsReader */
-.project-card:has(img[src*="bioscan.webp"]) .project-img,
-.project-card:has(img[src*="infinitescan.webp"]) .project-img,
+/* For square app icons like BDNewsReader */
 .project-card:has(img[src*="bdnewsreader.webp"]) .project-img {
   object-fit: contain;
   padding: 24px;
@@ -2761,7 +2759,7 @@ body.light-theme .status-dot {
 }
 
 body.light-theme .hero-title .gradient-text {
-  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -4900,10 +4898,10 @@ body.dark-theme .hero-cover-card .hero-title,
 body.light-theme .hero-cover-card .hero-title .gradient-text,
 body.dark-theme .hero-cover-card .hero-title .gradient-text,
 .hero-cover-card .hero-title .gradient-text {
-  background: linear-gradient(135deg, #38bdf8 0%, #00d2ff 60%, #0284c7 100%) !important;
+  background: linear-gradient(135deg, #34d399 0%, #10b981 60%, #059669 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  color: #38bdf8 !important;
+  color: #10b981 !important;
 }
 
 /* 4. "Focusing on" Clean Horizontal Spacing & Exact Vertical Level */

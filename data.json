@@ -79,11 +79,23 @@
   ],
   "currentRoles": [
     {
+      "icon": "fa-building-columns",
+      "org": "Färkkilä Laboratory (University of Helsinki)",
       "organization": "Färkkilä Laboratory (University of Helsinki)",
-      "role": "Technical Assistant",
+      "title": "IT & Systems Specialist",
+      "role": "IT & Systems Specialist",
+      "location": "Biomedicum Helsinki, Finland",
       "period": "Current",
       "link": "https://farkkilab.org",
-      "summary": "Coordinating CSC Finnish IT Center for Science services, lab digital platforms, high-throughput spatial biology databases, and research infrastructure."
+      "desc": "Coordinating Finnish CSC scientific supercomputing services, lab digital platforms, high-throughput spatial biology databases, and precision oncology research infrastructure.",
+      "summary": "Coordinating Finnish CSC scientific supercomputing services, lab digital platforms, high-throughput spatial biology databases, and precision oncology research infrastructure.",
+      "tags": [
+        "CSC Supercomputing",
+        "Research Databases",
+        "Spatial Multi-omics",
+        "Snakemake",
+        "Scientific Linux"
+      ]
     }
   ],
   "skillCategories": [
@@ -221,24 +233,25 @@
       "includeInResume": true
     },
     {
-      "name": "Workspace Operations Manager",
-      "badge": "Full-Stack Project",
-      "category": "web",
+      "name": "LUMI HPC Bioimage Preprocessing Pipeline",
+      "badge": "Snakemake & LUMI Supercomputer",
+      "category": "systems",
       "link": "",
       "github": "https://github.com/Debashish-deb",
-      "image": "workspace-ops.webp",
-      "description": "A modular web application for internal team task and milestone orchestration. Features role-based access control, real-time activity timelines, delivery records, and structured database storage with PostgreSQL and Next.js.",
+      "image": "",
+      "description": "High-throughput distributed workflow pipeline engineered with Snakemake and Slurm for large-scale biomedical image preprocessing and spatial biology data on the LUMI pre-exascale supercomputer (CSC Finland). Orchestrates containerized image normalization, flat-field correction, background subtraction, and multi-channel tile stitching across multi-node HPC clusters.",
       "technologies": [
-        "Next.js",
-        "TypeScript",
-        "Node.js",
-        "PostgreSQL",
-        "Tailwind CSS",
-        "Docker"
+        "Snakemake",
+        "LUMI Supercomputing",
+        "Python",
+        "Slurm",
+        "Apptainer / Singularity",
+        "Scientific Linux"
       ],
       "highlights": [
-        "Structured task boards and automated project deliverable records",
-        "Role-based authentication hierarchy and responsive team dashboard"
+        "Scalable Snakemake workflow orchestration executed on the LUMI pre-exascale supercomputer",
+        "Automated high-throughput multi-channel microscopy image normalization, flat-field correction, and tiling",
+        "Containerized reproducible execution via Singularity/Apptainer with automated Slurm cluster dispatch"
       ],
       "includeInResume": true
     },
@@ -261,28 +274,6 @@
       "highlights": [
         "Interactive 3D model rendering via Three.js with real-time WebGL orbit controls",
         "Sub-second page transitions, responsive layout, and PWA offline caching"
-      ],
-      "includeInResume": true
-    },
-    {
-      "name": "BioScan / Mobile Document OCR",
-      "badge": "Flutter Utility / OCR",
-      "category": "mobile",
-      "link": "",
-      "github": "https://github.com/Debashish-deb",
-      "image": "bioscan.webp",
-      "description": "Privacy-first Android utility app built with Flutter. Runs 100% on-device with Google ML Kit and Tesseract OCR for barcode and text scanning, offline SQLite scan history, and zero third-party telemetry.",
-      "technologies": [
-        "Flutter",
-        "Dart",
-        "Google ML Kit",
-        "Tesseract OCR",
-        "SQLite",
-        "CameraX"
-      ],
-      "highlights": [
-        "On-device ML inference without requiring external server calls or cloud telemetry",
-        "Sub-100ms real-time barcode scanning with auto-focus and offline history storage"
       ],
       "includeInResume": true
     },
