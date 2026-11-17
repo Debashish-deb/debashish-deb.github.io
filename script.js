@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=21');
+      const response = await fetch('data.json?v=22');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -189,14 +189,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="sidebar-brand-badge">${data.shortName || 'DD'}</span>
             <div class="sidebar-identity">
               <span class="sidebar-name">${data.name}</span>
-              <span class="sidebar-role">Computational Systems</span>
+              <span class="sidebar-role">Research IT</span>
             </div>
           </a>
         </div>
 
         <div class="sidebar-status-box">
           <span class="status-dot"></span>
-          <span class="sidebar-status-label">Open to Collaboration &amp; Hiring</span>
+          <span class="sidebar-status-label">Open to roles and collaboration</span>
         </div>
       </div>
 
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <li>
             <a href="#projects" class="sidebar-link" data-section="projects">
               <i class="fas fa-layer-group" aria-hidden="true"></i>
-              <span>Curated Systems</span>
+              <span>Projects</span>
             </a>
           </li>
           <li>
@@ -223,37 +223,31 @@ document.addEventListener('DOMContentLoaded', () => {
           <li>
             <a href="#about" class="sidebar-link" data-section="about">
               <i class="fas fa-user-graduate" aria-hidden="true"></i>
-              <span>Scholar Profile</span>
+              <span>About</span>
             </a>
           </li>
           <li>
             <a href="#skills" class="sidebar-link" data-section="skills">
               <i class="fas fa-microchip" aria-hidden="true"></i>
-              <span>Capabilities</span>
+              <span>Tools I Use</span>
             </a>
           </li>
           <li>
             <a href="#experience" class="sidebar-link" data-section="experience">
               <i class="fas fa-briefcase" aria-hidden="true"></i>
-              <span>Appointments</span>
+              <span>Experience</span>
             </a>
           </li>
           <li>
             <a href="#publications" class="sidebar-link" data-section="publications">
               <i class="fas fa-book-open" aria-hidden="true"></i>
-              <span>Publications</span>
-            </a>
-          </li>
-          <li>
-            <a href="#cv" class="sidebar-link" data-section="cv" id="sidebar-cv-link">
-              <i class="fas fa-file-invoice" aria-hidden="true"></i>
-              <span>Curriculum Vitae</span>
+              <span>Education &amp; Publications</span>
             </a>
           </li>
           <li>
             <a href="#contact" class="sidebar-link" data-section="contact">
               <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
-              <span>Academic Inquiry</span>
+              <span>Contact</span>
             </a>
           </li>
         </ul>
@@ -272,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </button>
           <a href="#cv" class="sidebar-cv-btn" id="nav-resume-btn">
             <i class="fas fa-file-lines" aria-hidden="true"></i>
-            <span>In-Page CV</span>
+            <span>View CV</span>
           </a>
         </div>
 
@@ -884,7 +878,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pubMarkup = (data.achievements || []).map(pub => `
       <div class="editorial-pub-item">
-        <div class="pub-journal-badge">${pub.journal}</div>
+        <div class="pub-journal-badge">${pub.journal}${pub.publicationType ? ` · ${pub.publicationType}` : ''}</div>
         <h3 class="pub-title">${pub.title}</h3>
         <p class="pub-desc">${pub.description}</p>
         <div class="pub-actions">
@@ -904,8 +898,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="container">
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-book-open"></i> SCHOLARSHIP</span>
-          <h2 class="section-title">Education &amp; Peer-Reviewed Publications</h2>
-          <p class="section-subtitle">Higher academic credentials and co-authored biomedical publications in international oncological journals.</p>
+          <h2 class="section-title">Education &amp; Publications</h2>
+          <p class="section-subtitle">My education and co-authored research, including a conference abstract.</p>
         </div>
 
         <div class="editorial-scholarship-grid">
@@ -914,7 +908,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="editorial-edu-list">${eduMarkup}</div>
           </div>
           <div class="scholarship-col">
-            <h3 class="scholarship-col-heading"><i class="fas fa-scroll"></i> Peer-Reviewed Publications</h3>
+            <h3 class="scholarship-col-heading"><i class="fas fa-scroll"></i> Publications</h3>
             <div class="editorial-pub-list">${pubMarkup}</div>
           </div>
         </div>
@@ -958,7 +952,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pubMarkup = (data.achievements || []).map(pub => `
       <div class="cv-pub-item">
         <div class="cv-pub-title"><strong>${pub.title}</strong></div>
-        <div class="cv-pub-journal">${pub.journal}</div>
+        <div class="cv-pub-journal">${pub.journal}${pub.publicationType ? ` · ${pub.publicationType}` : ''}</div>
       </div>
     `).join('');
 
@@ -1182,14 +1176,14 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="footer-top">
           <div class="footer-identity">
             <span class="footer-brand">${data.name}</span>
-            <p class="footer-role">Computational Systems Specialist • Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki)</p>
+            <p class="footer-role">Research IT at Färkkilä Lab, University of Helsinki</p>
           </div>
           <div class="footer-links">
             <a href="#hero">Overview</a>
-            <a href="#projects">Curated Systems</a>
+            <a href="#projects">Projects</a>
             <a href="#collaboration">Collaboration</a>
-            <a href="#cv">Curriculum Vitae</a>
-            <a href="#contact">Correspondence</a>
+            <a href="#cv">View CV</a>
+            <a href="#contact">Contact</a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -1389,16 +1383,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!modal) return;
 
     const commands = [
-      { title: 'Overview / Scholar Spotlight', icon: 'fa-compass', type: 'Section', action: () => scrollToSection('hero') },
+      { title: 'Overview', icon: 'fa-compass', type: 'Section', action: () => scrollToSection('hero') },
       { title: 'Institutional Affiliation (Färkkilä Laboratory, UH)', icon: 'fa-university', type: 'Section', action: () => scrollToSection('leadership') },
-      { title: 'Curated Works & Systems Architecture', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
-      { title: 'Collaborations & Technical Appointments', icon: 'fa-handshake', type: 'Section', action: () => scrollToSection('collaboration') },
-      { title: 'Scholarly Trajectory & Profile', icon: 'fa-user-graduate', type: 'Section', action: () => scrollToSection('about') },
+      { title: 'Projects', icon: 'fa-folder', type: 'Section', action: () => scrollToSection('projects') },
+      { title: 'Collaboration', icon: 'fa-handshake', type: 'Section', action: () => scrollToSection('collaboration') },
+      { title: 'About', icon: 'fa-user-graduate', type: 'Section', action: () => scrollToSection('about') },
       { title: 'Tools I Use', icon: 'fa-microchip', type: 'Section', action: () => scrollToSection('skills') },
-      { title: 'Appointments & Laboratory Timeline', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
-      { title: 'Peer-Reviewed Oncological Publications', icon: 'fa-book-open', type: 'Section', action: () => scrollToSection('publications') },
-      { title: 'Full Academic Curriculum Vitae (In-Page CV)', icon: 'fa-file-invoice', type: 'Section', action: () => scrollToSection('cv') },
-      { title: 'Initiate Inquiry / Academic Correspondence', icon: 'fa-envelope-open-text', type: 'Contact', action: () => scrollToSection('contact') },
+      { title: 'Experience', icon: 'fa-briefcase', type: 'Section', action: () => scrollToSection('experience') },
+      { title: 'Education & Publications', icon: 'fa-book-open', type: 'Section', action: () => scrollToSection('publications') },
+      { title: 'View CV', icon: 'fa-file-invoice', type: 'Section', action: () => scrollToSection('cv') },
+      { title: 'Contact', icon: 'fa-envelope-open-text', type: 'Contact', action: () => scrollToSection('contact') },
       { title: 'Toggle Theme (Dark / Light)', icon: 'fa-circle-half-stroke', type: 'Action', action: () => {
         applyTheme(activeTheme === 'dark-theme' ? 'light-theme' : 'dark-theme');
         showToast(`Switched to ${activeTheme === 'dark-theme' ? 'Dark' : 'Light'} mode`);

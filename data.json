@@ -161,22 +161,22 @@
   ],
   "projects": [
     {
-      "name": "Riverlines — The River Remembers",
-      "badge": "Independent web project",
-      "category": "web",
-      "link": "https://debashish-deb.github.io/riverlines/",
-      "linkLabel": "Watch Riverlines",
-      "github": "https://github.com/Debashish-deb/debashish-deb.github.io/tree/main/riverlines",
-      "image": "riverlines/media/poster.jpg",
-      "description": "A bilingual documentary player for archival footage of Dhaka’s Buriganga River. Switch the transcript between Bangla and English, or select a transcript line to jump to that moment in the film.",
+      "name": "Färkkilä Lab website and research IT",
+      "badge": "Biomedical Systems",
+      "category": "systems",
+      "link": "https://farkkilab.org",
+      "linkLabel": "Visit the lab website",
+      "github": "",
+      "image": "farkkila-deb.webp",
+      "description": "I designed and built the lab’s public website and continue to maintain it. It gives researchers and visitors a place to find the lab’s work, publications, people and news.",
       "technologies": [
-        "Web development",
-        "Timed transcripts",
-        "Bangla and English"
+        "React",
+        "Vite",
+        "Web maintenance"
       ],
       "highlights": [
-        "Bangla and English transcripts",
-        "Selectable cues jump to the corresponding moment in the film"
+        "Designed and built the lab’s website",
+        "Maintain its public research, people, publications and news pages"
       ],
       "includeInResume": true
     },
@@ -199,6 +199,26 @@
       "highlights": [
         "Document image preparation steps so researchers can repeat runs",
         "Support workflow troubleshooting on CSC systems"
+      ],
+      "includeInResume": true
+    },
+    {
+      "name": "Riverlines — The River Remembers",
+      "badge": "Independent web project",
+      "category": "web",
+      "link": "https://debashish-deb.github.io/riverlines/",
+      "linkLabel": "Watch Riverlines",
+      "github": "https://github.com/Debashish-deb/debashish-deb.github.io/tree/main/riverlines",
+      "image": "riverlines/media/poster.jpg",
+      "description": "A bilingual documentary player for archival footage of Dhaka’s Buriganga River. Switch the transcript between Bangla and English, or select a transcript line to jump to that moment in the film.",
+      "technologies": [
+        "Web development",
+        "Timed transcripts",
+        "Bangla and English"
+      ],
+      "highlights": [
+        "Bangla and English transcripts",
+        "Selectable cues jump to the corresponding moment in the film"
       ],
       "includeInResume": true
     },
@@ -239,26 +259,6 @@
       "highlights": [
         "Self-hosted Fastify backend aggregating and caching verified news streams",
         "Bilingual text-to-speech audio narration and offline SQLite storage"
-      ],
-      "includeInResume": true
-    },
-    {
-      "name": "Färkkilä Lab website and research IT",
-      "badge": "Biomedical Systems",
-      "category": "systems",
-      "link": "https://farkkilab.org",
-      "linkLabel": "Visit the lab website",
-      "github": "",
-      "image": "farkkila-deb.webp",
-      "description": "I designed and built the lab’s public website and continue to maintain it. It gives researchers and visitors a place to find the lab’s work, publications, people and news.",
-      "technologies": [
-        "React",
-        "Vite",
-        "Web maintenance"
-      ],
-      "highlights": [
-        "Designed and built the lab’s website",
-        "Maintain its public research, people, publications and news pages"
       ],
       "includeInResume": true
     },
@@ -440,19 +440,20 @@
   ],
   "achievements": [
     {
-      "title": "Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukaemia",
+      "title": "Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukemia",
       "journal": "Haematologica 2020; 105(3):708-720",
       "authors": "Kuusanmäki H, Leppä AM, Pölönen P, Deb D, et al.",
-      "link": "https://pubmed.ncbi.nlm.nih.gov/31197071/",
+      "link": "https://haematologica.org/article/view/9289",
       "highlight": "High-impact oncology research in haematological malignancies",
-      "citation": "Kuusanmäki, H., Leppä, A. M., Pölönen, P., Deb, D., et al. (2020). Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukaemia. Haematologica, 105(3), 708–720.",
+      "citation": "Kuusanmäki, H., Leppä, A. M., Pölönen, P., Deb, D., et al. (2020). Phenotype-based drug screening reveals association between venetoclax response and differentiation stage in acute myeloid leukemia. Haematologica, 105(3), 708–720.",
       "includeInResume": true
     },
     {
       "title": "A High-Throughput Biology Approach to Identify Novel Therapies Specifically Targeting AML Blasts and Leukemic Stem Cells",
       "journal": "Blood (2016) 128 (22): 2755",
+      "publicationType": "ASH conference abstract",
       "authors": "Kuusanmäki H, Leppä AM, Deb D, Heckman CA",
-      "link": "https://ashpublications.org/blood/article/128/22/2755/98292",
+      "link": "https://doi.org/10.1182/blood.V128.22.2755.2755",
       "highlight": "American Society of Hematology (ASH) Annual Meeting presentation",
       "citation": "Kuusanmäki, H., Leppä, A. M., Deb, D., & Heckman, C. A. (2016). A High-Throughput Biology Approach to Identify Novel Therapies Specifically Targeting AML Blasts and Leukemic Stem Cells. Blood, 128(22), 2755.",
       "includeInResume": true
@@ -461,7 +462,7 @@
       "title": "Antinociceptive, Anti-inflammatory and Anti-diarrheal Activities of the Hydroalcoholic Extract of Lasia spinosa Linn. (Araceae) Roots",
       "journal": "Latin American Journal of Pharmacy (2010) 29 (8): 1269-76",
       "authors": "Deb D, Dev S, Das AK, et al.",
-      "link": "http://www.latamjpharm.org",
+      "link": "https://sedici.unlp.edu.ar/handle/10915/8061",
       "highlight": "Natural product pharmacology & ethnobotanical evaluation",
       "citation": "Deb, D., Dev, S., Das, A. K., et al. (2010). Antinociceptive, Anti-inflammatory and Anti-diarrheal Activities of the Hydroalcoholic Extract of Lasia spinosa Linn. (Araceae) Roots. Latin American Journal of Pharmacy, 29(8), 1269–1276.",
       "includeInResume": true
