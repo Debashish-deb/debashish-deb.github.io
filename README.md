@@ -55,10 +55,6 @@ python3 -m http.server 8080
 # Open http://localhost:8080
 ```
 
-## Cover photograph
-
-The [Biomedicum Helsinki atrium photograph](https://commons.wikimedia.org/wiki/File:Biomedicum_Helsinki_inside_view.jpg) by Mjeltsch is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The site uses a resized WebP under the same license, with a responsive crop and dark overlay applied in CSS.
-
 ## CV download
 
 After changing the CV or publications, open `/#cv` from the local server and select **Print or save PDF**. Check the two A4 pages and replace `Debashish-Deb-CV.pdf` before publishing.

@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setupSkillSearch();
       setupCommandPalette(portfolioData);
       setupTypewriterCycling();
-      setup3DTilt();
       setupCitationButtons();
       setupContactCopyButtons();
       setupServiceSelectButtons();
@@ -301,8 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSection.innerHTML = `
       <div class="container">
         <div class="hero-cover-card">
-          <div class="hero-cover-backdrop" aria-hidden="true"></div>
-
           <div class="hero-grid">
             <div class="hero-content">
               <div class="hero-status-pill">
@@ -349,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="hero-visual-card">
-              <div class="avatar-wrapper" id="hero-avatar-wrapper">
+              <div class="avatar-wrapper">
                 <img src="${data.profileImage}" alt="Debashish Deb portrait" class="avatar-image" loading="eager" />
               </div>
               <div class="hero-portrait-badges">
@@ -364,9 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
             </div>
           </div>
-          <small class="hero-cover-credit">
-            Photo by <a href="https://commons.wikimedia.org/wiki/File:Biomedicum_Helsinki_inside_view.jpg">Mjeltsch</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
-          </small>
         </div>
       </div>
     `;
@@ -1626,28 +1620,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setTimeout(tick, 2500);
-  }
-
-  /**
-   * @traceability setup3DTilt
-   * Subtle perspective tilt interaction for avatar image.
-   */
-  function setup3DTilt() {
-    const avatar = document.getElementById('hero-avatar-wrapper');
-    if (!avatar || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    avatar.addEventListener('mousemove', (e) => {
-      const rect = avatar.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      const rotateX = (-y / (rect.height / 2)) * 6;
-      const rotateY = (x / (rect.width / 2)) * 6;
-      avatar.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    });
-
-    avatar.addEventListener('mouseleave', () => {
-      avatar.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    });
   }
 
   /**

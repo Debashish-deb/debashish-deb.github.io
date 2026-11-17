@@ -1986,13 +1986,6 @@ body.dark-theme .stat-item.glass-card { background: none; box-shadow: none; }
   50% { opacity: 0; }
 }
 
-/* 3D Tilt on Hero Avatar Wrapper */
-.avatar-wrapper {
-  perspective: 1000px;
-  transition: transform 200ms ease-out;
-  transform-style: preserve-3d;
-}
-
 /* Project Filter Tabs */
 .project-filters {
   display: flex;
@@ -4962,38 +4955,7 @@ body.light-theme .editorial-form {
   }
 }
 
-.hero-cover-backdrop {
-  --cover-overlay: linear-gradient(100deg, rgba(6, 24, 35, 0.94) 0%, rgba(6, 24, 35, 0.80) 48%, rgba(6, 24, 35, 0.58) 100%);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: var(--cover-overlay), url("./biomedicum-cover.webp") center 48% / cover no-repeat;
-}
-
-@media (max-width: 768px) {
-  .hero-cover-backdrop {
-    --cover-overlay: linear-gradient(180deg, rgba(6, 24, 35, 0.90), rgba(6, 24, 35, 0.72));
-  }
-}
-
-.hero-cover-credit {
-  position: absolute;
-  right: 12px;
-  bottom: 3px;
-  z-index: 12;
-  color: #e2e8f0;
-  font-size: 0.75rem;
-  line-height: 1.2;
-  text-shadow: 0 1px 4px #061823;
-}
-
-.hero-cover-credit a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-/* Ensure hero grid sits cleanly above backdrop with full interactivity */
+/* Cover content */
 .hero-cover-card .hero-grid {
   position: relative;
   z-index: 10;
@@ -5047,7 +5009,7 @@ body.light-theme .hero-cover-card,
 body.dark-theme .hero-cover-card,
 .hero-cover-card {
   position: relative !important;
-  background: #061e2b !important;
+  background: linear-gradient(110deg, #0b1e2c, #102d3c) !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75) !important;
   padding: var(--cover-padding, 30px 28px) !important;
@@ -5075,7 +5037,7 @@ body.dark-theme .hero-cover-card,
   min-height: var(--cover-grid-min-height, 396px) !important;
 }
 
-/* 1. Frameless Big Cutout Portrait Standing Cleanly in Cover Card */
+/* Cover portrait */
 .hero-cover-card .hero-visual-card {
   display: flex !important;
   flex-direction: column !important;
@@ -5091,13 +5053,14 @@ body.dark-theme .hero-cover-card,
   max-width: 100% !important;
   height: auto !important;
   max-height: none !important;
-  aspect-ratio: 574 / 605;
+  aspect-ratio: 1;
   margin: 0 auto !important;
   position: relative !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
+  overflow: hidden !important;
+  background: linear-gradient(160deg, #324b5e, #203849) !important;
+  border: 1px solid rgba(226, 232, 240, 0.22) !important;
+  box-shadow: 0 8px 24px rgba(3, 12, 20, 0.2) !important;
+  border-radius: 18px !important;
 }
 
 @media (min-width: 1600px) {
@@ -5132,7 +5095,7 @@ body.dark-theme .hero-cover-card,
   }
 }
 
-/* Remove the frame completely from the profile picture */
+/* Suppress the legacy portrait decoration */
 .hero-cover-card .avatar-wrapper::before,
 body.dark-theme .hero-cover-card .avatar-wrapper::before,
 body.light-theme .hero-cover-card .avatar-wrapper::before {
@@ -5149,14 +5112,14 @@ body.light-theme .hero-cover-card .avatar-wrapper::before {
   border: none !important;
   border-radius: 0 !important;
   background: transparent !important;
-  object-fit: contain !important;
+  object-fit: cover !important;
   object-position: bottom center !important;
   width: 100% !important;
   height: 100% !important;
-  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.65)) !important;
+  filter: none !important;
 }
 
-/* 2. Portrait Badges Placed Differently Beneath the Image (Not Over the Photo) */
+/* Portrait labels */
 .hero-portrait-badges {
   display: flex !important;
   justify-content: center !important;
@@ -5172,9 +5135,9 @@ body.light-theme .hero-cover-card .avatar-wrapper::before {
   gap: 7px !important;
   padding: 5px 12px !important;
   border-radius: 8px !important;
-  background: rgba(10, 25, 36, 0.88) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  border: 1px solid rgba(226, 232, 240, 0.14) !important;
+  box-shadow: none !important;
   font-size: 0.76rem !important;
   font-weight: 600 !important;
   color: #f1f5f9 !important;
@@ -5190,12 +5153,10 @@ body.light-theme .hero-cover-card .avatar-wrapper::before {
 
 .portrait-badge .badge-dot.dot-cyan {
   background: #38bdf8 !important;
-  box-shadow: 0 0 8px #38bdf8 !important;
 }
 
 .portrait-badge .badge-dot.dot-amber {
   background: #f59e0b !important;
-  box-shadow: 0 0 8px #f59e0b !important;
 }
 
 /* 3. High-Contrast Typography & Modern Sky-Cyan Accents (Replacing Clashing Green Fonts) */

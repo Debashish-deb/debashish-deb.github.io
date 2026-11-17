@@ -28,7 +28,6 @@
 | `setupSkillSearch()` | `script.js` | `initApp()` | Performs real-time filtering on skill groups as user types |
 | `setupCommandPalette(data)` | `script.js` | `initApp()` | Implements `Cmd+K` / `Ctrl+K` interactive search and in-page jump launcher |
 | `setupTypewriterCycling()` | `script.js` | `initApp()` | Manages typing and deleting animation for focus area titles in hero section |
-| `setup3DTilt()` | `script.js` | `initApp()` | Provides subtle 3D perspective mouse tilt on hero portrait wrapper |
 | `setupCitationButtons()` | `script.js` | `initApp()` | Copies formatted academic citations to clipboard with instant toast feedback |
 | `setupContactCopyButtons()` | `script.js` | `initApp()` | Handles 1-click copy for academic email and contact channels |
 | `setupServiceSelectButtons()` | `script.js` | `initApp()` | Auto-populates correspondence form and scrolls smoothly when inquiring regarding a scope |
