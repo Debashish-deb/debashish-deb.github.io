@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=23');
+      const response = await fetch('data.json?v=24');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -919,110 +919,155 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**
    * @traceability renderCurriculumVitae
-   * Generates comprehensive in-page Academic Curriculum Vitae (CV) section with full academic bibliography, appointments, degrees, and print stylesheet. No floating modal window.
+   * Renders the public CV and its print layout from the same portfolio data.
    */
   function renderCurriculumVitae(data) {
     const section = document.createElement('section');
     section.id = 'cv';
     section.className = 'section cv-section';
 
-    const expMarkup = (data.experience || []).map(exp => `
+    const cv = data.cv;
+    const experience = data.experience.filter(role => role.cv).map(role => ({
+      title: role.title,
+      organization: role.company,
+      period: role.time,
+      responsibilities: role.responsibilities,
+      ...role.cv
+    }));
+    const research = [...experience.filter(role => role.group === 'research'), cv.independentWork];
+    const additional = experience.filter(role => role.group === 'additional');
+    const education = data.education.filter(record => !record.cvTraining).map(record => ({
+      title: record.degree,
+      organization: record.institution,
+      period: record.time
+    }));
+    const training = [
+      ...data.education.filter(record => record.cvTraining).map(record => `${record.degree} studies at ${record.institution}`),
+      ...data.certificates.map(record => record.title.trim())
+    ];
+
+    const renderRecords = records => records.map(record => `
       <div class="cv-record-item">
         <div class="cv-record-head">
-          <span class="cv-record-title">${exp.title}</span>
-          <span class="cv-record-period">${exp.time}</span>
+          <strong class="cv-record-title">${record.title}</strong>
+          <span class="cv-record-period">${record.period}</span>
         </div>
-        <div class="cv-record-affiliation">${exp.company} — ${exp.location}</div>
-        <ul class="cv-record-bullets">
-          ${(exp.responsibilities || []).map(r => `<li>${r}</li>`).join('')}
-        </ul>
+        <div class="cv-record-affiliation">${record.organization}</div>
+        ${record.responsibilities?.length ? `
+          <ul class="cv-record-bullets">
+            ${record.responsibilities.map(duty => `<li>${duty}</li>`).join('')}
+          </ul>` : ''}
       </div>
     `).join('');
 
-    const eduMarkup = (data.education || []).map(edu => `
-      <div class="cv-record-item">
-        <div class="cv-record-head">
-          <span class="cv-record-title">${edu.degree}</span>
-          <span class="cv-record-period">${edu.time}</span>
-        </div>
-        <div class="cv-record-affiliation">${edu.institution} — ${edu.location}</div>
-      </div>
-    `).join('');
+    const renderList = items => `<ul class="cv-rail-list">${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
 
-    const pubMarkup = (data.achievements || []).map(pub => `
+    const pubMarkup = data.achievements.map(pub => `
       <div class="cv-pub-item">
-        <div class="cv-pub-title"><strong>${pub.title}</strong></div>
+        <div class="cv-pub-title">
+          <strong><a href="${pub.link}" target="_blank" rel="noopener noreferrer">${pub.title}</a></strong>
+        </div>
         <div class="cv-pub-journal">${pub.journal}${pub.publicationType ? ` · ${pub.publicationType}` : ''}</div>
-      </div>
-    `).join('');
-
-    const refMarkup = (data.references || []).map(ref => `
-      <div class="cv-ref-item">
-        <strong>${ref.name}</strong> — ${ref.title}, ${ref.company}<br>
-        <span>Email: <a href="mailto:${ref.email}">${ref.email}</a> ${ref.phone ? `• Phone: ${ref.phone}` : ''}</span>
       </div>
     `).join('');
 
     section.innerHTML = `
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fas fa-file-invoice"></i> CURRICULUM VITAE</span>
-          <h2 class="section-title">Academic &amp; Professional Record</h2>
-          <p class="section-subtitle">Comprehensive curriculum vitae of Debashish Deb, M.Sc. Molecular Biotechnologist and Computational Systems Specialist.</p>
-          <div class="cv-action-bar" style="margin-top:20px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+          <h2 class="section-title">Curriculum Vitae</h2>
+          <div class="cv-action-bar">
             <button class="btn btn-primary btn-sm" onclick="window.print()" id="btn-print-cv">
-              <i class="fas fa-print"></i>
-              <span>Print / Save Academic CV (PDF)</span>
+              <i class="fas fa-print" aria-hidden="true"></i>
+              <span>Print or save PDF</span>
             </button>
-            <a href="mailto:${data.email}?subject=Academic%20Inquiry%20regarding%20CV" class="btn btn-secondary btn-sm">
-              <i class="fas fa-envelope"></i>
-              <span>Direct Institutional Inquiry</span>
-            </a>
           </div>
         </div>
 
-        <div class="cv-paper-container">
-          <div class="cv-paper">
+        <div class="cv-paper">
+          <div class="cv-sheet">
             <header class="cv-paper-header">
-              <h1 class="cv-name">${data.name}</h1>
-              <p class="cv-title">${data.title}</p>
-              <p class="cv-contact-line">
-                ${data.location} • <a href="mailto:${data.email}">${data.email}</a> • Phone: ${data.phone} • <a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a> • <a href="${data.github}" target="_blank" rel="noopener noreferrer">GitHub</a> • <a href="${data.labWebsite}" target="_blank" rel="noopener noreferrer">Färkkilä Lab (UH)</a>
-              </p>
+              <div class="cv-portrait">
+                <img src="${data.profileImage}" alt="" loading="lazy" />
+              </div>
+              <div class="cv-paper-identity">
+                <h3 class="cv-name">${data.name}</h3>
+                <p class="cv-title">Research IT at Färkkilä Lab</p>
+              </div>
             </header>
 
-            <div class="cv-section-block">
-              <h3 class="cv-section-heading">Professional Profile &amp; Research Statement</h3>
-              <p class="cv-summary-text">${data.aboutExtended}</p>
-            </div>
-
-            <div class="cv-section-block">
-              <h3 class="cv-section-heading">Academic &amp; Professional Appointments</h3>
-              <div class="cv-records-list">
-                ${expMarkup}
+            <div class="cv-sheet-main">
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Profile</h4>
+                <p class="cv-summary-text">${cv.profile}</p>
+              </div>
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Research and IT experience</h4>
+                <div class="cv-records-list">${renderRecords(research)}</div>
+              </div>
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Education</h4>
+                <div class="cv-records-list">${renderRecords(education)}</div>
               </div>
             </div>
 
-            <div class="cv-section-block">
-              <h3 class="cv-section-heading">Higher Education &amp; Scientific Degrees</h3>
-              <div class="cv-records-list">
-                ${eduMarkup}
+            <aside class="cv-sheet-rail" aria-label="Contact, skills and languages">
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Contact</h4>
+                ${renderList([
+                  'Helsinki, Finland',
+                  `<a href="mailto:${data.email}">${data.email}</a>`,
+                  `<a href="${data.website}">Portfolio</a>`,
+                  `<a href="${data.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>`,
+                  `<a href="${data.github}" target="_blank" rel="noopener noreferrer">GitHub</a>`,
+                  `<a href="${data.labWebsite}" target="_blank" rel="noopener noreferrer">Färkkilä Lab</a>`
+                ])}
+              </div>
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Core skills</h4>
+                ${renderList(cv.coreSkills)}
+              </div>
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Languages</h4>
+                ${renderList(cv.languages.map(language => `${language.name} · ${language.level}`))}
+              </div>
+            </aside>
+          </div>
+
+          <div class="cv-sheet cv-second-sheet">
+            <header class="cv-print-header" aria-hidden="true">
+              <span class="cv-name">${data.name}</span>
+              <span class="cv-title">Research IT</span>
+            </header>
+
+            <div class="cv-sheet-main">
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Additional experience</h4>
+                <div class="cv-records-list">${renderRecords(additional)}</div>
+              </div>
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Selected publications</h4>
+                <div class="cv-pub-list">${pubMarkup}</div>
+              </div>
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">References</h4>
+                <p class="cv-summary-text">Available on request.</p>
               </div>
             </div>
 
-            <div class="cv-section-block">
-              <h3 class="cv-section-heading">Peer-Reviewed Scientific Publications</h3>
-              <div class="cv-pub-list">
-                ${pubMarkup}
+            <aside class="cv-sheet-rail" aria-label="Development, training and laboratory methods">
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Development</h4>
+                ${renderList(cv.development)}
               </div>
-            </div>
-
-            <div class="cv-section-block">
-              <h3 class="cv-section-heading">Scholarly &amp; Professional References</h3>
-              <div class="cv-refs-list">
-                ${refMarkup}
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Training</h4>
+                ${renderList(training)}
               </div>
-            </div>
+              <div class="cv-section-block">
+                <h4 class="cv-section-heading">Lab methods</h4>
+                ${renderList(cv.labMethods)}
+              </div>
+            </aside>
           </div>
         </div>
       </div>

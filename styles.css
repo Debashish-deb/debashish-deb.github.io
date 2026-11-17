@@ -4309,160 +4309,250 @@ body.light-theme {
 }
 
 /* --------------------------------------------------------------------------
-   IN-PAGE DETAILED CURRICULUM VITAE (CV Section & Print Stylesheet)
+   CURRICULUM VITAE
    -------------------------------------------------------------------------- */
 .cv-section {
   padding: 48px 0;
 }
 
-.cv-paper-container {
-  margin-top: 32px;
+.cv-action-bar {
+  display: flex;
+  margin-top: 16px;
 }
 
 .cv-paper {
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
   border-radius: 16px;
-  padding: 48px 40px;
+  overflow: hidden;
+  color: var(--text-primary);
   box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
 }
 
-@media (max-width: 640px) {
-  .cv-paper {
-    padding: 28px 20px;
-  }
+.cv-sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 30fr) minmax(0, 70fr);
+}
+
+.cv-second-sheet {
+  border-top: 1px solid var(--border-strong);
+}
+
+.cv-paper-header,
+.cv-print-header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  background: #293648;
+  color: #f8fafc;
 }
 
 .cv-paper-header {
-  border-bottom: 2px solid var(--accent-primary);
-  padding-bottom: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 30fr) minmax(0, 70fr);
+  align-items: center;
+  padding-block: 22px;
+}
+
+.cv-print-header {
+  display: none;
+}
+
+.cv-portrait {
+  width: clamp(56px, 9vw, 100px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  border: 2px solid #edf2f7;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.cv-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+.cv-paper-identity {
+  padding-inline: clamp(12px, 3vw, 34px);
 }
 
 .cv-name {
-  font-size: 2.2rem;
+  font-size: clamp(1.55rem, 3.5vw, 2.5rem);
+  line-height: 1.08;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  margin-bottom: 4px;
+  letter-spacing: -0.035em;
+  color: #f8fafc;
 }
 
 .cv-title {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--accent-primary);
-  margin-bottom: 8px;
+  margin-top: 5px;
+  color: #e2e8f0;
+  font-size: 0.95rem;
 }
 
-.cv-contact-line {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  line-height: 1.6;
+.cv-sheet-main,
+.cv-sheet-rail {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 24px;
+  padding: clamp(14px, 2.5vw, 30px);
 }
 
-.cv-contact-line a {
-  color: var(--text-secondary);
-  text-decoration: underline;
+.cv-sheet-main {
+  grid-column: 2;
+}
+
+.cv-sheet-rail {
+  grid-column: 1;
+  gap: 20px;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-subtle);
 }
 
 .cv-section-block {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .cv-section-heading {
-  font-size: 1.1rem;
+  font-size: 0.93rem;
   font-weight: 700;
-  color: var(--text-primary);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 8px;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 6px;
 }
 
 .cv-summary-text {
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.94rem;
+  line-height: 1.6;
   color: var(--text-secondary);
 }
 
-.cv-records-list, .cv-pub-list, .cv-refs-list {
+.cv-paper .cv-summary-text,
+.cv-paper .cv-title {
+  text-align: start !important;
+  hyphens: manual !important;
+}
+
+.cv-records-list,
+.cv-pub-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
 .cv-record-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .cv-record-head {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 12px;
+  justify-content: space-between;
+  column-gap: 12px;
+  row-gap: 2px;
 }
 
-.cv-record-title {
-  font-weight: 700;
-  font-size: 1rem;
+.cv-record-title,
+.cv-pub-title {
+  font-size: 0.95rem;
+  line-height: 1.45;
   color: var(--text-primary);
 }
 
-.cv-record-period {
-  font-family: var(--font-mono);
+.cv-record-period,
+.cv-pub-journal {
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .cv-record-affiliation {
-  font-size: 0.92rem;
-  color: var(--accent-primary);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
+.cv-record-bullets,
+.cv-rail-list {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
 .cv-record-bullets {
-  padding-left: 20px;
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-top: 4px;
+  padding-inline-start: 1.15em;
+  margin-top: 2px;
 }
 
-.cv-pub-title {
-  font-size: 0.94rem;
-  color: var(--text-primary);
+.cv-rail-list {
+  display: grid;
+  gap: 5px;
+  list-style: none;
+  overflow-wrap: anywhere;
 }
 
-.cv-pub-journal {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+.cv-paper a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-.cv-ref-item {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
+@media screen and (max-width: 680px) {
+  .cv-section {
+    padding-block: 24px;
+  }
+
+  .cv-sheet {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cv-paper-header {
+    grid-template-columns: auto minmax(0, 1fr);
+    padding: 14px;
+  }
+
+  .cv-sheet-main,
+  .cv-sheet-rail {
+    grid-column: 1;
+    grid-row: auto;
+    gap: 18px;
+    padding: 16px;
+  }
+
+  .cv-sheet-rail {
+    border-right: 0;
+    border-top: 1px solid var(--border-subtle);
+  }
 }
 
-.cv-ref-item strong {
-  color: var(--text-primary);
-}
 
 /* --------------------------------------------------------------------------
    PRINT STYLESHEET FOR ACADEMIC CV
    -------------------------------------------------------------------------- */
 @media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
   body {
     background: #ffffff !important;
     color: #000000 !important;
   }
 
+  body::after,
+  .skip-link,
   .site-sidebar,
   .mobile-top-bar,
   .scroll-progress-bar,
@@ -4482,7 +4572,7 @@ body.light-theme {
   .testimonials-section,
   .contact-section,
   .site-footer,
-  .cv-action-bar {
+  .cv-section .section-header {
     display: none !important;
   }
 
@@ -4495,24 +4585,111 @@ body.light-theme {
     padding: 0 !important;
   }
 
+  .cv-section > .container {
+    max-width: none;
+    padding: 0;
+  }
+
   .cv-paper {
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    background: #ffffff !important;
-    color: #000000 !important;
+    --font-display: Arial, sans-serif;
+    --text-primary: #172233;
+    --text-secondary: #334155;
+    --bg-secondary: #eef0f2;
+    --border-subtle: #d4d9de;
+    --border-strong: #adb7c2;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-family: Arial, sans-serif;
+    overflow: visible;
+    background: #ffffff;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
-  .cv-name, .cv-record-title, .cv-pub-title, .cv-section-heading {
-    color: #000000 !important;
+  .cv-sheet {
+    min-height: 272mm;
+    grid-template-rows: auto 1fr;
   }
 
-  .cv-title, .cv-record-affiliation {
-    color: #047857 !important;
+  .cv-second-sheet {
+    break-before: page;
+    border: 0;
   }
 
-  .cv-summary-text, .cv-record-bullets, .cv-ref-item, .cv-pub-journal {
-    color: #333333 !important;
+  .cv-paper-header,
+  .cv-print-header {
+    padding-block: 14pt;
+  }
+
+  .cv-portrait {
+    width: 64pt;
+  }
+
+  .cv-print-header {
+    display: flex;
+    flex-direction: column;
+    padding-inline: calc(30% + 14pt) 14pt;
+  }
+
+  .cv-name {
+    font-size: 24pt;
+  }
+
+  .cv-title {
+    font-size: 10.5pt;
+  }
+
+  .cv-sheet-main,
+  .cv-sheet-rail {
+    gap: 12pt;
+    padding: 14pt;
+  }
+
+  .cv-section-block {
+    gap: 6pt;
+  }
+
+  .cv-section-heading {
+    font-size: 10pt;
+    padding-bottom: 3pt;
+    break-after: avoid;
+  }
+
+  .cv-records-list,
+  .cv-pub-list {
+    gap: 8pt;
+  }
+
+  .cv-record-item,
+  .cv-pub-item {
+    break-inside: avoid;
+  }
+
+  .cv-record-item {
+    gap: 1pt;
+  }
+
+  .cv-record-title,
+  .cv-pub-title {
+    font-size: 10pt;
+  }
+
+  .cv-summary-text,
+  .cv-record-affiliation,
+  .cv-record-bullets,
+  .cv-rail-list {
+    font-size: 10pt;
+    line-height: 1.35;
+  }
+
+  .cv-record-period,
+  .cv-pub-journal {
+    font-size: 8.5pt;
+  }
+
+  .cv-paper a {
+    text-decoration-color: #64748b;
   }
 }
 

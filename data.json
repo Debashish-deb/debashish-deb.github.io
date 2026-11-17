@@ -321,7 +321,20 @@
         "Web Architecture",
         "Data Infrastructure"
       ],
-      "includeInResume": true
+      "includeInResume": true,
+      "cv": {
+        "group": "research",
+        "title": "Technical Assistant",
+        "organization": "Färkkilä Lab, University of Helsinki",
+        "period": "Aug 2025 to present",
+        "responsibilities": [
+          "Support research jobs on LUMI and the lab’s use of cPouta and Allas. Monitor computing and storage allocations.",
+          "Transfer research datasets with rclone and rsync and maintain project data logs.",
+          "Develop and document Snakemake workflows for immunofluorescence image preprocessing on LUMI.",
+          "Help researchers resolve Linux, dependency and software environment issues.",
+          "Maintain the lab website and coordinate its research databases."
+        ]
+      }
     },
     {
       "title": "Production Operator",
@@ -338,7 +351,11 @@
         "Quality Control",
         "Lean Principles"
       ],
-      "includeInResume": true
+      "includeInResume": true,
+      "cv": {
+        "group": "additional",
+        "period": "Apr to Sep 2023"
+      }
     },
     {
       "title": "Senior Production Specialist",
@@ -356,7 +373,15 @@
         "Team Leadership",
         "Process Optimization"
       ],
-      "includeInResume": true
+      "includeInResume": true,
+      "cv": {
+        "group": "additional",
+        "title": "Production Specialist and Senior Production Specialist",
+        "period": "2021 to 2023",
+        "responsibilities": [
+          "Diagnosed and repaired iPhones, documented repairs and covered team duties when the supervisor was away."
+        ]
+      }
     },
     {
       "title": "Research Assistant",
@@ -375,7 +400,15 @@
         "Data Analysis",
         "Oncology Research"
       ],
-      "includeInResume": true
+      "includeInResume": true,
+      "cv": {
+        "group": "research",
+        "period": "Aug 2015 to Aug 2016",
+        "responsibilities": [
+          "Supported acute myeloid leukemia drug-screening research and high-throughput flow cytometry method development.",
+          "Carried out wet-lab experiments and kept records of methods and results."
+        ]
+      }
     },
     {
       "title": "Delivery Assistant & Team Coordinator",
@@ -392,7 +425,15 @@
         "Problem Solving",
         "Time Management"
       ],
-      "includeInResume": true
+      "includeInResume": true,
+      "cv": {
+        "group": "additional",
+        "title": "Early Morning Delivery Assistant",
+        "period": "Jan 2014 to Aug 2021",
+        "responsibilities": [
+          "Delivered newspapers and worked with supervisors to resolve delivery issues."
+        ]
+      }
     },
     {
       "title": "Research Trainee",
@@ -409,7 +450,14 @@
         "Laboratory Research",
         "Data Management"
       ],
-      "includeInResume": true
+      "includeInResume": true,
+      "cv": {
+        "group": "research",
+        "period": "Jun 2014 to Feb 2015",
+        "responsibilities": [
+          "Carried out cell biology experiments and helped organise and report the results."
+        ]
+      }
     }
   ],
   "education": [
@@ -419,7 +467,8 @@
       "time": "2024 - Ongoing",
       "location": "Kuopio, Finland",
       "description": "Intensive hands-on software development program focusing on Go, JavaScript, TypeScript, modern frontend frameworks, containerization, and backend system architecture.",
-      "includeInResume": true
+      "includeInResume": true,
+      "cvTraining": true
     },
     {
       "degree": "Master of Science in Molecular Biotechnology",
@@ -495,40 +544,6 @@
       "year": "2023"
     }
   ],
-  "references": [
-    {
-      "name": "Anniina Färkkilä, MD PhD",
-      "title": "Associate Professor & Principal Investigator",
-      "company": "Färkkilä Laboratory, University of Helsinki",
-      "email": "anniina.farkkila@helsinki.fi",
-      "includeInResume": true
-    },
-    {
-      "name": "Heikki Kuusanmäki, PhD",
-      "title": "Senior Researcher & Postdoctoral Fellow",
-      "company": "Institute for Molecular Medicine Finland (FIMM), University of Helsinki",
-      "email": "heikki.kuusanmaki@helsinki.fi",
-      "includeInResume": true
-    },
-    {
-      "name": "Oskari Jokela",
-      "title": "Production Supervisor",
-      "company": "ABB Oy",
-      "location": "Helsinki, Finland",
-      "email": "oskari.jokela@fi.abb.com",
-      "phone": "+358 50 335 9059",
-      "includeInResume": true
-    },
-    {
-      "name": "Henri Koskinen",
-      "title": "Shop Lead",
-      "company": "Swappie Oy",
-      "location": "Helsinki, Finland",
-      "email": "henri.koskinen@swappie.com",
-      "phone": "+358 50 575 3124",
-      "includeInResume": true
-    }
-  ],
   "testimonials": [
     {
       "text": "Debashish Deb coordinates our CSC computing environments, lab web platforms, and clinical study data systems with outstanding diligence, ensuring our spatial multi-omics researchers can work seamlessly on critical precision oncology pipelines.",
@@ -545,5 +560,57 @@
       "author": "Henri Koskinen",
       "role": "Production Manager & Shop Lead, Swappie Oy"
     }
-  ]
+  ],
+  "cv": {
+    "profile": "I support research computing, data storage and day-to-day IT at Färkkilä Lab. My background in molecular biotechnology helps me understand what researchers need from Linux environments, microscopy workflows and data infrastructure.",
+    "coreSkills": [
+      "Linux and command-line tools",
+      "CSC platforms: LUMI, cPouta and Allas",
+      "Snakemake, Slurm and Python workflows",
+      "Data transfers with rclone and rsync",
+      "S3-compatible storage and lab databases",
+      "Researcher IT support and website maintenance"
+    ],
+    "languages": [
+      {
+        "name": "Bengali",
+        "level": "Native"
+      },
+      {
+        "name": "English",
+        "level": "Proficient"
+      },
+      {
+        "name": "Finnish",
+        "level": "Basic"
+      },
+      {
+        "name": "Hindi",
+        "level": "Intermediate"
+      },
+      {
+        "name": "Nepali",
+        "level": "Intermediate"
+      }
+    ],
+    "development": [
+      "Go, SQL and JavaScript",
+      "HTML, CSS and React",
+      "Node.js and REST APIs",
+      "Dart, Flutter and Git"
+    ],
+    "labMethods": [
+      "High-throughput flow cytometry",
+      "Mammalian cell culture",
+      "PCR"
+    ],
+    "independentWork": {
+      "title": "Owner and Developer",
+      "organization": "Infinite IT",
+      "period": "Current",
+      "responsibilities": [
+        "Build web and mobile apps and maintain Linux servers and Docker services."
+      ]
+    }
+  }
 }
