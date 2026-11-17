@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=16');
+      const response = await fetch('data.json?v=17');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -323,21 +323,19 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="hero-content">
               <div class="hero-status-pill">
                 <span class="status-dot"></span>
-                <span>Helsinki, Finland • Biomedicum Helsinki • Open to Collaboration &amp; Appointments</span>
+                <span>Helsinki, Finland • Biomedicum Helsinki • University of Helsinki</span>
               </div>
               <h1 class="hero-title">
                 Hi, I'm <span class="gradient-text">${data.name}.</span>
               </h1>
               <div class="hero-focus-line">
-                <span class="focus-label">Focusing on </span>
+                <span class="focus-label">Working in </span>
                 <span class="hero-cycle-wrapper">
-                  <span class="hero-cycle-text" id="hero-cycle-text">Computational Systems &amp; Supercomputing</span>
+                  <span class="hero-cycle-text" id="hero-cycle-text">Research IT at Färkkilä Lab</span>
                   <span class="cursor-blink">|</span>
                 </span>
               </div>
-              <p class="hero-description">
-                Biotechnologist turned software engineer based in Helsinki. Managing scientific computing environments, multi-omics registries, and high-performance CSC supercomputing infrastructure at Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki). Fostering rigorous computational methodologies, pursuing continuous technical scholarship, and welcoming select research collaborations and professional appointments.
-              </p>
+              <p class="hero-description">${data.tagline}</p>
 
               <div class="hero-cta-group">
                 <a href="#projects" class="btn btn-primary">
@@ -373,11 +371,11 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="hero-portrait-badges">
                 <span class="portrait-badge">
                   <span class="badge-dot dot-cyan"></span>
-                  <span>CSC Puhti &bull; Go</span>
+                  <span>CSC &bull; Scientific computing</span>
                 </span>
                 <span class="portrait-badge">
                   <span class="badge-dot dot-amber"></span>
-                  <span>Multi-Omics &bull; M.Sc.</span>
+                  <span>Research data &bull; M.Sc.</span>
                 </span>
               </div>
             </div>
@@ -451,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-building-columns"></i> APPOINTMENTS</span>
           <h2 class="section-title">Current Institutional Appointments</h2>
-          <p class="section-subtitle">Stewardship of high-performance computing clusters and advanced computational software scholarship in Helsinki.</p>
+          <p class="section-subtitle">Current work in research data infrastructure, scientific computing and image processing.</p>
         </div>
         <div class="editorial-roles-grid">
           ${rolesMarkup}
@@ -529,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-folder-open"></i> PORTFOLIO</span>
           <h2 class="section-title">Featured Projects &amp; Software Systems</h2>
-          <p class="section-subtitle">Practical software spanning full-stack web architectures, scientific registry systems, concurrent graph algorithms, and cross-platform mobile apps.</p>
+          <p class="section-subtitle">Selected research IT, web, mobile and QA projects.</p>
         </div>
 
         <!-- Category Filter Tabs -->
@@ -611,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                   <h4 class="dossier-subtitle" style="margin-top:20px;"><i class="fas fa-shield-halved"></i> Engineering Governance</h4>
                   <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.65; margin-bottom:16px;">
-                    Engineered with deterministic data schemas, strict memory boundaries, zero-mutation state transformations, and comprehensive continuous automated testing.
+                    The notes on this project describe what I worked on and what was checked.
                   </p>
                 </div>
               </div>
@@ -700,7 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-handshake"></i> COLLABORATION &amp; HIRING</span>
           <h2 class="section-title">Scholarly Collaboration &amp; Technical Appointments</h2>
-          <p class="section-subtitle">Receptive to research partnerships, software engineering appointments, and high-performance computational advisory roles.</p>
+          <p class="section-subtitle">I’m interested in research computing and software roles that help people work with data and build tools they use every day.</p>
         </div>
 
         <div class="editorial-services-grid">
@@ -1551,11 +1549,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!el) return;
 
     const phrases = [
-      'Computational Systems & Supercomputing',
-      'Go Distributed Architectures',
-      'React & TypeScript Web Platforms',
-      'Flutter Mobile Applications',
-      'Multi-Omics Data Registries'
+      'Research IT at Färkkilä Lab',
+      'Scientific Computing',
+      'Research Data Infrastructure',
+      'Image Processing',
+      'Research Web Development'
     ];
 
     let phraseIndex = 0;

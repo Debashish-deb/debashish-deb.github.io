@@ -1,10 +1,10 @@
 {
   "name": "Debashish Deb",
   "shortName": "DD",
-  "title": "Computational Systems Specialist & Full-Stack Engineer",
-  "tagline": "Bridging molecular biotechnology, computational infrastructure, and modern software engineering. Managing research platforms and CSC supercomputing at Färkkilä Laboratory (University of Helsinki). Open to scholarly collaborations and technical appointments.",
-  "about": "I am a molecular biotechnologist turned computational systems specialist and software engineer based in Helsinki, Finland. At Färkkilä Laboratory (Biomedicum Helsinki, University of Helsinki), I oversee research databases, digital platforms, and high-performance CSC computing clusters. Dedicated to continuous scholarship and pragmatic engineering, I welcome interdisciplinary collaborations and technical appointments.",
-  "aboutExtended": "My academic trajectory commenced in molecular biotechnology, earning a Master of Science degree at the University of Helsinki and co-authoring peer-reviewed oncological investigations in Haematologica and Blood. Conducting high-throughput drug phenotypic screenings and interpreting complex multi-omic data underscored the profound necessity for rigorous, reproducible software architecture in modern life sciences.\n\nPresently, I serve as IT & Systems Specialist at Färkkilä Laboratory (Biomedicum Helsinki, Faculty of Medicine, University of Helsinki), stewarding scientific computing clusters hosted by the Finnish IT Center for Science (CSC), maintaining curated patient specimen registries, and advancing bespoke web portals for precision oncology (ONCOSYS-OVA).\n\nI view software development as a disciplined scholarly craft. Pursuing advanced computational coursework at Kood/Sisu, I engineer performant solutions in Go, TypeScript, React, and Flutter, upholding the zero-defect empirical precision instilled during my industrial tenure in Finnish high-precision manufacturing (ABB and Swappie). I am receptive to selective research collaborations, technical consultations, and professional appointments.",
+  "title": "Research IT at Färkkilä Lab",
+  "tagline": "I maintain research data infrastructure, support scientific computing on CSC systems, and document image processing workflows so the lab can run them again.",
+  "about": "I trained in molecular biotechnology and worked as a research assistant before moving into IT. That background shapes how I document a workflow: what goes in, what comes out, and how someone else can run it again.",
+  "aboutExtended": "I trained in molecular biotechnology and worked as a research assistant before moving into IT. That background shapes how I document a workflow: what goes in, what comes out, and how someone else can run it again.\n\nI maintain research data infrastructure, support scientific computing on CSC systems, and document image processing workflows so the lab can run them again.",
   "profileImage": "profile.png",
   "email": "debashish.deb@helsinki.fi",
   "personalEmail": "ddeba32@gmail.com",
@@ -15,66 +15,70 @@
   "website": "https://debashish-deb.github.io",
   "companyWebsite": "https://farkkilab.org",
   "labWebsite": "https://farkkilab.org",
-  "location": "Helsinki / Kuopio, Finland",
+  "location": "Helsinki, Finland",
   "status": "Computational Systems • Färkkilä Lab (UH) • Open to Collaboration & Hiring",
   "stats": [
     {
-      "label": "Research Institution",
-      "value": "Univ. of Helsinki"
+      "label": "Current role",
+      "value": "Research IT"
     },
     {
-      "label": "Scholarly Publications",
-      "value": "3 High-Impact"
+      "label": "Research institution",
+      "value": "University of Helsinki"
     },
     {
-      "label": "Scientific Degree",
-      "value": "M.Sc. Biotech"
+      "label": "Scientific degree",
+      "value": "MSc, Molecular Biotechnology"
     },
     {
-      "label": "Core Technologies",
-      "value": "Go • React • Flutter"
+      "label": "Current focus",
+      "value": "CSC · Research data · Imaging"
     }
   ],
   "collaborationAvailability": "Available for Scholarly Collaboration, Advisory & Technical Appointments",
   "collaborationServices": [
     {
-      "title": "Full-Stack Web & Scientific Architectures",
-      "badge": "Web & Distributed Systems",
+      "title": "Research IT and data infrastructure",
+      "badge": "Current focus",
       "icon": "fa-code",
-      "description": "Architecting performant, accessible digital interfaces, research dissemination platforms, and low-latency REST/GraphQL APIs utilizing React, Next.js, TypeScript, Fastify, and Go with rigorous computational standards.",
+      "description": "I maintain research databases and data infrastructure across local and cloud environments, and help lab members troubleshoot access and day-to-day technical issues.",
       "deliverables": [
-        "Bespoke, accessible web interfaces engineered with React & TypeScript",
-        "Low-latency API architecture constructed in Go and Fastify/Node",
-        "Relational data schema normalization (PostgreSQL & SQLite)",
-        "Strict compliance with accessibility guidelines and empirical performance profiling"
+        "Research data across local and cloud environments",
+        "Day-to-day support and troubleshooting"
       ],
-      "technologies": ["React", "TypeScript", "Next.js", "Go", "Fastify", "Tailwind CSS"]
+      "technologies": [
+        "Research databases",
+        "Technical support"
+      ]
     },
     {
-      "title": "Cross-Platform Mobile Engineering",
-      "badge": "Flutter & Dart",
+      "title": "Scientific computing and image processing",
+      "badge": "Current focus",
       "icon": "fa-mobile-screen-button",
-      "description": "Developing deterministic, offline-first mobile applications for iOS and Android from unified codebases, emphasizing on-device machine learning, edge processing, and resilient data persistence.",
+      "description": "I maintain workflows on CSC systems and document the steps used to prepare microscopy images for analysis. The goal is to make runs easier to repeat and troubleshoot.",
       "deliverables": [
-        "Production-grade cross-platform applications built with Flutter & Dart",
-        "Offline-first relational persistence via Drift / SQLite architectures",
-        "Edge computer vision and optical character recognition (Google ML Kit / OCR)",
-        "Deterministic reactive state architecture orchestrated with Riverpod"
+        "CSC computing workflows",
+        "Repeatable image processing documentation"
       ],
-      "technologies": ["Flutter", "Dart", "SQLite / Drift", "Riverpod", "Google ML Kit"]
+      "technologies": [
+        "CSC",
+        "LUMI",
+        "Python"
+      ]
     },
     {
-      "title": "Biomedical Data Systems & Computational Workflows",
-      "badge": "Scientific Computing & Pipelines",
+      "title": "Research web development",
+      "badge": "Related work",
       "icon": "fa-flask-vial",
-      "description": "Formulating automated data pipelines, translational clinical registries, and high-throughput computational workflows optimized for supercomputing environments and academic laboratories.",
+      "description": "I designed and built the lab’s public website and continue to maintain it. It gives researchers and visitors a place to find the lab’s work, publications, people and news.",
       "deliverables": [
-        "High-throughput data parsing and transformation pipelines in Python and Go",
-        "Secure clinical specimen tracking registries and observational study databases",
-        "Database provenance, migration protocols, and analytical reproducibility",
-        "CSC (Finnish IT Center for Science) cloud and supercomputing orchestration"
+        "Build and maintain research websites",
+        "Check navigation and user flows"
       ],
-      "technologies": ["Python", "Go", "PostgreSQL", "CSC Cloud", "Data Pipelines"]
+      "technologies": [
+        "React",
+        "Vite"
+      ]
     }
   ],
   "currentRoles": [
@@ -82,19 +86,18 @@
       "icon": "fa-building-columns",
       "org": "Färkkilä Laboratory (University of Helsinki)",
       "organization": "Färkkilä Laboratory (University of Helsinki)",
-      "title": "IT & Systems Specialist",
-      "role": "IT & Systems Specialist",
+      "title": "IT Personnel",
+      "role": "IT Personnel",
       "location": "Biomedicum Helsinki, Finland",
       "period": "Current",
       "link": "https://farkkilab.org",
-      "desc": "Coordinating Finnish CSC scientific supercomputing services, lab digital platforms, high-throughput spatial biology databases, and precision oncology research infrastructure.",
-      "summary": "Coordinating Finnish CSC scientific supercomputing services, lab digital platforms, high-throughput spatial biology databases, and precision oncology research infrastructure.",
+      "desc": "I maintain research data infrastructure, support scientific computing on CSC systems, and document image processing workflows so the lab can run them again. I also designed and built the lab’s public website and continue to maintain it.",
+      "summary": "I maintain research data infrastructure, support scientific computing on CSC systems, and document image processing workflows so the lab can run them again.",
       "tags": [
-        "CSC Supercomputing",
-        "Research Databases",
-        "Spatial Multi-omics",
-        "Snakemake",
-        "Scientific Linux"
+        "CSC computing",
+        "Research data infrastructure",
+        "Image processing",
+        "Technical support"
       ]
     }
   ],
@@ -211,35 +214,33 @@
   ],
   "projects": [
     {
-      "name": "Riverlines",
-      "badge": "Documentary Video Archive",
+      "name": "Riverlines — The River Remembers",
+      "badge": "Independent web project",
       "category": "web",
       "link": "https://debashish-deb.github.io/riverlines/",
-      "linkLabel": "Watch Documentary",
+      "linkLabel": "Watch Riverlines",
       "github": "https://github.com/Debashish-deb/debashish-deb.github.io/tree/main/riverlines",
       "image": "riverlines/media/poster.jpg",
-      "description": "A responsive bilingual documentary player and digital archive for Dhaka’s Buriganga River. Built with Video.js, TypeScript, and synchronized WebVTT captions in Bangla and English with chapter timeline scrubbing.",
+      "description": "A bilingual documentary player for archival footage of Dhaka’s Buriganga River. Switch the transcript between Bangla and English, or select a transcript line to jump to that moment in the film.",
       "technologies": [
-        "Video.js v10",
-        "TypeScript",
-        "WebVTT",
-        "CSS3",
-        "Mux"
+        "Web development",
+        "Timed transcripts",
+        "Bangla and English"
       ],
       "highlights": [
-        "Active transcript line and dated filmstrip synchronize precisely with playback time",
-        "Dual-language subtitles (Bangla / English), keyboard hotkeys, and mobile touch gestures"
+        "Bangla and English transcripts",
+        "Selectable cues jump to the corresponding moment in the film"
       ],
       "includeInResume": true
     },
     {
-      "name": "LUMI HPC Bioimage Preprocessing Pipeline",
+      "name": "Bioimage workflows on CSC and LUMI",
       "badge": "Snakemake & LUMI Supercomputer",
       "category": "systems",
       "link": "",
       "github": "https://github.com/Debashish-deb",
       "image": "",
-      "description": "High-throughput distributed workflow pipeline engineered with Snakemake and Slurm for large-scale biomedical image preprocessing and spatial biology data on the LUMI pre-exascale supercomputer (CSC Finland). Orchestrates containerized image normalization, flat-field correction, background subtraction, and multi-channel tile stitching across multi-node HPC clusters.",
+      "description": "I maintain workflows on CSC systems and document the steps used to prepare microscopy images for analysis. The goal is to make runs easier to repeat and troubleshoot.",
       "technologies": [
         "Snakemake",
         "LUMI Supercomputing",
@@ -249,31 +250,27 @@
         "Scientific Linux"
       ],
       "highlights": [
-        "Scalable Snakemake workflow orchestration executed on the LUMI pre-exascale supercomputer",
-        "Automated high-throughput multi-channel microscopy image normalization, flat-field correction, and tiling",
-        "Containerized reproducible execution via Singularity/Apptainer with automated Slurm cluster dispatch"
+        "Document image preparation steps so researchers can repeat runs",
+        "Support workflow troubleshooting on CSC systems"
       ],
       "includeInResume": true
     },
     {
-      "name": "Jutera — Sustainable Living Showcase",
-      "badge": "Web & 3D Interactive",
+      "name": "Jutera — Web QA",
+      "badge": "Freelance work sample",
       "category": "web",
       "link": "https://jutera.org",
-      "linkLabel": "Visit Website",
+      "linkLabel": "Visit Jutera",
       "github": "",
       "image": "jutera.webp",
-      "description": "Modern web showcase for handcrafted eco-friendly living products and European distribution. Built with React, Three.js 3D model visualization, Tailwind CSS, Vite, and high-performance PWA caching.",
+      "description": "I investigated why switching languages could interrupt an in-progress inquiry. After separating submission state from translated page metadata, I verified that the request stayed active and that a failed attempt preserved the draft.",
       "technologies": [
         "React",
-        "Three.js (WebGL)",
-        "Tailwind CSS",
-        "Vite",
-        "PWA & SEO"
+        "Browser testing",
+        "Form reliability"
       ],
       "highlights": [
-        "Interactive 3D model rendering via Three.js with real-time WebGL orbit controls",
-        "Sub-second page transitions, responsive layout, and PWA offline caching"
+        "Verified with controlled browser requests; mailbox delivery was outside the test."
       ],
       "includeInResume": true
     },
@@ -299,23 +296,22 @@
       "includeInResume": true
     },
     {
-      "name": "Färkkilä Lab Systems & Research Infrastructure",
+      "name": "Färkkilä Lab website and research IT",
       "badge": "Biomedical Systems",
       "category": "systems",
       "link": "https://farkkilab.org",
-      "linkLabel": "Lab Portal",
+      "linkLabel": "Visit the lab website",
       "github": "",
       "image": "farkkila-deb.webp",
-      "description": "Coordinating Finnish CSC scientific computing clusters, research databases, and public web platforms for precision oncology and spatial multi-omics at Biomedicum Helsinki (University of Helsinki).",
+      "description": "I designed and built the lab’s public website and continue to maintain it. It gives researchers and visitors a place to find the lab’s work, publications, people and news.",
       "technologies": [
-        "CSC Supercomputing",
-        "Research Databases",
-        "Web Infrastructure",
-        "Data Pipelines"
+        "React",
+        "Vite",
+        "Web maintenance"
       ],
       "highlights": [
-        "Computing resource allocation and environment setup for translational researchers",
-        "Research data registry maintenance and secure database workflows"
+        "Designed and built the lab’s website",
+        "Maintain its public research, people, publications and news pages"
       ],
       "includeInResume": true
     },
@@ -362,15 +358,15 @@
   ],
   "experience": [
     {
-      "title": "Technical Assistant",
+      "title": "IT Personnel",
       "company": "Färkkilä Laboratory, University of Helsinki",
       "time": "Current",
       "location": "Biomedicum Helsinki, Finland",
       "tag": "Academic & Scientific Systems",
       "responsibilities": [
-        "Coordinates CSC (Finnish IT Center for Science) computing services and supercomputing resources for spatial biology workloads.",
-        "Maintains and evolves the lab web presence, research data registries, and digital systems supporting precision oncology studies (ONCOSYS-OVA).",
-        "Ensures high-integrity database connectivity and computational reproducibility for multi-disciplinary translational researchers."
+        "I maintain research databases and data infrastructure across local and cloud environments, and help lab members troubleshoot access and day-to-day technical issues.",
+        "I maintain workflows on CSC systems and document the steps used to prepare microscopy images for analysis. The goal is to make runs easier to repeat and troubleshoot.",
+        "I designed and built the lab’s public website and continue to maintain it. It gives researchers and visitors a place to find the lab’s work, publications, people and news."
       ],
       "technologies": [
         "CSC Cloud & Supercomputing",
