@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     try {
       applyTheme(activeTheme);
-      const response = await fetch('data.json?v=24');
+      const response = await fetch('data.json?v=25');
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
@@ -880,7 +880,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="editorial-pub-item">
         <div class="pub-journal-badge">${pub.journal}${pub.publicationType ? ` · ${pub.publicationType}` : ''}</div>
         <h3 class="pub-title">${pub.title}</h3>
-        <p class="pub-desc">${pub.description}</p>
+        ${pub.description ? `<p class="pub-desc">${pub.description}</p>` : ''}
         <div class="pub-actions">
           <a href="${pub.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
             <i class="fas fa-external-link-alt"></i>
@@ -899,7 +899,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="section-header">
           <span class="section-tag"><i class="fas fa-book-open"></i> SCHOLARSHIP</span>
           <h2 class="section-title">Education &amp; Publications</h2>
-          <p class="section-subtitle">My education and co-authored research, including a conference abstract.</p>
+          <p class="section-subtitle">My education, co-authored journal articles and conference abstracts.</p>
         </div>
 
         <div class="editorial-scholarship-grid">
@@ -980,6 +980,10 @@ document.addEventListener('DOMContentLoaded', () => {
               <i class="fas fa-print" aria-hidden="true"></i>
               <span>Print or save PDF</span>
             </button>
+            <a class="btn btn-secondary btn-sm" href="Debashish-Deb-CV.pdf" download="Debashish-Deb-CV.pdf">
+              <i class="fas fa-download" aria-hidden="true"></i>
+              <span>Download CV</span>
+            </a>
           </div>
         </div>
 

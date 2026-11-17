@@ -4317,10 +4317,13 @@ body.light-theme {
 
 .cv-action-bar {
   display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-top: 16px;
 }
 
 .cv-paper {
+  --cv-rail-width: 28%;
   background: var(--bg-card);
   border: 1px solid var(--border-strong);
   border-radius: 16px;
@@ -4331,7 +4334,7 @@ body.light-theme {
 
 .cv-sheet {
   display: grid;
-  grid-template-columns: minmax(0, 30fr) minmax(0, 70fr);
+  grid-template-columns: minmax(0, var(--cv-rail-width)) minmax(0, 1fr);
 }
 
 .cv-second-sheet {
@@ -4348,7 +4351,7 @@ body.light-theme {
 
 .cv-paper-header {
   display: grid;
-  grid-template-columns: minmax(0, 30fr) minmax(0, 70fr);
+  grid-template-columns: minmax(0, var(--cv-rail-width)) minmax(0, 1fr);
   align-items: center;
   padding-block: 22px;
 }
@@ -4399,7 +4402,7 @@ body.light-theme {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  gap: 24px;
+  gap: 30px;
   padding: clamp(14px, 2.5vw, 30px);
 }
 
@@ -4409,7 +4412,8 @@ body.light-theme {
 
 .cv-sheet-rail {
   grid-column: 1;
-  gap: 20px;
+  gap: 24px;
+  padding-inline: clamp(12px, 1.8vw, 22px);
   background: var(--bg-secondary);
   border-right: 1px solid var(--border-subtle);
 }
@@ -4526,7 +4530,7 @@ body.light-theme {
   .cv-sheet-rail {
     grid-column: 1;
     grid-row: auto;
-    gap: 18px;
+    gap: 22px;
     padding: 16px;
   }
 
@@ -4629,7 +4633,7 @@ body.light-theme {
   .cv-print-header {
     display: flex;
     flex-direction: column;
-    padding-inline: calc(30% + 14pt) 14pt;
+    padding-inline: calc(var(--cv-rail-width) + 14pt) 14pt;
   }
 
   .cv-name {
@@ -4642,8 +4646,12 @@ body.light-theme {
 
   .cv-sheet-main,
   .cv-sheet-rail {
-    gap: 12pt;
+    gap: 16pt;
     padding: 14pt;
+  }
+
+  .cv-sheet-rail {
+    padding-inline: 10pt;
   }
 
   .cv-section-block {
@@ -5026,17 +5034,17 @@ body.dark-theme .hero-cover-card,
   background: #061e2b !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.75) !important;
-  padding: var(--cover-padding, 24px 32px) !important;
+  padding: var(--cover-padding, 30px 28px) !important;
   margin-top: 0 !important;
   margin-bottom: var(--cover-bottom-space, 20px) !important;
   border-radius: 24px !important;
   overflow: hidden !important;
-  min-height: var(--cover-min-height, 440px) !important;
+  min-height: var(--cover-min-height, 464px) !important;
 }
 
 @media (max-width: 900px) {
   .hero-cover-card {
-    --cover-padding: 20px 22px;
+    --cover-padding: 25px 20px;
     --cover-min-height: 0px;
     --cover-grid-min-height: 0px;
     border-radius: 20px !important;
@@ -5048,7 +5056,7 @@ body.dark-theme .hero-cover-card,
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr) !important;
   align-items: center !important;
   gap: 20px !important;
-  min-height: var(--cover-grid-min-height, 380px) !important;
+  min-height: var(--cover-grid-min-height, 396px) !important;
 }
 
 /* 1. Frameless Big Cutout Portrait Standing Cleanly in Cover Card */
