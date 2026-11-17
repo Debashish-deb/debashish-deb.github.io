@@ -1,0 +1,23 @@
+script.js
+  s_cad165870cbc4d::t_d3fa45e9a37df1 23,326,332,334,338,374,378,452,530,612,701,1552-1556
+index.html
+  s_cad165870cbc4d::t_d3fa45e9a37df1 10-11,18-19,23-24,73
+data.json
+  s_cad165870cbc4d::t_d3fa45e9a37df1 4-7,18,22-23,26-27,30-31,34-35,41-42,44,46-47,49-52,55-56,58,60-61,63-67,70-71,73,75-76,78-81,89-90,94-95,97-100,217-218,221,224,226-228,231-232,237,243,253-254,259-260,263,266,269-270,273,299,303,306,308-310,313-314,361,367-369
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d2f9dce7ec67270be97399dc555657b85916123d",
+  "prompts": {},
+  "sessions": {
+    "s_cad165870cbc4d": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1c2b3-1f74-7ae2-bded-719410ab975c",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "debashishdeb1 <debashish.deb101@outlook.com>"
+    }
+  }
+}
